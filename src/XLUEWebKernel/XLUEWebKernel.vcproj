@@ -63,7 +63,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="XLUE.lib XLGraphic.lib XLLuaRuntime.lib libcef.lib XLUELib.lib"
-				LinkIncremental="2"
+				LinkIncremental="1"
 				AdditionalLibraryDirectories="../../bolt/lib;../../libcef/lib;../../lib/$(ConfigurationName)"
 				ModuleDefinitionFile="XLUEWebKernel.def"
 				GenerateDebugInformation="true"

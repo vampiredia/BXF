@@ -62,7 +62,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="wxsvg_vs2008.lib XLGraphic.lib XLUE.lib XLLuaRuntime.lib cairo-static.lib libexpat.lib shlwapi.lib XLUELib.lib"
-				LinkIncremental="2"
+				LinkIncremental="1"
 				AdditionalLibraryDirectories="../../bolt/lib;&quot;../../lib/$(ConfigurationName)&quot;;../../3rd/lib;&quot;../../3rd/lib/$(ConfigurationName)&quot;"
 				ModuleDefinitionFile="Boltext_svg.def"
 				GenerateDebugInformation="true"

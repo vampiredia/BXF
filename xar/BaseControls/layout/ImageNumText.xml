@@ -1,0 +1,42 @@
+<xlue>
+    <control class="WHome.ImageNumText">
+		<attr_def>
+			<!--以下三个属性分别是  点到数字的间距，点与百分号之间的间距，数字与百分号之间的间距-->
+			<attr name="point2numDistance" type="int"><default>1</default></attr>
+			<attr name="point2symbolDistance" type="int"><default>1</default></attr>
+			<attr name="num2symbolDistance" type="int"><default>1</default></attr>
+			<attr name = "num2numDistance" type = "int"><default>1</default></attr>
+			<!--鉴于就两种颜色，白:white 黑: black-->
+			<attr name = "TextColor" type = "string"><default>white</default></attr>
+			<attr name = "Text" type = "string"/>
+			<attr name = "Visible" type = "bool"><default>true</default></attr>
+			<attr name = "ResPackage" type = "string" />
+		</attr_def>
+        <method_def>
+			<!--参数可以是string 也可以是num-->
+            <SetText file = "ImageNumText.xml.lua" func = "SetText"/>
+			<SetPoint2NumDistance file = "ImageNumText.xml.lua" func = "SetPoint2NumDistance" />
+			<SetPoint2SymbolDistance file = "ImageNumText.xml.lua" func = "SetPoint2SymbolDistance" />
+			<SetNum2SymbolDistance file = "ImageNumText.xml.lua" func = "SetNum2SymbolDistance" />
+			<SetNum2NumDistance file = "ImageNumText.xml.lua" func = "SetNum2NumDistance" />
+			<SetControlVisible file = "ImageNumText.xml.lua" func = "SetControlVisible" />
+			<SetTextColor file = "ImageNumText.xml.lua" func = "SetTextColor"/>
+			<SetResPackage file = "ImageNumText.xml.lua" func = "SetResPackage" />
+        </method_def>
+        <objtemplate>
+            <children>
+				<obj id = "ImageTextLayout" class = "LayoutObject">
+					<attr>
+						<left>0</left>
+                        <top>0</top>
+                        <width>father.width</width>
+                        <height>father.height</height>
+					</attr>
+				</obj>
+            </children>
+			<eventlist>
+				<event name = "OnInitControl" file = "ImageNumText.xml.lua" func = "OnInitControl" />
+			</eventlist>	
+		</objtemplate>
+    </control>
+</xlue>

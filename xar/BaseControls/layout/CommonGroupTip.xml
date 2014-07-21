@@ -1,0 +1,56 @@
+<xlue>
+    <control class="WHome.CommonGroupTip">
+		<attr_def>
+			
+		</attr_def>
+        <method_def>
+			<!--普通提醒tip的标准接口-->
+			<ClearTipBkg file = "CommonGroupTip.xml.lua" func = "ClearTipBkg" />
+			<GetTipContextObject file = "CommonGroupTip.xml.lua" func = "GetTipContextObject" />
+			<FillTipData file = "CommonGroupTip.xml.lua" func = "FillTipData" />
+			<GetTipData file = "CommonGroupTip.xml.lua" func = "GetTipData" />
+			<GetTipSize file = "CommonGroupTip.xml.lua" func = "GetTipSize" />
+        </method_def>
+        <objtemplate>
+            <children>
+                <obj id="tip.bkg" class="TextureObject">
+					<attr>
+                        <left>0</left>
+                        <top>0</top>
+                        <width>father.width</width>
+                        <height>father.height</height>
+                        <texture>texture.mainwnd.tip.bkg</texture>
+                        <zorder>500</zorder>
+                    </attr>	
+				    <children>
+                        <obj id = "tip.context" class = "LayoutObject">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>father.width</width>
+								<height>father.height</height>
+							</attr>
+							<children>
+								<obj id = "tip.Text" class = "TextObject">
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>father.width</width>
+										<height>father.height</height>
+										<textcolor>system.black</textcolor>
+										<font>default.font</font>
+										<halign>center</halign>
+										<!--valign>center</valign-->
+									</attr>
+								</obj>
+							</children>
+						</obj>
+                    </children>
+                </obj>
+            </children>
+            <eventlist>
+
+            </eventlist>
+        </objtemplate>
+    </control>
+</xlue>

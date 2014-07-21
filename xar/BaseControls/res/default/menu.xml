@@ -1,0 +1,62 @@
+<XLUE>
+	<resource>
+		<font id="font.menu" height="12" facename="微软雅黑"/>
+	
+		<texture id="menu.bkn" type="NineInOne" image="menu\menu_bkn.png"/>
+		
+		<texture id="menu.line.1" type="ThreeInOneH" path="menu\menu_line.png" />
+
+		<texture id="menu.line.2" type="ThreeInOneH" path="menu\menu_line.png" />
+		<texture id="menu.line.3" type="ThreeInOneH" path="menu\menu_line.png" />
+		<texture id="menu.line.4" type="ThreeInOneH" path="menu\menu_line.png" />
+
+		<color id="menu.color.src" red="247" green="249" blue="251" alpha="250" />
+		<color id="menu.color.dest" red="247" green="249" blue="251" alpha="250" />
+		
+		<texture id="menu.splitter" type="ThreeInOneH" path="menu\menu_line.png"/>
+		
+		<texture id="menu.select" type="ThreeInOneH" image="menu\menu_select.png"/>
+		
+		<imagelist id="imagelist.menu.arrow" splitter="1" varyblock ="1" image="menu\menu_arrow.png" color="#7F007F"/>
+		<bitmap id="menu.arrow.nor" imagelist="imagelist.menu.arrow" index="1" />
+		<bitmap id="menu.arrow.hov" imagelist="imagelist.menu.arrow" index="2" />
+		
+		
+		<imagelist id="imagelist.mainmenu.frame" splitter="1" varyblock ="1" image="menu\mainmenu_frame.png" color="#7F007F"/>
+		<texture id="mainmenu.downbkg" type="NineInOne" imagelist="imagelist.mainmenu.frame" index="1"/>
+		<texture id="mainmenu.upbkg" type="NineInOne" imagelist="imagelist.mainmenu.frame" index="2"/>
+		<texture id="mainmenuex.downbkg" type="NineInOne" imagelist="imagelist.mainmenu.frame" index="3"/>
+		<texture id="mainmenuex.upbkg" type="NineInOne" imagelist="imagelist.mainmenu.frame" index="4"/>
+		<texture id="mainmenu.btn.down" type="ThreeInOneH" imagelist="imagelist.mainmenu.frame" index="5"/>
+		<texture id="mainmenu.btn.up" type="ThreeInOneH" imagelist="imagelist.mainmenu.frame" index="6"/>
+		
+		<bitmap id="mainmenu.light" path="menu\mainmenu_light.png"/>
+		
+		<imagelist id="imagelist.menu.icon" splitter="1" varyblock="1" vertical="0" image="menu\menu_icon.png" />
+		
+		<bitmap id="menu.all.del.icon" imagelist="imagelist.menu.icon" index="14"/>
+		<bitmap id="menu.all.pause.icon"  imagelist="imagelist.menu.icon" index="13"/>
+		<bitmap id="menu.all.start.icon"  imagelist="imagelist.menu.icon" index="12"/>
+		<bitmap id="menu.del.task.icon" imagelist="imagelist.menu.icon" index="3"/>
+		<bitmap id="menu.new.task.icon" imagelist="imagelist.menu.icon" index="6"/>
+		<bitmap id="menu.exit.icon" imagelist="imagelist.menu.icon" index="7"/>
+		<bitmap id="menu.about.icon" imagelist="imagelist.menu.icon" index="11"/>
+		<bitmap id="menu.bbs.icon" imagelist="imagelist.menu.icon" index="9"/>
+		<bitmap id="menu.check.icon" path="menu\icon_menu_check.png"/>
+		<bitmap id="menu.config.icon" imagelist="imagelist.menu.icon" index="4"/>
+		<bitmap id="menu.down.icon" path="menu\icon_menu_down.png"/>
+		<bitmap id="menu.property.icon"  imagelist="imagelist.menu.icon" index="5"/>
+		<bitmap id="menu.search.icon" path="menu\icon_menu_search.png"/>
+		<bitmap id="menu.up.icon" path="menu\icon_menu_up.png"/>
+		<bitmap id="menu.update.icon" imagelist="imagelist.menu.icon" index="10"/>
+		<bitmap id="menu.desktopnews.icon" imagelist="imagelist.menu.icon" index="8"/>
+		<bitmap id="icon.menu.start.icon" imagelist="imagelist.menu.icon" index="1" />
+		<bitmap id="icon.menu.stop.icon" imagelist="imagelist.menu.icon" index="2" />
+		
+		<imagelist id="imagelist.sort.small" splitter="1" varyblock="1" vertical="0" image="menu\menu_sort_small.png" />
+		<bitmap id="menu.sort.icon" imagelist="imagelist.sort.small" index="2" />
+		
+		<color id="menu.color.normal" value="#000000"/>
+		<color id="menu.color.disable" value="#777777"/>	
+	</resource>
+</XLUE>

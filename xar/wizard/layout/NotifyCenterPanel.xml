@@ -1,0 +1,116 @@
+<xlue>
+	<control class="Wizard.NotifyCenterPanel">
+		<attr_def>
+			<attr name="BorderTexture" type="string"><default>texture.tabbody.border</default></attr>
+		</attr_def>
+		<method_def>
+			
+		</method_def>
+		<event_def>
+			
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<alpha>168</alpha>
+					</attr>
+				</obj>
+				
+				<obj id="ctrl" class="LayoutObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="panel.category" class="LayoutObject">
+							<attr>
+								<width>138</width>
+								<height>father.height</height>
+							</attr>
+							<children>
+								<obj id="panel.category.bkg.rectangle" class="RectangleObject">
+									<attr>
+										<width>father.width</width>
+										<height>father.height</height>
+										<srcpt>0,0</srcpt>
+										<destpt>width,height-2</destpt>
+										<pen>pen.solid</pen>
+										<brush>brush.solid</brush>
+										<pencolor>system.orange</pencolor>
+										<brushcolor>system.orange</brushcolor>
+										<visible>1</visible>
+										<alpha>1</alpha>
+									</attr>
+								</obj>
+								
+								<obj id="panel.category.tabheader" class="BaseUI.TabHeaderCtrl">
+									<attr>
+										<left>32</left>
+										<top>20</top>
+										<width>father.width-100</width>
+										<height>50</height>
+										<IconTopPos>1</IconTopPos>
+										<IconHAlign>center</IconHAlign>
+										<TextColorID>system.black</TextColorID>
+										<TabDirection>vertical</TabDirection>
+									</attr>
+									<eventlist>
+										<event name="OnInitControl" file="NotifyCenterPanel.xml.lua" func="TabHeader_OnInitControl" />
+										<event name="OnActiveTabChanged" file="NotifyCenterPanel.xml.lua" func="OnActiveTabChanged" />
+									</eventlist>
+								</obj>
+							</children>
+						</obj>
+						<obj id="panel.tips" class="LayoutObject">
+							<attr>
+								<left>148</left>
+								<width>father.width-160</width>
+								<height>32</height>
+							</attr>
+							<children>
+								<obj id="panel.tips.static.line" class="LineObject">
+									<attr>
+										<top>father.height - 2</top>
+										<left>1</left>
+										<width>father.width-2</width>
+										<height>3</height>
+										<pen>pen.solid</pen>
+										<srcpt>0,1</srcpt>
+										<destpt>width,1</destpt>
+										<color>system.gray</color>
+										<zorder>10000</zorder>
+									</attr>
+								</obj>
+							</children>
+						</obj>
+						
+						<!-- tab panel -->
+						<obj id="NotifyCenterChildPanelForPublic" class="Wizard.NotifyCenterChildPanelForPublic">
+							<attr>
+								<left>138</left>
+								<width>father.width-138</width>
+								<height>father.height</height>
+							</attr>
+						</obj>
+						<obj id="NotifyCenterChildPanelForAbout" class="Wizard.NotifyCenterChildPanelForAbout">
+							<attr>
+								<left>138</left>
+								<width>father.width-138</width>
+								<height>father.height</height>
+							</attr>
+						</obj>
+					</children>
+				</obj>
+						
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="NotifyCenterPanel.xml.lua" func="OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

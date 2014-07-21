@@ -1,0 +1,92 @@
+<xlue>
+	<control class="Wizard.CommunityServiceChildPanelForService">
+		<attr_def>
+			<attr name="BorderTexture" type="string"><default>texture.tabbody.border</default></attr>
+		</attr_def>
+		<method_def>
+			<Get_CommunityServiceInfo file="CommunityServiceChildPanelForService.xml.lua" func="Get_CommunityServiceInfo"/>
+		</method_def>
+		<event_def>
+			
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<alpha>168</alpha>
+					</attr>
+				</obj>
+				
+				<obj id="ctrl" class="LayoutObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="text.tip.header" class="TextObject">
+							<attr>
+								<top>10</top>
+								<left>15</left>
+								<width>father.width</width>
+								<height>18</height>
+								<text>选择服务类型</text>
+								<font>default.font.bold</font>
+								<halign>left</halign>
+								<valign>center</valign>
+							</attr>
+						</obj>
+						<obj id="btn.edit.service" class="WHome.Button">
+							<attr>
+								<left>father.width - 50</left>
+								<top>5</top>
+								<width>40</width>
+								<height>20</height>
+								<Text>编辑</Text>
+							</attr>
+							<eventlist>
+								
+							</eventlist>
+						</obj>
+						<obj id="tableview.service.list" class="WHome.ListCtrl">
+							<attr>
+								<top>40</top>
+								<left>10</left>
+								<width>140</width>
+								<height>father.height-50</height>
+							</attr>
+							<children>
+									
+							</children>
+							<eventlist>
+								<event name="OnInitControl" file="CommunityServiceChildPanelForService.xml.lua" func="LB_Service_OnInitControl" />
+								<event name="OnListItemClick" file="CommunityServiceChildPanelForService.xml.lua" func="LC_OnListItemClick" />
+							</eventlist>
+						</obj>		
+						<obj id="tableview.sub.service.list" class="WHome.ListCtrl">
+							<attr>
+								<top>40</top>
+								<left>170</left>
+								<width>father.width-180</width>
+								<height>father.height-50</height>
+							</attr>
+							<children>
+									
+							</children>
+							<eventlist>
+								<event name="OnInitControl" file="CommunityServiceChildPanelForService.xml.lua" func="LB_SubService_OnInitControl" />
+							</eventlist>
+						</obj>						
+					</children>
+				</obj>
+						
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="CommunityServiceChildPanelForService.xml.lua" func="OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

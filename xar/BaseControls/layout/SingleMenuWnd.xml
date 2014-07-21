@@ -1,0 +1,23 @@
+<xlue>
+	<hostwndtemplate id="single.menu" class="MenuHostWnd">
+		<attr> 
+			<mode>auto</mode>
+		</attr>
+		<eventlist>
+			<event name="OnPopupMenu" file="SingleMenuWnd.xml.lua" func="OnPopupMenu"/>
+			<event name="OnEndMenu" file="SingleMenuWnd.xml.lua" func="OnEndMenu"/>
+		</eventlist>
+	</hostwndtemplate>
+	
+	<objtemplate id="menu.context.splitter" class="MenuItemObject">
+		<attr>
+			<height>12</height>
+			<SeparatorHeight>1</SeparatorHeight>
+			<width>140</width>
+			<Type>1</Type>
+			<Icon>menu.splitter</Icon>
+			<enable>0</enable>
+		</attr>
+	</objtemplate>
+	
+</xlue>

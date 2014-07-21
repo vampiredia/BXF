@@ -1,0 +1,30 @@
+<XLUE>
+<resource>
+	<curve id="curve.breath" type="bspline">
+		<controlpoint  tp="0.000000" sp="0.000000"/>
+		<controlpoint  tp="0.082418" sp="1.272472"/>
+		<controlpoint  tp="0.228022" sp="0.393258"/>
+		<controlpoint  tp="0.304945" sp="0.592697"/>
+		<controlpoint  tp="0.425824" sp="1.089888"/>
+		<controlpoint  tp="0.571429" sp="0.278090"/>
+		<controlpoint  tp="0.708791" sp="1.165730"/>
+		<controlpoint  tp="0.890110" sp="0.213483"/>
+		<controlpoint  tp="0.997253" sp="1.000000"/>
+	</curve>
+	
+	<curve id="curve.fastslow" type="bspline">
+		<controlpoint  tp="0.000000" sp="0.000000"/>
+		<controlpoint  tp="0.071429" sp="0.845506"/>
+		<controlpoint  tp="0.634615" sp="0.971910"/>
+		<controlpoint  tp="0.997253" sp="1.000000"/>
+	</curve>
+	
+	<curve id="curve.slowfast" type="bezier">
+		<controlpoint  tp="0.000000" sp="0.000000"/>
+		<controlpoint  tp="0.618132" sp="0.070225"/>
+		<controlpoint  tp="0.903846" sp="0.320225"/>
+		<controlpoint  tp="0.997253" sp="1.000000"/>
+	</curve>
+</resource>
+
+</XLUE>

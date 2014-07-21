@@ -1,0 +1,65 @@
+<xlue>
+	<objtemplate class="WHome.Windowless.Tip" id="WHome.Windowless.Tip.AutoFocus" >
+		<attr>
+			<focusstrategy>auto</focusstrategy>
+		</attr>
+	</objtemplate>
+	
+    <control class="WHome.Windowless.Tip">
+		<attr_def>
+			<attr name="BkgTexture" type="string"><default>texture.tip.bkg.left.up</default></attr>
+			<attr name="TextBeginH" type="int"><default>7</default></attr>
+			<attr name="TextBeginV" type="int"><default>4</default></attr>
+			<attr name="Zorder" type="int"><default>20000</default></attr>
+		</attr_def>
+        <method_def>
+            <SetText file="WindowlessTip.xml.lua" func="SetText"/>
+			<GetText file = "WindowlessTip.xml.lua" func = "GetText" />
+            <GetSize file="WindowlessTip.xml.lua" func="GetSize"/>
+			<GetTextExtent file="WindowlessTip.xml.lua" func="GetTextExtent" />
+            <SetType file="WindowlessTip.xml.lua" func="SetType"/>
+            <SetMultilineParam file="WindowlessTip.xml.lua" func="SetMultilineParam"/>
+			<SetHAlign file="WindowlessTip.xml.lua" func="SetHAlign"/>
+			<ClearTipData file = "WindowlessTip.xml.lua" func = "ClearTipData" />
+			<FillTipData file = "WindowlessTip.xml.lua" func = "FillTipData" />
+        </method_def>
+        <objtemplate>
+            <children>
+                <obj id="tip.bkg" class="TextureObject">
+                    <attr>
+                        <left>0</left>
+                        <top>0</top>
+                        <width>father.width</width>
+                        <height>father.height</height>
+                        <texture>texture.tip.bkg.left.up</texture>
+                        <zorder>500</zorder>
+                    </attr>
+                    <children>
+                        <obj id="tip.text" class="TextObject">
+                            <attr>
+                                <left>5</left>
+                                <top>1</top>
+                                <width>father.width-5</width>
+                                <height>father.height</height>
+                                <halign>center</halign>
+                                <valign>top</valign>
+                                <zorder>600</zorder>
+                                <textcolor>color.toolbar.tiptext</textcolor>
+                                <font>font.tip</font>
+                                <multiline>0</multiline>
+                                <shadow>1</shadow>
+                                <shadowcolor>white.shadow.color</shadowcolor>
+                                <shadowoffset>0,1</shadowoffset>
+                            </attr>
+                        </obj>
+                    </children>
+                </obj>
+            </children>
+            <eventlist>
+                <event name="OnLButtonUp" file="WindowlessTip.xml.lua" func="DeleteSelf"/>
+                <event name="OnInitControl" file="WindowlessTip.xml.lua" func="OnInitControl"/>
+                <event name="OnPosChange" file="WindowlessTip.xml.lua" func="OnPosChange"/>
+            </eventlist>
+        </objtemplate>
+    </control>
+</xlue>

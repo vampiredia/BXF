@@ -1,0 +1,93 @@
+﻿<xlue>
+	<control class="NormalMenu">
+		<attr_def>
+			<attr name="ContextID" type="string" desc="菜单的内容obj的id"/>
+			<attr name="BknID" type="string" desc="菜单的背景obj对应的纹理id"/>
+			<attr name="ShadingID" type="string" desc="菜单的背景底图对应的图片id"/>
+			<attr name="BottomLineID" type="string" desc="下拉菜单底边线"/>
+			<attr name="UpBknID" type="string" desc="上拉菜单时背景id"/>
+			<attr name="SrcColorID" type="string" />
+			<attr name="DestColorID" type="string" />
+			<attr name="FillAlpha" type="int" >
+				<default>235</default>
+			</attr>
+			<attr name="DefaultItemTemplate" type="string" />
+			<attr name="DefaultSpliterTemplate" type="string" />
+			<attr name="AnimationTemplateID" type="string" >
+				<default>animation.menu.alpha</default>
+			</attr>
+		</attr_def>
+		
+		<method_def>
+			<AnimateShow/>
+			<AnimateHide/>
+			<GetScreenPos/>
+			<SetPopStatus file="NormalMenu.xml.lua" func="SetPopStatus" />
+			<EndMenu file="NormalMenu.xml.lua" func="EndMenu" />
+			<UpdateSize file="NormalMenu.xml.lua" func="UpdateSize" />
+			<InsertItem file="NormalMenu.xml.lua" func="InsertItem" />
+			<RemoveItem file="NormalMenu.xml.lua" func="RemoveItem" />
+			<GetItemCount file="NormalMenu.xml.lua" func="GetItemCount" />
+			<GetItem file="NormalMenu.xml.lua" func="GetItem" />
+			<AddItem file="NormalMenu.xml.lua" func="AddItem" />
+			<MoveNextItem file="NormalMenu.xml.lua" func="MoveNextItem" />
+			<MovePrevItem file="NormalMenu.xml.lua" func="MovePrevItem" />
+			<GetCurItem file="NormalMenu.xml.lua" func="GetCurItem" />
+			<SetMenuBar file="NormalMenu.xml.lua" func="SetMenuBar" />
+		</method_def>
+		
+		<objtemplate>
+			<children>
+				<obj id="menu.frame" class="LayoutObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						
+						<limitchild>1</limitchild>
+					</attr>	
+					<children>
+						<obj id="menu.bkn" class="TextureObject">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>father.width</width>
+								<height>father.height+2</height> <!-- Hack! -->
+								<alpha>250</alpha>
+							</attr>
+							
+							<children>
+								<obj id="menu.shading" class="ImageObject">
+									<attr>
+										<left>(father.width - 161) / 2</left>
+										<top>father.bottom - 31</top>
+										<width>161</width>
+										<height>28</height>
+										<zorder>-10</zorder>
+										<alpha>127</alpha>
+										<drawmode>1</drawmode>
+										<visible>false</visible>
+									</attr>
+								</obj>
+								<!--<obj class="BlurObject">
+									<attr>
+										<left>1</left>
+										<top>1</top>
+										<width>father.width-2</width>
+										<height>father.height-2</height>
+									</attr>
+								</obj>-->
+							</children>
+						</obj>
+					</children>
+				</obj>	
+			</children>
+				
+			<eventlist>
+				<event name="OnInitControl"/>
+				<event name="OnKeyDown" file="NormalMenu.xml.lua" func="OnKeyDown" />
+				<event name="OnFocusChange" file="NormalMenu.xml.lua" func="OnFocusChange" />
+			</eventlist>
+		</objtemplate>
+	</control>
+	
+</xlue>

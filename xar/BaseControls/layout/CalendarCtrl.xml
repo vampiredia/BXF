@@ -1,0 +1,368 @@
+<xlue>
+	<!-- 动画相关 -->
+	<animation_def>
+		<method_def>
+		</method_def>
+	</animation_def>
+	
+	<!-- 控制层 -->
+	
+	<!-- 日期头 -->
+	<control class="WHome.CalendarHeader">
+		<attr_def>
+			<attr name="ValidTop" type="int" />
+			<attr name="ValidLeft" type="int" />
+			<attr name="ValidWidth" type="int" />
+			<attr name="ValidHeight" type="int" />
+			
+			<attr name="ValidBtnTop" type="int" />
+			<attr name="ValidBtnLeft" type="int" />
+			<attr name="ValidBtnWidth" type="int" />
+			<attr name="ValidBtnHeight" type="int" />
+			
+            <attr name="NormalBkgID" type="string">
+                <default>texture.edit.bkg.normal</default>
+            </attr>
+            <attr name="HoverBkgID" type="string" >
+                <default>texture.edit.bkg.hover</default>
+            </attr>
+            <attr name="DisableBkgID" type="string">
+                <default>texture.edit.bkg.disable</default>
+            </attr>
+			
+			<attr name="NormalTextColor" type="string">
+				<default>color.text.normal</default>
+			</attr>
+			<attr name="HoverTextColor" type="string">
+				<default>color.text.hover</default>
+			</attr>
+			<attr name="DisableTextColor" type="string">
+				<default>color.text.disable</default>
+			</attr>
+			
+		</attr_def>
+		<method_def>
+			<GetDate file="CalendarCtrl.xml.lua" func="GetDate" />
+			<SetDate file="CalendarCtrl.xml.lua" func="SetDate" />
+		</method_def>
+		<event_def>
+			
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="calendar.header.bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="calendar.header.layout" class="LayoutObject">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>father.width</width>
+								<height>father.height</height>
+							</attr>
+							<children>
+								<obj id="calendar.input.edit" class="WHome.Edit">
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>father.width</width>
+										<height>28</height>
+									</attr>
+									<eventlist>
+										<event name="OnEditFocusChange" file="CalendarCtrl.xml.lua" func="EDIT_OnFocusChange" />
+									</eventlist>
+								</obj>
+								<obj id="calendar.input.btn" class="WHome.ImageButton">
+									<attr>
+										<left>father.width-25</left>
+										<top>3</top>
+										<width>20</width>
+										<height>20</height>
+										<NormalBkgID>texture.btn.calendar.normal</NormalBkgID>
+										<HoverBkgID>texture.btn.calendar.hover</HoverBkgID>
+										<DownBkgID>texture.btn.calendar.down</DownBkgID>
+										<DisableBkgID>texture.btn.calendar.disable</DisableBkgID>
+										<zorder>1000</zorder>
+									</attr>
+								</obj>
+							</children>
+						</obj>
+					</children>
+				</obj>
+			</children>
+		</objtemplate>
+	</control>
+	
+	<!-- 日期grid -->
+	<control class="WHome.CalendarItem">
+		<attr_def>
+			<attr name="IsSecleted" type="bool" >
+				<default>false</default>
+			</attr>
+			
+		</attr_def>
+		<method_def>
+			
+		</method_def>
+		<event_def>
+			
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="btn.calendar.item" class="WHome.Button">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+				</obj>
+			</children>
+		</objtemplate>
+	</control>
+	
+	<!-- 日期控件 -->
+	<control class="WHome.CalendarCtrl">
+		<attr_def>
+			<!-- 星期间隔 -->
+			<attr name="LeftCalendarItem" type="int" ><default>3</default></attr>
+			<attr name="TopCalendarItem" type="int" ><default>2</default></attr>
+			<attr name="MarginCalendarItem" type="int" ><default>1</default></attr>
+			<attr name="WidthCalendarItem" type="int" ><default>24</default></attr>
+			
+			<attr name="HeightCalendarTitle" type="int" ><default>30</default></attr>
+			<attr name="HeightCalendarWeek" type="int" ><default>23</default></attr>
+			<attr name="HeightCalendarDay" type="int" ><default>0</default></attr>
+		</attr_def>
+		<method_def>
+			<UpdateUI file="CalendarCtrl.xml.lua" func="UpdateUI" />
+	
+		</method_def>
+		<event_def>
+			
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="calendar.bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="calendar.layout" class="LayoutObject">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>father.width</width>
+								<height>father.height</height>
+							</attr>
+							<children>
+								<obj id="calendar.header" class="WHome.CalendarHeader">
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>father.width</width>
+										<height>father.height</height>
+									</attr>
+								</obj>
+								<obj id="calendar.grid" class="LayoutObject">
+									<attr>
+										<left>0</left>
+										<top>father.height</top>
+										<width>180</width>
+										<height>180</height>
+									</attr>
+									<children>
+										<obj id="texture.calendar.grid" class="ImageObject">
+											<attr>
+												<width>father.width</width>
+												<height>father.height</height>
+												<image>texture.calendar.bkg</image>
+												<drawmode>1</drawmode>
+											</attr>
+										</obj>
+										<obj id="layout.calendar.grid.title" class="LayoutObject">
+											<attr>
+												<left>0</left>
+												<top>0</top>
+												<width>father.width</width>
+												<height>30</height>
+												<zorder>1000</zorder>
+											</attr>
+											<children>
+												<obj id="texture.calendar.grid.title" class="ImageObject">
+													<attr>
+														<left>0</left>
+														<top>0</top>
+														<width>father.width</width>
+														<height>father.height</height>
+														<image>texture.calendar.title.bkg</image>
+														<drawmode>1</drawmode>
+													</attr>
+												</obj>
+												<obj id="btn.pre.page.calendar" class="WHome.ImageButton">
+													<attr>
+														<left>2</left>
+														<top>1</top>
+														<width>28</width>
+														<height>28</height>
+														<NormalBkgID>texture.btn.calendar.pre.page</NormalBkgID>
+														<HoverBkgID>texture.btn.calendar.pre.page</HoverBkgID>
+														<DownBkgID>texture.btn.calendar.pre.page</DownBkgID>
+														<DisableBkgID>texture.btn.calendar.pre.page</DisableBkgID>
+														<drawmode>1</drawmode>
+													</attr>
+													<eventlist>
+														<event name="OnClick" file="CalendarCtrl.xml.lua" func="BTN_OnClickPrePage" />
+													</eventlist>
+												</obj>
+												<obj id="text.calendar.grid.title" class="TextObject">
+													<attr>
+														<top>3</top>
+														<width>father.width</width>
+														<height>14</height>
+														<valign>center</valign>
+														<halign>center</halign>
+													</attr>
+												</obj>
+												<obj id="btn.next.page.calendar" class="WHome.ImageButton">
+													<attr>
+														<left>father.width-30</left>
+														<top>1</top>
+														<width>28</width>
+														<height>28</height>
+														<NormalBkgID>texture.btn.calendar.next.page</NormalBkgID>
+														<HoverBkgID>texture.btn.calendar.next.page.hover</HoverBkgID>
+														<DownBkgID>texture.btn.calendar.next.page.down</DownBkgID>
+														<DisableBkgID>texture.btn.calendar.next.page.disable</DisableBkgID>	
+														<drawmode>1</drawmode>														
+													</attr>
+													<eventlist>
+														<event name="OnClick" file="CalendarCtrl.xml.lua" func="BTN_OnClickNextPage" />
+													</eventlist>
+												</obj>
+											</children>
+										</obj>
+										<obj id="layout.calendar.grid.week" class="LayoutObject">
+											<attr>
+												<left>0</left>
+												<top>30</top>
+												<width>father.width</width>
+												<height>22</height>
+											</attr>
+											<children>
+												<obj id="bitmap.calendar.grid.week" class="ImageObject">
+													<attr>
+														<width>father.width</width>
+														<height>father.height</height>
+														<image>texture.calendar.week.bkg</image>
+														<drawmode>1</drawmode>
+														<zorder>100</zorder>
+													</attr>
+												</obj>
+												<obj id="week.1" class="TextObject">
+													<attr>
+														<left>3</left>
+														<top>2</top>
+														<width>24</width>
+														<height>24</height>
+														<text>日</text>
+														<halign>center</halign>
+														<zorder>1000</zorder>
+													</attr>
+												</obj>
+												<obj id="week.2" class="TextObject">
+													<attr>
+														<left>28</left>
+														<top>2</top>
+														<width>24</width>
+														<height>24</height>
+														<text>一</text>
+														<halign>center</halign>
+														<zorder>1000</zorder>
+													</attr>
+												</obj>
+												<obj id="week.3" class="TextObject">
+													<attr>
+														<left>53</left>
+														<top>2</top>
+														<width>24</width>
+														<height>24</height>
+														<text>二</text>
+														<halign>center</halign>
+														<zorder>1000</zorder>
+													</attr>
+												</obj>
+												<obj id="week.4" class="TextObject">
+													<attr>
+														<left>78</left>
+														<top>2</top>
+														<width>24</width>
+														<height>24</height>
+														<text>三</text>
+														<halign>center</halign>
+														<zorder>1000</zorder>
+													</attr>
+												</obj>
+												<obj id="week.5" class="TextObject">
+													<attr>
+														<left>103</left>
+														<top>2</top>
+														<width>24</width>
+														<height>24</height>
+														<text>四</text>
+														<halign>center</halign>
+														<zorder>1000</zorder>
+													</attr>
+												</obj>
+												<obj id="week.6" class="TextObject">
+													<attr>
+														<left>128</left>
+														<top>2</top>
+														<width>24</width>
+														<height>24</height>
+														<text>五</text>
+														<halign>center</halign>
+														<zorder>1000</zorder>
+													</attr>
+												</obj>
+												<obj id="week.7" class="TextObject">
+													<attr>
+														<left>153</left>
+														<top>2</top>
+														<width>24</width>
+														<height>24</height>
+														<text>六</text>
+														<halign>center</halign>
+														<zorder>1000</zorder>
+													</attr>
+												</obj>
+											</children>
+										</obj>
+										<obj id="layout.calendar.grid.day" class="LayoutObject">
+											<attr>
+												<left>0</left>
+												<top>53</top>
+												<width>father.width</width>
+												<height>father.height-53</height>
+												<zorder>100</zorder>
+											</attr>
+										</obj>
+									</children>
+								</obj>
+							</children>
+						</obj>
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="CalendarCtrl.xml.lua" func="OnInitControlCalendarCtrl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

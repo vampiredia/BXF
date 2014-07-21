@@ -1,0 +1,94 @@
+<XLUE>
+	<resource>
+		<texture id="bkg.mask" type="NineInOne" image="bitmap\bkg.mask.png"/>
+		
+		<imagelist id="imagelist.sysbtn.close" vertical="0" splitter="1" varyblock="1" image="bitmap\imagelist.sysbtn.close.png"/>
+		<bitmap id="bitmap.sysbtn.close.normal" imagelist="imagelist.sysbtn.close" index="1"/>
+		<bitmap id="bitmap.sysbtn.close.hover" imagelist="imagelist.sysbtn.close" index="2"/>
+		<bitmap id="bitmap.sysbtn.close.down" imagelist="imagelist.sysbtn.close" index="3"/>
+
+		<imagelist id="imagelist.sysbtn.max" vertical="0" splitter="1" varyblock="1" image="bitmap\imagelist.sysbtn.max.png"/>
+		<bitmap id="bitmap.sysbtn.max.normal" imagelist="imagelist.sysbtn.max" index="1"/>
+		<bitmap id="bitmap.sysbtn.max.hover" imagelist="imagelist.sysbtn.max" index="2"/>
+		<bitmap id="bitmap.sysbtn.max.down" imagelist="imagelist.sysbtn.max" index="3"/>
+
+		<imagelist id="imagelist.sysbtn.mini" vertical="0" splitter="1" varyblock="1" image="bitmap\imagelist.sysbtn.mini.png"/>
+		<bitmap id="bitmap.sysbtn.mini.normal" imagelist="imagelist.sysbtn.mini" index="1"/>
+		<bitmap id="bitmap.sysbtn.mini.hover" imagelist="imagelist.sysbtn.mini" index="2"/>
+		<bitmap id="bitmap.sysbtn.mini.down" imagelist="imagelist.sysbtn.mini" index="3"/>		
+			
+		<imagelist id="imagelist.platform.button.image" vertical="0" splitter="1" varyblock="1" image="bitmap\imagelist.platform.button.png"/>
+		
+		<bitmap id="bitmap.sysbtn.mini.disable" imagelist="imagelist.platform.button.image" index="18"/>
+		
+		<bitmap id="bitmap.sysbtn.max.disable" imagelist="imagelist.platform.button.image" index="22"/>
+		
+		<bitmap id="bitmap.sysbtn.restore.normal" imagelist="imagelist.platform.button.image" index="23"/>
+		<bitmap id="bitmap.sysbtn.restore.hover" imagelist="imagelist.platform.button.image" index="24"/>
+		<bitmap id="bitmap.sysbtn.restore.down" imagelist="imagelist.platform.button.image" index="25"/>
+		<bitmap id="bitmap.sysbtn.restore.disable" imagelist="imagelist.platform.button.image" index="26"/>
+		
+		<bitmap id="bitmap.sysbtn.close.disable" imagelist="imagelist.platform.button.image" index="30"/>
+		
+		<texture id="menu.bkn" type="NineInOne" image="bitmap\texture.mainmenu.popbkg.png"/>
+		
+		<bitmap id="bkg.light.top" path="bitmap\bkg.light.top.png"/>
+		<bitmap id="bkg.light.left" path="bitmap\bkg.light.left.png"/>
+		<bitmap id="bkg.light.bottomleft" path="bitmap\bkg.light.bottomleft.png"/>
+		
+		<texture id="caption.mainwnd.bkg" type="Stretch" image="bitmap\caption.mainwnd.bkg.png" />
+		
+		<imageseq id="web.loading" folder="bitmap\webloading"/>
+		
+		<bitmap id="tree"  path="bitmap\tree.png" />
+		<bitmap id="tree.bkg" path="bitmap\task_icon_big.png" />
+		
+		<texture id="bkg.flash" drop="100" type="NineInOne" image="bitmap\bkg.flash.png"/>
+		
+		<imagelist id="imagelist.blv.login.ok.btn" image="bitmap\blv.login.ok.btn.png" blocksize="77"/>
+		<bitmap id="bitmap.login.ok.normal" imagelist="imagelist.blv.login.ok.btn" index="1"/>
+		<bitmap id="bitmap.login.ok.hover" imagelist="imagelist.blv.login.ok.btn" index="2"/>
+		<bitmap id="bitmap.login.ok.down" imagelist="imagelist.blv.login.ok.btn" index="3"/>
+		<bitmap id="bitmap.login.ok.disable" imagelist="imagelist.blv.login.ok.btn" index="4"/>
+		
+		<imagelist id="imagelist.newtask.edit" vertical="0" splitter="1" varyblock="1" image="bitmap\imagelist.newtask.edit.png"/>
+		<texture id="texture.edit.bkg.disable" type="NineInOne" imagelist="imagelist.newtask.edit" index="10"/>
+		<texture id="texture.edit.bkg.normal" type="NineInOne" imagelist="imagelist.newtask.edit" index="11"/>
+		<texture id="texture.edit.bkg.hover" type="NineInOne" imagelist="imagelist.newtask.edit" index="12"/>
+		<texture id="texture.edit.light" type="NineInOne" image="bitmap\edit.light.png"/>   
+		
+		<texture id="static.frame" drop="100" type="NineInOne" image="bitmap\static.frame.png" />
+		<texture id="static.frame.line"  type="Stretch" image="bitmap\static.frame.line.png" />	
+		
+		<bitmap id="skinpanel.colorscheme.mask" path="bitmap\skinpanel.colorscheme.mask.png"/>
+		
+		<texture id="texture.tasklist.item.bk" type="NineInOne" image="bitmap\task_item_bk.png" />
+		<texture id="texture.tasklist.select_item.bk" type="NineInOne" image="bitmap\task_select_item_bk.png"/>
+		
+		<bitmap id="animation.simple.image" path="bitmap\anisimple.png"/>
+		<imageseq id="simpleseq"  imagelist="imagelist.platform.button.image"/>
+		
+		<gif id="gif.test" file="bitmap\test.gif"/>
+		
+		<curve id="test.curve1" type="bezier">
+			<controlpoint  tp="0.000000" sp="0.000000"/>
+			<controlpoint  tp="0.236264" sp="0.808989"/>
+			<controlpoint  tp="0.750000" sp="0.171348"/>
+			<controlpoint  tp="0.997253" sp="1.000000"/>
+		</curve>
+		
+		<bitmap id="texture.user.head.pic" image="bitmap\texture.user.head.pic.png" />
+		<bitmap id="texture.lp.head.image.bkg" image="bitmap\texture.lp.head.image.bkg.png" />
+		<bitmap id="texture.lp.head.image" image="bitmap\texture.lp.head.image.png" />
+		
+		<bitmap id="tab.icon.community.service" path="bitmap\tab.icon.community.service.png"/>
+		<bitmap id="tab.icon.log.query" path="bitmap\tab.icon.log.query.png"/>
+		<bitmap id="tab.icon.notify.center" path="bitmap\tab.icon.notify.center.png"/>
+		<bitmap id="tab.icon.owner.managerment" path="bitmap\tab.icon.owner.managerment.png"/>
+		<bitmap id="tab.icon.property.service" path="bitmap\tab.icon.property.service.png"/>
+		<bitmap id="tab.icon.publish.center" path="bitmap\tab.icon.publish.center.png"/>
+		<bitmap id="tab.icon.rights.management" path="bitmap\tab.icon.rights.management.png"/>
+		<texture id="bkg.border.shadow" type="NineInOne" image="bitmap\bkg.shadow.png"/>   
+		<texture id="texture.mainwnd.border" type="NineInOne" image="bitmap\mainwnd_border.png" />
+	</resource>
+</XLUE>	

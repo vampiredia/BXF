@@ -1,0 +1,173 @@
+<xlue>
+    <control class="WHome.SliderEditCtrl">
+        <attr_def>
+			<attr name="Min" type="int" >
+				<default>0</default>
+			</attr>
+			<attr name="Max" type="int" >
+				<default>0</default>
+			</attr>
+			<attr name="EnableEdit" type="bool">
+				<default>true</default>
+			</attr>
+			<attr name="Font" type="string">
+				<default>config.default.font</default>
+			</attr>
+			<attr name="Visible" type="bool">
+				<default>true</default>
+			</attr>
+			<attr name="SliderWidth" type="int">
+				<default>100</default>
+			</attr>
+			<attr name="Enable" type="bool">
+				<default>true</default>
+			</attr>
+			<attr name="TabID" type="int"/>
+        </attr_def>
+        <method_def>
+			<SetRange file="SliderEditCtrl.xml.lua" func="SetRange" />
+			<SetText file="SliderEditCtrl.xml.lua" func="SetText" />
+			<GetText file="SliderEditCtrl.xml.lua" func="GetText" />
+			<SetVisible file="SliderEditCtrl.xml.lua" func="SetVisible" />
+			<SetEnable file="SliderEditCtrl.xml.lua" func="SetEnable" />
+			<GetEnable file="SliderEditCtrl.xml.lua" func="GetEnable" />
+			<SetFocus file="SliderEditCtrl.xml.lua" func="SetFocus" />
+			<AddTip file="SliderEditCtrl.xml.lua" func="AddTip"/>
+            <RemoveTip file="SliderEditCtrl.xml.lua" func="RemoveTip"/>
+			
+			<SetTabOrder file = "SliderEditCtrl.xml.lua" func = "SetTabOrder" />
+			<SetTabOrderEnable file = "SliderEditCtrl.xml.lua" func = "SetTabOrderEnable" />
+        </method_def>
+        <event_def>
+            <OnValueChange/>
+			<OnEditFocusChange>
+                <param>
+                    <bool/>
+                </param>
+            </OnEditFocusChange>
+			<OnSliderExpandChange>
+                <param>
+                    <bool/>
+                    <int/>
+                    <int/>
+                </param>
+            </OnSliderExpandChange>
+        </event_def>
+        <objtemplate>
+			<children>
+				<obj id="SliderEdit.bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<texture>texture.edit.bkg.normal</texture>
+					</attr>
+					<children>
+						<obj id = "TabKeySupport.edit" class = "WHome.TabKeySupport">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>0</width>
+								<height>0</height>
+							</attr>
+						</obj>
+					
+						<obj id="SliderEdit.EditBox" class="WHome.Edit">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>father.width-24</width>
+								<height>father.height</height>
+								<Multiline>false</Multiline>
+								<IsNumber>true</IsNumber>
+								<!--Enable>true</Enable-->
+								<NormalBkgID></NormalBkgID>
+								<!-- <DownBkgID></DownBkgID> -->
+								<DisableBkgID></DisableBkgID>
+								<HoverBkgID></HoverBkgID>
+								<DisableTextColor>color.WHome.text.disable</DisableTextColor>
+								<EditCustom>false</EditCustom>
+								<EditLeft>0</EditLeft>
+								<EditTop>4</EditTop>
+								<EditWidth>68</EditWidth>
+								<EditHeight>25-4</EditHeight>
+							</attr>
+							<eventlist>
+								<event name="OnInitControl" file="SliderEditCtrl.xml.lua" func="Edit_OnInitControl"/>
+								<event name="OnEditChange" file="SliderEditCtrl.xml.lua" func="Edit_OnEditChange"/>
+								<event name="OnEditFocusChange" file="SliderEditCtrl.xml.lua" func="Edit_OnFocusChange" />
+							</eventlist>
+						</obj>
+						
+						<obj id="SliderEdit.Btn" class="WHome.Button">
+                            <attr>
+                                <left>father.width - 23</left>
+                                <top>0</top>
+                                <width>22</width>
+                                <height>father.height</height>
+                                <!--Enable>true</Enable-->
+								<NormalBkgID>texture.combobtn.normal</NormalBkgID>
+                                <DownBkgID>texture.combobtn.down</DownBkgID>
+                                <DisableBkgID>texture.combobtn.normal</DisableBkgID>
+                                <HoverBkgID>texture.combobtn.hover</HoverBkgID>
+								<ShowFocusRect>false</ShowFocusRect>
+                            </attr>
+							<eventlist>
+								<event name="OnClick" file="SliderEditCtrl.xml.lua" func="Btn_OnClick"/>
+								<event name="OnLButtonDown" file="SliderEditCtrl.xml.lua" func="Btn_OnLButtonDown"/>
+							</eventlist>
+                        </obj>
+					</children>
+				</obj>
+				<obj id="SliderEdit.Slider.Layout" class="LayoutObject">
+					<attr>
+						<left>0</left>
+						<top>father.height-1</top>
+                        <width>father.width</width>
+                        <height>25</height>
+						<zorder>1000</zorder>
+					</attr>
+					<children>
+						<obj id="SliderEdit.Slider.bkg" class="TextureObject">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>father.width</width>
+								<height>father.height</height>
+								<texture>texture.slider.bkg</texture>
+							</attr>
+							<children>
+								<obj id="SliderEdit.Slider" class="WHome.SliderBar">
+									<attr>
+										<left>7</left>
+										<top>9</top>
+										<width>0</width>
+										<height>6</height>
+										<Type>0</Type>
+										<BkgID>texture.slider.bar</BkgID>
+										<BtnWidth>18</BtnWidth>
+										<BtnHeight>19</BtnHeight>
+										<BtnNormalBkgID>sliderbar.btn.normal</BtnNormalBkgID>
+										<BtnHoverBkgID>sliderbar.btn.hover</BtnHoverBkgID>
+										<BtnDownBkgID>sliderbar.btn.down</BtnDownBkgID>
+										<zorder>6000</zorder>
+									</attr>
+									<eventlist>
+										<event name="OnSliderChange" file="SliderEditCtrl.xml.lua" func="OnSilderChange" />
+										<event name="OnSliderLostFocus" file="SliderEditCtrl.xml.lua" func="Slider__OnSliderLostFocus" />
+										<event name="OnSliderLButtonDown" file="SliderEditCtrl.xml.lua" func="Slider__OnLButtonDown" />
+									</eventlist>
+								</obj>
+							</children>
+						</obj>
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="SliderEditCtrl.xml.lua" func="OnInitControl"/>
+				<!--event name="OnMouseLeave" file="SliderEditCtrl.xml.lua" func="OnMouseLeave"/-->
+            </eventlist>
+        </objtemplate>
+    </control>
+</xlue>

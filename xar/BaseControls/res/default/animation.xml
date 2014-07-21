@@ -1,0 +1,8 @@
+<XLUE>
+
+<resource>
+	<bitmap id="animation.close.light" path="animation\close.light.png" />
+	<bitmap id="animation.close.centerlight" path="animation\close.centerlight.png" />
+</resource>
+
+</XLUE>

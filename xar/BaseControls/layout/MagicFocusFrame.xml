@@ -1,0 +1,32 @@
+<xlue>
+	<control class="WHome.MagicFocusFrame">
+		<attr_def>
+			
+		</attr_def>
+		<method_def>
+			<RegisterObject file="MagicFocusFrame.xml.lua" func="RegsiterObject" />
+			<UnRegisterObject file="MagicFocusFrame.xml.lua" func="UnRegisterObject" />
+			<CleanAllObject file="MagicFocusFrame.xml.lua" func="CleanAllObject" />
+		</method_def>
+		<event_def>
+			
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="frame" class="TextureObject">
+					<attr>
+						<left>-9</left>
+						<top>-9</top>
+						<width>father.width+18</width>
+						<height>father.height+18</height>
+						<texture>texture.edit.light</texture>
+					</attr>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="MagicFocusFrame.xml.lua" func="OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+	
+</xlue>

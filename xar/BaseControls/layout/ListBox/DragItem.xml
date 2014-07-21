@@ -1,0 +1,94 @@
+<xlue>
+	<control class="WHome.DragItem">
+		<attr_def>
+		</attr_def>
+		<method_def>
+			<IsIconVisible file="DragItem.xml.lua" func="IsIconVisible" />
+			<ShowIcon file="DragItem.xml.lua" func="ShowIcon" />
+			<SetIcon file="DragItem.xml.lua" func="SetIcon" />
+			<SetNoneStatus file="DragItem.xml.lua" func="SetNoneStatus" />
+			<SetText file="DragItem.xml.lua" func="SetText" />
+			<HideItem file="DragItem.xml.lua" func="HideItem" />
+			<HideText file="DragItem.xml.lua" func="HideText" />
+		</method_def>
+		<event_def>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="dragitem.layout" class="LayoutObject">
+					<attr>
+						<left>0</left>
+								<top>0</top>
+								<width>father.width</width>
+								<height>father.height</height>
+						<zorder>10000</zorder>
+					</attr>
+					<children>
+						<obj id="dragitem.bkg" class="TextureObject">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>father.width</width>
+								<height>father.height</height>
+								<texture>texture.dragitem.bkg</texture>
+							</attr>
+							<eventlist>
+								<event name="OnHitTest" file="DragItem.xml.lua" func="OnHitTest" />
+							</eventlist>
+							<children>
+								<obj id="dragitem.icon" class="ImageObject">
+									<attr>
+										<left>(father.width-32)/2</left>
+										<top>(father.height-32)/2</top>
+										<width>32</width>
+										<height>32</height>
+										<alpha>128</alpha>
+									</attr>
+								</obj>
+							</children>
+						</obj>
+						<obj id="dragitem.status" class="ImageObject">
+							<attr>
+								<left>39</left>
+								<top>60</top>
+								<width>16</width>
+								<height>16</height>
+								<visible>0</visible>
+								<image>bitmap.dragitem.status.none</image>
+							</attr>
+						</obj>
+						<obj id="dragitem.tip" class="WHome.DragItemTip">
+							<attr>
+								<left>33</left>
+								<top>73</top>
+								<width>55</width>
+								<height>25</height>
+								<visible>1</visible>
+								<BkgTexture>texture.mainwnd.tip.bkg</BkgTexture>
+								<TextBeginH>8</TextBeginH>
+								<TextBeginV>4</TextBeginV>
+							</attr>
+						</obj>
+						
+						<!--obj id="dragitem.tip" class="TextObject">
+							<attr>
+								<left>33</left>
+								<top>73</top>
+								<width>55</width>
+								<height>25</height>
+								<visible>1</visible>
+							</attr>
+						</obj-->
+
+					</children>
+					<eventlist>
+						<event name="OnHitTest" file="DragItem.xml.lua" func="OnHitTest" />
+					</eventlist>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnHitTest" file="DragItem.xml.lua" func="OnHitTest" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

@@ -1,0 +1,267 @@
+<xlue>
+	<control class="WHome.RichEdit">
+		<attr_def>
+			<attr name="BkgNormalTextureID" type="string">
+				<default>texture.edit.bkg.normal</default>
+			</attr>
+			<attr name="BkgHoverTextureID" type="string">
+				<default>texture.edit.bkg.hover</default>
+			</attr>
+			<attr name="BkgDisableTextureID" type="string">
+				<default>texture.edit.bkg.disable</default>
+			</attr>
+			
+			<attr name="ReadOnlyFont" type="string">
+				<default></default>
+			</attr>
+			<attr name="EnableFont" type="string">
+				<default></default>
+			</attr>
+			<attr name="DisableFont" type="string">
+				<default></default>
+			</attr>
+			<attr name="ReadOnlyColor" type="string">
+				<default></default>
+			</attr>
+			<attr name="EnableColor" type="string">
+				<default></default>
+			</attr>
+			<attr name="DisableColor" type="string">
+				<default></default>
+			</attr>
+			
+			<attr name="ReadOnly" type="bool">
+				<default>false</default>
+			</attr>
+			
+			<attr name="WordWrap" type="bool">
+				<default>false</default>
+			</attr>
+			
+			<attr name="Multiline" type="bool">
+				<default>false</default>
+			</attr>
+			
+			<attr name="MaxLength" type="int" />
+			
+			<attr name="AllowVSB" type="bool">
+				<default>false</default>
+			</attr>
+			<attr name="AllowHSB" type="bool">
+				<default>false</default>
+			</attr>
+			
+			<attr name="Password" type="bool">
+				<default>false</default>
+			</attr>
+			
+			<attr name="DisableIME" type="bool">
+				<default>false</default>
+			</attr>
+			
+			<attr name="Text" type="string" />
+			<!--
+				Status:  normal,  hover,  disable
+			-->
+			<attr name="Status" type="string">
+				<default>normal</default>
+			</attr>
+			<attr name="TabID" type="int">
+				<default>1</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<GetSel file="RichEdit.xml.lua" func="GetSel" />
+			<SetSel file="RichEdit.xml.lua" func="SetSel" />
+			<SetNoCaret file="RichEdit.xml.lua" func="SetNoCaret"/>
+			<GetNoCaret file="RichEdit.xml.lua" func="GetNoCaret" />
+			<SetReadOnly file="RichEdit.xml.lua" func="SetReadOnly" />
+			<GetReadOnly file="RichEdit.xml.lua" func="GetReadOnly" />
+			<SetMultiline file="RichEdit.xml.lua" func="SetMultiline" />
+			<GetMultiline file="RichEdit.xml.lua" func="GetMultiline" />
+            <GetContextHeight file="RichEdit.xml.lua" func="GetContextHeight" />
+			<SetText file="RichEdit.xml.lua" func="SetText" />
+			<GetText file="RichEdit.xml.lua" func="GetText" />
+			<AppendText file="RichEdit.xml.lua" func="AppendText" />
+			<Undo file="RichEdit.xml.lua" func="Undo" />
+			<SetDisableIME file="RichEdit.xml.lua" func="SetDisableIME" />
+			<GetDisableIME file="RichEdit.xml.lua" func="GetDisableIME" />			
+			<UpdateUI file="RichEdit.xml.lua" func="UpdateUI"/>
+			<SetFocus file="RichEdit.xml.lua" func="SetFocus" />
+			<GetEnable file="RichEdit.xml.lua" func="GetEnable" />
+			<AddTip file="RichEdit.xml.lua" func="AddTip"/>
+            <RemoveTip file="RichEdit.xml.lua" func="RemoveTip"/>
+			<GetInsertCharFormat file="RichEdit.xml.lua" func="GetInsertCharFormat" />
+			<SetInsertCharFormat file="RichEdit.xml.lua" func="SetInsertCharFormat" />
+			<!-- private method -->
+			<ChangeStatus file="RichEdit.xml.lua" func="ChangeStatus" />
+            <GetSelectCharFormat file="RichEdit.xml.lua" func="GetSelectCharFormat" />
+            <SetSelectCharFormat file="RichEdit.xml.lua" func="SetSelectCharFormat" />
+            <SetSelBkgColor file="RichEdit.xml.lua" func="SetSelBkgColor" />
+            <SetScrollPos file="RichEdit.xml.lua" func="SetScrollPos" />
+            <SetLinkColor file="RichEdit.xml.lua" func="SetLinkColor" />
+		</method_def>
+		<event_def>
+			<OnEditChange>
+                <param>
+                    <string/>
+                </param>
+            </OnEditChange>
+            <OnEditFocusChange>
+                <param>
+                    <bool/>
+                </param>
+            </OnEditFocusChange>
+			<OnEditKeyDown>
+				<param>
+					<int/>
+					<int/>
+					<int/>
+				</param>
+			</OnEditKeyDown>
+			<OnEditKeyUp>
+				<param>
+					<int/>
+					<int/>
+					<int/>
+				</param>
+			</OnEditKeyUp>
+			<OnGetObjectUniqueID>
+				<param>
+					<layoutobj/>
+				</param>
+				<return>
+					<string/>
+					<userdata/>
+					<bool/>
+				</return>
+			</OnGetObjectUniqueID>
+			<OnCreateObjectFromUniqueID>
+				<param>
+					<string/>
+					<userdata/>
+				</param>
+				<return>
+					<layoutobj/>
+					<bool/>
+				</return>
+			</OnCreateObjectFromUniqueID>
+			<OnLinkNotify>
+				<param>
+					<int/>
+					<int/>
+				</param>
+			</OnLinkNotify>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="ctrl" class="TextureObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+						<limitchild>1</limitchild>
+					</attr>
+					<children>
+                        <obj id="edit" class="RichEditObject">
+                            <attr>
+								<top>4</top>
+								<width>father.width-5</width>
+								<height>father.height-8</height>
+								<zorder>1</zorder>
+								<transparent>1</transparent>
+								<wordwrap>1</wordwrap>
+								<multiline>1</multiline>
+								<readonly>0</readonly>
+                            </attr>
+							<children>
+								<obj id="vsb" class="WHome.ScrollBar">
+									<attr>
+										<Type>1</Type>
+										<ThumbBtn_normal>texture.vsb.big.thumb.normal</ThumbBtn_normal>
+										<ThumbBtn_hover>texture.vsb.big.thumb.hover</ThumbBtn_hover>
+										<ThumbBtn_down>texture.vsb.big.thumb.down</ThumbBtn_down>
+
+										<SideBtnLength>0</SideBtnLength>
+										<PageSize>0</PageSize>
+										<RangeBegin>0</RangeBegin>
+										<RangeEnd>0</RangeEnd>
+										<ScrollPos>0</ScrollPos>
+										<visible>false</visible>			
+										<width>23</width>
+										<ThumbBtnWidth>11</ThumbBtnWidth> 
+										<ThumbRightMagrin>2</ThumbRightMagrin>
+										<cursor>IDC_ARROW</cursor>
+									</attr>
+									<eventlist>
+										<event name="OnVScroll" file="RichEdit.xml.lua" func="OnVScroll" />
+										<event name="OnScrollBarMouseWheel" file="RichEdit.xml.lua" func="OnScrollBarMouseWheel" />
+									</eventlist>			
+								</obj>
+								<obj id="hsb" class="WHome.ScrollBar">
+									<attr>
+										<Type>0</Type>
+										<NormalBkn>texture.hsb.big.bkg.normal</NormalBkn>
+										<HoverBkn>texture.hsb.big.bkg.hover</HoverBkn>
+										<ThumbBtn_normal>texture.hsb.big.thumb.normal</ThumbBtn_normal>
+										<ThumbBtn_hover>texture.hsb.big.thumb.hover</ThumbBtn_hover>
+										<ThumbBtn_down>texture.hsb.big.thumb.down</ThumbBtn_down>										
+										<SideBtnLength>0</SideBtnLength>
+										<PageSize>0</PageSize>
+										<RangeBegin>0</RangeBegin>
+										<RangeEnd>0</RangeEnd>
+										<visible>false</visible>
+										<height>23</height>
+										<cursor>IDC_ARROW</cursor>
+										<ThumbBtnWidth>11</ThumbBtnWidth> 
+										<ThumbRightMagrin>2</ThumbRightMagrin>
+										<NormalDecorateID>scrollbar.hsb.big.decorate.normal</NormalDecorateID>
+										<HoverDecorateID>scrollbar.hsb.big.decorate.hover</HoverDecorateID>
+										<DownDecorateID>scrollbar.hsb.big.decorate.down</DownDecorateID>
+									</attr>
+									<eventlist>
+										<event name="OnHScroll" file="Edit.xml.lua" func="OnHScroll"/>
+										<event name="OnScrollBarMouseWheel" file="Edit.xml.lua" func="OnScrollBarMouseWheel" />
+									</eventlist>
+								</obj>
+							</children>
+							<eventlist>
+								<event name="OnMouseMove" file="RichEdit.xml.lua" func="Edit_OnMouseMove" />
+								<event name="OnMouseLeave" file="RichEdit.xml.lua" func="Edit_OnMouseLeave" />
+								<event name="OnChange" file="RichEdit.xml.lua" func="Edit_OnChange"/>
+								<event name="OnKeyDown" file="RichEdit.xml.lua" func="Edit_OnKeyDown"/>
+								<event name="OnKeyUp" file="RichEdit.xml.lua" func="Edit_OnKeyUp"/>
+								<!--event name="OnChar" file="RichEdit.xml.lua" func="Edit_OnChar"/-->
+								<event name="OnFocusChange" file="RichEdit.xml.lua" func="Edit_OnFocusChange"/>
+								<event name="OnGetSBVisible" file="RichEdit.xml.lua" func="OnGetSBVisible"/>
+								<event name="OnSetSBVisible" file="RichEdit.xml.lua" func="OnSetSBVisible"/>
+								<event name="OnGetSBEnable" file="RichEdit.xml.lua" func="OnGetSBEnable"/>
+								<event name="OnSetSBEnable" file="RichEdit.xml.lua" func="OnSetSBEnable"/>
+								<event name="OnGetSBPageSize" file="RichEdit.xml.lua" func="OnGetSBPageSize"/>
+								<event name="OnSetSBPageSize" file="RichEdit.xml.lua" func="OnSetSBPageSize"/>
+								<event name="OnSetSBRange" file="RichEdit.xml.lua" func="OnSetSBRange"/>
+								<event name="OnGetSBRange" file="RichEdit.xml.lua" func="OnGetSBRange"/>
+								<event name="OnSetSBPos" file="RichEdit.xml.lua" func="OnSetSBPos"/>
+								<event name="OnGetSBPos" file="RichEdit.xml.lua" func="OnGetSBPos"/>
+								<event name="OnGetSBIdealSize" file="RichEdit.xml.lua" func="OnGetSBIdealSize"/>
+								<event name="OnSetSBRect" file="RichEdit.xml.lua" func="OnSetSBRect"/>
+								
+								<event name="OnGetObjectUniqueID" file="RichEdit.xml.lua" func="OnGetObjectUniqueID"/>
+								<event name="OnCreateObjectFromUniqueID" file="RichEdit.xml.lua" func="OnCreateObjectFromUniqueID" />
+								<event name="OnLinkNotify" file="RichEdit.xml.lua" func="OnLinkNotify" />
+							</eventlist>
+						</obj>
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="RichEdit.xml.lua" func="OnInitControl" />
+				<event name="OnVisibleChange" file="RichEdit.xml.lua" func="OnVisibleChange"/>
+				<event name="OnEnableChange" file="RichEdit.xml.lua" func="OnEnableChange"/>
+				
+				<event name="OnMouseMove" file="RichEdit.xml.lua" func="OnMouseMove" />
+				<event name="OnMouseLeave" file="RichEdit.xml.lua" func="OnMouseLeave" />
+				<event name="OnFocusChange" file="RichEdit.xml.lua" func="OnFocusChange"/>
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

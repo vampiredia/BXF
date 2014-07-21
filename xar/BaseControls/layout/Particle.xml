@@ -1,0 +1,214 @@
+<xlue>
+	<control class="WHome.Particle">
+		<attr_def>
+			<attr name="StarImage" type="string">
+				<default>particle.star</default>
+			</attr>
+			<attr name="LightColorId" type="string" >
+				<default>particle.color.light</default>
+			</attr>
+			
+			<!--存在时间-->
+			<attr name="LifeTime" type="int" >
+				<default>30000</default>
+			</attr>
+			<!--初始强度 0, 255-->
+			<attr name="Intensity" type="int" >
+				<default>225</default>
+			</attr>
+			<!--达到初始强度需要的时间比例-->
+			<attr name="GrowTime" type="float" >
+				<default>0</default>
+			</attr>
+			
+			
+			<!--自转相关-->
+			<attr name="IfRotate" type="bool">
+				<default>true</default>
+			</attr>
+			<!--自转周期-->
+			<attr name="RotateCyc" type="int">
+				<default>1000</default>
+			</attr>
+			<!--自转初相-->
+			<attr name="RotateOffset" type="float">
+				<default>0</default>
+			</attr>
+			<!--自转图形大小-->
+			<attr name="RotateRate" type="float">
+				<default>1</default>
+			</attr>
+			<!--自转相关:End-->
+			
+			
+			<!--闪烁相关-->
+			<attr name="IfFlash" type="bool" >
+				<default>true</default>
+			</attr>
+			<!--闪烁最小半径-->
+			<attr name="FlashMinRadii" type="int">
+				<default>10</default>
+			</attr>
+			<!--闪烁最大半径-->
+			<attr name="FlashMaxRadii" type="int">
+				<default>25</default>
+			</attr>
+			<!--闪烁周期-->
+			<attr name="FlashCyc" type="int">
+				<default>1000</default>
+			</attr>
+			<!--闪烁初相-->
+			<attr name="FlashOffset" type="float">
+				<default>0</default>
+			</attr>
+			<!--闪烁相关:end-->
+			
+			<!--轨迹相关-->
+			<!--质量-->
+			<attr name="Mass" type="float">
+				<default>1</default>
+			</attr>
+			<!--初速度-->
+			<attr name="SpeedX" type="float">
+				<default>0</default>
+			</attr>
+			<attr name="SpeedY" type="float">
+				<default>0</default>
+			</attr>
+			<!--轨迹相关：End-->
+			
+			<!--布朗运动-->
+			<!--
+			<attr name="IfBrownian" type="bool">
+				<default>true</default>
+			</attr>
+			<attr name="BrownianIntensity" type="float">
+				<default>3</default>
+			</attr>
+			-->
+			<!--布朗运动：End-->
+		</attr_def>
+		<method_def>
+			<SetEnv file="Particle.xml.lua" func="Particle_SetEnv" />
+			<Blend file="Particle.xml.lua" func="Particle_Blend" />
+			<Update file="Particle.xml.lua" func="Particle_Update" />
+			<SetColor file="Particle.xml.lua" func="Particle_SetColor" />
+			<SetSpeed file="Particle.xml.lua" func="Particle_SetSpeed" />
+			
+			
+			<GetPosition file="Particle.xml.lua" func="Particle_GetPosition" />
+			<!--以当前速度移动的预定位置-->
+			<GetDuePosition file="Particle.xml.lua" func="Particle_GetDuePosition" />
+			<GetMass file="Particle.xml.lua" func="Particle_GetMass" />
+			<GetForce file="Particle.xml.lua" func="Particle_GetForce" />
+			<GetSpeed file="Particle.xml.lua" func="Particle_GetSpeed" />
+			
+			<!---->
+			<Update file="Particle.xml.lua" func="Particle_Update" />
+		</method_def>
+		<event_def>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="star" class="ImageObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>0</width>
+						<height>0</height>
+					</attr>
+					<children>
+				
+					</children>
+					<eventlist>
+				
+					</eventlist>
+				</obj>
+				<obj id="flash" class="FillObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>0</width>
+						<height>0</height>
+					</attr>
+					<children>
+						
+					</children>
+					<eventlist>
+						
+					</eventlist>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="Particle.xml.lua" func="Particle_OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+
+	
+	
+	<animation_def class="WHome.Particle.Updater">
+		<method_def>
+			<Action file="Particle.xml.lua" func="Updater_Action"/>
+			<Bind file="Particle.xml.lua" function="Updater_Bind" />
+		</method_def>
+	</animation_def>
+	
+
+	<control class="WHome.Particle.Env">
+		<attr_def>
+			<attr name="Frame" type="int">
+				<default>30</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<Update file="Particle.xml.lua" func="Env_Update"/>
+			<!--获取在某点坐标上作用于某particle的力  force("x","y") = GetForceOn(x,y, particle)-->
+			<GetForceOn file="Particle.xml.lua" func="Env_GetForceOn"/>
+			
+			
+			<!--返回此次运动轨迹上可能接触的表面-->
+			<!--surface的接口-->
+			<!--SetEnv-->
+			<!--surface = GetSurface(particle)返回当前要穿越的表面-->
+			<!--position("x","y") = ModifyPosition(particle) 修正particle的位置-->
+			<!--force("x","y")=GetForceOnSurface(particle)的应力应该是最后计算的，与当前速度和加速度有关-->
+			<GetSurface file="Particle.xml.lua" func="Env_GetSurface"/>
+			
+			
+			<!--增加一个元素，元素要求的接口包括-->
+			<!--GetForceOn 原型同上-->
+			<!--GetSurface 原型同上-->
+			<AddElement file="Particle.xml.lua" func="Env_AddElement"/>
+			
+			
+			<!--创建一个particle-->
+			<AddParticle file="Particle.xml.lua" func="Env_AddParticle" />
+			
+			<!--随机生成器-->
+			<!--传入table {属性名:取值范围} 如 {["LifeTime"]={100,300},}-->
+			<!--传入个数-->
+			<RandomParticle file="Particle.xml.lua" func="Env_RandomParticle"/>
+			<GetRandomTable file="Particle.xml.lua" func="Env_GetRandomTable"/>
+		</method_def>
+		<objtemplate>
+			<children>
+				<obj id="container" class="LayoutObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+				</obj>
+				
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="Particle.xml.lua" func="Env_OnInitControl"/>
+				<event name="OnDestroy" file="Particle.xml.lua" func="Env_OnDestroy" />
+			</eventlist>
+		</objtemplate>
+	</control>
+	
+
+</xlue>

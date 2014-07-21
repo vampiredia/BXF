@@ -1,0 +1,7 @@
+<XLUE>
+<resource>
+	<bitmap id="particle.star" path="particle\star.png" />
+	
+	<color id="particle.color.light" red="237" green="237" blue="234" alpha="127" />
+</resource>
+</XLUE>

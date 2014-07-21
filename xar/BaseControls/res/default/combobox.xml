@@ -1,0 +1,25 @@
+<xlue>
+<resource>
+	<bitmap id="bitmap.privatespace.textbkg" path="combobox\bitmap.privatespace.textbkg.png" />
+	
+	<imagelist id="combo.item.remove" vertical="0" splitter="1" varyblock="1" image="combobox\combo.item.remove.png"/>
+	<bitmap id="bitmap.comboremove.normal" imagelist="combo.item.remove" index="1"/>
+	<bitmap id="bitmap.comboremove.hover" imagelist="combo.item.remove" index="2"/>
+	<bitmap id="bitmap.comboremove.down" imagelist="combo.item.remove" index="3"/>	
+	
+	<imagelist id="imagelist.newtask.edit" vertical="0" splitter="1" varyblock="1" image="combobox\imagelist.newtask.edit.png"/>
+	<texture id="texture.combobtn.normal" imagelist="imagelist.newtask.edit" index="4"/>
+	<texture id="texture.combobtn.hover" imagelist="imagelist.newtask.edit" index="5"/>
+	<texture id="texture.combobtn.down" imagelist="imagelist.newtask.edit" index="6"/>
+	<bitmap id="bitmap.combobtn.normal" imagelist="imagelist.newtask.edit" index="4"/>
+	<bitmap id="bitmap.combobtn.hover" imagelist="imagelist.newtask.edit" index="5"/>
+	<bitmap id="bitmap.combobtn.down" imagelist="imagelist.newtask.edit" index="6"/>
+	
+		
+	<texture id="texture.combolistbox.bkg" type="NineInOne" image="combobox\texture.combolistbox.bkg.png" />
+	<texture id="combo.item.bkg.hover" type="ThreeInOneH" image="combobox\combo.item.hover.png"/>
+	<color id="color.privatespace" value="#3e3e3e" />
+	
+	<font id="combobox.default.font" height="12" facename="微软雅黑"/>
+</resource>
+</xlue>

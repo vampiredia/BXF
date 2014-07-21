@@ -1,0 +1,150 @@
+<xlue>	
+	<!--			有选择状态的按钮		-->
+	<control class="WHome.ToggleButton">
+		<attr_def>
+			<attr name="BkgTextureID_Normal" type="string"><default></default></attr>
+			<attr name="BkgTextureID_Hover" type="string"><default></default></attr>
+			<attr name="BkgTextureID_Down" type="string"><default></default></attr>
+			<attr name="BkgTextureID_Disable" type="string"><default></default></attr>
+			<attr name="BkgTextureID_Select" type="string"><default></default></attr>
+
+			<attr name="IconBitmapID" type="string"><default></default></attr>
+			<attr name="IconBitmapID_Hover" type="string"><default></default></attr>
+			<attr name="IconBitmapID_Down" type="string"><default></default></attr>
+			<attr name="IconBitmapID_Disable" type="string"><default></default></attr>
+			<attr name="IconBitmapID_Select" type="string"><default></default></attr>
+			<attr name="Text" type="string"><default></default></attr>
+			<attr name="Status" type="int"><default>1</default></attr>
+			<attr name="IconLeftPos" type="string"><default>0</default></attr>
+			<attr name="IconTopPos" type="string"><default>0</default></attr>
+			<attr name="TextLeftPos" type="int"><default>0</default></attr>
+			<attr name="TextTopPos" type="int"><default>0</default></attr>
+			<attr name="TextSelectTopPos" type="int"/>
+
+			<attr name="IconWidth" type="string"><default>30</default></attr>
+			<attr name="IconHeight" type="string"><default>30</default></attr>
+
+			<attr name="TextFontID" type="string"><default>default.font</default></attr>
+			<attr name="TextSelectFontID" type="string"/>
+			<attr name="TextColorID" type="string"><default>system.black</default></attr>
+			<attr name="DisableTextColor" type="string" ><default>system.gray</default></attr>
+			<!--		是否拼接字体和颜色ID		true的话会根据状态在后面 加上响应的后缀.  如.normal  .hover  .down  .select-->
+			<attr name="SpliceTextInfoID" type="bool"><default>false</default></attr>
+			<attr name="EffectColorResID" type="string" />
+						<!--是否默认按钮-->
+			<attr name="IsDefaultButton" type="bool">
+				<default>false</default>
+			</attr>
+			<attr name="NoChangeAni" type="bool" >
+				<default>false</default>
+			</attr>
+			<attr name="TipText" type="string"/>
+			<attr name="HAlign" type="string"><default>center</default></attr>
+			<attr name="VAlign" type="string"><default>top</default></attr>
+			<!--是否默认按钮-->
+			<attr name="IsDefaultButton" type="bool">
+				<default>false</default>
+			</attr>
+			<attr name="DefaultAnimTexture" type="string">
+				<default>texture.btn.default.ani</default>
+			</attr>
+			<attr name="DefaultBkgNormal" type="string">
+				<default>texture.btn.default.normal</default>
+			</attr>
+			<attr name="FrameTime" type="int">
+				<default>3000</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<SetIconWH file="ToggleButton.xml.lua" func="SetIconWH" />
+			<GetIconWH file="ToggleButton.xml.lua" func="GetIconWH" />
+			<SetIconLeftPos file="ToggleButton.xml.lua" func="SetIconLeftPos" />
+			<GetIconLeftPos file="ToggleButton.xml.lua" func="GetIconLeftPos" />
+			<SetIconTopPos file="ToggleButton.xml.lua" func="SetIconTopPos" />
+			<GetIconTopPos file="ToggleButton.xml.lua" func="GetIconTopPos" />
+			<SetTextLeftPos file="ToggleButton.xml.lua" func="SetTextLeftPos" />
+			<GetTextLeftPos file="ToggleButton.xml.lua" func="GetTextLeftPos" />
+			<SetTextTopPos file="ToggleButton.xml.lua" func="SetTextTopPos" />
+			<GetTextTopPos file="ToggleButton.xml.lua" func="GetTextTopPos" />
+			<SetSelect file="ToggleButton.xml.lua" func="SetSelect" />
+			<GetSelect file="ToggleButton.xml.lua" func="GetSelect" />
+			<SetText file="ToggleButton.xml.lua" func="SetText" />
+			<SetBkgTexture file="ToggleButton.xml.lua" func="SetBkgTexture" />
+			<SetNormalBkgTexture file="ToggleButton.xml.lua" func="SetNormalBkgTexture" />
+			<SetHoverBkgTexture file="ToggleButton.xml.lua" func="SetHoverBkgTexture" />
+			<SetDownBkgTexture file="ToggleButton.xml.lua" func="SetDownBkgTexture" />
+			<SetDisableBkgTexture file="ToggleButton.xml.lua" func="SetDisableBkgTexture" />
+			<SetSelectBkgTexture file="ToggleButton.xml.lua" func="SetSelectBkgTexture" />
+			<SetIconImage file="ToggleButton.xml.lua" func="SetIconImage" />
+			<SetTextFontID file="ToggleButton.xml.lua" func="SetTextFontID" />
+			<SetTextColorID file="ToggleButton.xml.lua" func="SetTextColorID" />
+			<SetIconPos file="ToggleButton.xml.lua" func="SetIconPos" />
+			<SetTextPos file="ToggleButton.xml.lua" func="SetTextPos" />
+			<GetTextExtent file="ToggleButton.xml.lua" func="GetTextExtent" />
+			<GetText file="ToggleButton.xml.lua" func="GetText" />
+			<SetValign file="ToggleButton.xml.lua" func="SetValign" />
+			<SetHalign file="ToggleButton.xml.lua" func="SetHalign" />
+			<AddTipText file="ToggleButton.xml.lua" func="AddTipText" />
+			<SetDefaultButton file="ToggleButton.xml.lua" func="SetDefaultButton" />
+			<GetStatus file="ToggleButton.xml.lua" func="GetStatus" />
+			<SetStatus file="ToggleButton.xml.lua" func="SetStatus" />
+		</method_def>
+		<event_def>
+			<OnButtonClick />
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="button.bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="button.icon" class="ImageObject">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>30</width>
+								<height>30</height>
+							</attr>
+						</obj>
+						<obj id="button.text" class="TextObject">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>father.width</width>
+								<height>father.height</height>
+								<halign>center</halign>
+								<zorder>10</zorder>
+								<font>default.font</font>
+							</attr>
+						</obj>
+					</children>
+				</obj>
+				<obj id="button.oldbkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnBind" file="ToggleButton.xml.lua" func="OnBind" />
+				<event name="OnPosChange" file="ToggleButton.xml.lua" func="OnPosChange" />
+				<event name="OnLButtonDown" file="ToggleButton.xml.lua" func="OnLButtonDown" />
+				<event name="OnLButtonUp" file="ToggleButton.xml.lua" func="OnLButtonUp" />
+				<event name="OnMouseMove" file="ToggleButton.xml.lua" func="OnMouseMove" />
+				<event name="OnMouseLeave" file="ToggleButton.xml.lua" func="OnMouseLeave" />
+				<event name="OnInitControl" file="ToggleButton.xml.lua" func="OnInitControl" />
+				<event name="OnMouseHover" file="ToggleButton.xml.lua" func="OnMouseHover" />
+				
+				<event name="OnEnableChange" file="ToggleButton.xml.lua" func="OnEnableChange" />
+				<event name="OnVisibleChange" file="ToggleButton.xml.lua" func="OnVisibleChange" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>	

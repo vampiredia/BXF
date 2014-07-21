@@ -1,0 +1,48 @@
+<xlue>
+	<control class="WHome.ImageButton">
+		<attr_def>
+			<attr name="NormalBkgID" type="string" />
+			<attr name="HoverBkgID" type="string" />
+			<attr name="DownBkgID" type="string" />
+			<attr name="DisableBkgID" type="string" />
+			<attr name="EnableRightBtnClick" type="bool" ><default>false</default></attr>
+			<attr name="Status" type="int"><default>1</default></attr>
+            <attr name="HandHover" type="bool"><default>false</default></attr>
+		</attr_def>
+		<method_def>
+			<UpdateUI file="ImageButton.xml.lua" func="UpdateUI" />
+			<SetBitmap file="ImageButton.xml.lua" func="SetBitmap" />
+            <GetBitmap file="ImageButton.xml.lua" func="GetBitmap" />
+			<AddTip file="ImageButton.xml.lua" func="AddTip" />
+			<RemoveTip file="ImageButton.xml.lua" func="RemoveTip" />
+			<SetButtonAlpha file="ImageButton.xml.lua" func="SetButtonAlpha" />
+		</method_def>
+		<event_def>
+			<OnClick/>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="button.bkg" class="ImageObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnLButtonDown" file="ImageButton.xml.lua" func="OnLButtonDown"/>
+				<event name="OnLButtonUp" file="ImageButton.xml.lua" func="OnLButtonUp"/>
+				<event name="OnRButtonDown" file="ImageButton.xml.lua" func="OnRButtonDown"/>
+				<event name="OnRButtonUp" file="ImageButton.xml.lua" func="OnRButtonUp"/>
+				<event name="OnMouseMove" file="ImageButton.xml.lua" func="OnMouseMove"/>
+				<event name="OnMouseLeave" file="ImageButton.xml.lua" func="OnMouseLeave"/>
+				<event name="OnBind" file="ImageButton.xml.lua" func="OnBind"/>
+				
+				<event name="OnEnableChange" file="ImageButton.xml.lua" func="OnEnableChange" />
+				<event name="OnVisibleChange" file="ImageButton.xml.lua" func="OnVisibleChange" />
+			</eventlist>
+		</objtemplate>	
+	</control>
+</xlue>

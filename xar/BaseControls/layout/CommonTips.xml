@@ -1,0 +1,135 @@
+<xlue>
+    <control class="WHome.CommonTips">
+		<attr_def>
+			<attr name="BkgTexture" type="string"><default>texture.mainwnd.tip.bkg</default></attr>
+			<attr name="TipType" type="int"><default>1</default></attr><!--1:默认左上, 2:默认左下,3:默认右上,默认右下-->
+			<attr name="TextMarginH" type="int"><default>4</default></attr><!--文字与控件四周的水平间距-->
+			<attr name="TextMarginV" type="int"><default>2</default></attr><!--文字与控件四周的垂直间距-->
+			<attr name="TextMarginLeft" type="int"><default>2</default></attr>
+			<attr name="TextMarginTop" type="int"><default>-3</default></attr>
+			<attr name="LimitTipRectLeft" type="int"></attr><!--限制Tip显示区域起始X轴坐标,相对于窗口-->
+			<attr name="LimitTipRectTop" type="int"></attr><!--限制Tip显示区域起始Y轴坐标,相对于窗口-->
+			<attr name="LimitTipRectRight" type="int"></attr><!--限制Tip显示区域结束X轴坐标,相对于窗口-->
+			<attr name="LimitTipRectBottom" type="int"></attr><!--限制Tip显示区域结束Y轴坐标,相对于窗口-->
+			<attr name="Multiline" type="bool"><default>false</default></attr>
+			<attr name="MultilineTextLimitWidth" type="int"><default>100</default></attr><!--多行时每行最多显示文字长度-->
+			<attr name="TrackMouse" type="bool"><default>false</default></attr><!--Tips是否跟随鼠标-->
+			<attr name="TextHAlign" type="string"><default>center</default></attr>
+			<attr name="TextVAlign" type="string"><default>center</default></attr>
+			<attr name="TextColor" type="string"><default>color.toolbar.tiptext</default></attr>
+			<attr name="TextFont" type="string"><default>font.tip</default></attr>
+			<attr name="Shadow" type="bool"><default>true</default></attr>
+			<attr name="ShadowColor" type="string"><default>white.shadow.color</default></attr>
+			<attr name="EnableDelayShow" type="bool"><default>false</default></attr><!--是否支持Tips延时显示-->
+			<attr name="DelayShowInterval" type="int"><default>500</default></attr><!--从鼠标移动到控件上到出现Tips的间隔,单位毫秒-->
+			<attr name="EnableAutoHide" type="bool"><default>false</default></attr><!--是否支持Tips超时自动消失-->
+			<attr name="AutoHideInterval" type="int"><default>3000</default></attr><!--从Tips出现到自动消失的时间间隔,单位毫秒-->
+		</attr_def>
+        <method_def>
+			<SetTipId file = "CommonTips.xml.lua" func = "SetTipId" />
+            <SetText file="CommonTips.xml.lua" func="SetText"/>
+            <GetTipRect file="CommonTips.xml.lua" func="GetTipRect"/>
+            <SetType file="CommonTips.xml.lua" func="SetType"/>
+			<SetMultilineParam file="CommonTips.xml.lua" func="SetMultilineParam" />
+			<GetSize file="CommonTips.xml.lua" func="GetSize" />
+			<OnHostMouseHover file="CommonTips.xml.lua" func="OnHostMouseHover" />
+			<OnHostMouseLeave file="CommonTips.xml.lua" func="OnHostMouseLeave" />
+        </method_def>
+        <objtemplate>
+            <children>
+                <obj id="tip.bkg" class="TextureObject">
+                    <attr>
+                        <left>0</left>
+                        <top>0</top>
+                        <width>father.width</width>
+                        <height>father.height</height>
+                        <texture>texture.mainwnd.tip.bkg</texture>
+                        <zorder>500</zorder>
+						<visible>false</visible>
+                    </attr>
+
+                    <children>
+                        <obj id="tip.text" class="TextObject">
+                            <attr>
+                                <left>5</left>
+                                <top>0</top>
+                                <width>father.width</width>
+                                <height>father.height</height>
+                                <halign>center</halign>
+                                <valign>top</valign>
+                                <zorder>600</zorder>
+                                <textcolor>tips.fonts.color</textcolor>
+                                <font>font.tip</font>
+                                <multiline>0</multiline>
+                                <shadow>1</shadow>
+                                <shadowcolor>white.shadow.color</shadowcolor>
+                                <shadowoffset>0,1</shadowoffset>
+								<visible>false</visible>
+                            </attr>
+                        </obj>
+                    </children>
+                </obj>
+            </children>
+            <eventlist>
+                <event name="OnLButtonUp" file="CommonTips.xml.lua" func="DeleteSelf"/>
+                <event name="OnInitControl" file="CommonTips.xml.lua" func="OnInitControl"/>
+                <event name="OnPosChange" file="CommonTips.xml.lua" func="OnPosChange"/>
+				<event name="OnDestroy" file="CommonTips.xml.lua" func="OnDestroy"/>
+            </eventlist>
+        </objtemplate>
+    </control>
+	
+	<hostwndtemplate id="WHome.tips" class="TipsHostWnd" >
+		<attr> 
+			<layered>1</layered>
+			<left>200</left> 
+			<top>100</top>
+			<width>0</width>
+			<height>0</height>
+
+			<topmost>1</topmost>
+			<visible>0</visible>
+			<fps>30</fps>
+			
+		</attr>
+		<eventlist>
+		</eventlist>
+	</hostwndtemplate>
+
+	<objtemplate id="tips.template" class="LayoutObject" >
+		<children>
+			<obj id="tip.bkg" class="TextureObject">
+				<attr>
+					<left>0</left>
+					<top>0</top>
+					<width>60</width>
+					<height>40</height>
+					<texture>texture.tip.bkg.left.up</texture>
+					<zorder>500</zorder>
+				</attr>
+				<children>
+					<obj id="tip.text" class="TextObject">
+						<attr>
+							<left>4</left>
+							<top>2</top>
+							<width>father.width - 4</width>
+							<height>father.height - 2</height>
+							<halign>center</halign>
+							<valign>top</valign>
+							<zorder>600</zorder>
+							<textcolor>tips.fonts.color</textcolor>
+							<font>font.tip</font>
+							<text>测试文字</text>
+							<multiline>0</multiline>
+							<shadow>1</shadow>
+							<shadowcolor>white.shadow.color</shadowcolor>
+							<shadowoffset>0,1</shadowoffset>
+						</attr>
+					</obj>
+				</children>
+			</obj>
+		</children>
+		<eventlist>
+		</eventlist>
+	</objtemplate>
+</xlue>

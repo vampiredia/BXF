@@ -1,0 +1,55 @@
+<XLUE>
+	<resource>
+		<texture id="texture.scrollbar.tip.bkg" type="ThreeInOneH" image="scrollbar\texture.scrollbar.tip.png"/>
+		<imagelist id="imagelist.vscrollbar.button" vertical="0" splitter="1" varyblock="1" image="scrollbar\scrollbar.vsb.arrow.png"/>
+		
+		<texture id="texture.vsb.leftbtn.normal" imagelist="imagelist.vscrollbar.button" index="1" />
+		<texture id="texture.vsb.leftbtn.hover" imagelist="imagelist.vscrollbar.button" index="2" />
+		<texture id="texture.vsb.leftbtn.down" imagelist="imagelist.vscrollbar.button" index="3" />
+		
+		<texture id="texture.vsb.rightbtn.normal" imagelist="imagelist.vscrollbar.button" index="4" />
+		<texture id="texture.vsb.rightbtn.hover" imagelist="imagelist.vscrollbar.button" index="5" />
+		<texture id="texture.vsb.rightbtn.down" imagelist="imagelist.vscrollbar.button" index="6" />
+		
+		<imagelist id="imagelist.vscrollbar.big.thumb" vertical="0" splitter="1" varyblock="1" image="scrollbar\scrollbar.vsb.big.thumb.png"/>
+		<texture id="texture.vsb.big.thumb.normal" type="ThreeInOneV" imagelist="imagelist.vscrollbar.big.thumb" index="1" />
+		<texture id="texture.vsb.big.thumb.hover" type="ThreeInOneV" imagelist="imagelist.vscrollbar.big.thumb" index="2" />
+		<texture id="texture.vsb.big.thumb.down" type="ThreeInOneV" imagelist="imagelist.vscrollbar.big.thumb" index="3" />
+
+		
+		<imagelist id="imagelist.hscrollbar.big.thumb" vertical="0" splitter="1" varyblock="1" image="scrollbar\scrollbar.hsb.big.thumb.png"/>
+		<texture id="texture.hsb.big.thumb.normal" type="ThreeInOneH" imagelist="imagelist.hscrollbar.big.thumb" index="1" />
+		<texture id="texture.hsb.big.thumb.hover" type="ThreeInOneH" imagelist="imagelist.hscrollbar.big.thumb" index="2" />
+		<texture id="texture.hsb.big.thumb.down" type="ThreeInOneH" imagelist="imagelist.hscrollbar.big.thumb" index="3" />
+
+		
+		<imagelist id="imagelist.vscrollbar.small.thumb" vertical="0" splitter="1" varyblock="1" image="scrollbar\scrollbar.vsb.small.thumb.png"/>
+		<texture id="texture.vsb.small.thumb.normal" type="ThreeInOneV" imagelist="imagelist.vscrollbar.small.thumb" index="1" />
+		<texture id="texture.vsb.small.thumb.hover" type="ThreeInOneV" imagelist="imagelist.vscrollbar.small.thumb" index="2" />
+		<texture id="texture.vsb.small.thumb.down" type="ThreeInOneV" imagelist="imagelist.vscrollbar.small.thumb" index="3" />
+
+		
+		<imagelist id="imagelist.hscrollbar.small.thumb" vertical="0" splitter="1" varyblock="1" image="scrollbar\scrollbar.hsb.small.thumb.png"/>
+		<texture id="texture.hsb.small.thumb.normal" type="ThreeInOneH" imagelist="imagelist.hscrollbar.small.thumb" index="1" />
+		<texture id="texture.hsb.small.thumb.hover" type="ThreeInOneH" imagelist="imagelist.hscrollbar.small.thumb" index="2" />
+		<texture id="texture.hsb.small.thumb.down" type="ThreeInOneH" imagelist="imagelist.hscrollbar.small.thumb" index="3" />
+
+
+		<imagelist id="scrollbar.vsb.big.decorate" vertical="0" splitter="1" varyblock="1" image="scrollbar\scrollbar.vsb.big.decorate.png"/>
+		<bitmap id="scrollbar.vsb.big.decorate.normal" imagelist="scrollbar.vsb.big.decorate" index="1"/>
+		<bitmap id="scrollbar.vsb.big.decorate.hover" imagelist="scrollbar.vsb.big.decorate" index="2"/>
+		<bitmap id="scrollbar.vsb.big.decorate.down" imagelist="scrollbar.vsb.big.decorate" index="3"/>		
+		<imagelist id="scrollbar.hsb.big.decorate" vertical="0" splitter="1" varyblock="1" image="scrollbar\scrollbar.hsb.big.decorate.png"/>
+		<bitmap id="scrollbar.hsb.big.decorate.normal" imagelist="scrollbar.hsb.big.decorate" index="1"/>
+		<bitmap id="scrollbar.hsb.big.decorate.hover" imagelist="scrollbar.hsb.big.decorate" index="2"/>
+		<bitmap id="scrollbar.hsb.big.decorate.down" imagelist="scrollbar.hsb.big.decorate" index="3"/>		
+		<imagelist id="scrollbar.vsb.small.decorate" vertical="0" splitter="1" varyblock="1" image="scrollbar\scrollbar.vsb.small.decorate.png"/>
+		<bitmap id="scrollbar.vsb.small.decorate.normal" imagelist="scrollbar.vsb.small.decorate" index="1"/>
+		<bitmap id="scrollbar.vsb.small.decorate.hover" imagelist="scrollbar.vsb.small.decorate" index="2"/>
+		<bitmap id="scrollbar.vsb.small.decorate.down" imagelist="scrollbar.vsb.small.decorate" index="3"/>
+		<imagelist id="scrollbar.hsb.small.decorate" vertical="0" splitter="1" varyblock="1" image="scrollbar\scrollbar.hsb.small.decorate.png"/>
+		<bitmap id="scrollbar.hsb.small.decorate.normal" imagelist="scrollbar.hsb.small.decorate" index="1"/>
+		<bitmap id="scrollbar.hsb.small.decorate.hover" imagelist="scrollbar.hsb.small.decorate" index="2"/>
+		<bitmap id="scrollbar.hsb.small.decorate.down" imagelist="scrollbar.hsb.small.decorate" index="3"/>
+	</resource>
+</XLUE>

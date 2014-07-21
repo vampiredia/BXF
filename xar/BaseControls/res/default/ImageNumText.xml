@@ -1,0 +1,82 @@
+<xlue>
+<resource>
+	<imagelist id="imagelist.white.num" vertical="0" splitter="1" varyblock="1" image="ImageNumText\imagelist.white.num.png"/>
+	<bitmap id = "Normal.N.whiteText.1" imagelist = "imagelist.white.num" index = "1" />
+	<bitmap id = "Normal.N.whiteText.2" imagelist = "imagelist.white.num" index = "2" />
+	<bitmap id = "Normal.N.whiteText.3" imagelist = "imagelist.white.num" index = "3" />
+	<bitmap id = "Normal.N.whiteText.4" imagelist = "imagelist.white.num" index = "4" />
+	<bitmap id = "Normal.N.whiteText.5" imagelist = "imagelist.white.num" index = "5" />
+	<bitmap id = "Normal.N.whiteText.6" imagelist = "imagelist.white.num" index = "6" />
+	<bitmap id = "Normal.N.whiteText.7" imagelist = "imagelist.white.num" index = "7" />
+	<bitmap id = "Normal.N.whiteText.8" imagelist = "imagelist.white.num" index = "8" />
+	<bitmap id = "Normal.N.whiteText.9" imagelist = "imagelist.white.num" index = "9" />
+	<bitmap id = "Normal.N.whiteText.0" imagelist = "imagelist.white.num" index = "10" />
+	
+	<bitmap id = "Normal.P.whiteText.Point" image = "ImageNumText\bitmap.whitePoint.png" />
+	<bitmap id = "Normal.S.whiteText.Percent" image = "ImageNumText\bitmap.whitePercent.png" />
+	
+	<imagelist id="imagelist.black.num" vertical="0" splitter="1" varyblock="1" image="ImageNumText\imagelist.black.num.png"/>
+	<bitmap id = "Normal.N.blackText.1" imagelist = "imagelist.black.num" index = "1" />
+	<bitmap id = "Normal.N.blackText.2" imagelist = "imagelist.black.num" index = "2" />
+	<bitmap id = "Normal.N.blackText.3" imagelist = "imagelist.black.num" index = "3" />
+	<bitmap id = "Normal.N.blackText.4" imagelist = "imagelist.black.num" index = "4" />
+	<bitmap id = "Normal.N.blackText.5" imagelist = "imagelist.black.num" index = "5" />
+	<bitmap id = "Normal.N.blackText.6" imagelist = "imagelist.black.num" index = "6" />
+	<bitmap id = "Normal.N.blackText.7" imagelist = "imagelist.black.num" index = "7" />
+	<bitmap id = "Normal.N.blackText.8" imagelist = "imagelist.black.num" index = "8" />
+	<bitmap id = "Normal.N.blackText.9" imagelist = "imagelist.black.num" index = "9" />
+	<bitmap id = "Normal.N.blackText.0" imagelist = "imagelist.black.num" index = "10" />
+	
+	<bitmap id = "Normal.P.blackText.Point" image = "ImageNumText\bitmap.blackPoint.png" />
+	<bitmap id = "Normal.S.blackText.Percent" image = "ImageNumText\bitmap.blackPercent.png" />
+	
+	<!--专门为悬浮窗配的-->
+	<imagelist id="imagelist.FloatPanel.white.num" vertical="0" splitter="1" varyblock="1" image="ImageNumText\floatpanel\imagelist.white.num.png"/>
+	<bitmap id = "FloatPanel.N.whiteText.1" imagelist = "imagelist.white.num" index = "1" />
+	<bitmap id = "FloatPanel.N.whiteText.2" imagelist = "imagelist.white.num" index = "2" />
+	<bitmap id = "FloatPanel.N.whiteText.3" imagelist = "imagelist.white.num" index = "3" />
+	<bitmap id = "FloatPanel.N.whiteText.4" imagelist = "imagelist.white.num" index = "4" />
+	<bitmap id = "FloatPanel.N.whiteText.5" imagelist = "imagelist.white.num" index = "5" />
+	<bitmap id = "FloatPanel.N.whiteText.6" imagelist = "imagelist.white.num" index = "6" />
+	<bitmap id = "FloatPanel.N.whiteText.7" imagelist = "imagelist.white.num" index = "7" />
+	<bitmap id = "FloatPanel.N.whiteText.8" imagelist = "imagelist.white.num" index = "8" />
+	<bitmap id = "FloatPanel.N.whiteText.9" imagelist = "imagelist.white.num" index = "9" />
+	<bitmap id = "FloatPanel.N.whiteText.0" imagelist = "imagelist.white.num" index = "10" />
+	
+	<bitmap id = "FloatPanel.C.whiteText.B" image = "ImageNumText\floatpanel\bitmap.whiteB.png" />
+	<bitmap id = "FloatPanel.C.whiteText.G" image = "ImageNumText\floatpanel\bitmap.whiteG.png" />
+	<bitmap id = "FloatPanel.C.whiteText.K" image = "ImageNumText\floatpanel\bitmap.whiteK.png" />
+	<bitmap id = "FloatPanel.C.whiteText.M" image = "ImageNumText\floatpanel\bitmap.whiteM.png" />
+	<bitmap id = "FloatPanel.C.whiteText.s" image = "ImageNumText\floatpanel\bitmap.whiteS.png" />
+	
+	<bitmap id = "FloatPanel.P.whiteText.Point" image = "ImageNumText\floatpanel\bitmap.whitePoint.png" />
+	<bitmap id = "FloatPanel.S.whiteText.slash" image = "ImageNumText\floatpanel\bitmap.whiteSlash.png" />
+	<bitmap id = "FloatPanel.S.whiteText.less" image = "ImageNumText\floatpanel\bitmap.whiteLess.png" />
+	
+	
+	<imagelist id="imagelist.FloatPanel.black.num" vertical="0" splitter="1" varyblock="1" image="ImageNumText\floatpanel\imagelist.black.num.png"/>
+	<bitmap id = "FloatPanel.N.blackText.1" imagelist = "imagelist.black.num" index = "1" />
+	<bitmap id = "FloatPanel.N.blackText.2" imagelist = "imagelist.black.num" index = "2" />
+	<bitmap id = "FloatPanel.N.blackText.3" imagelist = "imagelist.black.num" index = "3" />
+	<bitmap id = "FloatPanel.N.blackText.4" imagelist = "imagelist.black.num" index = "4" />
+	<bitmap id = "FloatPanel.N.blackText.5" imagelist = "imagelist.black.num" index = "5" />
+	<bitmap id = "FloatPanel.N.blackText.6" imagelist = "imagelist.black.num" index = "6" />
+	<bitmap id = "FloatPanel.N.blackText.7" imagelist = "imagelist.black.num" index = "7" />
+	<bitmap id = "FloatPanel.N.blackText.8" imagelist = "imagelist.black.num" index = "8" />
+	<bitmap id = "FloatPanel.N.blackText.9" imagelist = "imagelist.black.num" index = "9" />
+	<bitmap id = "FloatPanel.N.blackText.0" imagelist = "imagelist.black.num" index = "10" />
+	
+	
+	
+	<bitmap id = "FloatPanel.C.blackText.B" image = "ImageNumText\floatpanel\bitmap.blackB.png" />
+	<bitmap id = "FloatPanel.C.blackText.G" image = "ImageNumText\floatpanel\bitmap.blackG.png" />
+	<bitmap id = "FloatPanel.C.blackText.K" image = "ImageNumText\floatpanel\bitmap.blackK.png" />
+	<bitmap id = "FloatPanel.C.blackText.M" image = "ImageNumText\floatpanel\bitmap.blackM.png" />
+	<bitmap id = "FloatPanel.C.blackText.s" image = "ImageNumText\floatpanel\bitmap.blackS.png" />
+	
+	<bitmap id = "FloatPanel.P.blackText.Point" image = "ImageNumText\floatpanel\bitmap.blackPoint.png" />
+	<bitmap id = "FloatPanel.S.blackText.slash" image = "ImageNumText\floatpanel\bitmap.blackSlash.png" />
+	<bitmap id = "FloatPanel.S.blackText.less" image = "ImageNumText\floatpanel\bitmap.blackLess.png" />
+	
+</resource>
+</xlue>

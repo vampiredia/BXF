@@ -1,0 +1,45 @@
+<xlue>
+<resource>	
+	<imagelist id="imagelist.sysbtn.button.image" vertical="0" splitter="1" varyblock="1" image="systembutton\imagelist.systembutton.close.png"/>
+	
+	<bitmap id="bitmap.sysbtn.close.normal" imagelist="imagelist.sysbtn.button.image" index="1" />
+	<bitmap id="bitmap.sysbtn.close.hover" imagelist="imagelist.sysbtn.button.image" index="2" />
+	<bitmap id="bitmap.sysbtn.close.down" imagelist="imagelist.sysbtn.button.image" index="3" />
+	<bitmap id="bitmap.sysbtn.close.disable" imagelist="imagelist.sysbtn.button.image" index="1" />
+	
+	<imagelist id="imagelist.platform.button.image" vertical="0" splitter="1" varyblock="1" image="systembutton\imagelist.platform.button.png"/>
+	
+	<imagelist id="imagelist.systembutton.close" vertical="0" splitter="1" varyblock="1" image="systembutton\imagelist.systembutton.close.png" />
+	<imagelist id="imagelist.systembutton.max" vertical="0" splitter="1" varyblock="1" image="systembutton\imagelist.systembutton.max.png" />
+	<imagelist id="imagelist.systembutton.min" vertical="0" splitter="1" varyblock="1" image="systembutton\imagelist.systembutton.min.png" />
+	<imagelist id="imagelist.platform.sysbtn" vertical="0" splitter="1" varyblock="1" image="systembutton\imagelist.systembutton.menu.png" />
+	<imagelist id="imagelist.systembutton.restore" vertical="0" splitter="1" varyblock="1" image="systembutton\imagelist.systembutton.restore.png" />
+	
+	<bitmap id="bitmap.sysbtn.skin.normal" imagelist="imagelist.platform.button.image" index="6"/>
+	<bitmap id="bitmap.sysbtn.skin.hover" imagelist="imagelist.platform.button.image" index="7"/>
+	<bitmap id="bitmap.sysbtn.skin.down" imagelist="imagelist.platform.button.image" index="8"/>
+	<bitmap id="bitmap.sysbtn.skin.disable" imagelist="imagelist.platform.button.image" index="9"/>
+	<bitmap id="bitmap.sysbtn.skin.light" imagelist="imagelist.platform.button.image" index="10"/>
+	<bitmap id="bitmap.mainwnd.menu.normal" imagelist="imagelist.platform.sysbtn" index="1"/>
+	<bitmap id="bitmap.mainwnd.menu.hover" imagelist="imagelist.platform.sysbtn" index="2"/>
+	<bitmap id="bitmap.mainwnd.menu.down" imagelist="imagelist.platform.sysbtn" index="3"/>
+	<bitmap id="bitmap.mainwnd.menu.disable" imagelist="imagelist.platform.sysbtn" index="1"/>
+	<bitmap id="bitmap.sysbtn.mini.normal" imagelist="imagelist.systembutton.min" index="1"/>
+	<bitmap id="bitmap.sysbtn.mini.hover" imagelist="imagelist.systembutton.min" index="2"/>
+	<bitmap id="bitmap.sysbtn.mini.down" imagelist="imagelist.systembutton.min" index="3"/>
+	<bitmap id="bitmap.sysbtn.mini.disable" imagelist="imagelist.systembutton.min" index="1"/>
+	<bitmap id="bitmap.sysbtn.max.normal" imagelist="imagelist.systembutton.max" index="1"/>
+	<bitmap id="bitmap.sysbtn.max.hover" imagelist="imagelist.systembutton.max" index="2"/>
+	<bitmap id="bitmap.sysbtn.max.down" imagelist="imagelist.systembutton.max" index="3"/>
+	<bitmap id="bitmap.sysbtn.max.disable" imagelist="imagelist.systembutton.max" index="1"/>
+	<bitmap id="bitmap.sysbtn.restore.normal" imagelist="imagelist.systembutton.restore" index="1"/>
+	<bitmap id="bitmap.sysbtn.restore.hover" imagelist="imagelist.systembutton.restore" index="2"/>
+	<bitmap id="bitmap.sysbtn.restore.down" imagelist="imagelist.systembutton.restore" index="3"/>
+	<bitmap id="bitmap.sysbtn.restore.disable" imagelist="imagelist.systembutton.restore" index="1"/>
+	<bitmap id="system.btn.exit.normal" imagelist="imagelist.systembutton.close" index="1"/>
+	<bitmap id="system.btn.exit.hover" imagelist="imagelist.systembutton.close" index="2"/>
+	<bitmap id="system.btn.exit.down" imagelist="imagelist.systembutton.close" index="3"/>
+	<bitmap id="system.btn.exit.disable" imagelist="imagelist.systembutton.close" index="1"/>
+		
+</resource>
+</xlue>

@@ -1,0 +1,523 @@
+<xlue>
+    <control class="WHome.ComboBox">
+        <attr_def>
+            <attr name="NormalBkgID" type="string" ><default>texture.combolistbox.bkg</default></attr>
+            <attr name="HoverBkgID" type="string" ><default>combo.item.bkg.hover</default></attr>
+            <attr name="DisableBkgID" type="string" />
+			<attr name="DisableTextColor" type="string"><default>color.system.text.disable</default></attr>
+			<attr name="NormalTextColor" type="string"><default>color.system.text.normal</default></attr>
+			<attr name="HoverTextColor" type="string"><default>color.system.text.normal</default></attr>
+            <attr name="ItemNormalBkgID" type="string" ><default>texture.combolistbox.bkg</default></attr>
+            <attr name="ItemHoverBkgID" type="string" ><default>combo.item.bkg.hover</default></attr>
+            <attr name="DesText" type="string" />
+            <attr name="IconResID" type="string" />
+            <attr name="IconVisible" type="bool" />
+            <attr name="DesVisible" type="bool" />
+            <attr name="EnableHScroll" type="bool" />
+            <attr name="EnableVScroll" type="bool" />
+            <attr name="LeftMargin" type="int">
+                <default>0</default>
+            </attr>
+            <attr name="TopMargin" type="int">
+                <default>0</default>
+            </attr>
+            <attr name="EditLeftMargin" type="int">
+                <default>6</default>
+            </attr>
+            <attr name="EditTopMargin" type="int">
+                <default>6</default>
+            </attr>
+            <attr name="EditBottomMargin" type="int">
+                <default>4</default>
+            </attr>
+			<attr name="EditRightMargin" type="int">
+				<default>0</default>
+			</attr>
+            <attr name="EditRight" type="int">
+                <default>24</default>
+            </attr>
+            <attr name="ExpandIconWidth" type="int">
+                <default>22</default>
+            </attr>
+            <attr name="ExpandIconLeft" type="int">
+                <default>24</default>
+            </attr>
+            <attr name="IconWidth" type="int">
+                <default>0</default>
+            </attr>
+            <attr name="DesWidth" type="int">
+                <default>0</default>
+            </attr>
+            <attr name="EnableEdit" type="bool">
+                <default>true</default>
+            </attr>
+            <attr name="NowState" type="int">
+                <default>0</default>
+            </attr>
+            <attr name="ShowList" type="bool">
+                <default>false</default>
+            </attr>
+            <attr name="CanRemove" type="bool">
+                <default>false</default>
+            </attr>			
+			<!--        -->
+			<attr name="CanExpand" type="bool">
+				<default>true</default>
+			</attr>
+			<attr name="HighlightSelected" type="bool">
+				<default>true</default>
+			</attr>
+			<!--        -->
+			
+            <attr name="ListHeight" type="int">
+                <default>150</default>
+            </attr>
+            <attr name="OnlyNumber" type="bool">
+                <default>false</default>
+            </attr>
+            <attr name="MaxLength" type="int" />
+            <attr name="TabID" type="int" />
+            <attr name="HostWndID" type="string">
+                <default>NewTaskDlg.Dialog</default>
+            </attr>
+            <attr name="NoScroll" type="bool">
+                <default>false</default>
+            </attr>			
+			<attr name="ShowMenu" type="bool" >
+				<default>true</default>
+			</attr>
+			<attr name="MenuTreeID" type="string" >
+				<default>tree.whome.edit.context</default>
+			</attr>
+			<attr name="MenuID" type="string" >
+				<default>context_menu</default>
+			</attr>
+        </attr_def>
+        <method_def>
+            <AddItem file="ComboBox.xml.lua" func="CB__AddItem" />
+            <InsertItem file="ComboBox.xml.lua" func="CB__InsertItem" />
+            <RemoveItem file="ComboBox.xml.lua" func="CB__RemoveItem" />
+            <SelectItem file="ComboBox.xml.lua" func="CB__SelectItem" />
+            <SelectItemByText file="ComboBox.xml.lua" func="CB__SelectItemByText" />
+            <GetSelectItemName file="ComboBox.xml.lua" func="CB__GetSelectItemName" />
+            <AddTip file="ComboBox.xml.lua" func="CB__AddTip" />
+            <RemoveTip file="ComboBox.xml.lua" func="CB__RemoveTip" />
+            <GetText file="ComboBox.xml.lua" func="CB__GetText" />
+            <SetText file="ComboBox.xml.lua" func="CB__SetText" />
+            <SetState file="ComboBox.xml.lua" func="CB__SetState" />
+            <SetFocus file="ComboBox.xml.lua" func="CB__SetFocus" />
+            <Undo file="ComboBox.xml.lua" func="CB__Undo" />
+            <ExpandList file="ComboBox.xml.lua" func="ExpandList"/>
+            <SetHostWndID file="ComboBox.xml.lua" func="CB__SetHostWndID"/>
+            <GetListHeight file="ComboBox.xml.lua" func="CB__GetListHeight"/>
+            <CBOnFocusChange file="ComboBox.xml.lua" func="CB__OnFocusChange" />
+			<SetEditSel file="ComboBox.xml.lua" func="CB__SetEditSel" />
+			<SetIcon file="ComboBox.xml.lua" func="CB__SetIcon" />
+			<GetEdit file="ComboBox.xml.lua" func="GetEdit" />
+			<!--protected for inherting-->
+			<BtnOnFocusChange file="ComboBox.xml.lua" func="CB__BtnOnFocusChange" />
+			
+			<GetListShown file="ComboBox.xml.lua" func="CB__GetListShown" />
+        </method_def>
+        <event_def>
+            <BeforeExpand />
+            <OnEditChange>
+                <param>
+                    <string />
+                </param>
+            </OnEditChange>
+            <OnSelectItemChanged>
+                <param>
+                    <int />
+                </param>
+            </OnSelectItemChanged>
+            <OnEditFocusChange>
+                <param>
+                    <bool />
+                </param>
+            </OnEditFocusChange>
+            <OnEditChar>
+                <param>
+                </param>
+            </OnEditChar>
+            <OnListExpandChange>
+                <param>
+                    <bool/>
+                    <int/>
+                    <int/>
+                </param>
+            </OnListExpandChange>
+			<OnEnterContent>
+				<param>
+					<string />
+				</param>
+			</OnEnterContent>
+			
+			<OnTabbedEvent>
+				<param>
+					<bool/>
+                </param>
+			</OnTabbedEvent>
+        </event_def>
+        <objtemplate>
+            <children>
+                <obj id="combo.bkg" class="TextureObject">
+                    <attr>
+                        <left>0</left>
+                        <top>0</top>
+                        <width>father.width</width>
+                        <height>father.height</height>
+                    </attr>
+                    <children>
+                        <obj id="combo.icon" class="ImageObject">
+                            <attr>
+                                <left>0</left>
+                                <top>0</top>
+                                <width>15</width>
+                                <height>father.height</height>
+								<zorder>1</zorder>
+                            </attr>
+                        </obj>
+						<obj id="combo.text.bkg" class="ImageObject">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>50</width>
+								<height>father.height</height>
+								<image>bitmap.privatespace.textbkg</image>
+								<drawmode>1</drawmode>
+								<visible>0</visible>
+							</attr>
+						</obj>
+                        <obj id="combo.text" class="TextObject">
+                            <attr>
+                                <left>20</left>
+                                <top>0</top>
+                                <width>50</width>
+                                <height>father.height</height>
+                                <valign>center</valign>
+                                <halign>left</halign>
+                                <font>default.font.edit</font>
+                                <textcolor>color.privatespace</textcolor>
+                                <zorder>1</zorder>
+                            </attr>
+                        </obj>
+                        <obj id="combo.edit" class="EditObject">
+                            <attr>
+                                <left>66</left>
+                                <top>0</top>
+                                <width>200</width>
+                                <height>father.height</height>
+								<!--<viewinset>0, -2, 0, 0</viewinset>-->
+                                <font>default.font.edit</font>
+                                <transparent>1</transparent>
+                                <zorder>1</zorder>
+								<autourldetect>0</autourldetect>
+                            </attr>
+                            <eventlist>
+                                <event name="OnChange" file="ComboBox.xml.lua" func="CB__Edit__OnChange" />
+                                <event name="OnFocusChange" file="ComboBox.xml.lua" func="CB__Edit__OnFocusChange" />
+                                <event name="OnKeyUp" file="ComboBox.xml.lua" func="CB__Edit__OnChar" />
+								<event name="OnKeyDown" file="ComboBox.xml.lua" func="RouteToFather__OnKeyDown" />
+                                <event name="OnChar" file="ComboBox.xml.lua" func="CB__Edit__OnChar2" />
+                                <event name="OnMouseWheel" file="ComboBox.xml.lua" func="CB__Edit__OnMouseWheel" />
+                                <event name="OnLButtonDown" file="ComboBox.xml.lua" func="CB__Btn__Down"/>
+                                <event name="OnRButtonUp" file="ComboBox.xml.lua" func="CB__Edit__OnRButtonUp"/>
+                            </eventlist>
+                        </obj>
+						<obj id="btn.layout" class="LayoutObject" >
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>father.width</width>
+								<height>father.height</height>
+							</attr>
+							<children>
+								<obj id="combo.btn" class="WHome.ImageTextButton">
+									<attr>
+										<left>father.width-24</left>
+										<top>0</top>
+										<width>22</width>
+										<height>father.height</height>
+										<IconWidth>22</IconWidth>
+										<IconHeight>26</IconHeight>
+										<IconLeftPos>0</IconLeftPos>
+										<IconTopPos>(father.height-26)/2</IconTopPos>
+										<IconBitmapID>bitmap.combobtn.normal</IconBitmapID>
+										<IconBitmapID_Hover>bitmap.combobtn.hover</IconBitmapID_Hover>
+										<IconBitmapID_Down>bitmap.combobtn.down</IconBitmapID_Down>
+										<IconBitmapID_Disable>bitmap.combobtn.normal</IconBitmapID_Disable>
+									</attr>
+									<eventlist>
+										<event name="OnButtonClick" file="ComboBox.xml.lua" func="CB__Btn__OnClick" />
+										<event name="OnFocusChange" file="ComboBox.xml.lua" func="CB__BtnOnFocusChange" />
+										<event name="OnMouseWheel" file="ComboBox.xml.lua" func="CB__Edit__OnMouseWheel" />
+									</eventlist>
+								</obj>
+							</children>
+						</obj>
+						<obj id="listbox.layout" class="LayoutObject">
+							<attr>
+								<left>0</left>
+								<top>father.height</top>
+								<width>father.width</width>
+								<height>0</height>
+								<zorder>0</zorder>
+								<limitchild>0</limitchild>
+							</attr>
+							<children>
+								<obj id="listbox" class="WHome.ComboListBox" >
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>father.width</width>
+										<height>father.height</height>
+									</attr>
+								</obj>
+							</children>
+						</obj>
+                    </children>
+                    <eventlist>
+                        <event name="OnKeyUp" file="ComboBox.xml.lua" func="RouteToFather__OnChar" />
+						<event name="OnKeyDown" file="ComboBox.xml.lua" func="RouteToFather__OnKeyDown" />
+                    </eventlist>
+                </obj>
+            </children>
+            <eventlist>
+                <event name="OnInitControl" file="ComboBox.xml.lua" func="CB__OnInitControl" />
+                <event name="OnKeyUp" file="ComboBox.xml.lua" func="ComboBox__OnKeyUp" />
+				<event name="OnKeyDown" file="ComboBox.xml.lua" func="ComboBox__OnKeyDown" />
+				<!--<event name="OnFocusChange" file="ComboBox.xml.lua" func="CB_OnFocusChange" />-->
+				
+				<event name="OnEnableChange" file="ComboBox.xml.lua" func="CB_OnEnableChange" />
+				<event name = "OnChar" file = "ComboBox.xml.lua" func = "CB_OnChar" />
+            </eventlist>
+        </objtemplate>
+    </control>
+
+    <control class="WHome.ComboListBox">
+        <attr_def>
+            <attr name="EnableHScroll" type="bool">
+                <default>false</default>
+            </attr>
+            <attr name="EnableVScroll" type="bool">
+                <default>true</default>
+            </attr>
+            <attr name="AvalibleItemIndex" type="int">
+                <default>0</default>
+            </attr>
+        </attr_def>
+        <method_def>
+            <UpdateItemPos file="ComboBox.xml.lua" func="CLB__UpdateItemPos" />
+            <InsertItem file="ComboBox.xml.lua" func="CLB__InsertItem" />
+            <AddItem file="ComboBox.xml.lua" func="CLB__AddItem" />
+            <DeleteItem file="ComboBox.xml.lua" func="CLB__DeleteItem" />
+            <DeleteAllItem file="ComboBox.xml.lua" func="CLB__DeleteAllItem" />
+            <GetItemCount file="ComboBox.xml.lua" func="CLB__GetItemCount" />
+            <GetItem file="ComboBox.xml.lua" func="CLB__GetItem" />
+            <GetItemIndexByObj file="ComboBox.xml.lua" func="CLB__GetItemIndexByObj" />
+            <AdjustItemPos file="ComboBox.xml.lua" func="CLB__AdjustItemPos" />
+            <GetItemIndexByPoint file="ComboBox.xml.lua" func="CLB__GetItemIndexByPoint" />
+            <MouseWheel file="ComboBox.xml.lua" func="CLB__MouseWheel" />
+            <AdjustAvalibleItemPos file="ComboBox.xml.lua" func="CLB__AdjustAvalibleItemPos" />
+            <CancelAllSelect file="ComboBox.xml.lua" func="CLB__CancelAllSelect" />
+			<GetSize file="ComboBox.xml.lua" func="CLB_GetSize" />
+        </method_def>
+        <event_def>
+            <OnSelect>
+                <param>
+                    <int />
+                </param>
+            </OnSelect>
+        </event_def>
+        <objtemplate>
+            <children>
+                <obj id="listbox.bkg" class="TextureObject">
+                    <attr>
+                        <left>0</left>
+                        <top>0</top>
+                        <width>father.width</width>
+                        <height>father.height</height>
+                        <texture>texture.combolistbox.bkg</texture>
+                    </attr>
+                    <children>
+						<obj id="item.list" class="LayoutObject" >
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>father.width</width>
+								<height>father.height</height>
+								<limitchild>1</limitchild>
+							</attr>
+							<children>
+								<obj id="item.layout" class="LayoutObject" >
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>father.width</width>
+										<height>father.height</height>
+									</attr>
+								</obj>
+							</children>
+						</obj>
+                        <obj id="listbox.vscroll" class="WHome.ScrollBar">
+                            <attr>
+                                <Type>1</Type>
+                                <ThumbBtn_normal>texture.vsb.small.thumb.normal</ThumbBtn_normal>
+                                <ThumbBtn_hover>texture.vsb.small.thumb.hover</ThumbBtn_hover>
+                                <ThumbBtn_down>texture.vsb.small.thumb.down</ThumbBtn_down>
+								<ThumbBtnWidth>8</ThumbBtnWidth>
+                                <ThumbRightMagrin>2</ThumbRightMagrin>
+                                <SideBtnLength>0</SideBtnLength>
+                                <PageSize>0</PageSize>
+                                <RangeBegin>0</RangeBegin>
+                                <RangeEnd>0</RangeEnd>
+                                <left>father.width - 10</left>
+                                <top>0</top>
+                                <width>10</width>
+                                <height>father.height</height>
+                                <zorder>500</zorder>
+                            </attr>
+                            <eventlist>
+                                <event name="OnVScroll" file="ComboBox.xml.lua" func="CLB__OnVScroll" />
+                                <event name="OnKeyUp" file="ComboBox.xml.lua" func="RouteToFather__OnChar" />
+                                <event name="OnScrollBarFocusChange" file="ComboBox.xml.lua" func="CLB__ScrollBar__OnFocusChange" />
+                                <event name="OnScrollBarMouseWheel" file="ComboBox.xml.lua" func="CLB__OnScrollBarMouseWheel"/>
+                            </eventlist>
+                        </obj>
+                        <obj id="listbox.hscroll" class="WHome.ScrollBar">
+                            <attr>
+                                <Type>0</Type>
+                                <ThumbBtn_normal>texture.hsb.small.thumb.normal</ThumbBtn_normal>
+                                <ThumbBtn_hover>texture.hsb.small.thumb.hover</ThumbBtn_hover>
+                                <ThumbBtn_down>texture.hsb.small.thumb.down</ThumbBtn_down>
+								<ThumbBtnWidth>8</ThumbBtnWidth>
+                                <ThumbRightMagrin>2</ThumbRightMagrin>
+                                <SideBtnLength>0</SideBtnLength>
+                                <PageSize>0</PageSize>
+                                <RangeBegin>0</RangeBegin>
+                                <RangeEnd>0</RangeEnd>
+                                <left>0</left>
+                                <top>father.height - 8</top>
+                                <width>father.width - 16</width>
+                                <height>10</height>
+                                <zorder>500</zorder>
+                            </attr>
+                            <eventlist>
+                                <event name="OnHScroll" file="ComboBox.xml.lua" func="CLB__OnHScroll" />
+                                <event name="OnKeyUp" file="ComboBox.xml.lua" func="RouteToFather__OnChar" />
+                                <event name="OnScrollBarFocusChange" file="ComboBox.xml.lua" func="CLB__ScrollBar__OnFocusChange" />
+                            </eventlist>
+                        </obj>
+                    </children>
+                    <eventlist>
+                        <event name="OnFocusChange" file="ComboBox.xml.lua" func="CLB__Bkg__OnFocusChange"/>
+                    </eventlist>
+                </obj>
+            </children>
+            <eventlist>
+                <event name="OnPosChange" file="ComboBox.xml.lua" func="CLB__OnPosChange" />
+                <event name="OnInitControl" file="ComboBox.xml.lua" func="CLB_OnInitControl" />
+                <event name="OnKeyUp" file="ComboBox.xml.lua" func="RouteToFather__OnChar" />
+                <event name="OnFocusChange" file="ComboBox.xml.lua" func="CLB__Bkg__OnFocusChange"/>
+            </eventlist>
+        </objtemplate>
+    </control>
+
+    <control class="WHome.ComboItem">
+        <attr_def>
+            <attr name="ItemID" type="int" />
+            <attr name="NormalBkgID" type="string" >
+				<default>texture.combolistbox.bkg</default>
+			</attr>
+            <attr name="HoverBkgID" type="string" >
+				<default>combo.item.bkg.hover</default>
+			</attr>
+            <attr name="LeftMargin" type="int">
+                <default>0</default>
+            </attr>
+            <attr name="TopMargin" type="int">
+                <default>0</default>
+            </attr>
+            <attr name="IconResID" type="string">
+                <default>down.icon</default>
+            </attr>
+            <attr name="IconWidth" type="int">
+                <default>0</default>
+            </attr>
+            <attr name="ItemText" type="string" />
+            <attr name="NowState" type="int" />
+            <attr name="CanRemove" type="bool">
+                <default>false</default>
+            </attr>				
+        </attr_def>
+        <method_def>
+            <GetSize file="ComboBox.xml.lua" func="CI__GetSize" />
+            <SetParentObj file="ComboBox.xml.lua" func="CI__SetParentObj" />
+            <GetID file="ComboBox.xml.lua" func="CI__GetID" />
+            <SetID file="ComboBox.xml.lua" func="CI__SetID" />
+            <SetState file="ComboBox.xml.lua" func="CI__SetState" />
+            <GetText file="ComboBox.xml.lua" func="CI__GetText" />
+        </method_def>
+        <objtemplate>
+            <children>
+                <obj id="comboitem.bkg" class="TextureObject">
+                    <attr>
+                        <left>0</left>
+                        <top>0</top>
+                        <width>115</width>
+                        <height>25</height>
+                    </attr>
+                    <children>
+                        <obj id="comboitem.icon" class="ImageObject">
+                            <attr>
+                                <left>0</left>
+                                <top>0</top>
+                                <width>15</width>
+                                <height>25</height>
+                            </attr>
+                        </obj>
+                        <obj id="comboitem.text" class="TextObject">
+                            <attr>
+                                <left>22</left>
+                                <top>0</top>
+                                <width>50</width>
+                                <height>25</height>
+                                <valign>center</valign>
+                                <font>combobox.default.font</font>
+								<endellipsis>1</endellipsis>
+                            </attr>
+                        </obj>
+                        <obj id="comboitem.remove.icon" class="ImageObject">
+                            <attr>
+                                <left>185</left>
+                                <top>5</top>
+                                <width>10</width>
+                                <height>10</height>
+								<image>bitmap.comboremove.normal</image>
+								<cursor>IDC_HAND</cursor>
+                                <visible>0</visible>
+								<drawmode>1</drawmode>
+                            </attr>
+							<eventlist>
+                                <event name="OnLButtonDown" file="ComboBox.xml.lua" func="CI__Icon__OnBtnDown"/>
+                                <event name="OnMouseMove" file="ComboBox.xml.lua" func="CI__Icon__OnMouseMove"/>
+                                <event name="OnMouseHover" file="ComboBox.xml.lua" func="CI__Icon__OnMouseHover"/>
+                                <event name="OnMouseLeave" file="ComboBox.xml.lua" func="CI__Icon__OnMouseLeave"/>								
+							</eventlist>
+                        </obj>						
+                    </children>
+                </obj>
+            </children>
+            <eventlist>
+                <event name="OnBind" file="ComboBox.xml.lua" func="CI__OnBind" />
+                <event name="OnPosChange" file="ComboBox.xml.lua" func="CI__OnPosChange" />
+                <event name="OnMouseMove" file="ComboBox.xml.lua" func="CI__OnMouseMove" />
+                <event name="OnMouseLeave" file="ComboBox.xml.lua" func="CI__OnMouseLeave" />
+                <event name="OnFocusChange" file="ComboBox.xml.lua" func="CI__OnFocusChange" />				
+				<event name="OnVisibleChange" file="ComboBox.xml.lua" func="CI__OnVisibleChange" />
+            </eventlist>
+        </objtemplate>
+    </control>
+	
+</xlue>

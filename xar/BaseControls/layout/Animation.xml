@@ -1,0 +1,24 @@
+<xlue>
+	<animation_def class="WHome.CloseWindow.OldTV">
+		<method_def>
+			<Action file="Animation.xml.lua" func="OldTVAnimation_Action"/>
+			<BindObj file="Animation.xml.lua" func="OldTVAnimation_BindObj"/>
+			<GetBindObj file="Animation.xml.lua" func="OldTVAnimation_GetBindObj" />
+		</method_def>
+	</animation_def>
+	
+	
+	<animation_def class="WHome.Progress.Particle">
+		<attr_def>
+			<attr name="Frequency" type="float" >
+				<default>0.3</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<Action file="Animation.xml.lua" func="ProgressParticle_Action"/>
+			<BindObj file="Animation.xml.lua" func="ProgressParticle_BindObj"/>
+			<GetBindObj file="Animation.xml.lua" func="ProgressParticle_GetBindObj" />
+		</method_def>
+	</animation_def>
+
+</xlue>

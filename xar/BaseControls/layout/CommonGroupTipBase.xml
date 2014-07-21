@@ -1,0 +1,77 @@
+<xlue>
+    <control class="WHome.CommonGroupTipBase.Tip">
+		<attr_def>
+			
+		</attr_def>
+        <method_def>
+			<!--普通提醒tip的标准接口-->
+			<GetTipContextObject file = "CommonGroupTipBase.xml.lua" func = "GetTipContextObject" />
+			<FillTipData file = "CommonGroupTipBase.xml.lua" func = "FillTipData" />
+			<GetTipData file = "CommonGroupTipBase.xml.lua" func = "GetTipData" />
+			<GetTipSize file = "CommonGroupTipBase.xml.lua" func = "GetTipSize" />
+			<!--SetTipType file = "CommonGroupTipBase.xml.lua" func = "SetTipType" /-->
+        </method_def>
+        <objtemplate>
+            <children>
+                <obj id="tip.bkg" class="TextureObject">
+                    <attr>
+                        <left>0</left>
+                        <top>0</top>
+                        <width>father.width</width>
+                        <height>father.height</height>
+                        <texture>texture.mainwnd.tip.bkg</texture>
+                        <zorder>500</zorder>
+                    </attr>
+                    <children>
+                        <obj id = "tip.context" class = "LayoutObject">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>father.width</width>
+								<height>father.height</height>
+							</attr>
+						</obj>
+                    </children>
+                </obj>
+            </children>
+            <eventlist>
+
+            </eventlist>
+        </objtemplate>
+    </control>
+	
+	
+	<!--窗口tips模板-->
+	<hostwndtemplate id="WHome.grouptips" class="TipsHostWnd" >
+		<attr> 
+			<layered>1</layered>
+			<left>200</left> 
+			<top>100</top>
+			<width>0</width>
+			<height>0</height>
+
+			<topmost>1</topmost>
+			<visible>0</visible>
+			<fps>30</fps>
+			
+		</attr>
+		<eventlist>
+		</eventlist>
+	</hostwndtemplate>
+	
+	<objtemplate id="groupTips.template" class="LayoutObject" >
+		<children>
+			<obj id = "groupTip.layout" class = "LayoutObject">
+				<attr>
+					<left>0</left>
+					<top>0</top>
+					<width>200</width>
+					<height>200</height>
+				</attr>
+			</obj>
+		</children>
+		<eventlist>
+			
+		</eventlist>
+	</objtemplate>
+</xlue>

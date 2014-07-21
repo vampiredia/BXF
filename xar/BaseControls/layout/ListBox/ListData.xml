@@ -1,0 +1,64 @@
+<xlue>
+	<control class="WHome.DataSource">
+		<attr_def>
+			<attr name="ItemCount" type="int" ><default>0</default></attr> <!-- 节点总数 -->
+			<attr name="SelectedItemCount" type="int" ><default>0</default></attr> <!-- 获取选中节点总数 -->
+		</attr_def>
+		<method_def>
+			<InitControl file="ListData.xml.lua" func="DS_InitControl" />
+			<GetItemCount file="ListData.xml.lua" func="DS_GetItemCount" />
+			<GetItemDataByIndex file="ListData.xml.lua" func="DS_GetItemDataByIndex" />
+			<GetSelectedItemCount file="ListData.xml.lua" func="DS_GetSelectedItemCount" />
+			<GetSelectedItemIndexList file="ListData.xml.lua" func="DS_GetSelectedItemIndexList" />
+			<SelectAllItems file="ListData.xml.lua" func="DS_SelectAllItems" />
+			<UnSelectAllItems file="ListData.xml.lua" func="DS_UnSelectAllItems" />
+			<IsItemSelected file="ListData.xml.lua" func="DS_IsItemSelected" />
+			<SelectItem file="ListData.xml.lua" func="DS_SelectItem" />
+			<UnSelectItem file="ListData.xml.lua" func="DS_UnSelectItem" />
+			<ExclusiveSelectItem file="ListData.xml.lua" func="DS_ExclusiveSelectItem" />
+			<MoveItem file="ListData.xml.lua" func="DS_MoveItem" />
+		</method_def>
+		<event_def>
+			
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="layout.datasource" class="LayoutObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+				</obj>
+			</children>
+		</objtemplate>
+	</control>
+	
+	<control class="WHome.DataConverter">
+		<attr_def>
+			<attr name="ItemHeight" type="int" />
+			<attr name="ItemWidth" type="int" />
+		</attr_def>
+		<method_def>
+			<InitControl file="ListData.xml.lua" func="DC_InitControl" />
+			<GetItemSize file="ListData.xml.lua" func="DC_GetItemSize" />
+			<CreateUIObjectFromData file="ListData.xml.lua" func="DC_CreateUIObjectFromData" />
+			<UpdateUIObjectFromData file="ListData.xml.lua" func="DC_UpdateUIObjectFromData" />
+			<SaveUIObjectState file="ListData.xml.lua" func="DC_SaveUIObjectState" />
+			<SetItemBkgType file="ListData.xml.lua" func="DC_SetItemBkgType" />
+			<GetItemObjPos file="ListData.xml.lua" func="DC_GetItemObjPos" />
+			
+		</method_def>
+		<event_def>
+			
+		</event_def>
+		<objtemplate>
+			<children>
+				
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="ListData.xml.lua" func="DC_OnInitControl" />
+			</eventlist>
+		</objtemplate>
+
+	</control>
+</xlue>

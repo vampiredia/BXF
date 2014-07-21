@@ -1,0 +1,20 @@
+<xlue>
+<resource>
+	<bitmap id="texture.btn.calendar.normal" image="CalendarCtrl\texture.btn.calendar.normal.png" />
+	<bitmap id="texture.btn.calendar.hover" image="CalendarCtrl\texture.btn.calendar.hover.png" />
+	<bitmap id="texture.btn.calendar.down" image="CalendarCtrl\texture.btn.calendar.down.png" />
+	<bitmap id="texture.btn.calendar.disable" image="CalendarCtrl\texture.btn.calendar.disable.png" />
+
+	<bitmap id="texture.calendar.bkg" image="CalendarCtrl\texture.calendar.bkg.png" />
+	<bitmap id="texture.calendar.title.bkg" image="CalendarCtrl\texture.calendar.title.bkg.png" />
+
+	<bitmap id="texture.btn.calendar.next.page" image="CalendarCtrl\texture.btn.calendar.next.page.png" />
+	<bitmap id="texture.btn.calendar.next.page.hover" image="CalendarCtrl\texture.btn.calendar.next.page.hover.png" />
+	<bitmap id="texture.btn.calendar.next.page.down" image="CalendarCtrl\texture.btn.calendar.next.page.down.png" />
+	<bitmap id="texture.btn.calendar.next.page.disable" image="CalendarCtrl\texture.btn.calendar.next.page.disable.png" />
+	<bitmap id="texture.btn.calendar.pre.page" image="CalendarCtrl\texture.btn.calendar.pre.page.png" />
+	<bitmap id="texture.btn.calendar.pre.page.hover" image="CalendarCtrl\texture.btn.calendar.pre.page.hover.png" />
+	<bitmap id="texture.btn.calendar.pre.page.down" image="CalendarCtrl\texture.btn.calendar.next.page.down.png" />
+	<bitmap id="texture.btn.calendar.pre.page.disable" image="CalendarCtrl\texture.btn.calendar.next.page.disable.png" />
+</resource>
+</xlue>		

@@ -1,0 +1,199 @@
+<xlue>
+	<!--===================================================================-->
+	<!--				WHome.BaseList(已经弃用，请使用新的ListBox控件)						-->
+	<!--ListCtrl Item必须要实现的函数	Refresh	InitItem	FillData  SetSelect GetSelect-->
+	<!--ListCtrl Item推荐实现的函数		GetData	GetIndex-->
+	<control class="WHome.BaseList">
+		<attr_def>
+			<attr name="BkgTexture" type="string"><default>texture.listctrl.bkg</default></attr>
+			<attr name="ItemWidth" type="int"><default>0</default></attr>
+			<attr name="ItemHeight" type="int"><default>22</default></attr>
+			<attr name="ItemTopPos" type="int"><default>0</default></attr>
+			<attr name="ItemLeftPos" type="int"><default>0</default></attr>
+			<attr name="ScrollBarSize" type="int"><default>8</default></attr>
+			<!--		日, 滚动条一半是透明的, 而且竖直滚动条显示一半, 横向滚动条全部显示, 所以加这个属性, 表示滚动条不透明部分的大小		-->
+			<attr name="VisibleVScrollBarSize" type="int"><default>8</default></attr>
+			<attr name="VisibleHScrollBarSize" type="int"><default>8</default></attr>
+			<attr name="MultiSelect" type="bool"><default>false</default></attr>
+			<attr name="ItemCtrlID" type="string"><default>WHome.ListCtrlItem</default></attr>
+		</attr_def>
+		<method_def>
+			<UpdateUI file="BaseList.xml.lua" func="UpdateUI" />
+			<SetItemTopPos file="BaseList.xml.lua" func="SetItemTopPos" />
+			<SetItemLeftPos file="BaseList.xml.lua" func="SetItemLeftPos" />
+
+            <SetCtrlVisible file="BaseList.xml.lua" func="SetCtrlVisible" />
+            <GetCtrlVisible file="BaseList.xml.lua" func="GetCtrlVisible" />
+
+            <SetUserData file="BaseList.xml.lua" func="SetUserData" />
+            <GetUserData file="BaseList.xml.lua" func="GetUserData" />
+
+			<GetScrollBarVisible file="BaseList.xml.lua" func="GetScrollBarVisible" />
+			<GetScrollPosition file="BaseList.xml.lua" func="GetScrollPosition" />
+
+			<SetItemWidth  file="BaseList.xml.lua" func="SetItemWidth" />
+			<SetItemHeight  file="BaseList.xml.lua" func="SetItemHeight" />
+			<InsertItem  file="BaseList.xml.lua" func="InsertItem" />
+			<InsertItemList  file="BaseList.xml.lua" func="InsertItemList" />
+			<ClearItems  file="BaseList.xml.lua" func="ClearItems" />
+			<RemoveItem  file="BaseList.xml.lua" func="RemoveItem" />
+			<RemoveItemRange  file="BaseList.xml.lua" func="RemoveItemRange" />
+
+			<GetItemCount file="BaseList.xml.lua" func="GetItemCount" />
+			<GetItemDataByIndex file="BaseList.xml.lua" func="GetItemDataByIndex" />	 <!--	索引从1开始 -->
+
+			<!--		获取可见的item, 提供操作所有已创建item的能力.  非必要不要使用这两个接口		-->
+			<GetItemObjCount file="BaseList.xml.lua" func="GetItemObjCount"/>
+			<GetItemObjByIndex file="BaseList.xml.lua" func="GetItemObjByIndex"/>		 <!--	索引从1开始 -->
+		
+			<RefreshItem file="BaseList.xml.lua" func="RefreshItem" />
+			<RefreshAllItems file="BaseList.xml.lua" func="RefreshAllItems" />
+
+			<UpdateScrollInfo file="BaseList.xml.lua" func="UpdateScrollInfo" />
+			
+			<GetSelectItems  file="BaseList.xml.lua" func="GetSelectItems" />
+
+			<SetMultiSelect   file="BaseList.xml.lua" func="SetMultiSelect" />
+			
+			<SetSelectdItemIndex file="BaseList.xml.lua" func="SetSelectdItemIndex"/>
+			
+			<GetAllItem file="BaseList.xml.lua" func="GetAllItem"/>
+			
+			<MoveItemUp file="BaseList.xml.lua" func="MoveItemUp"/>
+			<MoveItemDown file="BaseList.xml.lua" func="MoveItemDown"/>
+			<ScrollShowItem file="BaseList.xml.lua" func="ScrollShowItem"/>		<!--滚动以使某一行显示出来-->
+		</method_def>
+		<event_def>
+			<OnItemInit>
+				<param>
+					<layoutobj/>		<!--		item对象	-->
+					<int/>				<!--		行索引		-->
+				</param>
+			</OnItemInit>
+			<OnItemFillData>
+				<param>
+					<layoutobj/>		<!--		item对象	-->
+					<int/>				<!--		行索引		-->
+				</param>
+			</OnItemFillData>
+			<OnListItemClick>
+				<param>
+					<layoutobj/>		<!--		item对象	-->
+					<int/>
+					<int/>
+					<int/>
+				</param>
+			</OnListItemClick>
+			<OnListItemDbClick>
+				<param>
+					<layoutobj/>		<!--		item对象	-->
+					<int/>
+					<int/>
+					<int/>
+				</param>
+			</OnListItemDbClick>
+			<OnHScrollPosChanged>
+				<param>
+					<int/>				<!--		滚动位置		-->
+				</param>
+			</OnHScrollPosChanged>
+			<OnVScrollPosChanged>
+				<param>
+					<int/>				<!--		滚动位置		-->
+				</param>
+			</OnVScrollPosChanged>
+			<OnListSpaceClick>
+				<param>
+					<int/>
+					<int/>
+					<int/>
+				</param>
+			</OnListSpaceClick>
+			<OnListSelectChange>
+				<param>
+				</param>
+			</OnListSelectChange>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="itemWnd" class="LayoutObject">	<!--	为了方便遍历item, 所有的item挂在这, 不要再挂其他东西了 -->
+					<attr>
+						<left>0</left>
+						<top>20</top>
+						<width>0</width>
+						<height>0</height>
+						<limitchild>1</limitchild>
+					</attr>
+				</obj>
+				<obj id="vscrollbar" class="WHome.ScrollBar">
+					<attr>
+						<Type>1</Type>
+						<ThumbBtn_normal>texture.vsb.small.thumb.normal</ThumbBtn_normal>
+						<ThumbBtn_hover>texture.vsb.small.thumb.hover</ThumbBtn_hover>
+						<ThumbBtn_down>texture.vsb.small.thumb.down</ThumbBtn_down>
+						<ThumbRightMagrin>2</ThumbRightMagrin>
+						<ThumbBtnWidth>8</ThumbBtnWidth>
+						<SideBtnLength>0</SideBtnLength>
+						<PageSize>0</PageSize>
+						<RangeBegin>0</RangeBegin>
+						<RangeEnd>0</RangeEnd>
+						<ScrollPos>0</ScrollPos>
+						<visible>false</visible>
+						<width>8</width>
+						<zorder>400</zorder>
+					</attr>
+					<eventlist>
+						<event name="OnVScroll" file="BaseList.xml.lua" func="OnVScroll" />
+						<event name="OnScrollBarFocusChange" file="BaseList.xml.lua" func="OnScrollBarFocusChange" />
+						<event name="OnScrollBarMouseWheel" file="BaseList.xml.lua" func="OnScrollBarMouseWheel" />
+					</eventlist>
+				</obj>
+				<obj id="hscrollbar" class="WHome.ScrollBar">
+					<attr>
+						<Type>0</Type>
+						<ThumbBtn_normal>texture.hsb.small.thumb.normal</ThumbBtn_normal>
+						<ThumbBtn_hover>texture.hsb.small.thumb.hover</ThumbBtn_hover>
+						<ThumbBtn_down>texture.hsb.small.thumb.down</ThumbBtn_down>
+						<ThumbRightMagrin>2</ThumbRightMagrin>
+						<ThumbBtnWidth>8</ThumbBtnWidth>
+						<SideBtnLength>0</SideBtnLength>
+						<PageSize>0</PageSize>
+						<RangeBegin>0</RangeBegin>
+						<RangeEnd>0</RangeEnd>
+						<ScrollPos>0</ScrollPos>
+						<visible>false</visible>
+						<height>8</height>
+					</attr>
+					<eventlist>
+						<event name="OnHScroll" file="BaseList.xml.lua" func="OnHScroll" />
+						<event name="OnScrollBarFocusChange" file="BaseList.xml.lua" func="OnScrollBarFocusChange" />
+						<event name="OnScrollBarMouseWheel" file="BaseList.xml.lua" func="OnScrollBarMouseWheel" />
+					</eventlist>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="BaseList.xml.lua" func="OnInitControl" />
+				<event name="OnPosChange" file="BaseList.xml.lua" func="OnPosChange" />
+				
+				<event name="OnLButtonDown" file="BaseList.xml.lua" func="OnLButtonDown" />
+				<event name="OnLButtonUp" file="BaseList.xml.lua" func="OnLButtonUp" />
+				<event name="OnLButtonDbClick" file="BaseList.xml.lua" func="OnLButtonDbClick" />
+
+				<event name="OnRButtonDown" file="BaseList.xml.lua" func="OnRButtonDown" />
+				<event name="OnRButtonUp" file="BaseList.xml.lua" func="OnRButtonUp" />
+				<event name="OnRButtonDbClick" file="BaseList.xml.lua" func="OnRButtonDbClick" />
+				
+				<event name="OnMouseMove" file="BaseList.xml.lua" func="OnMouseMove" />
+				<event name="OnMouseHover" file="BaseList.xml.lua" func="OnMouseHover" />
+				
+				<event name="OnMouseWheel" file="BaseList.xml.lua" func="OnMouseWheel" />
+	
+				<event name="OnKeyDown" file="BaseList.xml.lua" func="OnKeyDown" />
+				<event name="OnKeyUp" file="BaseList.xml.lua" func="OnKeyUp" />
+				<event name="OnChar" file="BaseList.xml.lua" func="OnChar" />
+			</eventlist>
+		</objtemplate>	
+	</control>
+</xlue>
+
+

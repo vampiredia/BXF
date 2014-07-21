@@ -1,0 +1,63 @@
+<xlue>
+    <control class="WHome.TabKeySupport">
+		<attr_def>
+			
+		</attr_def>
+        <method_def>
+			<SetControlTabOrder file = "TabKeySupport.xml.lua" func = "SetControlTabOrder" />
+			<RegisterTabObj file = "TabKeySupport.xml.lua" func = "RegisterTabObj" />
+			<UnRegisterTabObj file = "TabKeySupport.xml.lua" func = "UnRegisterTabObj" />
+			<SetTabStop file = "TabKeySupport.xml.lua" func = "SetTabStop" />
+			<SetTabEnable file = "TabKeySupport.xml.lua" func = "SetTabEnable" />
+			<SetCurrentTabbedObj file = "TabKeySupport.xml.lua" func = "SetCurrentTabbedObj" />
+			
+			<!--静态方法-->
+			<GetTabbedObj file = "TabKeySupport.xml.lua" func = "GetTabbedObj" />
+        </method_def>
+		
+		<event_def>
+			<OnControlTabbed>
+				<param>
+					<bool/>
+				</param>
+			</OnControlTabbed>
+		</event_def>
+		
+        <objtemplate>
+            <children>
+                <obj id="TabKeySupport.layout" class="LayoutObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<!--taborder>1</taborder-->
+						<zorder>100000000</zorder>
+					</attr>
+					<eventlist>
+						<event name = "OnKeyUp" file = "TabKeySupport.xml.lua" func = "OnTabGroupObjKeyUp"/>
+						<event name = "OnFocusChange" file = "TabKeySupport.xml.lua" func = "OnTabGroupObjFocusChange"/>
+						<event name = "OnInitControl" file = "TabKeySupport.xml.lua" func = "OnTabGroupObjInitControl" />
+					</eventlist>
+                </obj>
+				
+				<!--obj id = "TabKeySupport.Rect" class = "RectangleObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<pencolor>system.black</pencolor>
+						<srcpt>3,3</srcpt>
+						<destpt>width - 3,height - 3</destpt>
+						<pen>pen.dot</pen>
+						<brush>brush.null</brush>
+					</attr>
+				</obj-->
+            </children>
+            <eventlist>
+
+            </eventlist>
+        </objtemplate>
+    </control>
+</xlue>

@@ -1,0 +1,433 @@
+<xlue>
+
+
+	<!--===================================================================-->
+	<!--				Header Item						-->
+	<control class="WHome.ListCtrl.HeaderItem">
+		<attr_def>
+			<attr name="BkgTexture" type="string"><default>texture.listctrl.header.bkg</default></attr>
+			<attr name="TextHalign" type="string" ><default>center</default></attr>
+		</attr_def>
+		<method_def>
+			<SetText file="ListCtrl.xml.lua" func="HeaderItem_SetText" />
+			<SetBkgTexture file="ListCtrl.xml.lua" func="HeaderItem_SetBkgTexture" />
+			<SetSort file="ListCtrl.xml.lua" func="HeaderItem_SetSort" />
+		</method_def>
+		<event_def>
+			<OnHeaderItemWidthChanged>
+				<param>
+					<int/>	<!--		索引		-->
+				</param>
+			</OnHeaderItemWidthChanged>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="text" class="TextObject">
+							<attr>
+								<left>10</left>
+								<top>0</top>
+								<width>father.width-10</width>
+								<height>father.height</height>
+								<!--<halign>left</halign>-->
+								<valign>center</valign>
+								<font>default.font</font>
+								<textcolor>system.black</textcolor>
+							</attr>
+						</obj>
+						<obj id="sorticon" class="ImageObject">
+						    <attr>
+								<left>father.width-18</left>
+								<top>0</top>
+								<width>7</width>
+								<height>19</height>
+								<drawmode>1</drawmode>
+								<alpha>255</alpha>
+							</attr>
+						</obj>
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="ListCtrl.xml.lua" func="HeaderItem_OnInitControl" />
+				<event name="OnMouseMove" file="ListCtrl.xml.lua" func="HeaderItem_OnMouseMove"/>
+                <event name="OnLButtonDown" file="ListCtrl.xml.lua" func="HeaderItem_OnLButtonDown"/>
+				<event name="OnLButtonUp" file="ListCtrl.xml.lua" func="HeaderItem_OnLButtonUp"/>    
+			</eventlist>
+		</objtemplate>	
+	</control>
+
+
+
+	<!--===================================================================-->
+	<!--				Header 						-->
+	<control class="WHome.ListCtrl.Header">
+		<attr_def>
+			<attr name="ItemBkgTexture" type="string"><default>texture.listctrl.header.bkg</default></attr>
+		</attr_def>
+		<method_def>
+			<InsertColumn file="ListCtrl.xml.lua" func="Header_InsertColumn" />		
+			<GetColumnWidthByIndex file="ListCtrl.xml.lua" func="Header_GetColumnWidthByIndex" />		<!--	从1开始		 -->
+			<SetColumnWidth file="ListCtrl.xml.lua" func="Header_SetColumnWidth" />
+			<SetBkgTexture file="ListCtrl.xml.lua" func="Header_SetBkgTexture" />
+			<FindItem file="ListCtrl.xml.lua" func="Header_FindItem" />
+			<SelectItem file="ListCtrl.xml.lua" func="Header_SelectItem" />
+		</method_def>
+		<event_def>
+			<OnColumnWidthChanged>
+				<param>
+					<int/>	<!--		索引		-->
+				</param>
+			</OnColumnWidthChanged>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<texture>texture.listctrl.header.bkg</texture>
+					</attr>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnPosChange" file="ListCtrl.xml.lua" func="Header_OnPosChange" />
+			</eventlist>
+		</objtemplate>	
+	</control>
+
+
+
+	<!--===================================================================-->
+	<!--				Item Grid						-->
+	<control class="WHome.ListCtrl.ItemGrid">
+		<attr_def>
+			<attr name="TextHalign" type="string" ><default>left</default></attr>
+		</attr_def>
+		<method_def>
+			<GetText file="ListCtrl.xml.lua" func="Grid_GetText" />
+			<SetText file="ListCtrl.xml.lua" func="Grid_SetText" />
+			<SetTextPos file="ListCtrl.xml.lua" func="Grid_SetTextPos" />
+			<GetSuitSize file="ListCtrl.xml.lua" func="Grid_GetSuitSize" />
+			<InsertUserObject  file="ListCtrl.xml.lua" func="Grid_InsertUserObject" />
+			<GetUserObject  file="ListCtrl.xml.lua" func="Grid_GetUserObject" />
+			<SetTextFont  file="ListCtrl.xml.lua" func="Grid_SetTextFont" />
+		</method_def>
+		<event_def>
+			<OnMouseEvent>
+				<param>
+					<string/>
+					<int/>
+					<int/>
+					<int/>
+				</param>
+			</OnMouseEvent>
+			<OnKeyEvent>
+				<param>
+					<string/>
+					<ulong/>
+					<ushort/>
+					<ushort/>
+				</param>
+			</OnKeyEvent>
+			<OnClick/>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="text" class="TextObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>0</width>
+						<height>0</height>
+						<visible>false</visible>
+						<!--<halign>left</halign>-->
+						<valign>center</valign>
+						<font>default.font</font>
+						<textcolor>system.black</textcolor>
+						<endellipsis>1</endellipsis>
+					</attr>
+				</obj>
+				<obj id="btn" class="WHome.ImageButton">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>0</width>
+						<height>0</height>
+						<visible>false</visible>
+					</attr>
+					<eventlist>
+						<event name="OnClick" file="ListCtrl.xml.lua" func="Grid_OnClick" />
+					</eventlist>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnPosChange" file="ListCtrl.xml.lua" func="Grid_OnPosChange" />	
+			</eventlist>
+		</objtemplate>	
+	</control>
+
+
+
+	<!--===================================================================-->
+	<!--				List Item						-->
+	<control class="WHome.ListCtrlItem">
+		<attr_def>
+			<attr name="SelectBkgTexture" type="string"><default></default></attr>
+			<attr name="EvenItemBkgTexture" type="string"><default></default></attr>
+			<attr name="HoverItemBkgTexture" type="string"><default></default></attr>
+			<attr name="NormalItemBkgTexture" type="string"><default></default></attr>
+		</attr_def>
+		<method_def>
+			<InitItem file="ListCtrl.xml.lua" func="Item_InitItem" />
+			<Refresh file="ListCtrl.xml.lua" func="Item_Refresh" />
+            <SetSelect file="ListCtrl.xml.lua" func="Item_SetSelect" />
+            <GetSelect file="ListCtrl.xml.lua" func="Item_GetSelect" />
+			<FillData file="ListCtrl.xml.lua" func="Item_FillData" />
+
+            <GetData file="ListCtrl.xml.lua" func="Item_GetData" />
+			<GetGridByIndex file="ListCtrl.xml.lua" func="Item_GetGridByIndex" />		<!--	索引从1 开始	-->
+			<GetGridByID file="ListCtrl.xml.lua" func="Item_GetGridByID" />
+			<GetIndex file="ListCtrl.xml.lua" func="Item_GetIndex" />
+            <RemoveColumn file="ListCtrl.xml.lua" func="Item_RemoveColumn" />
+            <UpdateGridPos file="ListCtrl.xml.lua" func="Item_UpdateGridPos" />
+            <DoEvent file="ListCtrl.xml.lua" func="Item_DoEvent" />
+		</method_def>
+		<event_def>
+			<OnMouseEvent>
+				<param>
+					<string/>	<!--事件类型	OnMouseWheel,OnLButtonDown,OnLButtonUp,OnLButtonDbClick,OnRButtonDown,OnRButtonUp,OnRButtonDbClick,OnMouseMove,OnMouseHover-->
+					<int/>
+					<int/>
+					<int/>
+				</param>
+			</OnMouseEvent>
+			<OnKeyEvent>
+				<param>
+					<string/>				<!--OnKeyDown		OnKeyUp		OnChar		-->
+					<ulong/>
+					<ushort/>
+					<ushort/>
+				</param>
+			</OnKeyEvent>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width-2</width>
+						<height>father.height</height>
+					</attr>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="ListCtrl.xml.lua" func="Item_OnInitControl" />
+
+				<event name="OnLButtonDown" file="ListCtrl.xml.lua" func="Item_OnLButtonDown" />
+				<event name="OnLButtonUp" file="ListCtrl.xml.lua" func="Item_OnLButtonUp" />
+				<event name="OnLButtonDbClick" file="ListCtrl.xml.lua" func="Item_OnLButtonDbClick" />
+
+				<event name="OnRButtonDown" file="ListCtrl.xml.lua" func="Item_OnRButtonDown" />
+				<event name="OnRButtonUp" file="ListCtrl.xml.lua" func="Item_OnRButtonUp" />
+				<event name="OnRButtonDbClick" file="ListCtrl.xml.lua" func="Item_OnRButtonDbClick" />
+				
+				<event name="OnMouseMove" file="ListCtrl.xml.lua" func="Item_OnMouseMove" />
+				<event name="OnMouseHover" file="ListCtrl.xml.lua" func="Item_OnMouseHover" />
+				<event name="OnMouseLeave" file="ListCtrl.xml.lua" func="Item_OnMouseLeave" />
+				
+				<event name="OnMouseWheel" file="ListCtrl.xml.lua" func="Item_OnMouseWheel" />
+
+				<event name="OnKeyDown" file="ListCtrl.xml.lua" func="Item_OnKeyDown" />
+				<event name="OnKeyUp" file="ListCtrl.xml.lua" func="Item_OnKeyUp" />
+				<event name="OnChar" file="ListCtrl.xml.lua" func="Item_OnChar" />
+			</eventlist>
+		</objtemplate>	
+	</control>
+
+
+	<!--===================================================================-->
+	<!--				ListCtrl						-->
+	<control class="WHome.ListCtrl">
+		<attr_def>
+			<attr name="EvenItemBkgTexture" type="string"><default></default></attr>
+			<attr name="SelectBkgTexture" type="string"><default>texture.listctrl.item.bkg.hover</default></attr>
+			<attr name="HoverItemBkgTexture" type="string"><default>texture.listctrl.item.bkg.hover</default></attr>
+			<attr name="NormalItemBkgTexture" type="string"><default></default></attr>
+		
+			<attr name="BkgTexture" type="string"><default></default></attr>
+			<attr name="HeaderBkgTexture" type="string"><default>texture.listctrl.header.bkg</default></attr>
+			<attr name="ItemHeight" type="int"><default>24</default></attr>
+			<attr name="MultiSelect" type="bool"><default>false</default></attr>
+			<attr name="ItemCtrlID" type="string"><default>WHome.ListCtrlItem</default></attr>
+
+			
+			<attr name="VisibleVScrollBarSize" type="int"><default>15</default></attr>
+			<attr name="VisibleHScrollBarSize" type="int"><default>15</default></attr>
+			
+			<attr name="ShowHeader" type="bool"><default>true</default></attr>
+		</attr_def>
+		<method_def>
+			<UpdateUI file="ListCtrl.xml.lua" func="List_UpdateUI" />
+            <SetCtrlVisible file="ListCtrl.xml.lua" func="List_SetCtrlVisible" />
+            <GetCtrlVisible file="ListCtrl.xml.lua" func="List_GetCtrlVisible" />
+
+            <InsertColumn file="ListCtrl.xml.lua" func="List_InsertColumn" />
+			<GetColumnSuitWidth file="ListCtrl.xml.lua" func="List_GetColumnSuitWidth" />
+			<SetColumnWidth file="ListCtrl.xml.lua" func="List_SetColumnWidth" />
+            <RemoveColumn file="ListCtrl.xml.lua" func="List_RemoveColumn" />
+
+			<InsertItem  file="ListCtrl.xml.lua" func="List_InsertItem" />
+			<InsertItemList  file="ListCtrl.xml.lua" func="List_InsertItemList" />
+			<ClearItems  file="ListCtrl.xml.lua" func="List_ClearItems" />
+			<RemoveItem  file="ListCtrl.xml.lua" func="List_RemoveItem" />
+			<!--删除[beginIndex, endIndex)内的行 -->
+			<RemoveItemRange  file="ListCtrl.xml.lua" func="List_RemoveItemRange" />
+			<GetItemCount file="ListCtrl.xml.lua" func="List_GetItemCount" />
+			<GetItemDataByIndex file="ListCtrl.xml.lua" func="List_GetItemDataByIndex" />	 <!--	索引从1开始 -->
+			<RefreshItem file="ListCtrl.xml.lua" func="List_RefreshItem" />
+			<RefreshAllItems file="ListCtrl.xml.lua" func="List_RefreshAllItems" />
+
+			<UpdateScrollInfo file="ListCtrl.xml.lua" func="List_UpdateScrollInfo" />
+
+			<GetSelectItems  file="ListCtrl.xml.lua" func="List_GetSelectItems" />
+			<SetSelectdItemIndex file="ListCtrl.xml.lua" func="List_SetSelectdItemIndex"/>
+			<GetAllItem file="ListCtrl.xml.lua" func="List_GetAllItem"/>
+			<MoveItemUp file="ListCtrl.xml.lua" func="List_MoveItemUp"/>
+			<MoveItemDown file="ListCtrl.xml.lua" func="List_MoveItemDown"/>
+			<ScrollShowItem file="ListCtrl.xml.lua" func="List_ScrollShowItem"/>		<!--滚动以使某一行显示出来-->
+		</method_def>
+		<event_def>
+			<OnItemInit>
+				<param>
+				<layoutobj/>		<!--		item对象	-->
+				<int/>					<!--		行索引		-->
+				</param>
+			</OnItemInit>
+			<OnItemFillData>
+				<param>
+				<layoutobj/>		<!--		item对象	-->
+				<int/>				<!--		行索引		-->
+				</param>
+			</OnItemFillData>
+			<OnGridInit>
+				<param>
+					<int/>				<!--		行索引		-->
+					<int/>				<!--		列索引		-->
+					<string/>			<!--		列id			-->
+					<layoutobj/>		<!--		item对象	-->
+					<layoutobj/>		<!--		格子对象	-->
+				</param>
+			</OnGridInit>
+			<OnGridFillData>
+				<param>
+					<int/>				<!--		行索引		-->
+					<int/>				<!--		列索引		-->
+					<string/>			<!--		列id			-->
+					<layoutobj/>		<!--		item对象	-->
+					<layoutobj/>		<!--		格子对象	-->
+				</param>
+			</OnGridFillData>			
+			<OnListItemClick>
+				<param>
+					<layoutobj/>		<!--		item对象	-->
+					<int/>
+					<int/>
+					<int/>
+				</param>
+			</OnListItemClick>
+			<OnListItemDbClick>
+				<param>
+					<layoutobj/>		<!--		item对象	-->
+					<int/>
+					<int/>
+					<int/>
+				</param>
+			</OnListItemDbClick>
+			<OnListSpaceClick>
+				<param>
+					<int/>
+					<int/>
+					<int/>
+				</param>
+			</OnListSpaceClick>
+			<OnListSelectChange>
+				<param>
+				</param>
+			</OnListSelectChange>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="wnd" class="LayoutObject">
+							<attr>
+								<left>1</left>
+								<top>1</top>
+								<width>father.width-2</width>
+								<height>father.height-2</height>
+								<limitchild>1</limitchild>
+							</attr>
+							<children>
+								<obj id="header" class="WHome.ListCtrl.Header">
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>0</width>
+										<height>22</height>
+										<texture>texture.mainwnd.border</texture>
+										<limitchild>1</limitchild>
+									</attr>
+									<eventlist>
+										<event name="OnColumnWidthChanged" file="ListCtrl.xml.lua" func="List_OnColumnWidthChanged" />
+									</eventlist>
+								</obj>								
+								<obj id="base_list" class="WHome.BaseList">
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>father.width</width>
+										<height>father.height</height>
+										<limitchild>1</limitchild>
+										<ItemTopPos>22</ItemTopPos>
+									</attr>
+									<eventlist>
+										<event name="OnItemInit" file="ListCtrl.xml.lua" func="List_OnItemInit" />
+										<event name="OnItemFillData" file="ListCtrl.xml.lua" func="List_OnItemFillData" />
+										<event name="OnHScrollPosChanged" file="ListCtrl.xml.lua" func="List_OnHScrollPosChanged" />
+										<event name="OnListItemClick" file="ListCtrl.xml.lua" func="List_OnListItemClick" />
+										<event name="OnListItemDbClick" file="ListCtrl.xml.lua" func="List_OnListItemDbClick" />
+										<event name="OnListSpaceClick" file="ListCtrl.xml.lua" func="List_OnListSpaceClick" />
+										<event name="OnListSelectChange" file="ListCtrl.xml.lua" func="List_OnListSelectChange" />
+									</eventlist>
+								</obj>
+							</children>
+						</obj>
+					</children>
+				</obj>	
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="ListCtrl.xml.lua" func="List_OnInitControl" />
+				<event name="OnPosChange" file="ListCtrl.xml.lua" func="List_OnPosChange" />
+			</eventlist>
+		</objtemplate>	
+	</control>
+</xlue>
+
+

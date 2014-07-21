@@ -1,0 +1,117 @@
+<xlue>
+	<control class="Wizard.CommunityServiceChildPanelForComplain">
+		<attr_def>
+			<attr name="BorderTexture" type="string"><default>texture.tabbody.border</default></attr>
+		</attr_def>
+		<method_def>
+			
+		</method_def>
+		<event_def>
+			
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<alpha>168</alpha>
+					</attr>
+				</obj>
+				
+				<obj id="ctrl" class="LayoutObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="text.tip.header" class="TextObject">
+							<attr>
+								<top>10</top>
+								<left>15</left>
+								<width>father.width</width>
+								<height>18</height>
+								<text>选择服务类型</text>
+								<font>default.font.bold</font>
+								<halign>left</halign>
+								<valign>center</valign>
+							</attr>
+						</obj>
+						<obj id="tableview.service.list" class="WHome.ListCtrl">
+							<attr>
+								<top>40</top>
+								<left>10</left>
+								<width>130</width>
+								<height>father.height-50</height>
+							</attr>
+							<children>
+									
+							</children>
+							<eventlist>
+								<event name="OnInitControl" file="CommunityServiceChildPanelForComplain.xml.lua" func="LB_Service_OnInitControl" />
+								<event name="OnListItemClick" file="CommunityServiceChildPanelForComplain.xml.lua" func="LC_OnListItemClick" />
+							</eventlist>
+						</obj>	
+						<obj id="tableview.sub.service.list" class="WHome.ListCtrl">
+							<attr>
+								<top>40</top>
+								<left>150</left>
+								<width>230</width>
+								<height>father.height-50</height>
+							</attr>
+							<children>
+									
+							</children>
+							<eventlist>
+								<event name="OnInitControl" file="CommunityServiceChildPanelForComplain.xml.lua" func="LB_SubService_OnInitControl" />
+								<event name="OnListItemClick" file="CommunityServiceChildPanelForComplain.xml.lua" func="LC_OnSubListItemClick" />
+							</eventlist>
+						</obj>		
+						<obj id="tableview.info.service.list" class="WHome.ListCtrl">
+							<attr>
+								<top>40</top>
+								<left>395</left>
+								<width>father.width - 400</width>
+								<height>200</height>
+							</attr>
+							<children>
+									
+							</children>
+							<eventlist>
+								<event name="OnInitControl" file="CommunityServiceChildPanelForComplain.xml.lua" func="LB_InfoService_OnInitControl" />
+								<event name="OnListItemClick" file="CommunityServiceChildPanelForComplain.xml.lua" func="LC_OnInfoListItemClick" />
+							</eventlist>
+						</obj>			
+						<obj id="edit.content" class="WHome.Edit">
+							<attr>
+								<left>395</left>
+								<top>250</top>
+								<width>290</width>
+								<height>150</height>
+								<ReadOnly>true</ReadOnly>
+							</attr>
+						</obj>		
+						<obj id="btn.del" class="WHome.Button">
+							<attr>
+								<left>520</left>
+								<top>410</top>
+								<width>40</width>
+								<height>20</height>
+								<Text>删除</Text>
+							</attr>
+							<eventlist>
+								
+							</eventlist>
+						</obj>						
+					</children>
+				</obj>
+						
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="CommunityServiceChildPanelForComplain.xml.lua" func="OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

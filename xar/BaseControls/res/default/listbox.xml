@@ -1,0 +1,29 @@
+<XLUE>
+	<resource>		
+		<!--滚动条：垂直滚动条按件背景-->
+		<imagelist id="imagelist.vscroll.thumb.bkg" vertical="0" splitter="1" varyblock="0" blocksize="10" image="listbox\imagelist.vscroll.thumb.bkg.png"/>
+		<texture id="texture.vscroll.thumb.bkg.normal" type="ThreeInOneV" imagelist="imagelist.vscroll.thumb.bkg" index="1"/>
+		<texture id="texture.vscroll.thumb.bkg.hover" type="ThreeInOneV" imagelist="imagelist.vscroll.thumb.bkg" index="2"/>
+		<!--滚动条：水平滚动条按件背景-->
+		<imagelist id="imagelist.hscroll.thumb.bkg" vertical="0" splitter="1" varyblock="0" blocksize="9" image="listbox\imagelist.hscroll.thumb.bkg.png"/>
+		<texture id="texture.hscroll.thumb.bkg.normal" type="ThreeInOneH" imagelist="imagelist.hscroll.thumb.bkg" index="1"/>
+		<texture id="texture.hscroll.thumb.bkg.hover" type="ThreeInOneH" imagelist="imagelist.hscroll.thumb.bkg" index="2"/>
+
+		<!--列表：表头排序图标-->
+		<imagelist id="imagelist.listbox.header.sorticon" vertical="0" splitter="1" varyblock="0" blocksize="7" image="listbox\imagelist.listbox.header.sorticon.png"/>
+		<bitmap id="bitmap.listbox.header.asc" imagelist="imagelist.listbox.header.sorticon" index="2" />
+		<bitmap id="bitmap.listbox.header.des" imagelist="imagelist.listbox.header.sorticon" index="1" />
+		<!--列表：表头分割线-->
+		<bitmap id="bitmap.listbox.header.splitter" path="listbox\bitmap.listbox.header.splitter.png" />
+		<!--列表：表头项背景图片-->
+		<imagelist id="imagelist.listbox.header.itembkg" vertical="0" splitter="1" varyblock="0" blocksize="7" image="listbox\imagelist.listbox.header.itembkg.png"/>
+		<texture id="texture.listbox.header.itembkg.normal" type="ThreeInOneH" imagelist="imagelist.listbox.header.itembkg" index="1"/>
+		<texture id="texture.listbox.header.itembkg.hover" type="ThreeInOneH" imagelist="imagelist.listbox.header.itembkg" index="2"/>
+		<texture id="texture.listbox.header.itembkg.down" type="ThreeInOneH" imagelist="imagelist.listbox.header.itembkg" index="3"/>
+		<!--列表：框选背景-->
+		<texture id="texture.tasklist.select" type="NineInOne" image="listbox\texture.tasklist.select.png" />
+		
+		<texture id="texture.dragitem.bkg" type="NineInOne" image="listbox\dragitem_bkg.png" />
+		<bitmap id="bitmap.dragitem.status.none" image="listbox\dragitem_status_none.png" />
+	</resource>
+</XLUE>

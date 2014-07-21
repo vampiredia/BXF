@@ -1,0 +1,292 @@
+<xlue>
+	<!--===================================================================-->
+	<!--此为迅雷8任务列表的TableView，为Item容器，处理各种事件，DataSource及DataConverter在此交互-->
+	
+	<control class="WHome.TableView">
+		<attr_def>
+			<attr name="iToTopDis" type="int"> <!--第一个Item距视图顶部的距离-->
+				<default>3</default>
+			</attr>
+			<attr name="iToLeftDis" type="int"> <!--Item距视图左侧的距离-->
+				<default>5</default>
+			</attr>
+			<attr name="iItemSpacing" type="int"> <!--Item间的间距-->
+				<default>1</default>
+			</attr>
+			<attr name="useDirectBoxSelect" type="bool" > <!--是否使用框选-->
+				<default>true</default>
+			</attr>
+			<attr name="onlySingleSelect" type="bool" > <!--是否只用单选（不包括框选）-->
+				<default>false</default>
+			</attr>
+			<attr name="VScrollVisible" type="bool" > <!--外界设置垂直滚动条是否可见-->
+				<default>false</default>
+			</attr>
+			<attr name="VScrollEnable" type="bool" > <!--外界设置垂直滚动条是否有效（只在滚动条不可见时有用）-->
+				<default>false</default>
+			</attr>
+			<attr name="ScrollToMarginDis" type="int"> <!--山寨参数：滚动条距边距的距离，这里会改变整个滚动条的位置，不会改变滚动条内部属性，不宜设太大，因为占用可见客户区-->
+				<default>0</default>
+			</attr>
+			<attr name="VScrollWidth" type="int"> <!--垂直滚动条宽度-->
+				<default>15</default>
+			</attr>
+			<attr name="VScrollThumbBtnWidth" type="int" > <!--垂直滚动条滑块的宽度-->
+				<default>10</default>
+			</attr>
+			<attr name="VScrollThumbBtnNor" type="string" ><!--垂直滚动条三态-Nor-->
+				<default>texture.vsb.big.thumb.normal</default>
+			</attr>
+			<attr name="VScrollThumbBtnHover" type="string" ><!--垂直滚动条三态-Hover-->
+				<default>texture.vsb.big.thumb.hover</default>
+			</attr>
+			<attr name="VScrollThumbBtnDown" type="string" ><!--垂直滚动条三态-Down-->
+				<default>texture.vsb.big.thumb.down</default>
+			</attr>
+			<attr name="VShowTipInFirst" type="bool" ><!--是否显示垂直滚动条Tip-->
+				<default>true</default>
+			</attr>
+			<attr name="HScrollVisible" type="bool" > <!--外界设置水平滚动条是否可见-->
+				<default>true</default>
+			</attr>
+			<attr name="HScrollHeight" type="int"> <!--水平滚动条高度-->
+				<default>15</default>
+			</attr>
+			<attr name="HScrollThumbBtnHeight" type="int" > <!--水平滚动条滑块的高度-->
+				<default>10</default>
+			</attr>
+			<attr name="HScrollThumbBtnNor" type="string" ><!--水平滚动条三态-Nor-->
+				<default>texture.hsb.big.thumb.normal</default>
+			</attr>
+			<attr name="HScrollThumbBtnHover" type="string" ><!--水平滚动条三态-Hover-->
+				<default>texture.hsb.big.thumb.hover</default>
+			</attr>
+			<attr name="HScrollThumbBtnDown" type="string" ><!--水平滚动条三态-Down-->
+				<default>texture.hsb.big.thumb.down</default>
+			</attr>
+			<attr name="HShowTipInFirst" type="bool" ><!--是否显示水平滚动条Tip-->
+				<default>false</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<SetDataSourceAndDataConverter file="TableView.xml.lua" func="ViewCtrl_SetDataSourceAndDataConverter" />
+			<GetDataSource file="TableView.xml.lua" func="ViewCtrl_GetDataSource" />
+			<GetDataConverter file="TableView.xml.lua" func="ViewCtrl_GetDataConverter" />
+			
+			<SetDirectBoxSelectAttr file="TableView.xml.lua" func="ViewCtrl_SetDirectBoxSelectAttr" />
+			<SetSelectMode file="TableView.xml.lua" func="ViewCtrl_SetSelectMode" />
+			<GetShiftStartItemIndex file="TableView.xml.lua" func="ViewCtrl_GetShiftStartItemIndex" />
+			<SetShiftStartItemIndex file="TableView.xml.lua" func="ViewCtrl_SetShiftStartItemIndex" />
+			
+			<ReloadData file="TableView.xml.lua" func="ViewCtrl_ReloadData" />
+			
+			<GetItemCount file="TableView.xml.lua" func="ViewCtrl_GetItemCount" />
+			<ClearAllItems file="TableView.xml.lua" func="ViewCtrl_ClearAllItems" />
+			<RemoveAllItems file="TableView.xml.lua" func="ViewCtrl_RemoveAllItems" />
+			<SelectItem file="TableView.xml.lua" func="ViewCtrl_SelectItem" />
+			<ExclusiveSelectItem file="TableView.xml.lua" func="ViewCtrl_ExclusiveSelectItem" />
+			<SelectAllItems file="TableView.xml.lua" func="ViewCtrl_SelectAllItems" />
+			<UnSelectAllItems file="TableView.xml.lua" func="ViewCtrl_UnSelectAllItems" />
+			
+			<GetItemObjByIndex file="TableView.xml.lua" func="ViewCtrl_GetItemObjByIndex" />
+			<GetItemIndexByObjId file="TableView.xml.lua" func="ViewCtrl_GetItemIndexByObjId" />
+			<GetAllItemObj file="TableView.xml.lua" func="ViewCtrl_GetAllItemObj" />
+			<GetItemObjPos file="TableView.xml.lua" func="ViewCtrl_GetItemObjPos" />
+			
+			<GetTotalItemHeight file="TableView.xml.lua" func="ViewCtrl_GetTotalItemHeight" />
+			<SetItemHeightByIndex file="TableView.xml.lua" func="ViewCtrl_SetItemHeightByIndex" />
+			<SetItemWidthByIndex file="TableView.xml.lua" func="ViewCtrl_SetItemWidthByIndex" />
+			<SetItemMaxWidth file="TableView.xml.lua" func="ViewCtrl_SetItemMaxWidth" />
+			
+			<UpdateScrollInfo file="TableView.xml.lua" func="ViewCtrl_UpdateScrollInfo" />
+			<SetItemVisibleCompletely file="TableView.xml.lua" func="ViewCtrl_SetItemVisibleCompletely" />
+			<GetVScrollPos file="TableView.xml.lua" func="ViewCtrl_GetVScrollPos" />
+			<SetVScrollPos file="TableView.xml.lua" func="ViewCtrl_SetVScrollPos" />
+			<GetHScrollPos file="TableView.xml.lua" func="ViewCtrl_GetHScrollPos"/>
+			<GetVisibleItemRange file="TableView.xml.lua" func="ViewCtrl_GetVisibleItemRange" />
+			<SetScrollVisible file="TableView.xml.lua" func="ViewCtrl_SetScrollVisible" />
+			<GetScrollVisible file="TableView.xml.lua" func="ViewCtrl_GetScrollVisible" />
+			
+			<ReleaseDrag file="TableView.xml.lua" func="ViewCtrl_ReleaseDrag"/>
+		</method_def>
+		<event_def>
+			<OnMouseEvent> <!-- TableView鼠标事件 -->
+				<param>
+					<string/>		<!-- 事件的类型	-->
+					<int/>			<!-- x -->
+					<int/>			<!-- y -->	
+					<int/>			<!-- flag -->
+					<layoutobj/>    <!-- 鼠标所在位置的对象， 如果为nil说明没有对象 -->
+				</param>
+			</OnMouseEvent>
+			<OnItemEvent> <!-- Item自定义事件 -->
+				<param>
+					<string/>		<!-- 事件的类型	-->
+					<table /> 		<!-- 数据table-->
+					<layoutobj/>    <!-- 对象 -->
+				</param>
+			</OnItemEvent>
+			<OnShiftStartItemIndexChange> <!-- Shift多选时第一个节点变化事件 -->
+				<param>
+					<int />			<!-- 旧索引	-->
+					<int />			<!-- 新索引	-->
+				</param>
+			</OnShiftStartItemIndexChange>
+			<OnBeginUpdateScrollInfo> <!-- 将要更新滚动条事件 -->
+				<param>
+				</param>
+			</OnBeginUpdateScrollInfo>
+			<OnVScrollChange> <!-- 垂直滚动条改变事件 -->
+				<param>
+					<int/> <!-- 垂直滚动条当前位置 -->
+				</param>
+			</OnVScrollChange>
+			<OnHScrollChange> <!-- 水平滚动条改变事件 -->
+				<param>
+					<int/> <!-- 水平滚动条当前位置 -->
+				</param>
+			</OnHScrollChange>
+			
+			<OnDrag> <!--  拖拽事件 -->
+				<param>
+					<int/> <!--  拖拽的横坐标 -->
+					<int/> <!--  拖拽的纵坐标 -->
+					<layoutobj/> <!--  拖拽框对象 -->
+					<int/> <!--  拖拽的节点索引 -->
+				</param>
+			</OnDrag>
+			<OnDragOutTableView>  <!--  拖拽出TableView事件 -->
+				<param>
+					<int/> <!--  当前拖拽到的横坐标 -->
+					<int/> <!--  当前拖拽到的纵坐标 -->
+					<layoutobj/> <!--  拖拽框对象 -->
+				</param>
+			</OnDragOutTableView>
+			<OnDragOutHostWnd>  <!--  拖拽出TableView所在窗口事件 -->
+				<param>
+					<layoutobj/> <!--  拖拽框对象 -->
+				</param>
+			</OnDragOutHostWnd>
+			<OnDropOut> <!--  拖拽出TableView并放开鼠标投下的事件 -->
+				<param>
+					<int/> <!--  放开鼠标投下的横坐标 -->
+					<int/> <!--  放开鼠标投下的纵坐标 -->
+					<layoutobj/> <!--  拖拽框对象 -->
+				</param>
+			</OnDropOut>
+			<OnDragFinish> <!--  拖拽完成的事件 -->
+			</OnDragFinish>
+		</event_def>
+		<objtemplate>
+			<children>
+				<!--view背景-->
+				<obj id="view.bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<limitchild>1</limitchild>
+					</attr>
+					<children>
+						<!--Item的容器-->
+						<obj id="view.itemcontainer" class="TextureObject">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>father.width</width>
+								<height>father.height</height>
+								<limitchild>1</limitchild>
+								<zorder>10000</zorder>
+							</attr>
+						</obj>
+						<!--框选框-->
+						<obj id="view.directboxselect" class="TextureObject">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>0</width>
+								<height>0</height>
+								<texture>texture.tasklist.select</texture>
+								<zorder>100000</zorder>
+							</attr>
+						</obj>
+						<!--垂直滚动条-->
+						<obj id="view.vscroll" class="WHome.ScrollBar">
+							<attr>
+								<Type>1</Type>
+								<ThumbBtn_normal>texture.vscroll.thumb.bkg.normal</ThumbBtn_normal>
+								<ThumbBtn_hover>texture.vscroll.thumb.bkg.hover</ThumbBtn_hover>
+								<ThumbBtn_down>texture.vscroll.thumb.bkg.hover</ThumbBtn_down>
+								<SideBtnLength>0</SideBtnLength>
+								<ThumbBtnLength>49</ThumbBtnLength>
+								<ThumbBtnWidth>9</ThumbBtnWidth>
+								<ThumbRightMagrin>3</ThumbRightMagrin>
+								<PageSize>0</PageSize>
+								<RangeBegin>0</RangeBegin>
+								<RangeEnd>0</RangeEnd>
+								<left>father.width-15</left>
+								<top>0</top>
+								<width>9</width>
+								<height>father.height</height>
+								<zorder>100000</zorder>
+								<ShowTipInFirst>true</ShowTipInFirst>
+								<TipText>滚动鼠标滚轮也可以上下滚动</TipText>
+								<UseKeyEvent>false</UseKeyEvent>
+							</attr>
+							<eventlist>
+								<event name="OnVScroll" file="TableView.xml.lua" func="OnVScroll" />
+								<event name="OnScrollBarMouseWheel" file="TableView.xml.lua" func="OnVScollBarMouseWheel" />
+								<event name="OnScrollBarFocusChange" file="TableView.xml.lua" func="OnVScollBarFocusChange" />
+							</eventlist>
+						</obj>
+						<!--水平滚动条-->
+						<obj id="view.hscroll" class="WHome.ScrollBar">
+							<attr>
+								<Type>0</Type>
+								<ThumbBtn_normal>texture.hscroll.thumb.bkg.normal</ThumbBtn_normal>
+								<ThumbBtn_hover>texture.hscroll.thumb.bkg.hover</ThumbBtn_hover>
+								<ThumbBtn_down>texture.hscroll.thumb.bkg.hover</ThumbBtn_down>
+								<SideBtnLength>0</SideBtnLength>
+								<ThumbBtnLength>49</ThumbBtnLength>
+								<ThumbBtnWidth>9</ThumbBtnWidth>
+								<ThumbRightMagrin>2</ThumbRightMagrin>
+								<PageSize>0</PageSize>
+								<RangeBegin>0</RangeBegin>
+								<RangeEnd>0</RangeEnd>
+								<ScrollPos>0</ScrollPos>
+								<left>0</left>
+								<top>father.height-15</top>
+								<width>father.width</width>
+								<height>9</height>
+								<zorder>100000</zorder>
+								<UseKeyEvent>false</UseKeyEvent>
+							</attr>
+							<eventlist>
+								<event name="OnHScroll" file="TableView.xml.lua" func="OnHScroll" />
+								<event name="OnScrollBarMouseWheel" file="TableView.xml.lua" func="OnHScrollBarMouseWheel" />
+								<event name="OnScrollBarFocusChange" file="TableView.xml.lua" func="OnHScrollBarFocusChange" />
+							</eventlist>
+						</obj>
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="TableView.xml.lua" func="ViewCtrl_OnInitControl" />
+				<event name="OnBind" file="TableView.xml.lua" func="ViewCtrl_OnBind" />
+				<event name="OnPosChange" file="TableView.xml.lua" func="ViewCtrl_OnPosChange" />
+				<event name="OnVisibleChange" file="TableView.xml.lua" func="ViewCtrl_OnVisibleChange" />
+				<event name="OnLButtonDown" file="TableView.xml.lua" func="ViewCtrl_OnLButtonDown" />
+				<event name="OnLButtonUp" file="TableView.xml.lua" func="ViewCtrl_OnLButtonUp" />
+				<event name="OnLButtonDbClick" file="TableView.xml.lua" func="ViewCtrl_OnLButtonDbClick" />
+				<event name="OnRButtonDown" file="TableView.xml.lua" func="ViewCtrl_OnRButtonDown" />
+				<event name="OnRButtonUp" file="TableView.xml.lua" func="ViewCtrl_OnRButtonUp" />
+				<event name="OnMouseWheel" file="TableView.xml.lua" func="ViewCtrl_OnMouseWheel" />
+				<event name="OnMouseMove" file="TableView.xml.lua" func="ViewCtrl_OnMouseMove" />
+				<event name="OnMouseHover" file="TableView.xml.lua" func="ViewCtrl_OnMouseHover" />
+				<event name="OnMouseLeave" file="TableView.xml.lua" func="ViewCtrl_OnMouseLeave" />
+				<event name="OnCaptureChange" file="TableView.xml.lua" func="ViewCtrl_OnCaptureChange" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

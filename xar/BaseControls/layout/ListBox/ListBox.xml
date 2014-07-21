@@ -1,0 +1,514 @@
+<xlue>
+	<!--===================================================================-->
+		<!--			HeaderItem 			ListBox的表头项   			-->
+	<control class="WHome.ListBox.HeaderItem">
+		<attr_def>
+			<attr name="NormalBkgID" type="string" ><!-- Normal背景ID -->
+				<default>texture.listctrl.item.bkg.hover</default>
+			</attr>
+			<attr name="HoverBkgID" type="string" ><!-- Hover背景ID -->
+				<default>texture.listctrl.item.bkg.hover</default>
+            </attr>
+			<attr name="DownBkgID" type="string" ><!-- Down背景ID -->
+				<default>texture.listbox.header.itembkg.down</default>
+			</attr>
+			<attr name="ChangeBkgID" type="string" /><!-- 改变时背景ID -->
+            <attr name="AscendIconID" type="string"><!-- 升序图标ID -->
+			    <default>bitmap.listbox.header.asc</default>
+			</attr>
+            <attr name="DescendIconID" type="string"><!-- 降序图标ID -->
+			    <default>bitmap.listbox.header.des</default>
+			</attr>
+			<attr name="SplitterResId" type="string" ><!--分割线图片ID-->
+				<default>bitmap.listbox.header.splitter</default>
+			</attr>
+			<attr name="ItemWidth" type="int"/><!-- 宽度 -->
+			<attr name="ItemHeight" type="int" /><!-- 高度 -->
+			<attr name="Text" type="string"/><!-- 名字 -->
+			<attr name="TextLeftOffSet" type="int" ><!-- 名字左偏移 -->
+				<default>8</default>
+			</attr>
+			<attr name="TextHalign" type="string"><!-- 名字对齐方式，left,center,right -->
+			    <default>left</default>
+			</attr>
+			<attr name="TextWidth" type="int"><!-- 名字的宽度 -->
+			    <default>0</default>
+			</attr>
+			<attr name="TextFont" type="string" ><!-- 名字的字体 -->
+				<default>default.font</default>
+			</attr>
+			<attr name="TextColor" type="string" ><!-- 名字的字体颜色 -->
+				<default>default.color</default>
+			</attr>
+			<attr name="MinWidth" type="int"><!-- 最小宽度 -->
+			    <default>0</default>
+			</attr>
+			<attr name="ControlState" type="int"><!-- 存储当前状态：0-普通；1-按下；2-不可用；3-悬浮；4-拖动 -->
+			    <default>0</default>
+			</attr>
+            <attr name="Enable" type="bool"><!-- 是否可用 -->
+                <default>true</default>
+            </attr>
+            <attr name="ShowSplitter" type="bool"><!-- 是否显示分割线 -->
+                <default>true</default>
+            </attr>
+		</attr_def>
+		<method_def>
+			<SetItemSortState file="ListBox.xml.lua" func="HeaderItem_SetItemSortState" />
+			<GetItemSize file="ListBox.xml.lua" func="HeaderItem_GetItemSize" />
+			<SetItemState file="ListBox.xml.lua" func="HeaderItem_SetItemState" />
+			<SetSortState file="ListBox.xml.lua" func="HeaderItem_SetSortState" />
+			<GetSortState file="ListBox.xml.lua" func="HeaderItem_GetSortState" />
+			<AddUserObj file="ListBox.xml.lua" func="HeaderItem_AddUserObj" />
+			<RemoveUserObj file="ListBox.xml.lua" func="HeaderItem_RemoveUserObj" />
+		</method_def>
+		<event_def>
+			<OnHeaderItemWidthChanged><!-- 宽度改变事件 -->
+				<param>
+					<int/><!-- 鼠标在Header中的位置X坐标 -->
+				</param>
+			</OnHeaderItemWidthChanged>
+			<OnHeaderItemClick><!-- 单击事件 -->
+				<param>
+				</param>
+			</OnHeaderItemClick>
+		</event_def>
+		<objtemplate>
+			<children>
+				<!-- 背景 -->
+				<obj id="headeritem.bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<limitchild>1</limitchild>
+					</attr>
+					<children>						
+						<!-- 名字 -->
+						<obj id="headeritem.text" class="TextObject">
+							<attr>
+								<left>12</left>
+								<top>0</top>
+								<width>father.width-12</width>
+								<height>father.height</height>
+								<!--halign>right</halign-->
+								<halign>center</halign>
+								<valign>center</valign>
+							</attr>
+						</obj>
+						<!-- 排序图标 -->
+						<obj id="headeritem.sorticon" class="ImageObject">
+							<attr>
+								<left>father.width-8</left>
+								<top>0</top>
+								<width>7</width>
+								<height>19</height>
+								<drawmode>0</drawmode>
+								<valign>center</valign>
+								<halign>center</halign>
+								<alpha>255</alpha>
+							</attr>
+						</obj>
+						<!-- 分割线 -->
+						<obj id="headeritem.splitter" class="ImageObject">
+							<attr>
+                                <left>father.width - 1</left>
+                                <top>1</top>
+                                <width>1</width>
+                                <height>father.height - 2</height>
+                                <image>bitmap.listbox.header.splitter</image>
+                                <drawmode>1</drawmode>
+                            </attr>
+						</obj>
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnBind" file="ListBox.xml.lua" func="HeaderItem_OnBind"/>
+				<event name="OnInitControl" file="ListBox.xml.lua" func="HeaderItem_OnInitControl"/>
+				<event name="OnPosChange" file="ListBox.xml.lua" func="HeaderItem_OnPosChange"/>
+				<event name="OnLButtonDown" file="ListBox.xml.lua" func="HeaderItem_OnLButtonDown"/>
+				<event name="OnLButtonUp" file="ListBox.xml.lua" func="HeaderItem_OnLButtonUp"/>  
+				<event name="OnRButtonUp" file="ListBox.xml.lua" func="HeaderItem_OnRButtonUp"/>  
+				<event name="OnMouseMove" file="ListBox.xml.lua" func="HeaderItem_OnMouseMove" redirect="control"/>
+				<event name="OnMouseLeave" file="ListBox.xml.lua" func="HeaderItem_OnMouseLeave" redirect="control"/>
+                <event name="OnMouseWheel" file="ListBox.xml.lua" func="HeaderItem_OnMouseWheel" redirect="control" />
+			</eventlist>
+		</objtemplate>
+	</control>
+	
+	
+	
+	<!--===================================================================-->
+		<!--				Header 			ListBox的表头    			-->
+	<control class="WHome.ListBox.Header">
+		<attr_def>
+			<attr name="LeftBegin" type="int"><!-- Header距左的距离 -->
+			    <default>0</default>
+			</attr>
+			<attr name="IsMove" type="bool"><!-- 是否可以拖动HeaderItem -->
+			    <default>false</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<AppendItem file="ListBox.xml.lua" func="Header_AppendItem" />
+			<MoveHeader file="ListBox.xml.lua" func="Header_MoveHeader" />
+			<SetHeaderItemWidth file="ListBox.xml.lua" func="Header_SetHeaderItemWidth"/>
+			<GetHeaderItemWidth file="ListBox.xml.lua" func="Header_GetHeaderItemWidth"/>
+			<AdjustItemPos file="ListBox.xml.lua" func="Header_AdjustItemPos" />
+			<RemoveItem file="ListBox.xml.lua" func="Header_RemoveItem" />
+			<RemoveAllItems file="ListBox.xml.lua" func="Header_RemoveAllItems" />
+			<GetItemWidth file="ListBox.xml.lua" func="Header_GetItemWidth" />
+			<GetHeaderWidth file="ListBox.xml.lua" func="Header_GetHeaderWidth" />
+			<SetHeaderItemSortState file="ListBox.xml.lua" func="Header_SetHeaderItemSortState" />
+			<AddUserObjToHeaderItem file="ListBox.xml.lua" func="Header_AddUserObjToHeaderItem" />
+			<RemoveUserObjFromHeaderItem file="ListBox.xml.lua" func="Header_RemoveUserObjFromHeaderItem" />
+		</method_def>
+		<event_def>
+			<OnSelChanged>	<!-- 表头项选中事件 -->
+			    <param>
+				    <string />	<!-- HeaderItemId -->
+					<int />	<!-- SortState -->
+				 </param>
+				<return>
+				    <string />
+					<int />
+				</return>
+			</OnSelChanged>
+			<OnItemPosChanged><!-- 表头项位置改变事件 -->
+			    <param>
+				    <bool/>		<!-- 是否鼠标拖拽引起的事件 -->
+				 </param>
+			</OnItemPosChanged>
+			<OnHeaderMouseEvent><!-- 表头鼠标事件 -->
+				<param>
+				</param>
+			</OnHeaderMouseEvent>
+		</event_def>
+		<objtemplate>
+			<children>
+				<!-- 存放列对象的背景 -->
+				<obj id="header.bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<limitchild>1</limitchild>
+						<!--texture>texture.tasktable.itembkg</texture-->
+					</attr>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="ListBox.xml.lua" func="Header_OnInitControl" />
+				<event name="OnPosChange" file="ListBox.xml.lua" func="Header_OnPosChange" />
+				<event name="OnRButtonUp" file="ListBox.xml.lua" func="Header_OnRButtonUp" />
+                <event name="OnMouseMove" file="ListBox.xml.lua" func="Header_OnMouse" redirect="control" />
+                <event name="OnMouseLeave" file="ListBox.xml.lua" func="Header_OnMouse" redirect="control" />
+                <event name="OnMouseWheel" file="ListBox.xml.lua" func="Header_OnMouse" redirect="control" />
+			</eventlist>
+		</objtemplate>
+	</control>
+	
+	
+	
+	<!--===================================================================-->
+		<!--				ListBox  			列表控件  	 			-->
+	<control class="WHome.ListBox">
+		<attr_def>
+			<attr name="ShowHeader" type="bool" ><!--是否显示列表头-->
+				<default>true</default>
+			</attr>
+			<attr name="HeaderHeight" type="int" ><!--列表头高度-->
+				<default>24</default>
+			</attr>
+			<attr name="HeaderToLeftDis" type="int" ><!--列表头距左边的距离-->
+				<default>0</default>
+			</attr>
+			<attr name="ScrollToMarginDis" type="int"> <!--山寨参数：滚动条距边距的距离，这里会改变整个滚动条的位置，不会改变滚动条内部属性，不宜设太大，因为占用可见客户区-->
+				<default>0</default>
+			</attr>
+			<attr name="VScrollVisible" type="bool" ><!--外界设置垂直滚动条是否可见-->
+				<default>true</default>
+			</attr>
+			<attr name="VScrollEnable" type="bool" > <!--外界设置垂直滚动条是否有效（只在滚动条不可见时有用）-->
+				<default>false</default>
+			</attr>
+			<attr name="VScrollWidth" type="int"> <!--垂直滚动条宽度-->
+				<default>15</default>
+			</attr>
+			<attr name="VScrollThumbBtnWidth" type="int" > <!--垂直滚动条滑块的宽度-->
+				<default>10</default>
+			</attr>
+			<attr name="VScrollThumbBtnNor" type="string" ><!--垂直滚动条三态-Nor-->
+				<default>texture.vsb.big.thumb.normal</default>
+			</attr>
+			<attr name="VScrollThumbBtnHover" type="string" ><!--垂直滚动条三态-Hover-->
+				<default>texture.vsb.big.thumb.hover</default>
+			</attr>
+			<attr name="VScrollThumbBtnDown" type="string" ><!--垂直滚动条三态-Down-->
+				<default>texture.vsb.big.thumb.down</default>
+			</attr>
+			<attr name="VShowTipInFirst" type="bool" ><!--是否显示垂直滚动条Tip-->
+				<default>true</default>
+			</attr>
+			<attr name="HScrollVisible" type="bool" ><!--外界设置水平滚动条是否可见-->
+				<default>true</default>
+			</attr>
+			<attr name="HScrollHeight" type="int"> <!--水平滚动条宽度-->
+				<default>15</default>
+			</attr>
+			<attr name="HScrollThumbBtnHeight" type="int" > <!--水平滚动条滑块的宽度-->
+				<default>10</default>
+			</attr>
+			<attr name="HScrollThumbBtnNor" type="string" ><!--水平滚动条三态-Nor-->
+				<default>texture.hsb.big.thumb.normal</default>
+			</attr>
+			<attr name="HScrollThumbBtnHover" type="string" ><!--水平滚动条三态-Hover-->
+				<default>texture.hsb.big.thumb.hover</default>
+			</attr>
+			<attr name="HScrollThumbBtnDown" type="string" ><!--水平滚动条三态-Down-->
+				<default>texture.hsb.big.thumb.down</default>
+			</attr>
+			<attr name="HShowTipInFirst" type="bool" ><!--是否显示水平滚动条Tip-->
+				<default>false</default>
+			</attr>
+			<attr name="useDirectBoxSelect" type="bool" ><!--是否使用框选-->
+				<default>true</default>
+			</attr>
+			<attr name="onlySingleSelect" type="bool" ><!--是否只用单选（不包括框选）-->
+				<default>false</default>
+			</attr>
+			<attr name="iToTopDis" type="int"><!--第一个Item距视图顶部的距离-->
+				<default>3</default>
+			</attr>
+			<attr name="iToLeftDis" type="int"><!--Item距视图左侧的距离-->
+				<default>5</default>
+			</attr> 
+			<attr name="iItemSpacing" type="int"><!--Item间的间距-->
+				<default>1</default>
+			</attr> 
+			<attr name="HeaderItemNormalBkg" type="string" ><!--表头项正常背景-->
+				<default>texture.listctrl.item.bkg.normal</default>
+			</attr>
+			<attr name="HeaderItemHoverBkg" type="string" ><!--表头项悬浮背景-->
+				<default>texture.listctrl.item.bkg.hover</default>
+			</attr>
+			<attr name="HeaderItemDownBkg" type="string" ><!--表头项按下背景-->
+				<default>texture.listctrl.item.bkg.down</default>
+			</attr>
+			<attr name="HeaderItemChangeBkg" type="string" ><!--表头项拖动背景-->
+				<default>texture.listbox.header.itembkg.down</default>
+			</attr>
+			<attr name="HeaderItemAscendIcon" type="string" ><!--表头项升序图标-->
+				<default>bitmap.listbox.header.asc</default>
+			</attr>
+			<attr name="HeaderItemDescendIcon" type="string" ><!--表头项降序图标-->
+				<default>bitmap.listbox.header.des</default>
+			</attr>
+			<attr name="SplitterResId" type="string" ><!--表项间的分割线图片ID-->
+				<default>bitmap.listbox.header.splitter</default>
+			</attr>
+			<attr name="TextFont" type="string" ><!-- 表项名字的字体 -->
+				<default>default.font</default>
+			</attr>
+			<attr name="TextColor" type="string" ><!-- 表项名字的字体颜色 -->
+				<default>system.black</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<GetTableViewObj file="ListBox.xml.lua" func="ListBox_GetTableViewObj" />
+			<SetDataSourceAndDataConverter file="ListBox.xml.lua" func="ListBox_SetDataSourceAndDataConverter" />
+			<GetDataSource file="ListBox.xml.lua" func="ListBox_GetDataSource" />
+			<GetDataConverter file="ListBox.xml.lua" func="ListBox_GetDataConverter" />
+			<ReloadData file="ListBox.xml.lua" func="ListBox_ReloadData" />
+			<GetItemCount file="ListBox.xml.lua" func="ListBox_GetItemCount" />
+			<ClearAllItems file="ListBox.xml.lua" func="ListBox_ClearAllItems" />
+			<RemoveAllItems file="ListBox.xml.lua" func="ListBox_RemoveAllItems" />
+			<SelectAllItems file="ListBox.xml.lua" func="ListBox_SelectAllItems" />
+			<UnSelectAllItems file="ListBox.xml.lua" func="ListBox_UnSelectAllItems" />
+			<ExclusiveSelectItem file="ListBox.xml.lua" func="ListBox_ExclusiveSelectItem" />
+			<GetItemObjByIndex file="ListBox.xml.lua" func="ListBox_GetItemObjByIndex" />
+			<GetItemIndexByObjId file="ListBox.xml.lua" func="ListBox_GetItemIndexByObjId" />
+			<GetAllItemObj file="ListBox.xml.lua" func="ListBox_GetAllItemObj" />
+			<GetItemObjPos file="ListBox.xml.lua" func="ListBox_GetItemObjPos" />
+			<GetTotalItemHeight file="ListBox.xml.lua" func="ListBox_GetTotalItemHeight" />
+			<SetItemHeightByIndex file="ListBox.xml.lua" func="ListBox_SetItemHeightByIndex" />
+			<SetItemWidthByIndex file="ListBox.xml.lua" func="ListBox_SetItemWidthByIndex" />
+			<SetItemMaxWidth file="ListBox.xml.lua" func="ListBox_SetItemMaxWidth" />
+			<UpdateScrollInfo file="ListBox.xml.lua" func="ListBox_UpdateScrollInfo" />
+			<SetItemVisibleCompletely file="ListBox.xml.lua" func="ListBox_SetItemVisibleCompletely" />
+			<GetVScrollPos file="ListBox.xml.lua" func="ListBox_GetVScrollPos" />
+			<SetVScrollPos file="ListBox.xml.lua" func="ListBox_SetVScrollPos" />
+			<GetHScrollPos file="ListBox.xml.lua" func="ListBox_GetHScrollPos"/>
+			<GetVisibleItemRange file="ListBox.xml.lua" func="ListBox_GetVisibleItemRange" />
+			<SetScrollVisible file="ListBox.xml.lua" func="ListBox_SetScrollVisible" />
+			<GetScrollVisible file="ListBox.xml.lua" func="ListBox_GetScrollVisible" />
+			<GetShiftStartItemIndex file="ListBox.xml.lua" func="ListBox_GetShiftStartItemIndex" />
+			<SetShiftStartItemIndex file="ListBox.xml.lua" func="ListBox_SetShiftStartItemIndex" />			
+			<ReleaseDrag file="ListBox.xml.lua" func="ListBox_ReleaseDrag" />
+			
+			<InsertColumn file="ListBox.xml.lua" func="ListBox_InsertColumn" />
+			<RemoveColumn file="ListBox.xml.lua" func="ListBox_RemoveColumn" />
+			<RemoveAllColumn file="ListBox.xml.lua" func="ListBox_RemoveAllColumn" />
+			<ReloadHeader file="ListBox.xml.lua" func="ListBox_ReloadHeader" />
+			
+			<SetHeaderVisible file="ListBox.xml.lua" func="ListBox_SetHeaderVisible" />
+			<GetHeaderVisible file="ListBox.xml.lua" func="ListBox_GetHeaderVisible" />
+			<GetHeaderObjPos file="ListBox.xml.lua" func="ListBox_GetHeaderObjPos" />
+			<GetHeaderWidth file="ListBox.xml.lua" func="ListBox_GetHeaderWidth" />
+			<SetHeaderItemWidth file="ListBox.xml.lua" func="ListBox_SetHeaderItemWidth"/>
+			<GetHeaderItemWidth file="ListBox.xml.lua" func="ListBox_GetHeaderItemWidth"/>
+			<GetSortProperty file="ListBox.xml.lua" func="ListBox_GetSortProperty" />
+			<GetHeaderItemIdBySortProperty file="ListBox.xml.lua" func="ListBox_GetHeaderItemIdBySortProperty" />
+			<SetHeaderItemSortState file="ListBox.xml.lua" func="ListBox_SetHeaderItemSortState" />
+			<GetHeaderItemInfoList file="ListBox.xml.lua" func="ListBox_GetHeaderItemInfoList" />
+			<AddUserObjToHeaderItem file="ListBox.xml.lua" func="ListBox_AddUserObjToHeaderItem" />
+			<RemoveUserObjFromHeaderItem file="ListBox.xml.lua" func="ListBox_RemoveUserObjFromHeaderItem" />
+		
+			<GetTableViewObjPos file="ListBox.xml.lua" func="ListBox_GetTableViewObjPos" />
+		</method_def>
+		<event_def>
+			<OnHeaderItemSelChanged><!--HeaderItem选中改变事件-->
+				<param>
+					<string/><!--列ID-->
+					<int/><!--排序方向：-1-降序；0-图标不可见；1-升序-->
+				</param>
+			</OnHeaderItemSelChanged>
+			<OnHeaderItemPosChanged><!--HeaderItem宽度改变事件-->
+				<param>
+					<bool/><!--是否为拖动引起的事件-->
+					<table/><!--各HeaderItem的宽度列表-->
+				</param>
+			</OnHeaderItemPosChanged>
+			<OnMouseEvent> <!-- ListBox鼠标事件 -->
+				<param>
+					<string/>		<!-- 事件的类型	-->
+					<int/>			<!-- x -->
+					<int/>			<!-- y -->	
+					<int/>			<!-- flag -->
+					<layoutobj/>    <!-- 鼠标所在位置的对象， 如果为nil说明没有对象 -->
+				</param>
+			</OnMouseEvent>
+			<OnItemEvent> <!-- Item自定义事件 -->
+				<param>
+					<string/>		<!-- 事件的类型	-->
+					<table /> 		<!-- 数据table-->
+					<layoutobj/>    <!-- 对象 -->
+				</param>
+			</OnItemEvent>
+			<OnShiftStartItemIndexChange> <!-- Shift多选时第一个节点 -->
+				<param>
+					<int />			<!-- 旧索引	-->
+					<int />			<!-- 新索引	-->
+				</param>
+			</OnShiftStartItemIndexChange>
+			<OnBeginUpdateScrollInfo> <!-- 将要更新滚动条事件 -->
+				<param>
+				</param>
+			</OnBeginUpdateScrollInfo>
+			<OnVScrollChange> <!-- 垂直滚动条改变事件 -->
+				<param>
+					<int/> <!-- 垂直滚动条当前位置 -->
+				</param>
+			</OnVScrollChange>
+			<OnHScrollChange> <!-- 水平滚动条改变事件 -->
+				<param>
+					<int/> <!-- 水平滚动条当前位置 -->
+				</param>
+			</OnHScrollChange>
+			
+			<OnDrag> <!--  拖拽事件 -->
+				<param>
+					<int/> <!--  拖拽的横坐标 -->
+					<int/> <!--  拖拽的纵坐标 -->
+					<layoutobj/> <!--  拖拽框对象 -->
+					<int/> <!--  拖拽的任务索引 -->
+				</param>
+			</OnDrag>
+			<OnDragOutTableView>  <!--  拖拽出TableView事件 -->
+				<param>
+					<int/> <!--  当前拖拽到的横坐标 -->
+					<int/> <!--  当前拖拽到的纵坐标 -->
+					<layoutobj/> <!--  拖拽框对象 -->
+				</param>
+			</OnDragOutTableView>
+			<OnDragOutHostWnd>  <!--  拖拽出TableView所在窗口事件 -->
+				<param>
+					<layoutobj/> <!--  拖拽框对象 -->
+				</param>
+			</OnDragOutHostWnd>
+			<OnDropOut> <!--  拖拽出TableView并放开鼠标投下的事件 -->
+				<param>
+					<int/> <!--  放开鼠标投下的横坐标 -->
+					<int/> <!--  放开鼠标投下的纵坐标 -->
+					<layoutobj/> <!--  拖拽框对象 -->
+				</param>
+			</OnDropOut>
+			<OnDragFinish> <!--  拖拽完成的事件 -->
+			</OnDragFinish>
+		</event_def>
+		<objtemplate>
+			<children>
+				<!--List背景-->
+				<obj id="listbox.bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<limitchild>1</limitchild>
+					</attr>
+					<children>
+						<!--列表头-->
+						<obj id="listbox.header" class="WHome.ListBox.Header">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>0</width>
+								<height>0</height>
+								<visible>0</visible>
+								<zorder>1000</zorder>
+							</attr>
+							<eventlist>
+								<event name="OnSelChanged" file="ListBox.xml.lua" func="ListBoxHeader_OnSelChanged" />
+								<event name="OnItemPosChanged" file="ListBox.xml.lua" func="ListBoxHeader_OnItemPosChanged" />
+								<event name="OnHeaderMouseEvent" file="ListBox.xml.lua" func="ListBoxHeader_OnHeaderMouseEvent" />
+							</eventlist>
+						</obj>
+						<!--TableView控件-->
+						<obj id="listbox.tableview" class="WHome.TableView">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>father.width</width>
+								<height>father.height</height>
+								<limitchild>1</limitchild>
+							</attr>
+							<eventlist>
+								<event name="OnMouseEvent" file="ListBox.xml.lua" func="TableView_OnMouseEvent" />
+								<event name="OnItemEvent" file="ListBox.xml.lua" func="TableView_OnItemEvent" />
+								<event name="OnShiftStartItemIndexChange" file="ListBox.xml.lua" func="TableView_OnShiftStartItemIndexChange" />
+								<event name="OnBeginUpdateScrollInfo" file="ListBox.xml.lua" func="TableView_OnBeginUpdateScrollInfo" />
+								<event name="OnHScrollChange" file="ListBox.xml.lua" func="TableView_OnHScrollChange" />
+								<event name="OnVScrollChange" file="ListBox.xml.lua" func="TableView_OnVScrollChange" />
+								<event name="OnDrag" file="ListBox.xml.lua" func="TableView_OnDrag" />
+								<event name="OnDragOutTableView" file="ListBox.xml.lua" func="TableView_OnDragOutTableView" />
+								<event name="OnDragOutHostWnd" file="ListBox.xml.lua" func="TableView_OnDragOutHostWnd" />
+								<event name="OnDropOut" file="ListBox.xml.lua" func="TableView_OnDropOut" />
+								<event name="OnDragFinish" file="ListBox.xml.lua" func="TableView_OnDragFinish" />
+							</eventlist>
+						</obj>
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="ListBox.xml.lua" func="ListBox_OnInitControl" />
+				<event name="OnBind" file="ListBox.xml.lua" func="ListBox_OnBind" />
+				<event name="OnPosChange" file="ListBox.xml.lua" func="ListBox_OnPosChange" />
+			</eventlist>
+		</objtemplate>
+	</control>
+	
+</xlue>

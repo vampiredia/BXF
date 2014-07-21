@@ -1,0 +1,117 @@
+<xlue>
+	<control class="CoolJ.NotifyCenterChildPanelForAbout">
+		<attr_def>
+			<attr name="BorderTexture" type="string"><default>texture.tabbody.border</default></attr>
+		</attr_def>
+		<method_def>
+			
+		</method_def>
+		<event_def>
+			
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<alpha>168</alpha>
+					</attr>
+				</obj>
+				
+				<obj id="ctrl" class="LayoutObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="tableview.version.list" class="WHome.ListCtrl">
+							<attr>
+								<left>10</left>
+								<top>40</top>
+								<width>340</width>
+								<height>200</height>
+							</attr>
+							<eventlist>
+								<event name="OnInitControl" file="NotifyCenterChildPanelForAbout.xml.lua" func="LC_OnVersionInitControl" />
+							</eventlist>
+						</obj>
+						<obj id="text.version" class="TextObject">
+							<attr>
+								<left>10</left>
+								<top>50</top>
+								<width>340</width>
+								<height>60</height>
+								<halign>center</halign>
+								<valign>center</valign>
+								<text>V1.0.0.1</text>
+							</attr>
+						</obj>
+						<obj id="tableview.info.list" class="WHome.ListCtrl">
+							<attr>
+								<left>10</left>
+								<top>100</top>
+								<width>340</width>
+								<height>200</height>
+							</attr>
+							<eventlist>
+								<event name="OnInitControl" file="NotifyCenterChildPanelForAbout.xml.lua" func="LC_OnInfoInitControl" />
+							</eventlist>
+						</obj>	
+						<obj id="text.info" class="TextObject">
+							<attr>
+								<left>10</left>
+								<top>130</top>
+								<width>340</width>
+								<height>60</height>
+								<halign>center</halign>
+								<valign>center</valign>
+								<text>北京恒源天游技术有限公司
+								商务合作：010-62888888
+								技术支持：010-62345678
+								地址：北京市海淀区***</text>
+								<multiline>1</multiline>
+							</attr>
+						</obj>						
+						<obj id="tableview.suggest.list" class="WHome.ListCtrl">
+							<attr>
+								<left>360</left>
+								<top>40</top>
+								<width>340</width>
+								<height>200</height>
+							</attr>
+							<eventlist>
+								<event name="OnInitControl" file="NotifyCenterChildPanelForAbout.xml.lua" func="LC_OnSuggestInitControl" />
+							</eventlist>
+						</obj>
+						<obj id="edit.suggest" class="WHome.Edit">
+							<attr>
+								<left>360</left>
+								<top>72</top>
+								<width>330</width>
+								<height>350</height>
+								<Multiline>true</Multiline>
+							</attr>
+						</obj>
+						<obj id="btn.suggest" class="WHome.Button">
+							<attr>
+								<left>510</left>
+								<top>435</top>
+								<width>40</width>
+								<height>20</height>
+								
+								<Text>提交</Text>
+							</attr>
+						</obj>
+					</children>
+				</obj>
+						
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="NotifyCenterChildPanelForAbout.xml.lua" func="OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

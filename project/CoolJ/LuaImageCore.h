@@ -1,8 +1,8 @@
 #pragma once
 #include "./ImageCore.h"
 
-#define WIZARD_IMAGECORE_LUA_CLASS "Wizard.ImageCore.Class"
-#define WIZARD_IMAGECORE_LUA_OBJ "Wizard.ImageCore"
+#define COOLJ_IMAGECORE_LUA_CLASS "CoolJ.ImageCore.Class"
+#define COOLJ_IMAGECORE_LUA_OBJ "CoolJ.ImageCore"
 
 class LuaImageCore
 {

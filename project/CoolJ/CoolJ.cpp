@@ -89,7 +89,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 
 	AtlInitCommonControls(ICC_BAR_CLASSES);	// add flags to support other controls
 
-	//hRes = _Module.Init(NULL, hInstance, &LIBID_WizardLib);
+	//hRes = _Module.Init(NULL, hInstance, &LIBID_CoolJLib);
 	//ATLASSERT(SUCCEEDED(hRes));
 
 
@@ -167,7 +167,7 @@ bool LoadXAR()
 
 	XLUE_AddXARSearchPath(szPath);
 
-	if(XLUE_LoadXAR("wizard") != 0)
+	if(XLUE_LoadXAR("coolj") != 0)
 	{
 		::MessageBox(0, L"Load XAR failed!", 0 , 0);
 		return false;

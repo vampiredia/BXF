@@ -1,8 +1,8 @@
 #pragma once
 #include "./DataObjectHelper.h"
 
-#define DATAOBJECT_HELPER_LUA_CLASS "Wizard.DataObjectHelper.Class"
-#define DATAOBJECT_HELPER_LUA_OBJ "Wizard.DataObjectHelper"
+#define DATAOBJECT_HELPER_LUA_CLASS "CoolJ.DataObjectHelper.Class"
+#define DATAOBJECT_HELPER_LUA_OBJ "CoolJ.DataObjectHelper"
 
 class LuaDataObjectHelper
 {

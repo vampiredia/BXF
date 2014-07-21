@@ -1,0 +1,48 @@
+<xlue>
+	<control class="CoolJ.LogQueryChildPanelForOperate">
+		<attr_def>
+			<attr name="BorderTexture" type="string"><default>texture.tabbody.border</default></attr>
+		</attr_def>
+		<method_def>
+			
+		</method_def>
+		<event_def>
+			
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<alpha>168</alpha>
+					</attr>
+				</obj>
+				
+				<obj id="ctrl" class="LayoutObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj class="TextObject">
+							<attr>
+								<width>father.width</width>
+								<height>father.height</height>
+								<text>My data with you|LogQueryChildPanelForOperate</text>
+								<halign>center</halign>
+								<valign>center</valign>
+							</attr>
+						</obj>
+					</children>
+				</obj>
+						
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="LogQueryChildPanelForOperate.xml.lua" func="OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

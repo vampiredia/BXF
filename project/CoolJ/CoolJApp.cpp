@@ -172,14 +172,14 @@ IDispatch* CoolJApp::GetWebBrowserDisp()
 
 void CoolJApp::Crash()
 {
-	throw("wizard crash");
+	throw("coolj crash");
 }
 
 bool CoolJApp::GetFlashFile( std::wstring& strFile )
 {
 	wchar_t szPath[MAX_PATH];
 	::GetModuleFileName(NULL, szPath, MAX_PATH);
-	::PathCombine(szPath, szPath, L"..\\..\\samples\\Wizard\\test.swf");
+	::PathCombine(szPath, szPath, L"..\\..\\samples\\CoolJ\\test.swf");
 
 	assert(::PathFileExists(szPath));
 

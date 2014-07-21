@@ -14,7 +14,7 @@ void* __stdcall LuaSkinManager::GetInstance( void*ud )
     return CSkinManager::GetInstance();
 }
 
-static XLLRTGlobalAPI LuaWizardSkinManagerMemberFunctions[] = 
+static XLLRTGlobalAPI LuaCoolJSkinManagerMemberFunctions[] = 
 {
     {"GetBitmapHSLColor", LuaSkinManager::GetBitmapHSLColor},
     {"GetColorByPixel", LuaSkinManager::GetColorByPixel},
@@ -39,9 +39,9 @@ void LuaSkinManager::RegisterSelf( XL_LRT_ENV_HANDLE hEnv )
     }
 
     XLLRTObject theObject;
-    theObject.ClassName = WIZARD_SKINMANAGER_LUA_CLASS;
-    theObject.MemberFunctions = LuaWizardSkinManagerMemberFunctions;
-    theObject.ObjName = WIZARD_SKINMANAGER_LUA_OBJ;
+    theObject.ClassName = COOLJ_SKINMANAGER_LUA_CLASS;
+    theObject.MemberFunctions = LuaCoolJSkinManagerMemberFunctions;
+    theObject.ObjName = COOLJ_SKINMANAGER_LUA_OBJ;
     theObject.userData = NULL;
     theObject.pfnGetObject = (fnGetObject)LuaSkinManager::GetInstance;
 

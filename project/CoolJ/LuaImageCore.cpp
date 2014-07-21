@@ -15,7 +15,7 @@ void* __stdcall LuaImageCore::GetInstance( void*ud )
 	return ImageCore::GetInstance();
 }
 
-static XLLRTGlobalAPI LuaWizardImageCoreMemberFunctions[] = 
+static XLLRTGlobalAPI LuaCoolJImageCoreMemberFunctions[] = 
 {
 	{"ParseDataObject", LuaImageCore::ParseDataObject},
 	{"LoadImage", LuaImageCore::LoadImage},
@@ -33,9 +33,9 @@ void LuaImageCore::RegisterSelf( XL_LRT_ENV_HANDLE hEnv )
 	}
 
 	XLLRTObject theObject;
-	theObject.ClassName = WIZARD_IMAGECORE_LUA_CLASS;
-	theObject.MemberFunctions = LuaWizardImageCoreMemberFunctions;
-	theObject.ObjName = WIZARD_IMAGECORE_LUA_OBJ;
+	theObject.ClassName = COOLJ_IMAGECORE_LUA_CLASS;
+	theObject.MemberFunctions = LuaCoolJImageCoreMemberFunctions;
+	theObject.ObjName = COOLJ_IMAGECORE_LUA_OBJ;
 	theObject.userData = NULL;
 	theObject.pfnGetObject = (fnGetObject)LuaImageCore::GetInstance;
 

@@ -8,7 +8,7 @@
  /* File created by MIDL compiler version 8.00.0595 */
 /* at Thu Jul 17 11:51:51 2014
  */
-/* Compiler settings for Wizard.idl:
+/* Compiler settings for CoolJ.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0595 
     protocol : dce , ms_ext, c_ext, robust
     error checks: allocation ref bounds_check enum stub_data 
@@ -38,8 +38,8 @@
 #include "ole2.h"
 #endif /*COM_NO_WINDOWS_H*/
 
-#ifndef __Wizard_h__
-#define __Wizard_h__
+#ifndef __CoolJ_h__
+#define __CoolJ_h__
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1020)
 #pragma once
@@ -206,14 +206,14 @@ EXTERN_C const IID IID_IWebBrowserDisp;
 
 
 
-#ifndef __WizardLib_LIBRARY_DEFINED__
-#define __WizardLib_LIBRARY_DEFINED__
+#ifndef __CoolJLib_LIBRARY_DEFINED__
+#define __CoolJLib_LIBRARY_DEFINED__
 
-/* library WizardLib */
+/* library CoolJLib */
 /* [helpstring][version][uuid] */ 
 
 
-EXTERN_C const IID LIBID_WizardLib;
+EXTERN_C const IID LIBID_CoolJLib;
 
 EXTERN_C const CLSID CLSID_WebBrowserDisp;
 
@@ -222,7 +222,7 @@ EXTERN_C const CLSID CLSID_WebBrowserDisp;
 class DECLSPEC_UUID("0EB56842-6731-4FBC-B03C-35199395130F")
 WebBrowserDisp;
 #endif
-#endif /* __WizardLib_LIBRARY_DEFINED__ */
+#endif /* __CoolJLib_LIBRARY_DEFINED__ */
 
 /* Additional Prototypes for ALL interfaces */
 

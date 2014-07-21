@@ -1,0 +1,322 @@
+<xlue>
+	<control class="CoolJ.PublishCenterChildPanelForQA">
+		<attr_def>
+			<attr name="BorderTexture" type="string"><default>texture.tabbody.border</default></attr>
+		</attr_def>
+		<method_def>
+			<Get_QAData file="PublishCenterChildPanelForQA.xml.lua" func="Get_QAData" />
+		</method_def>
+		<event_def>
+			
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<alpha>168</alpha>
+					</attr>
+				</obj>
+				
+				<!-- 主页面、展示话题列表 -->
+				<obj id="main.page" class="LayoutObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+						<visible>false</visible>
+					</attr>
+					<children>
+						<obj id="tableview.result.list" class="WHome.ListCtrl">
+							<attr>
+								<left>5</left>
+								<top>9</top>
+								<width>father.width-10</width>
+								<height>father.height-18</height>
+							</attr>
+							<children>
+								
+							</children>
+							<eventlist>
+								<event name="OnInitControl" file="PublishCenterChildPanelForQA.xml.lua" func="LB_OnInitControl" />
+								<event name="OnListItemDbClick" file="PublishCenterChildPanelForQA.xml.lua" func="LB_OnListItemDbClick" />
+							</eventlist>
+						</obj>
+					</children>
+				</obj>
+						
+				<!-- 话题详细展示页面 -->
+				<obj id="topic.info.page" class="LayoutObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+						<visible>false</visible>
+					</attr>
+					<children>
+						<obj id="description.title" class="TextObject">
+							<attr>
+								<left>15</left>
+								<top>40</top>
+								<width>80</width>
+								<height>28</height>
+								<text>问题标题：</text>
+								<font>default.font</font>
+							</attr>
+						</obj>
+						<obj id="title" class="TextObject">
+							<attr>
+								<left>90</left>
+								<top>42</top>
+								<width>150</width>
+								<height>28</height>
+								<text>物业可不可以交电费啊</text>
+								<font>catalog.font</font>
+								<textcolor>system.navy</textcolor>
+							</attr>
+						</obj>
+						
+						<obj id="description.ID" class="TextObject">
+							<attr>
+								<left>315</left>
+								<top>40</top>
+								<width>80</width>
+								<height>28</height>
+								<text>问题 ID：</text>
+								<font>default.font</font>
+							</attr>
+						</obj>
+						<obj id="id" class="TextObject">
+							<attr>
+								<left>390</left>
+								<top>42</top>
+								<width>50</width>
+								<height>28</height>
+								<text>1234</text>
+								<font>catalog.font</font>
+								<textcolor>system.navy</textcolor>
+							</attr>
+						</obj>
+						
+						<obj id="description.author" class="TextObject">
+							<attr>
+								<left>15</left>
+								<top>70</top>
+								<width>80</width>
+								<height>28</height>
+								<text>提 交 人：</text>
+								<font>default.font</font>
+							</attr>
+						</obj>
+						<obj id="author" class="TextObject">
+							<attr>
+								<left>90</left>
+								<top>72</top>
+								<width>150</width>
+								<height>28</height>
+								<text>北京少年</text>
+								<font>catalog.font</font>
+								<textcolor>system.navy</textcolor>
+							</attr>
+						</obj>
+						
+						<obj id="description.status" class="TextObject">
+							<attr>
+								<left>315</left>
+								<top>70</top>
+								<width>80</width>
+								<height>28</height>
+								<text>状 态：</text>
+								<font>default.font</font>
+							</attr>
+						</obj>
+						<obj id="topic_status" class="TextObject">
+							<attr>
+								<left>390</left>
+								<top>72</top>
+								<width>150</width>
+								<height>28</height>
+								<text></text>
+								<font>catalog.font</font>
+								<textcolor>system.navy</textcolor>
+							</attr>
+						</obj>
+						
+						<obj id="description.content" class="TextObject">
+							<attr>
+								<left>15</left>
+								<top>100</top>
+								<width>80</width>
+								<height>28</height>
+								<text>问题描述：</text>
+								<font>default.font</font>
+							</attr>
+						</obj>
+						<obj id="content" class="WHome.RichEdit">
+							<attr>
+								<left>18</left>
+								<top>126</top>
+								<width>450</width>
+								<height>115</height>
+								<WordWrap>true</WordWrap>
+								<AllowVSB>true</AllowVSB>
+								<ReadOnly>true</ReadOnly>
+							</attr>
+						</obj>
+						
+						<obj id="description.answer" class="TextObject">
+							<attr>
+								<left>15</left>
+								<top>277</top>
+								<width>80</width>
+								<height>28</height>
+								<text>答复：</text>
+								<font>default.font</font>
+							</attr>
+						</obj>	
+						<obj id="answer" class="WHome.RichEdit">
+							<attr>
+								<left>18</left>
+								<top>301</top>
+								<width>450</width>
+								<height>110</height>
+								<WordWrap>true</WordWrap>
+								<AllowVSB>true</AllowVSB>
+							</attr>
+						</obj>
+
+						<obj id="BtnWarning" class="WHome.TextLink">
+							<attr>
+								<top>420</top>
+								<left>90</left>
+								<width>160</width>
+								<height>26</height>
+								<valign>center</valign>
+								<Text>须知</Text>
+								<TextColor>system.red</TextColor>
+							</attr>
+							<eventlist>
+								
+							</eventlist>
+						</obj>	
+
+						<obj id="BtnClose" class="WHome.Button">
+							<attr>
+								<top>420</top>
+								<left>25</left>
+								<width>60</width>
+								<height>23</height>
+								<valign>center</valign>
+								<Text>关闭</Text>	
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="PublishCenterChildPanelForQA.xml.lua" func="BTN_Close" />
+							</eventlist>
+						</obj>	
+						
+						<obj id="BtnAnswer" class="WHome.Button">
+							<attr>
+								<top>420</top>
+								<left>400</left>
+								<width>60</width>
+								<height>23</height>
+								<valign>center</valign>
+								<Text>答复</Text>	
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="PublishCenterChildPanelForQA.xml.lua" func="BTN_Reply" />
+							</eventlist>
+						</obj>
+						
+						<obj id="layout.right.area" class="LayoutObject">
+							<attr>
+								<left>515</left>
+								<top>32</top>
+								<width>176</width>
+								<height>422</height>
+							</attr>
+							<children>
+								<obj id="colorfill" class="FillObject">
+									<attr>
+										<filltype>Line</filltype>
+										<blendtype>Source</blendtype>
+										<srcpt>0,0</srcpt>
+										<destpt>0,height</destpt>
+										<alpha>255</alpha>
+										<width>father.width</width>
+										<height>father.height</height>
+										<maskleft>0</maskleft>
+										<masktop>0</masktop>
+										<maskwidth>width</maskwidth>
+										<maskheight>height</maskheight>
+										<maskblendtype>attenunate</maskblendtype>
+										<srccolor>system.purple</srccolor>
+										<destcolor>system.navy</destcolor>
+										<alpha>128</alpha>
+									</attr>
+								</obj>	
+								<obj id="BtnPrev" class="WHome.Button">
+									<attr>
+										<top>260</top>
+										<left>58</left>
+										<width>60</width>
+										<height>23</height>
+										<valign>center</valign>
+										<Text>上一条</Text>	
+									</attr>
+									<eventlist>
+										<event name="OnClick" file="PublishCenterChildPanelForQA.xml.lua" func="BTN_Prev" />
+									</eventlist>
+								</obj>		
+								<obj id="BtnNext" class="WHome.Button">
+									<attr>
+										<top>290</top>
+										<left>58</left>
+										<width>60</width>
+										<height>23</height>
+										<valign>center</valign>
+										<Text>下一条</Text>	
+									</attr>
+									<eventlist>
+										<event name="OnClick" file="PublishCenterChildPanelForQA.xml.lua" func="BTN_Next" />
+									</eventlist>
+								</obj>	
+								<obj id="BtnFAQ" class="WHome.Button">
+									<attr>
+										<top>320</top>
+										<left>58</left>
+										<width>60</width>
+										<height>23</height>
+										<valign>center</valign>
+										<Text>FAQ</Text>	
+									</attr>
+									<eventlist>
+								
+									</eventlist>
+								</obj>
+								<obj id="BtnBack" class="WHome.Button">
+									<attr>
+										<top>370</top>
+										<left>58</left>
+										<width>60</width>
+										<height>23</height>
+										<valign>center</valign>
+										<Text>返回列表</Text>	
+									</attr>
+									<eventlist>
+										<event name="OnClick" file="PublishCenterChildPanelForQA.xml.lua" func="BTN_GotoMainPage" />
+									</eventlist>
+								</obj>								
+							</children>
+						</obj>
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="PublishCenterChildPanelForQA.xml.lua" func="OnInitControl" />
+				<event name="OnVisibleChange" file="PublishCenterChildPanelForQA.xml.lua" func="OnVisibleChange" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

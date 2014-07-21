@@ -1,0 +1,213 @@
+<xlue>
+	<objtreetemplate  id="CoolJ.LoginObjTree" >
+		<attr>
+			<left>-200</left>
+			<top>-200</top>
+			<width>2000</width>
+			<height>2000</height>
+		</attr>
+		
+		<obj id="app.bkg" class="CoolJ.BkgCtrl">
+			<attr>
+				<left>0</left>
+				<top>0</top>
+				<width>386</width>
+				<height>274</height>
+			</attr>
+			<children>
+				<obj id="loginwnd.syscaption" class="WHome.System.Caption.Ctrl" >
+					<attr>							
+						<width>father.width</width>
+						<height>father.height</height>
+						<zorder>330</zorder>		
+					</attr>
+				</obj>
+				
+				<obj id="caption" class="CaptionObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>			
+					<children>
+						<obj id="loginwnd.sysbtn" class="WHome.System.ButtonEx.Ctrl" >
+							<attr>
+								<left>father.width - 70</left>
+								<top>0</top>								
+								<width>90</width>
+								<height>20</height>
+								<zorder>330</zorder>		
+								<ItemWidthIsSame>false</ItemWidthIsSame>
+								<MaxShow>false</MaxShow>
+							</attr>
+							<eventlist>
+								<event name="OnClose" file="LoginWnd.lua" func="OnClose" />
+								<event name="OnMinisize" file="LoginWnd.lua" func="OnMinisize" />
+								<event name="OnInitControl" file="LoginWnd.lua" func="OnSysBtnInitControl" />
+							</eventlist>
+						</obj>	
+					</children>
+				</obj>
+				
+				<obj id="loginwnd.body" class="LayoutObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+						<enabledrop>1</enabledrop>
+					</attr>
+					<children>
+						<!-- 底部背景图 白色 -->
+						<obj id="loginwnd.white.down.bkg" class="TextureObject">
+							<attr>
+								<top>120</top>
+								<width>father.width</width>
+								<height>father.height-120</height>
+								<texture>texture.tabbody.border</texture>
+								<alpha>198</alpha>
+							</attr>
+						</obj>
+						<!-- 头像背景框 -->
+						<obj id="lp.headimage.bkg" class="ImageObject">
+							<attr>
+								<top>128</top>
+								<left>15</left>
+								<width>86</width>
+								<height>86</height>
+								<image>texture.lp.head.image.bkg</image>
+							</attr>
+							<children>
+								<obj id="lp.headimage" class="ImageObject">
+									<attr>
+										<top>4</top>
+										<left>4</left>
+										<width>78</width>
+										<height>78</height>
+										<valign>center</valign>
+										<halign>center</halign>
+										<image>texture.user.head.pic</image>
+										<drawmode>1</drawmode>
+									</attr>
+								</obj>
+							</children>
+						</obj>
+						<!-- 注册账号 -->
+						<obj id="dologin.lbtn.registernumber" class="WHome.TextLink">
+							<attr>
+								<top>132</top>
+								<left>322</left>
+								<width>85</width>
+								<height>26</height>
+								<zorder>1000</zorder>
+								<valign>center</valign>
+								<Text>注册账号</Text>
+							</attr>
+						</obj>
+						<!-- 忘记密码 -->
+						<obj id="dologin.lbtn.forgetpassword" class="WHome.TextLink">
+							<attr>
+								<top>167</top>
+								<left>322</left>
+								<width>85</width>
+								<height>26</height>
+								<zorder>1000</zorder>
+								<valign>center</valign>
+								<Text>忘记密码</Text>
+							</attr>
+						</obj>
+						<!-- 记住密码 -->
+						<obj id="dologin.ckb.rememberpwd" class="BaseUI.CheckBox" >
+							<attr>
+								<top>200</top>
+								<left>115</left>
+								<width>85</width>
+								<height>17</height>
+								<zorder>1000</zorder>	
+								<Text>记住密码</Text>
+							</attr>
+						</obj>
+						<!-- 自动登陆 -->
+						<obj id="dologin.ckb.autologin" class="BaseUI.CheckBox" >
+							<attr>
+								<top>200</top>
+								<left>215</left>
+								<width>85</width>
+								<height>17</height>
+								<zorder>1000</zorder>	
+								<Text>自动登录</Text>
+							</attr>
+						</obj>
+						<!-- 用户名 -->
+						<obj id="dologin.edit.username" class="WHome.Edit">
+							<attr>
+								<top>132</top>
+								<left>110</left>
+								<width>206</width>
+								<height>27</height>
+								<zorder>1000</zorder>	
+								<TopMargin>10</TopMargin>
+							</attr>
+						</obj>
+						<!-- 密码 -->
+						<obj id="dologin.edit.password" class="WHome.Edit">
+							<attr>
+								<top>167</top>
+								<left>110</left>
+								<width>206</width>
+								<height>27</height>
+								<zorder>1000</zorder>	
+								<Password>true</Password>
+							</attr>
+
+						</obj>
+						<!-- 登陆按钮 -->
+						<obj id="dologin.btn.login" class="WHome.Button" >
+							<attr>
+								<top>237</top>
+								<left>160</left>
+								<width>80</width>
+								<height>27</height>
+								<zorder>1000</zorder>	
+								<Text>登录</Text>
+								<ShowFocusRect>false</ShowFocusRect>
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="LoginWnd.lua" func="OnClick" />
+							</eventlist>
+						</obj>
+						<!-- 分割线 -->
+						<obj id="dologin.static.line" class="LineObject">
+							<attr>
+								<top>220</top>
+								<width>father.width</width>
+								<height>20</height>
+								<srcpt>8,8</srcpt>
+								<destpt>width-16,8</destpt>
+								<pen>pen.solid</pen>
+								<color>system.gray</color>
+							</attr>
+						</obj>
+					</children>
+				</obj>
+	
+			</children>			
+		</obj>	
+	</objtreetemplate>
+
+	<hostwndtemplate id="CoolJ.LoginWnd" class="FrameHostWnd" >
+		<attr> 
+			<title></title>
+			<layered>0</layered>
+			<width>386</width>				<!-- 主窗口宽度 -->
+			<height>274</height>			<!-- 主窗口高度 -->
+			<visible>1</visible>
+			<enable>1</enable>
+			<sysmenu>1</sysmenu>
+			<appwindow>1</appwindow>
+			<enabledrop>1</enabledrop>
+			<ellipse>10,10</ellipse>
+		</attr>
+		
+		<eventlist>
+			<event name="OnClose" file="LoginWnd.lua" func="OnClose" />
+		</eventlist>		
+	</hostwndtemplate>	
+</xlue>

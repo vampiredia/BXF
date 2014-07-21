@@ -12,7 +12,7 @@
 class ATL_NO_VTABLE CWebBrowserDisp : 
 	public CComObjectRootEx<CComSingleThreadModel>,
 	public CComCoClass<CWebBrowserDisp, &CLSID_WebBrowserDisp>,
-	public IDispatchImpl<IWebBrowserDisp, &IID_IWebBrowserDisp, &LIBID_WizardLib, /*wMajor =*/ 0xFFFF, /*wMinor =*/ 0xFFFF>
+	public IDispatchImpl<IWebBrowserDisp, &IID_IWebBrowserDisp, &LIBID_CoolJLib, /*wMajor =*/ 0xFFFF, /*wMinor =*/ 0xFFFF>
 {
 public:
 	CWebBrowserDisp()

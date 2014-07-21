@@ -1,8 +1,8 @@
 #pragma once
 #include "./CoolJApp.h"
 
-#define WIZARD_APP_LUA_CLASS "Wizard.App.Class"
-#define WIZARD_APP_LUA_OBJ "Wizard.App"
+#define COOLJ_APP_LUA_CLASS "CoolJ.App.Class"
+#define COOLJ_APP_LUA_OBJ "CoolJ.App"
 
 class LuaCoolJApp
 {

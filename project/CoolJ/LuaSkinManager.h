@@ -1,8 +1,8 @@
 #pragma once
 #include "./SkinManager.h"
 
-#define WIZARD_SKINMANAGER_LUA_CLASS "Wizard.SkinManager.Class"
-#define WIZARD_SKINMANAGER_LUA_OBJ "Wizard.SkinManager"
+#define COOLJ_SKINMANAGER_LUA_CLASS "CoolJ.SkinManager.Class"
+#define COOLJ_SKINMANAGER_LUA_OBJ "CoolJ.SkinManager"
 
 class LuaSkinManager
 {

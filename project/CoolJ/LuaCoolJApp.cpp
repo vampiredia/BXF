@@ -45,9 +45,9 @@ void LuaCoolJApp::RegisterSelf( XL_LRT_ENV_HANDLE hEnv )
 	}
 
 	XLLRTObject theObject;
-	theObject.ClassName = WIZARD_APP_LUA_CLASS;
+	theObject.ClassName = COOLJ_APP_LUA_CLASS;
 	theObject.MemberFunctions = LuaCoolJAppMemberFunctions;
-	theObject.ObjName = WIZARD_APP_LUA_OBJ;
+	theObject.ObjName = COOLJ_APP_LUA_OBJ;
 	theObject.userData = NULL;
 	theObject.pfnGetObject = (fnGetObject)LuaCoolJApp::GetInstance;
 

@@ -90,5 +90,13 @@
 		<bitmap id="tab.icon.rights.management" path="bitmap\tab.icon.rights.management.png"/>
 		<texture id="bkg.border.shadow" type="NineInOne" image="bitmap\bkg.shadow.png"/>   
 		<texture id="texture.mainwnd.border" type="NineInOne" image="bitmap\mainwnd_border.png" />
+		
+		<!-- icon res -->
+		<icon id="wnd.big"  width="32" height="32" file="bitmap\thunder.ico" />
+		<icon id="wnd.small"  width="16" height="16" file="bitmap\thunder.ico" />
+	  
+		<!-- tray res -->
+		 <icon id="systray.big"  width="32" height="32" file="bitmap\thunder.ico" />
+		 <icon id="systray.small"  width="16" height="16" file="bitmap\thunder.ico" />
 	</resource>
 </XLUE>	

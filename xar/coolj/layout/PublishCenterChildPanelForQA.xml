@@ -190,7 +190,7 @@
 							<attr>
 								<top>420</top>
 								<left>90</left>
-								<width>160</width>
+								<width>26</width>
 								<height>26</height>
 								<valign>center</valign>
 								<Text>须知</Text>
@@ -206,8 +206,13 @@
 								<top>420</top>
 								<left>25</left>
 								<width>60</width>
-								<height>23</height>
+								<height>22</height>
 								<valign>center</valign>
+								<NormalBkgID>blue.button.normal</NormalBkgID>
+								<DownBkgID>blue.button.down</DownBkgID>
+								<DisableBkgID>blue.button.disable</DisableBkgID>
+								<HoverBkgID>blue.button.hover</HoverBkgID>
+								<TextColor>system.white</TextColor>
 								<Text>关闭</Text>	
 							</attr>
 							<eventlist>
@@ -220,8 +225,12 @@
 								<top>420</top>
 								<left>400</left>
 								<width>60</width>
-								<height>23</height>
+								<height>22</height>
 								<valign>center</valign>
+								<NormalBkgID>green.button.normal</NormalBkgID>
+								<DownBkgID>green.button.down</DownBkgID>
+								<DisableBkgID>green.button.disable</DisableBkgID>
+								<HoverBkgID>green.button.hover</HoverBkgID>
 								<Text>答复</Text>	
 							</attr>
 							<eventlist>
@@ -261,8 +270,12 @@
 										<top>260</top>
 										<left>58</left>
 										<width>60</width>
-										<height>23</height>
+										<height>22</height>
 										<valign>center</valign>
+										<NormalBkgID>green.button.normal</NormalBkgID>
+										<DownBkgID>green.button.down</DownBkgID>
+										<DisableBkgID>green.button.disable</DisableBkgID>
+										<HoverBkgID>green.button.hover</HoverBkgID>
 										<Text>上一条</Text>	
 									</attr>
 									<eventlist>
@@ -274,8 +287,12 @@
 										<top>290</top>
 										<left>58</left>
 										<width>60</width>
-										<height>23</height>
+										<height>22</height>
 										<valign>center</valign>
+										<NormalBkgID>green.button.normal</NormalBkgID>
+										<DownBkgID>green.button.down</DownBkgID>
+										<DisableBkgID>green.button.disable</DisableBkgID>
+										<HoverBkgID>green.button.hover</HoverBkgID>
 										<Text>下一条</Text>	
 									</attr>
 									<eventlist>
@@ -287,8 +304,12 @@
 										<top>320</top>
 										<left>58</left>
 										<width>60</width>
-										<height>23</height>
+										<height>22</height>
 										<valign>center</valign>
+										<NormalBkgID>blue.button.normal</NormalBkgID>
+										<DownBkgID>blue.button.down</DownBkgID>
+										<DisableBkgID>blue.button.disable</DisableBkgID>
+										<HoverBkgID>blue.button.hover</HoverBkgID>
 										<Text>FAQ</Text>	
 									</attr>
 									<eventlist>
@@ -298,10 +319,14 @@
 								<obj id="BtnBack" class="WHome.Button">
 									<attr>
 										<top>370</top>
-										<left>58</left>
-										<width>60</width>
-										<height>23</height>
+										<left>50</left>
+										<width>80</width>
+										<height>32</height>
 										<valign>center</valign>
+										<NormalBkgID>blue.big.button.normal</NormalBkgID>
+										<DownBkgID>blue.big.button.down</DownBkgID>
+										<DisableBkgID>blue.big.button.disable</DisableBkgID>
+										<HoverBkgID>blue.big.button.hover</HoverBkgID>										
 										<Text>返回列表</Text>	
 									</attr>
 									<eventlist>

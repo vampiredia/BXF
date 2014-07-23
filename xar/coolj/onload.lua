@@ -1,3 +1,17 @@
+local path = __document
+local index = string.find(path, "/[^/]*$")
+local rootDir = string.sub(path,1,index)
+local folderDir = rootDir.."lua/"
+XLSetGlobal("lua_code_dir", folderDir)
+
+local logDir = folderDir.."log.lua"
+local mdLog = XLLoadModule(logDir)
+mdLog.RegisterGlobal()
+
+local cmDir = folderDir.."CheckMethod.lua"
+local mdCheckMethod = XLLoadModule(cmDir)
+mdCheckMethod.RegisterGlobal()
+
 function CreateLoginWnd()
     local templateManager = XLGetObject("Xunlei.UIEngine.TemplateManager")
     local frameHostWndTemplate = templateManager:GetTemplate("CoolJ.LoginWnd", "HostWndTemplate")

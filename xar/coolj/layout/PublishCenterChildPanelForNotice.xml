@@ -1,13 +1,15 @@
 <xlue>
 	<control class="CoolJ.PublishCenterChildPanelForNotice">
 		<attr_def>
-			<attr name="BorderTexture" type="string"><default>texture.tabbody.border</default></attr>
+			<attr name="BorderTexture" type="string">
+				<default>texture.tabbody.border</default>
+			</attr>
 		</attr_def>
 		<method_def>
-			
+
 		</method_def>
 		<event_def>
-			
+
 		</event_def>
 		<objtemplate>
 			<children>
@@ -20,7 +22,7 @@
 						<alpha>168</alpha>
 					</attr>
 				</obj>
-				
+
 				<obj id="BtnNoticePublishWarning" class="WHome.TextLink">
 					<attr>
 						<top>5</top>
@@ -36,7 +38,7 @@
 						<event name="OnClick" file="PublishCenterChildPanelForNotice.xml.lua" func="OnClickNoticePublishWarning" />
 					</eventlist>
 				</obj>
-				
+
 				<!-- 默认发布通知主页，提供操作入口|前期使用后期tab可能采用抽屉的方式 -->
 				<obj id="main.page" class="LayoutObject">
 					<attr>
@@ -68,7 +70,7 @@
 								<valign>center</valign>
 								<Text>查看历史通知</Text>
 								<TextColor>system.orange</TextColor>
-								
+
 							</attr>
 							<eventlist>
 								<event name="OnClick" file="PublishCenterChildPanelForNotice.xml.lua" func="OnClickNoticeHistory" />
@@ -79,7 +81,7 @@
 						<event name="OnVisibleChange" file="PublishCenterChildPanelForNotice.xml.lua" func="OnMainPageVisibleChange" />
 					</eventlist>
 				</obj>
-						
+
 				<!-- 新社区通知发布 -->
 				<obj id="new.notice.page" class="LayoutObject">
 					<attr>
@@ -222,17 +224,21 @@
 								</obj>
 							</children>
 							<eventlist>
-								
+
 							</eventlist>
 						</obj>
 						<obj id="btn.new.notice.preview" class="WHome.Button">
 							<attr>
 								<top>father.height - 40</top>
 								<left>20</left>
-								<width>80</width>
-								<height>26</height>
+								<width>60</width>
+								<height>22</height>
 								<zorder>1000</zorder>	
 								<Text>预览</Text>
+								<NormalBkgID>green.button.normal</NormalBkgID>
+								<DownBkgID>green.button.down</DownBkgID>
+								<DisableBkgID>green.button.disable</DisableBkgID>
+								<HoverBkgID>green.button.hover</HoverBkgID>
 								<ShowFocusRect>false</ShowFocusRect>
 							</attr>
 						</obj>
@@ -243,6 +249,10 @@
 								<width>100</width>
 								<height>36</height>
 								<zorder>1000</zorder>	
+								<NormalBkgID>blue.big.button.normal</NormalBkgID>
+								<DownBkgID>blue.big.button.down</DownBkgID>
+								<DisableBkgID>blue.big.button.disable</DisableBkgID>
+								<HoverBkgID>blue.big.button.hover</HoverBkgID>		
 								<Text>发布</Text>
 								<ShowFocusRect>false</ShowFocusRect>
 							</attr>
@@ -258,7 +268,7 @@
 						<height>father.height</height>
 					</attr>
 					<children>
-							<obj id="BtnGotoMainPage" class="WHome.TextLink">
+						<obj id="BtnGotoMainPage" class="WHome.TextLink">
 							<attr>
 								<top>5</top>
 								<left>25</left>
@@ -371,14 +381,18 @@
 									<attr>
 										<left>600</left>
 										<top>15</top>
-										<width>60</width>
-										<height>28</height>
+										<width>48</width>
+										<height>22</height>
+										<NormalBkgID>blue.button.normal</NormalBkgID>
+										<DownBkgID>blue.button.down</DownBkgID>
+										<DisableBkgID>blue.button.disable</DisableBkgID>
+										<HoverBkgID>blue.button.hover</HoverBkgID>		
 										<Text>搜索</Text>
 									</attr>
 								</obj>
 							</children>
 							<eventlist>
-								
+
 							</eventlist>
 						</obj>
 						<obj id="layout.result.list.area" class="LayoutObject">
@@ -406,7 +420,7 @@
 										<height>father.height</height>
 									</attr>
 									<children>
-										
+
 									</children>
 									<eventlist>
 										<event name="OnInitControl" file="PublishCenterChildPanelForNotice.xml.lua" func="LB_OnInitControl" />
@@ -417,7 +431,7 @@
 						</obj>
 					</children>
 					<eventlist>
-						
+
 					</eventlist>
 				</obj>
 			</children>

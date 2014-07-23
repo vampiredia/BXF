@@ -1,4 +1,4 @@
-<xule>
+<xlue>
 	<!-- 个性化list item，针对内部数据可以直接修改|保存操作 
 			整个Item内包含一个TextObject、EditObject、WHome.ImageButton。
 			默认情况下只显示TextObject，可修改状态下只显示EditObject，鼠标所在行的
@@ -7,46 +7,63 @@
 	<control class="WHome.ListGrid">
 		<attr_def>
 			<attr name="ItemStatus" type="string" >
-				<default>readonly</default> <!-- 2个状态|只读、可修改|readonly|write -->
+				<default>readonly</default>
+				<!-- 2个状态|只读、可修改|readonly|write -->
 			</attr>
-			
+
 			<attr name="ItemPaddingTop" type="int" />
 			<attr name="ItemPaddingLeft" type="int" />
 			<attr name="ItemPaddingRight" type="int" />
 			<attr name="ItemPaddingBottom" type="int" />
-			
+
 			<attr name="NormalBkgID" type="string" />
 			<attr name="HoverBkgID" type="string" />
 			<attr name="DownBkgID" type="string" />
 			<attr name="DisableBkgID" type="string" />
 			<attr name="SelectedBkgID" type="string" />
-			
+
 			<attr name="NormalTextColor" type="string" />
 			<attr name="ModifyTextColor" type="string" />
-			
+
 			<attr name="BtnWidth" type="string" />
 			<attr name="BtnHalign" type="string" >
-				<default>left</default> <!-- 特制属性，用来描述按钮位于行首还是行尾的标志 -->
+				<default>left</default>
+				<!-- 特制属性，用来描述按钮位于行首还是行尾的标志 -->
 			</attr>
-			
-			<attr name="Halign" type="string" ><default>left</default></attr>
+
+			<attr name="Halign" type="string" >
+				<default>left</default>
+			</attr>
 			<attr name="Text" type="string" />
-			<attr name="ItemTextID" type="int" ><default>1</default></attr>
-			<attr name="ItemEditID" type="int" ><default>2</default></attr>
-			<attr name="ItemBtnDelID" type="int" ><default>3</default></attr>
-			<attr name="ItemBtnAddID" type="int" ><default>4</default></attr>
-			<attr name="ItemType" type="int" ><default>1</default></attr> <!-- 1|标准item、2|删除整行、3|增加新列 -->
+			<attr name="ItemTextID" type="int" >
+				<default>1</default>
+			</attr>
+			<attr name="ItemEditID" type="int" >
+				<default>2</default>
+			</attr>
+			<attr name="ItemBtnDelID" type="int" >
+				<default>3</default>
+			</attr>
+			<attr name="ItemBtnAddID" type="int" >
+				<default>4</default>
+			</attr>
+			<attr name="ItemType" type="int" >
+				<default>1</default>
+			</attr>
+			<!-- 1|标准item、2|删除整行、3|增加新列 -->
 		</attr_def>
 		<method_def>
 			<UpdateUI file="ListItem.xml.lua" func="UpdateUI" />
 		</method_def>
 		<event_def>
-			<OnItemStatusChanged><!-- Item状态改变事件 -->
+			<OnItemStatusChanged>
+				<!-- Item状态改变事件 -->
 				<param>
-					<string/><!--ItemStatus-->
+					<string/>
+					<!--ItemStatus-->
 				</param>
 			</OnItemStatusChanged>
-			
+
 		</event_def>
 		<objtemplate>
 			<children>
@@ -64,29 +81,40 @@
 				<event name="OnItemStatusChanged" file="ListItem.xml.lua" func="OnItemStatusChanged" />
 			</event_list>
 		</objtemplate>
+		<eventlist>
+		</eventlist>
 	</control>
 
 	<control class="WHome.ListItem">
 		<attr_def>
-			<attr name="SelectBkgTexture" type="string"><default></default></attr>
-			<attr name="EvenItemBkgTexture" type="string"><default></default></attr>
-			<attr name="HoverItemBkgTexture" type="string"><default></default></attr>
-			<attr name="NormalItemBkgTexture" type="string"><default></default></attr>
+			<attr name="SelectBkgTexture" type="string">
+				<default/>
+			</attr>
+			<attr name="EvenItemBkgTexture" type="string">
+				<default/>
+			</attr>
+			<attr name="HoverItemBkgTexture" type="string">
+				<default/>
+			</attr>
+			<attr name="NormalItemBkgTexture" type="string">
+				<default/>
+			</attr>
 		</attr_def>
 		<method_def>
 			<InitControl file="ListItem.xml.lua" func="Item_InitControl" />
-			
+
 			<FillData file="ListItem.xml.lua" func="Item_FillData" />
 			<GetData file="ListItem.xml.lua" func="Item_GetData" />
-			
+
 			<SetSelect file="ListItem.xml.lua" func="Item_SetSelect" />
 			<GetSelect file="ListItem.xml.lua" func="Item_GetSelect" />
-			
+
 		</method_def>
 		<event_def>
 			<OnItemMouseEvent>
 				<param>
-					<string/>	<!--事件类型	OnMouseWheel,OnLButtonDown,OnLButtonUp,OnLButtonDbClick,OnRButtonDown,OnRButtonUp,OnRButtonDbClick,OnMouseMove,OnMouseHover-->
+					<string/>
+					<!--事件类型	OnMouseWheel,OnLButtonDown,OnLButtonUp,OnLButtonDbClick,OnRButtonDown,OnRButtonUp,OnRButtonDbClick,OnMouseMove,OnMouseHover-->
 					<int/>
 					<int/>
 					<int/>
@@ -94,16 +122,22 @@
 			</OnItemMouseEvent>
 			<OnItemKeyEvent>
 				<param>
-					<string/>				<!--OnKeyDown		OnKeyUp		OnChar		-->
+					<string/>
+					<!--OnKeyDown		OnKeyUp		OnChar		-->
 					<ulong/>
 					<ushort/>
 					<ushort/>
 				</param>
+
 			</OnItemKeyEvent>
+
 			<OnDelItemEvent>
 				<param>
-					<int/>					<!-- ListItemIndex -->
+					<int/>
+					<!-- ListItemIndex -->
 				</param>
+			</OnDelItemEvent>
+			<OnDelEvent>
 			</OnDelEvent>
 			<OnAddItemEvent>
 				<param>
@@ -131,11 +165,11 @@
 				<event name="OnRButtonDown" file="ListItem.xml.lua" func="Item_OnRButtonDown" />
 				<event name="OnRButtonUp" file="ListItem.xml.lua" func="Item_OnRButtonUp" />
 				<event name="OnRButtonDbClick" file="ListItem.xml.lua" func="Item_OnRButtonDbClick" />
-				
+
 				<event name="OnMouseMove" file="ListItem.xml.lua" func="Item_OnMouseMove" />
 				<event name="OnMouseHover" file="ListItem.xml.lua" func="Item_OnMouseHover" />
 				<event name="OnMouseLeave" file="ListItem.xml.lua" func="Item_OnMouseLeave" />
-				
+
 				<event name="OnMouseWheel" file="ListItem.xml.lua" func="Item_OnMouseWheel" />
 
 				<event name="OnKeyDown" file="ListItem.xml.lua" func="Item_OnKeyDown" />
@@ -143,5 +177,7 @@
 				<event name="OnChar" file="ListItem.xml.lua" func="Item_OnChar" />
 			</eventlist>
 		</objtemplate>
+		<eventlist>
+		</eventlist>
 	</control>
-</xule>
+</xlue>

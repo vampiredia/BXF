@@ -192,7 +192,7 @@
 										<transparent>1</transparent>
 									</attr>
 									<children>
-										<obj id="vsb" class="WHome.ScrollBar">
+										<obj id="vsb" class="BaseUI.ScrollBar">
 											<attr>
 												<Type>1</Type>
 												<NormalBkn>texture.vsb.big.bkg.normal</NormalBkn>
@@ -226,7 +226,7 @@
 												<event name="OnScrollBarMouseWheel" file="Edit.xml.lua" func="OnScrollBarMouseWheel" />
 											</eventlist>			
 										</obj>
-										<obj id="hsb" class="WHome.ScrollBar">
+										<obj id="hsb" class="BaseUI.ScrollBar">
 											<attr>
 												<Type>0</Type>
 												<NormalBkn>texture.hsb.big.bkg.normal</NormalBkn>

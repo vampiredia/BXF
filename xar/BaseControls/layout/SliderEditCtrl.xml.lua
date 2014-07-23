@@ -148,7 +148,7 @@ function Slider__OnLButtonDown(self)
 end
 
 function OnInitControl(self)
-	--È«¼üÅÌÖ§³Ö¿Ø¼ş
+	--å…¨é”®ç›˜æ”¯æŒæ§ä»¶
 	local tabKeySupportObj = self:GetControlObject("TabKeySupport.edit")
 	local edit = self:GetControlObject("SliderEdit.EditBox")
 	tabKeySupportObj:RegisterTabObj(edit, nil, nil, nil, true, nil)

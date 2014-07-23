@@ -1,13 +1,15 @@
 <xlue>
 	<control class="CoolJ.PublishCenterChildPanelForAnnouncement">
 		<attr_def>
-			<attr name="BorderTexture" type="string"><default>texture.tabbody.border</default></attr>
+			<attr name="BorderTexture" type="string">
+				<default>texture.tabbody.border</default>
+			</attr>
 		</attr_def>
 		<method_def>
-			
+
 		</method_def>
 		<event_def>
-			
+
 		</event_def>
 		<objtemplate>
 			<children>
@@ -20,25 +22,50 @@
 						<alpha>168</alpha>
 					</attr>
 				</obj>
-				
+
 				<obj id="ctrl" class="LayoutObject">
 					<attr>
 						<width>father.width</width>
 						<height>father.height</height>
 					</attr>
 					<children>
-						<obj class="TextObject">
+						<obj id="listview" class="ListView">
 							<attr>
-								<width>father.width</width>
-								<height>father.height</height>
-								<text>My data with you|精彩即将到来...</text>
-								<halign>center</halign>
-								<valign>center</valign>
+								<left>10</left>
+								<top>50 + 30</top>
+								<width>520</width>
+								<height>father.height-130</height>
+								<!-- 以下属性如果用户不设置,会用默认值 -->
+								<!-- 以下属性的值就是默认值 -->
+								<BackgroundTexture/>
+								<ScrollBarClassNameV>ListView.ScrollBarV</ScrollBarClassNameV>
+								<ScrollBarClassNameH>ListView.ScrollBarH</ScrollBarClassNameH>
+								<ScrollBarSize>20</ScrollBarSize>
+								<HeaderClassName>ListView.Header</HeaderClassName>
+								<HeaderHeight>30</HeaderHeight>
+								<PreloadDataCount>50</PreloadDataCount>
 							</attr>
+							<eventlist>
+								<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.lua" func="OnInitControl_ListView" />
+								<event name="OnDestroy" file="PublishCenterChildPanelForAnnouncement.lua" func="OnDestroy_ListView" />
+								<event name="VerticalScrollPosChanged">
+									-- 监听自定义控件自定义事件方法一:
+									-- 请注意参数获取及参数顺序
+									local arg={...}
+									local listViewObj = arg[1]
+									local eventName = arg[2]
+									local oldPos = arg[3]
+									local newPos =arg[4]
+								</event>
+								<event name="VisibleItemChanged">
+									local arg={...}
+									-- Warn("first:"..(arg[3]).." last:"..(arg[4]))
+								</event>
+							</eventlist>
 						</obj>
 					</children>
 				</obj>
-						
+
 			</children>
 			<eventlist>
 				<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.lua" func="OnInitControl" />

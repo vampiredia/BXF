@@ -38,6 +38,11 @@
 	<texture id="texture.btn.default.ani" type="ThreeInOneH" imagelist="button.default.ani" index="1"/>
 	<texture id="texture.btn.default.normal" type="ThreeInOneH" imagelist="button.default.ani" index="2"/>
 	
+	<imagelist id="imagelist.search.bkg" splitter="1" blocksize="16" image="button\imagelist.search.bkg.png"/>
+	<texture id="texture.btn.search.down" type="Stretch" imagelist="imagelist.search.bkg" index="1"/>
+	<texture id="texture.btn.search.normal" type="Stretch" imagelist="imagelist.search.bkg" index="2"/>
+	<texture id="texture.btn.search.hover" type="Stretch" imagelist="imagelist.search.bkg" index="3"/>
+	
 	<font id="button.default.font" height="12" facename="微软雅黑"/>
 </resource>
 </xlue>

@@ -156,9 +156,9 @@ function OnBind(self)
 	end
 	
 	if not attr.EditCustom then
-		attr.EditLeft = 4
-		attr.EditTop = 3
-		attr.EditWidth = "father.width - 8"
+		attr.EditLeft = 0
+		attr.EditTop = 4
+		attr.EditWidth = "father.width - 4"
 		attr.EditHeight = "father.height - 7"
 	end
     edit:SetObjPos(attr.EditLeft, attr.EditTop, ""..attr.EditLeft.."+"..attr.EditWidth, ""..attr.EditTop.."+"..attr.EditHeight)
@@ -398,7 +398,7 @@ function OnInitControl(self)
 		tabKeyEdit:RegisterTabObj(self, nil, nil, nil, true, rectPos)
 	end
 	
-	
+	self:SetBorder(self:GetBorder())
 end
 
 function OnFocusChange( self, status )
@@ -787,4 +787,17 @@ end
 function SetControlEnableTab(self, bEnable)
 	local tabKeyEdit = self:GetControlObject("tabKey.Edit")
 	tabKeyEdit:SetTabEnable(bEnable)
+end
+
+function SetBorder(self, status)
+	local attr = self:GetAttribute()
+	
+	attr.Border = status
+	self:GetControlObject("newedit.bkg"):SetVisible(status)
+	--self:GetControlObject("newedit.bkg"):SetChildrenVisible(status)
+end
+
+function GetBorder(self)
+	local attr = self:GetAttribute()
+	return attr.Border
 end

@@ -21,7 +21,7 @@
 			</attr>
 			
 			<attr name="BkgHoverBitmapID" type="string" >
-				<default>texture.vsb.bkg.normal</default>
+				<default></default>
 			</attr>	
 			<attr name="BkgNormalBitmapID" type="string">
 				<default>texture.vsb.bkg.hover</default>	
@@ -220,9 +220,9 @@
 	<objtemplate id="BaseUI.VScrollBar">
 		<attr>
 			<width>12</width>
-			<BkgNormalBitmapID>texture.vsb.bkg.normal</BkgNormalBitmapID>
-			<BkgHoverBitmapID>texture.vsb.bkg.hover</BkgHoverBitmapID>
-			<BkgDisableBitmapID>texture.vsb.bkg.normal</BkgDisableBitmapID>
+			<BkgNormalBitmapID></BkgNormalBitmapID>
+			<BkgHoverBitmapID></BkgHoverBitmapID>
+			<BkgDisableBitmapID></BkgDisableBitmapID>
 			
 			<PreBtnNormalBitmapID>texture.vsb.prebtn.normal</PreBtnNormalBitmapID>
 			<PreBtnHoverBitmapID>texture.vsb.prebtn.hover</PreBtnHoverBitmapID>

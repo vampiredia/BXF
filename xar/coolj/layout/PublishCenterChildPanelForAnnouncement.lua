@@ -15,7 +15,7 @@ function GetTextItemFactory()
 				return button
 			else return objFactory:CreateUIObject(nil,"TextObject") end
 			]]
-			return objFactory:CreateUIObject(nil,"TextObject")
+			return objFactory:CreateUIObject(nil,"WHome.Edit")
 		end
 	callbackTable.GetRowHeight = 
 		function (userdata)
@@ -31,12 +31,8 @@ function GetTextItemFactory()
 			if itemObj == nil then return end
 			if data ~= nil then
 				itemObj:SetText(data)
-				--[[
-				if column == 6 then
-					itemObj:GetAttribute().row = row
-					itemObj:GetAttribute().column = column
-				end
-				]]
+				itemObj:SetBorder(false)
+				itemObj:SetReadOnly(true)
 			end
 		end
 	callbackTable.SetItemPos2 = 
@@ -44,7 +40,7 @@ function GetTextItemFactory()
 			if itemObj~=nil and itemObj:GetClass()=="WHome.Button" then
 				itemObj:SetObjPos2(left+10, top, 30, 30)
 				end
-			if itemObj~=nil and itemObj:GetClass()=="TextObject" then
+			if itemObj~=nil and itemObj:GetClass()=="WHome.Edit" then
 				itemObj:SetObjPos2(left, top, width, height) end
 		end
 	return userdata, callbackTable
@@ -145,6 +141,17 @@ function GetSimpleDataModelObject()
 				callbackTable.DataChangeListener(row, row)
 			end
 		end
+	
+	operation.Edit = 
+		function ()
+			return 
+		end
+		
+	operation.Save = 
+		function ()
+			return 
+		end
+		
 	return nil, callbackTable
 end
 
@@ -153,7 +160,7 @@ end
 function OnInitControl(self)
 	local attr = self:GetAttribute()
 	local bkg = self:GetControlObject("bkg")
-	bkg:SetTextureID(attr.BorderTexture)
+	--bkg:SetTextureID(attr.BorderTexture)
 end
 
 local GlobalListView = nil 

@@ -4,7 +4,7 @@ local table_data = nil
 function OnInitControl(self)
 	local attr = self:GetAttribute()
 	local bkg = self:GetControlObject("bkg")
-	bkg:SetTextureID(attr.BorderTexture)
+	--bkg:SetTextureID(attr.BorderTexture)
 	
 	local controlObj = self:GetOwnerControl()
 	local oldObj = self:GetObject("new.notice.page")

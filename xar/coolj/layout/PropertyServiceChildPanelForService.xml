@@ -1,16 +1,20 @@
 <xlue>
 	<control class="CoolJ.PropertyServiceChildPanelForService">
 		<attr_def>
-			<attr name="BorderTexture" type="string"><default>texture.tabbody.border</default></attr>
-			<attr name="Status" type="string" ><default>readonly</default></attr>
+			<attr name="BorderTexture" type="string">
+				<default>texture.tabbody.border</default>
+			</attr>
+			<attr name="Status" type="string" >
+				<default>readonly</default>
+			</attr>
 		</attr_def>
 		<method_def>
 			<Get_PropertyServiceInfo file="PropertyServiceChildPanelForService.xml.lua" func="Get_PropertyServiceInfo"/>
 			<HttpRequest file="PropertyServiceChildPanelForService.xml.lua" func="HttpRequest"/>
-			
+
 		</method_def>
 		<event_def>
-			
+
 		</event_def>
 		<objtemplate>
 			<children>
@@ -23,7 +27,7 @@
 						<alpha>168</alpha>
 					</attr>
 				</obj>
-				
+
 				<obj id="ctrl" class="LayoutObject">
 					<attr>
 						<width>father.width</width>
@@ -32,11 +36,24 @@
 					<children>
 						<obj id="text.tip.header" class="TextObject">
 							<attr>
-								<top>10</top>
+								<top>40</top>
 								<left>15</left>
 								<width>father.width</width>
 								<height>18</height>
 								<text>选择服务类型</text>
+								<font>default.font.bold</font>
+								<halign>left</halign>
+								<valign>center</valign>
+							</attr>
+						</obj>
+						<obj id="text.tip.sub.header" class="TextObject">
+							<attr>
+								<top>40</top>
+								<left>192</left>
+								<width>father.width</width>
+								<height>18</height>
+								<text>详细信息</text>
+								<textcolor>system.blue</textcolor>
 								<font>default.font.bold</font>
 								<halign>left</halign>
 								<valign>center</valign>
@@ -51,9 +68,117 @@
 								<Text>编辑</Text>
 							</attr>
 							<eventlist>
-								
+								<event name="OnClick" file="PropertyServiceChildPanelForService.xml.lua" func="BES_OnClick" />
 							</eventlist>
 						</obj>
+						<obj id="main.listview" class="ListView">
+							<attr>
+								<left>10</left>
+								<top>60</top>
+								<width>170</width>
+								<height>father.height-95</height>
+								<!-- 以下属性如果用户不设置,会用默认值 -->
+								<!-- 以下属性的值就是默认值 -->
+								<BackgroundTexture/>
+								<ScrollBarClassNameV>ListView.ScrollBarV</ScrollBarClassNameV>
+								<ScrollBarClassNameH>ListView.ScrollBarH</ScrollBarClassNameH>
+								<ScrollBarSize>20</ScrollBarSize>
+								<HeaderClassName>ListView.Header</HeaderClassName>
+								<HeaderHeight>30</HeaderHeight>
+								<PreloadDataCount>50</PreloadDataCount>
+							</attr>
+							<eventlist>
+								<event name="OnInitControl" file="PropertyServiceChildPanelForService.xml.lua" func="OnInitControl_Main_ListView" />
+								<event name="OnDestroy" file="PropertyServiceChildPanelForService.xml.lua" func="OnDestroy_Main_ListView" />
+								<event name="VerticalScrollPosChanged">
+									-- 监听自定义控件自定义事件方法一:
+									-- 请注意参数获取及参数顺序
+									local arg={...}
+									local listViewObj = arg[1]
+									local eventName = arg[2]
+									local oldPos = arg[3]
+									local newPos =arg[4]
+								</event>
+								<event name="VisibleItemChanged">
+									local arg={...}
+									-- Warn("first:"..(arg[3]).." last:"..(arg[4]))
+								</event>
+							</eventlist>
+						</obj>	
+						<obj id="sub.listview" class="ListView">
+							<attr>
+								<left>190</left>
+								<top>60</top>
+								<width>509</width>
+								<height>father.height-95</height>
+								<!-- 以下属性如果用户不设置,会用默认值 -->
+								<!-- 以下属性的值就是默认值 -->
+								<BackgroundTexture/>
+								<ScrollBarClassNameV>ListView.ScrollBarV</ScrollBarClassNameV>
+								<ScrollBarClassNameH>ListView.ScrollBarH</ScrollBarClassNameH>
+								<ScrollBarSize>20</ScrollBarSize>
+								<HeaderClassName>ListView.Header</HeaderClassName>
+								<HeaderHeight>30</HeaderHeight>
+								<PreloadDataCount>50</PreloadDataCount>
+							</attr>
+							<eventlist>
+								<event name="OnInitControl" file="PropertyServiceChildPanelForService.xml.lua" func="OnInitControl_Sub_ListView" />
+								<event name="OnDestroy" file="PropertyServiceChildPanelForService.xml.lua" func="OnDestroy_Sub_ListView" />
+								<event name="VerticalScrollPosChanged">
+									-- 监听自定义控件自定义事件方法一:
+									-- 请注意参数获取及参数顺序
+									local arg={...}
+									local listViewObj = arg[1]
+									local eventName = arg[2]
+									local oldPos = arg[3]
+									local newPos =arg[4]
+								</event>
+								<event name="VisibleItemChanged">
+									local arg={...}
+									-- Warn("first:"..(arg[3]).." last:"..(arg[4]))
+								</event>
+							</eventlist>
+						</obj>	
+						<obj id="btn.main.add" class="WHome.Button">
+							<attr>
+								<top>father.height - 25</top>
+								<left>60</left>
+								<width>48</width>
+								<height>22</height>
+								<zorder>1000</zorder>	
+								<Text>添加</Text>
+								<NormalBkgID>green.button.normal</NormalBkgID>
+								<DownBkgID>green.button.down</DownBkgID>
+								<DisableBkgID>green.button.disable</DisableBkgID>
+								<HoverBkgID>green.button.hover</HoverBkgID>
+								<ShowFocusRect>false</ShowFocusRect>
+								<visible>false</visible>
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="PropertyServiceChildPanelForService.xml.lua" func="BTN_Main_Add" />
+							</eventlist>
+							
+						</obj>
+						<obj id="btn.sub.add" class="WHome.Button">
+							<attr>
+								<top>father.height - 25</top>
+								<left>450</left>
+								<width>48</width>
+								<height>22</height>
+								<zorder>1000</zorder>	
+								<Text>添加</Text>
+								<NormalBkgID>green.button.normal</NormalBkgID>
+								<DownBkgID>green.button.down</DownBkgID>
+								<DisableBkgID>green.button.disable</DisableBkgID>
+								<HoverBkgID>green.button.hover</HoverBkgID>
+								<ShowFocusRect>false</ShowFocusRect>
+								<visible>false</visible>
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="PropertyServiceChildPanelForService.xml.lua" func="BTN_Sub_Add" />
+							</eventlist>							
+						</obj>								
+						<!--
 						<obj id="tableview.service.list" class="WHome.ListCtrl">
 							<attr>
 								<top>40</top>
@@ -83,9 +208,10 @@
 								<event name="OnInitControl" file="PropertyServiceChildPanelForService.xml.lua" func="LB_SubService_OnInitControl" />
 							</eventlist>
 						</obj>
+						-->
 					</children>
 				</obj>
-						
+
 			</children>
 			<eventlist>
 				<event name="OnInitControl" file="PropertyServiceChildPanelForService.xml.lua" func="OnInitControl" />

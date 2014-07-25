@@ -41,7 +41,7 @@
 				<default>0</default>
 			</attr>
 			<attr name="EditTop" type="int" >
-				<default>0</default>
+				<default>5</default>
 			</attr>
 			<attr name="EditWidth" type="string" >
 				<default>0</default>
@@ -96,6 +96,9 @@
 			<attr name="MenuID" type="string" >
 				<default>context_menu</default>
 			</attr>
+			<attr name="Border" type="bool">
+				<default>true</default>
+			</attr>
         </attr_def>
         <method_def>
             <SetReadOnly file="Edit.xml.lua" func="SetReadOnly" />
@@ -126,6 +129,10 @@
 			<!--全键盘支持-->
 			<SetControlTabOrder file = "Edit.xml.lua" func = "SetControlTabOrder" />
 			<SetContorlEnableTab file = "Edit.xml.lua" func = "SetControlEnableTab" />
+			
+			<!-- Border -->
+			<SetBorder file="Edit.xml.lua" func="SetBorder" />
+			<GetBorder file="Edit.xml.lua" func="GetBorder" />
         </method_def>
         <event_def>
             <OnEditChange>

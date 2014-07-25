@@ -7,7 +7,7 @@ local table_service = nil
 function OnInitControl(self)
 	local attr = self:GetAttribute()
 	local bkg = self:GetControlObject("bkg")
-	bkg:SetTextureID(attr.BorderTexture)
+	--bkg:SetTextureID(attr.BorderTexture)
 end
 
 function LB_Service_OnInitControl(self)

@@ -29,6 +29,23 @@
 						<height>father.height</height>
 					</attr>
 					<children>
+						<obj id="edit" class="WHome.Edit">
+							<attr>
+								<left>10</left>
+								<top>35</top>
+								<width>520</width>
+								<height>24</height>
+								<readonly>1</readonly>
+								<text>hello world</text>
+								<transparent>1</transparent>
+							</attr>
+							<children>
+								
+							</children>
+							<eventlist>
+								
+							</eventlist>
+						</obj>
 						<obj id="listview" class="ListView">
 							<attr>
 								<left>10</left>

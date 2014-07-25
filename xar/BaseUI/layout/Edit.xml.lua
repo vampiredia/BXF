@@ -195,9 +195,9 @@ function OnBind(self)
 	
 	if not attr.EditCustom then
 		attr.EditLeft = 0
-		attr.EditTop = 4
+		attr.EditTop = 6
 		attr.EditWidth = "father.width - 1"
-		attr.EditHeight = "father.height - 4"
+		attr.EditHeight = "father.height - 2"
 	end
     edit:SetObjPos(attr.EditLeft, attr.EditTop, ""..attr.EditLeft.."+"..attr.EditWidth, ""..attr.EditTop.."+"..attr.EditHeight)
     self:SetEnable(attr.Enable)

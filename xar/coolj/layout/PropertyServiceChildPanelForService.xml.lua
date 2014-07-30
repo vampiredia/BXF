@@ -1,38 +1,48 @@
 -------------------------------------------------------------------------------
 -- global values for table list view
 -------------------------------------------------------------------------------
-local json_data = '{ "error_msg": "成功", "result": { "service_list": [ { "id": 2, "name": "蔬菜水果", "service": [] }, { "id": 1, "name": "家电维修", "service": [ { "area_code": null, "content": "50元/台", "id": 8, "name": "空调加氟", "pid": 1, "telphone": "13810030293" }, { "area_code": "010", "content": "30元/个", "id": 9, "name": "电脑维修", "pid": 1, "telphone": "8222222" }, { "area_code": null, "content": "无上门费", "id": 5, "name": "电视", "pid": 1, "telphone": "18601082187" }, { "area_code": null, "content": "无上门费", "id": 6, "name": "电冰箱", "pid": 1, "telphone": "13898712120" }, { "area_code": null, "content": "无上们分", "id": 7, "name": "空调移机", "pid": 1, "telphone": "13827362819" } ] }, { "id": 11, "name": "烟酒饮料", "service": [] }, { "id": 10, "name": "宽带服务", "service": [] }, { "id": 4, "name": "饮用水", "service": [] }, { "id": 2, "name": "蔬菜水果", "service": [] } ], "stime": 1405328297 }, "ret": 0 }'
+--local json_data = '{ "error_msg": "成功", "result": { "service_list": [ { "id": 2, "name": "蔬菜水果", "service": [] }, { "id": 1, "name": "家电维修", "service": [ { "area_code": null, "content": "50元/台", "id": 8, "name": "空调加氟", "pid": 1, "telphone": "13810030293" }, { "area_code": "010", "content": "30元/个", "id": 9, "name": "电脑维修", "pid": 1, "telphone": "8222222" }, { "area_code": null, "content": "无上门费", "id": 5, "name": "电视", "pid": 1, "telphone": "18601082187" }, { "area_code": null, "content": "无上门费", "id": 6, "name": "电冰箱", "pid": 1, "telphone": "13898712120" }, { "area_code": null, "content": "无上们分", "id": 7, "name": "空调移机", "pid": 1, "telphone": "13827362819" } ] }, { "id": 11, "name": "烟酒饮料", "service": [] }, { "id": 10, "name": "宽带服务", "service": [] }, { "id": 4, "name": "饮用水", "service": [] }, { "id": 2, "name": "蔬菜水果", "service": [] } ], "stime": 1405328297 }, "ret": 0 }'
 local table_service = nil
 local json = require('json')
 
 local operation = {}
-local GlobalObjEdit = {}
+
+local GlobalObj = {}
 local GlobalDataTable = {}
 local GlobalReadOnly = true
-local GlobalListIndex = nil
 local GlobalControl = nil
-GlobalDataTable = json.decode(json_data).result.service_list
---XLMessageBox(json.encode(GlobalDataTable))
+--GlobalDataTable = json.decode(json_data).result.service_list
 
 -- operation
 operation.Edit = 
 	function ()
-		for i=1, #GlobalObjEdit do
-			local obj = GlobalObjEdit[i]
+		for i=1, #GlobalObj do
+			local obj = GlobalObj[i]
 			if obj:GetClass() == "WHome.Edit" then
 				obj:SetBorder(true)
 				obj:SetReadOnly(false)					
+			end
+			if obj:GetClass() == "WHome.Button" then 
+				obj:SetText("删")
+				obj:SetVisible(true) 
 			end
 		end
 	end
 
 operation.Save = 
 	function ()
-		for i=1, #GlobalObjEdit do
-			local obj = GlobalObjEdit[i]
+		for i=1, #GlobalObj do
+			local obj = GlobalObj[i]
 			if obj:GetClass() == "WHome.Edit" then
 				obj:SetBorder(false)
 				obj:SetReadOnly(true)					
+			end
+
+			if obj:GetClass() == "WHome.Button" and obj:GetAttribute().service == "main" then 
+				obj:SetText("查") 
+			end
+			if obj:GetClass() == "WHome.Button" and obj:GetAttribute().service == "sub" then 
+				obj:SetVisible(false)
 			end
 		end
 		
@@ -63,15 +73,16 @@ function GetMainItemFactory()
 				itemObj:SetBorder(not GlobalReadOnly)
 				itemObj:SetReadOnly(GlobalReadOnly)
 				local cookie, ret = itemObj:AttachListener("OnEditChange", true, OnEditChange)
-				table.insert(GlobalObjEdit, itemObj)
+				table.insert(GlobalObj, itemObj)
 			end
 			if column == 3 then 
 				itemObj = objFactory:CreateUIObject(nil, "WHome.Button")
 				itemObj:GetAttribute().NormalBkgID = "blue.big.button.normal"
 				itemObj:GetAttribute().DownBkgID = "blue.big.button.down"
 				itemObj:GetAttribute().HoverBkgID = "blue.big.button.hover"
-				
+				itemObj:SetText("查")
 				local cookie, ret = itemObj:AttachListener("OnClick", true, MLV_OnClick)
+				table.insert(GlobalObj, itemObj)
 			end
 			return itemObj
 		end
@@ -86,7 +97,7 @@ function GetMainItemFactory()
 	callbackTable.GetColumnWidth = 
 		function (userdata, column, widthInAll)
 			-- first column is nil, just for space
-			local colWidth = {5, 120, 15}
+			local colWidth = {5, 110, 25}
 			return colWidth[column]
 		end
 		
@@ -110,7 +121,7 @@ function GetMainItemFactory()
 	callbackTable.SetItemPos2 = 
 		function (userdata, itemObj, left, top, width, height)
 			if itemObj~=nil and itemObj:GetClass()=="WHome.Button" then
-				itemObj:SetObjPos2(left, top, 18, 26)
+				itemObj:SetObjPos2(left, top, 25, 26)
 			end
 			if itemObj~=nil and itemObj:GetClass()=="WHome.Edit" then
 				itemObj:SetObjPos2(left, top, width, height) 
@@ -123,35 +134,8 @@ function GetMainItemFactory()
 	return userdata, callbackTable
 end
 
-function MLV_OnClick(self)
-	local row = self:GetAttribute().row
-	
-	if GlobalReadOnly then
-		operation.SubChange(row)
-	else
-		operation.MainDel(row)
-	end
-end
-
-function OnEditChange(self)
-	if self:GetClass() ~= "WHome.Edit" then return end
-	
-	local row = self:GetAttribute().row
-	local column = self:GetAttribute().column
-	local service = self:GetAttribute().service
-	local text = self:GetText()
-	
-	if service == "main" then
-		operation.MainChange(row, column, text)
-	end
-	if service == "sub" then
-		operation.SubEditChange(row, column, text)
-	end
-end
-
 function GetMainDataModelObject()
 	local callbackTable = {}
-	local colCount = nil
 	local nameList = {"", "服务类型", ""}
 	callbackTable.GetCount = 
 		function (userdata)
@@ -205,7 +189,7 @@ function GetMainDataModelObject()
 			end
 			
 			-- 删除二级页面
-			operation.SubChange(math.min(#GlobalDataTable, row))
+			operation.SubLoadData(math.min(#GlobalDataTable, row))
 			--XLMessageBox(json.encode(GlobalDataTable))
 		end
 	
@@ -227,7 +211,15 @@ function GetMainDataModelObject()
 				operation.MainDel(data_unsafe[i])
 			end
 		end
-		
+	
+	-- 加载动态数据
+	operation.MainLoadData = 
+		function ()
+			if #GlobalDataTable > 0 then
+				if callbackTable.DataChangeListener ~= nil then callbackTable.DataChangeListener(1, #GlobalDataTable) end				
+			end
+		end
+	
 	return nil, callbackTable
 end
 
@@ -251,6 +243,9 @@ function GetSubItemFactory()
 				attr.DownBkgID = "blue.big.button.down"
 				attr.HoverBkgID = "blue.big.button.hover"
 				itemObj:SetVisible(false)
+				table.insert(GlobalObj, itemObj)
+				itemObj:SetText("删")
+				local cookie, ret = itemObj:AttachListener("OnClick", true, SLV_OnClick)
 				return itemObj
 			end
 			
@@ -258,7 +253,7 @@ function GetSubItemFactory()
 			itemObj:SetBorder(not GlobalReadOnly)
 			itemObj:SetReadOnly(GlobalReadOnly)
 			local cookie, ret = itemObj:AttachListener("OnEditChange", true, OnEditChange)
-			table.insert(GlobalObjEdit, itemObj)
+			table.insert(GlobalObj, itemObj)
 			
 			return itemObj
 		end
@@ -271,7 +266,7 @@ function GetSubItemFactory()
 	callbackTable.GetColumnWidth = 
 		function (userdata, column, widthInAll)
 			-- first column is nil, just for space
-			local colWidth = {5, 100, 249, 120, 15}
+			local colWidth = {5, 100, 249, 110, 25}
 			return colWidth[column]
 		end
 		
@@ -295,7 +290,7 @@ function GetSubItemFactory()
 	callbackTable.SetItemPos2 = 
 		function (userdata, itemObj, left, top, width, height)
 			if itemObj~=nil and itemObj:GetClass()=="WHome.Button" then
-				itemObj:SetObjPos2(left, top, 18, 26)
+				itemObj:SetObjPos2(left, top, 25, 26)
 			end
 			if itemObj~=nil and itemObj:GetClass()=="WHome.Edit" then
 				itemObj:SetObjPos2(left, top, width, height) 
@@ -373,8 +368,9 @@ function GetSubDataModelObject()
 				callbackTable.DataChangeListener(1, #dataTable)
 			end	
 		end
-		
-	operation.SubChange = 
+	
+	-- 动态加载数据
+	operation.SubLoadData = 
 		function (i)
 			index = i
 			if GlobalDataTable[index] ~= nil then 
@@ -419,16 +415,48 @@ function GetSubDataModelObject()
 			end
 			--XLMessageBox(json.encode(GlobalDataTable))			
 		end
-		
+
 	return nil, callbackTable
 end
 
-
+-------------------------------------------------------------------------------
 function OnInitControl(self)
 	local attr = self:GetAttribute()
 	local bkg = self:GetControlObject("bkg")
 	GlobalControl = self
 	--bkg:SetTextureID(attr.BorderTexture)
+end
+
+function MLV_OnClick(self)
+	local row = self:GetAttribute().row
+	
+	if GlobalReadOnly then
+		operation.SubLoadData(row)
+	else
+		operation.MainDel(row)
+	end
+end
+
+function SLV_OnClick(self)
+	local row = self:GetAttribute().row
+	
+	operation.SubDel(row)
+end
+
+function OnEditChange(self)
+	if self:GetClass() ~= "WHome.Edit" then return end
+	
+	local row = self:GetAttribute().row
+	local column = self:GetAttribute().column
+	local service = self:GetAttribute().service
+	local text = self:GetText()
+	
+	if service == "main" then
+		operation.MainChange(row, column, text)
+	end
+	if service == "sub" then
+		operation.SubEditChange(row, column, text)
+	end
 end
 
 function BES_OnClick(self)
@@ -460,6 +488,24 @@ function OnInitControl_Main_ListView(self)
 	
 	local dataModelUserData, dataModelCallbackTable = GetMainDataModelObject()
 	self:SetDataModel(dataModelUserData, dataModelCallbackTable)
+end
+
+function Get_PropertyServiceInfo(self)
+	local httpclient = XLGetObject("Whome.HttpCore.Factory"):CreateInstance()
+	httpclient:AttachResultListener(
+		function(result) 
+			local response = json.decode(result)
+			if response['ret'] == 0 then
+				GlobalDataTable = response['result']['service_list']
+				for i=1, #GlobalDataTable do
+					operation.MainLoadData()
+					operation.SubLoadData(1)
+				end
+			end
+		end
+	)
+	url = "/service/life?action=get_life_list"
+	httpclient:Perform(url, "GET", "")	
 end
 
 function OnDestroy_Main_ListView(self)

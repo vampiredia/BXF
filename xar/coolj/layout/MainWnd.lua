@@ -175,6 +175,7 @@ function GetScreenPos(menuRoot, x, y)
 	
 	return x, y, width, height
 end	
+
 function OnMainWndRButtonUp(self, x, y)
 		
 	local templateMananger = XLGetObject("Xunlei.UIEngine.TemplateManager")				

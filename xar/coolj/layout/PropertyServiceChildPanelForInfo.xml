@@ -1,14 +1,18 @@
 <xlue>
 	<control class="CoolJ.PropertyServiceChildPanelForInfo">
 		<attr_def>
-			<attr name="BorderTexture" type="string"><default>texture.tabbody.border</default></attr>
-			<attr name="Address" type="string" ><default></default></attr>
+			<attr name="BorderTexture" type="string">
+				<default>texture.tabbody.border</default>
+			</attr>
+			<attr name="Address" type="string" >
+				<default/>
+			</attr>
 		</attr_def>
 		<method_def>
 			<Get_PropertyServiceInfo file="PropertyServiceChildPanelForInfo.xml.lua" func="Get_PropertyServiceInfo"/>
 		</method_def>
 		<event_def>
-			
+
 		</event_def>
 		<objtemplate>
 			<children>
@@ -21,53 +25,61 @@
 						<alpha>168</alpha>
 					</attr>
 				</obj>
-				
+
 				<obj id="ctrl" class="LayoutObject">
 					<attr>
 						<width>father.width</width>
 						<height>father.height</height>
 					</attr>
 					<children>
-						<obj id="tabview.info.list" class="WHome.ListCtrl">
+						<obj id="listview" class="ListView">
 							<attr>
 								<left>10</left>
-								<top>40</top>
-								<width>340</width>
-								<height>father.height-80</height>
+								<top>32</top>
+								<width>676</width>
+								<height>father.height-95</height>
+								<!-- 以下属性如果用户不设置,会用默认值 -->
+								<!-- 以下属性的值就是默认值 -->
+								<BackgroundTexture/>
+								<ScrollBarClassNameV>ListView.ScrollBarV</ScrollBarClassNameV>
+								<ScrollBarClassNameH>ListView.ScrollBarH</ScrollBarClassNameH>
+								<ScrollBarSize>20</ScrollBarSize>
+								<HeaderClassName>ListView.Header</HeaderClassName>
+								<HeaderHeight>30</HeaderHeight>
+								<PreloadDataCount>50</PreloadDataCount>
 							</attr>
-							<children>
-								
-							</children>
 							<eventlist>
-								<event name="OnInitControl" file="PropertyServiceChildPanelForInfo.xml.lua" func="LC_Info_OnInitControl" />
+								<event name="OnInitControl" file="PropertyServiceChildPanelForInfo.xml.lua" func="OnInitControl_ListView" />
+								<event name="OnDestroy" file="PropertyServiceChildPanelForInfo.xml.lua" func="OnDestroy_ListView" />
 							</eventlist>
-						</obj>
+						</obj>	
 						<obj id="btn.edit.info" class="WHome.Button">
 							<attr>
-								<left>140</left>
-								<top>father.height-32</top>
-								<width>80</width>
+								<left>father.width - 55</left>
+								<top>5</top>
+								<width>40</width>
 								<height>20</height>
-								<Text>编辑信息类型</Text>
+								<Text>编辑</Text>
 							</attr>
 							<eventlist>
-								
+								<event name="OnClick" file="PropertyServiceChildPanelForInfo.xml.lua" func="EDIT_OnClick" />
 							</eventlist>
 						</obj>
 						<obj id="tabview.address.list" class="WHome.ListCtrl">
 							<attr>
 								<left>365</left>
 								<top>40</top>
-								<width>340</width>
+								<width>520</width>
 								<height>200</height>
 							</attr>
 							<children>
-								
+
 							</children>
 							<eventlist>
 								<event name="OnInitControl" file="PropertyServiceChildPanelForInfo.xml.lua" func="LC_Address_OnInitControl" />
 							</eventlist>
-						</obj>					
+						</obj>	
+						<!--
 						<obj id="edit.address" class="WHome.Edit">
 							<attr>
 								<left>365</left>
@@ -87,9 +99,10 @@
 								<Text>保存</Text>
 							</attr>
 							<eventlist>
-								
+
 							</eventlist>
-						</obj>						
+						</obj>	
+												
 						<obj id="tabview.pay.list" class="WHome.ListCtrl">
 							<attr>
 								<left>365</left>
@@ -104,6 +117,7 @@
 								<event name="OnInitControl" file="PropertyServiceChildPanelForInfo.xml.lua" func="LC_Pay_OnInitControl" />
 							</eventlist>
 						</obj>
+
 						<obj id="text.pay.address" class="TextObject">
 							<attr>
 								<left>365</left>
@@ -171,10 +185,11 @@
 								<textcolor>system.red</textcolor>
 								<halign>center</halign>
 							</attr>
-						</obj>								
+						</obj>	
+-->						
 					</children>
 				</obj>
-						
+
 			</children>
 			<eventlist>
 				<event name="OnInitControl" file="PropertyServiceChildPanelForInfo.xml.lua" func="OnInitControl" />

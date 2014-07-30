@@ -42,7 +42,7 @@ function Get_QAData(self)
 	local objControl = self:GetControlObject("tableview.result.list")
 	
 	httpclient = XLGetObject("Whome.HttpCore.Factory"):CreateInstance()
-	url = "/community/topic?action=get_list"
+	url = "/community/topic?action=get_list&status=all"
 	param = ""
 	httpclient:AttachResultListener(
 		function(result)
@@ -190,8 +190,8 @@ function BTN_Reply(self)
 	local answer = self:GetOwnerControl():GetControlObject("answer"):GetText()
 	
 	httpclient = XLGetObject("Whome.HttpCore.Factory"):CreateInstance()
-	url = "/community/topic"
-	param = "action=answer&id="..id.."&answer="..httpclient:EscapeParam(answer)
+	local url = "/community/topic"
+	local param = "action=answer&id="..id.."&answer="..httpclient:EscapeParam(answer)
 	httpclient:AttachResultListener(
 		function(result)
 			local table_result = json.decode(result)

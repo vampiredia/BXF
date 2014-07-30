@@ -1,0 +1,80 @@
+<xlue>
+	<control class="CoolJ.Telphone.ListView">
+		<attr_def>
+			<attr name="Border" type="bool">
+				<default>false</default>
+			</attr>
+			<attr name="ReadOnly" type="bool" >
+				<default>true</default>
+			</attr>
+			<attr name="AreaWidth" type="int" >
+				<default>46</default>
+			</attr>
+			<attr name="SpaceWidth" type="int" >
+				<default>8</default>
+			</attr>			
+			<attr name="TelphoneWidth" type="int" >
+				<default>100</default>
+			</attr>
+			<attr name="Height" type="int" >
+				<default>26</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<!-- ReadOnly -->
+			<SetReadOnly file="ListView_Telphone.xml.lua" func="SetReadOnly" />
+			<GetReadOnly file="ListView_Telphone.xml.lua" func="GetReadOnly" />
+			<!-- Border -->
+			<SetBorder file="ListView_Telphone.xml.lua" func="SetBorder" />
+			<GetBorder file="ListView_Telphone.xml.lua" func="GetBorder" />
+			<!-- Text -->
+			<GetText file="ListView_Telphone.xml.lua" func="GetText" />
+			<SetText file="ListView_Telphone.xml.lua" func="SetText" />
+		</method_def>
+		<event_def>
+            <OnEditChange>
+                <param>
+                    <string/>
+                </param>
+            </OnEditChange>			
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="area" class="WHome.Edit">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+						<Text></Text>
+						<IsNumber>1</IsNumber>
+					</attr>
+					<eventlist>
+						<event name="OnEditChange" file="ListView_Telphone.xml.lua" func="OnEditChange" />
+					</eventlist>
+				</obj>
+				<obj id="space" class="TextObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+						<text>-</text>
+						<valign>center</valign>
+						<halign>center</halign>
+					</attr>
+				</obj>
+				<obj id="telphone" class="WHome.Edit">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>	
+						<Text></Text>
+						<IsNumber>1</IsNumber>
+					</attr>
+					<eventlist>
+						<event name="OnEditChange" file="ListView_Telphone.xml.lua" func="OnEditChange" />
+					</eventlist>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="ListView_Telphone.xml.lua" func="OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

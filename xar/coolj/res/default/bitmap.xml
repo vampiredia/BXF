@@ -90,6 +90,7 @@
 		<bitmap id="tab.icon.rights.management" path="bitmap\tab.icon.rights.management.png"/>
 		<texture id="bkg.border.shadow" type="NineInOne" image="bitmap\bkg.shadow.png"/>   
 		<texture id="texture.mainwnd.border" type="NineInOne" image="bitmap\mainwnd_border.png" />
+		<bitmap id="bkg.tab" image="bitmap\bkg.tab.png" />
 		
 		<!-- icon res -->
 		<icon id="wnd.big"  width="32" height="32" file="bitmap\thunder.ico" />

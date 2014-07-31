@@ -12,6 +12,10 @@ local cmDir = folderDir.."CheckMethod.lua"
 local mdCheckMethod = XLLoadModule(cmDir)
 mdCheckMethod.RegisterGlobal()
 
+local mbDir = folderDir.."MessageBox.lua"
+local mdMessageBox = XLLoadModule(mbDir)
+mdMessageBox.RegisterGlobal()
+
 function CreateLoginWnd()
     local templateManager = XLGetObject("Xunlei.UIEngine.TemplateManager")
     local frameHostWndTemplate = templateManager:GetTemplate("CoolJ.LoginWnd", "HostWndTemplate")

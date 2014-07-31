@@ -4,14 +4,9 @@
 			<attr name="BorderTexture" type="string">
 				<default>texture.tabbody.border</default>
 			</attr>
-			<attr name="Status" type="string" >
-				<default>readonly</default>
-			</attr>
 		</attr_def>
 		<method_def>
 			<Get_PropertyServiceInfo file="PropertyServiceChildPanelForService.xml.lua" func="Get_PropertyServiceInfo"/>
-			<HttpRequest file="PropertyServiceChildPanelForService.xml.lua" func="HttpRequest"/>
-
 		</method_def>
 		<event_def>
 
@@ -90,19 +85,6 @@
 							<eventlist>
 								<event name="OnInitControl" file="PropertyServiceChildPanelForService.xml.lua" func="OnInitControl_Main_ListView" />
 								<event name="OnDestroy" file="PropertyServiceChildPanelForService.xml.lua" func="OnDestroy_Main_ListView" />
-								<event name="VerticalScrollPosChanged">
-									-- 监听自定义控件自定义事件方法一:
-									-- 请注意参数获取及参数顺序
-									local arg={...}
-									local listViewObj = arg[1]
-									local eventName = arg[2]
-									local oldPos = arg[3]
-									local newPos =arg[4]
-								</event>
-								<event name="VisibleItemChanged">
-									local arg={...}
-									-- Warn("first:"..(arg[3]).." last:"..(arg[4]))
-								</event>
 							</eventlist>
 						</obj>	
 						<obj id="sub.listview" class="ListView">
@@ -124,19 +106,6 @@
 							<eventlist>
 								<event name="OnInitControl" file="PropertyServiceChildPanelForService.xml.lua" func="OnInitControl_Sub_ListView" />
 								<event name="OnDestroy" file="PropertyServiceChildPanelForService.xml.lua" func="OnDestroy_Sub_ListView" />
-								<event name="VerticalScrollPosChanged">
-									-- 监听自定义控件自定义事件方法一:
-									-- 请注意参数获取及参数顺序
-									local arg={...}
-									local listViewObj = arg[1]
-									local eventName = arg[2]
-									local oldPos = arg[3]
-									local newPos =arg[4]
-								</event>
-								<event name="VisibleItemChanged">
-									local arg={...}
-									-- Warn("first:"..(arg[3]).." last:"..(arg[4]))
-								</event>
 							</eventlist>
 						</obj>	
 						<obj id="btn.main.add" class="WHome.Button">
@@ -178,44 +147,12 @@
 								<event name="OnClick" file="PropertyServiceChildPanelForService.xml.lua" func="BTN_Sub_Add" />
 							</eventlist>							
 						</obj>								
-						<!--
-						<obj id="tableview.service.list" class="WHome.ListCtrl">
-							<attr>
-								<top>40</top>
-								<left>10</left>
-								<width>131</width>
-								<height>father.height-50</height>
-							</attr>
-							<children>
-									
-							</children>
-							<eventlist>
-								<event name="OnInitControl" file="PropertyServiceChildPanelForService.xml.lua" func="LB_Service_OnInitControl" />
-								<event name="OnListItemClick" file="PropertyServiceChildPanelForService.xml.lua" func="LC_OnListItemClick" />
-							</eventlist>
-						</obj>
-						<obj id="tableview.sub.service.list" class="WHome.ListCtrl">
-							<attr>
-								<top>40</top>
-								<left>170</left>
-								<width>father.width-180</width>
-								<height>father.height-50</height>
-							</attr>
-							<children>
-									
-							</children>
-							<eventlist>
-								<event name="OnInitControl" file="PropertyServiceChildPanelForService.xml.lua" func="LB_SubService_OnInitControl" />
-							</eventlist>
-						</obj>
-						-->
 					</children>
 				</obj>
 
 			</children>
 			<eventlist>
 				<event name="OnInitControl" file="PropertyServiceChildPanelForService.xml.lua" func="OnInitControl" />
-				<event name="OnVisibleChange" file="PropertyServiceChildPanelForService.xml.lua" func="OnVisibleChange" />
 			</eventlist>
 		</objtemplate>
 	</control>

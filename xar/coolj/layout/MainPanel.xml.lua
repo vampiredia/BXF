@@ -39,26 +39,27 @@ function OnModalLButtonUp(self)
 	local templateMananger = XLGetObject("Xunlei.UIEngine.TemplateManager")
 	local hostWndManager = XLGetObject("Xunlei.UIEngine.HostWndManager")
 	
-	local modalHostWndTemplate = templateMananger:GetTemplate("CoolJ.ModalDlg","HostWndTemplate")
+	local modalHostWndTemplate = templateMananger:GetTemplate("CoolJ.MessageBox","HostWndTemplate")
 	if modalHostWndTemplate then
-		local modalHostWnd = modalHostWndTemplate:CreateInstance("CoolJ.ModalDlg.Instance")
+		local modalHostWnd = modalHostWndTemplate:CreateInstance("CoolJ.MessageBox.Instance")
 		if modalHostWnd then
-			local objectTreeTemplate = templateMananger:GetTemplate("CoolJ.ModalDlg","ObjectTreeTemplate")
+			local objectTreeTemplate = templateMananger:GetTemplate("CoolJ.MessageBox","ObjectTreeTemplate")
 			if objectTreeTemplate then
-				local uiObjectTree = objectTreeTemplate:CreateInstance("CoolJ.ModalDlg.Instance")
+				local uiObjectTree = objectTreeTemplate:CreateInstance("CoolJ.MessageBox.Instance")
 				if uiObjectTree then
 					modalHostWnd:BindUIObjectTree(uiObjectTree)
 					
 					local mainWnd = hostWndManager:GetHostWnd("CoolJ.MainWnd.Instance")
-					modalHostWnd:DoModal(mainWnd:GetWndHandle())
+					local ret = modalHostWnd:DoModal(mainWnd:GetWndHandle())
+					XLMessageBox(ret)
 				end
 				
 				local objtreeManager = XLGetObject("Xunlei.UIEngine.TreeManager")	
-				objtreeManager:DestroyTree("CoolJ.ModalDlg.Instance")
+				objtreeManager:DestroyTree("CoolJ.MessageBox.Instance")
 			end
 			
 			
-			hostWndManager:RemoveHostWnd("CoolJ.ModalDlg.Instance")
+			hostWndManager:RemoveHostWnd("CoolJ.MessageBox.Instance")
 		end
 	end
 end

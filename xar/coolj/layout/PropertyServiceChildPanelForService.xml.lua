@@ -49,8 +49,19 @@ operation.Save =
 		operation.MainSave()
 		operation.SubSave()
 		--XLMessageBox(json.encode(GlobalDataTable))
+		operation.Check()
 	end
 	
+operation.Check = 
+	function ()
+		for i=1, #GlobalDataTable do
+			GlobalDataTable[i]['id'] = i
+			for j=1, #GlobalDataTable[i]['service'] do
+				GlobalDataTable[i]['service'][j]['id'] = j
+				GlobalDataTable[i]['service'][j]['pid'] = i
+			end
+		end
+	end
 
 -------------------------------------------------------------------------------
 -- list view for first service
@@ -472,6 +483,9 @@ function BES_OnClick(self)
 		GlobalReadOnly = true
 		self:GetOwnerControl():GetControlObject("btn.main.add"):SetVisible(false)
 		self:GetOwnerControl():GetControlObject("btn.sub.add"):SetVisible(false)
+		
+		--XLMessageBox(json.encode(GlobalDataTable))
+		Set_PropertyServiceInfo(self:GetOwnerControl())
 	end	
 end
 
@@ -497,6 +511,7 @@ function Get_PropertyServiceInfo(self)
 			local response = json.decode(result)
 			if response['ret'] == 0 then
 				GlobalDataTable = response['result']['service_list']
+				--XLMessageBox(json.encode(GlobalDataTable))
 				for i=1, #GlobalDataTable do
 					operation.MainLoadData()
 					operation.SubLoadData(1)
@@ -506,6 +521,23 @@ function Get_PropertyServiceInfo(self)
 	)
 	url = "/service/life?action=get_life_list"
 	httpclient:Perform(url, "GET", "")	
+end
+
+function Set_PropertyServiceInfo(self)
+	local httpclient = XLGetObject("Whome.HttpCore.Factory"):CreateInstance()
+	httpclient:AttachResultListener(
+		function(result) 
+			local response = json.decode(result)
+			if response['ret'] == 0 then
+				--GlobalDataTable = response['result']['service']
+				--operation.LoadData()
+				--XLMessageBox("OK")
+			end
+		end
+	)
+	local param = "action=life_list&service="..httpclient:EscapeParam(json.encode(GlobalDataTable))
+	local url = "/service/life"
+	httpclient:Perform(url, "POST", param)	
 end
 
 function OnDestroy_Main_ListView(self)

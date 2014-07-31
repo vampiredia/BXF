@@ -281,3 +281,10 @@ end
 function OnInitControl(self)
 	self:SetBkgType(1)
 end
+
+function OnModalLButtonUp(self)
+	MessageBox(nil, "物管", "这只是一个测试用的文本列表，hello lydia！话有点短，我在多说点，再多说点。。。\
+								这只是一个测试用的文本列表，hello lydia！话有点短，我在多说点，再多说点。。。\
+								这只是一个测试用的文本列表，hello lydia！话有点短，我在多说点，再多说点。。。\
+								这只是一个测试用的文本列表，hello lydia！话有点短，我在多说点，再多说点。。。")
+end

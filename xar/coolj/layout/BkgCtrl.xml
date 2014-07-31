@@ -1,5 +1,5 @@
 <xlue>
-	<control class="Thunder.BkgCtrl">
+	<control class="CoolJ.BkgCtrl">
 		<attr_def>
 			<attr name="Type" type="int">
 				<default>-1</default>
@@ -132,7 +132,7 @@
 		
 	</control>
 	
-	<objtemplate id="Thunder.Bkg.Light" class="LayoutObject">
+	<objtemplate id="CoolJ.Bkg.Light" class="LayoutObject">
 		<attr>
 			<zorder>10</zorder>
 		</attr>

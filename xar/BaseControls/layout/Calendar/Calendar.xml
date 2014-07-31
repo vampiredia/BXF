@@ -1,0 +1,38 @@
+<xlue>
+	<!-- 动画相关 -->
+	<animation_def>
+		<method_def>
+		</method_def>
+	</animation_def>
+	
+	<!-- 控制层 -->
+	<control class="Calendar">
+		<attr_def>
+			<attr name="Width" type="int" ><default>26</default></attr>
+			<attr name="Height" type="int" ><default>26</default></attr>
+		</attr_def>
+		<method_def>
+			
+		</method_def>
+		<event_def>
+			
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						
+					</children>
+					<eventlist>
+						
+					</eventlist>
+				</obj>
+			</children>
+		</objtemplate>
+	</control>
+	
+</xlue>

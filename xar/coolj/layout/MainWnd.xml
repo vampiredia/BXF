@@ -7,7 +7,7 @@
 			<height>600</height>
 		</attr>
 		
-		<obj id="app.bkg" class="Thunder.BkgCtrl">
+		<obj id="app.bkg" class="CoolJ.BkgCtrl">
 			<attr>
 				<BkgTemplate>MainWnd.Bkg.Shading</BkgTemplate>
 				<left>0</left>
@@ -152,6 +152,32 @@
 						-->
 						<!-- tab header -->
 						<!-- -->
+						<obj id="tab.bkg" class="ImageObject">
+							<attr>
+								<left>0</left>
+								<top>3</top>
+								<width>father.width</width>
+								<height>76</height>
+								<image>bkg.tab</image>
+								<zorder>999</zorder>
+								<alpha>54</alpha>
+								<drawmode>1</drawmode>
+							</attr>
+						</obj>
+					<obj id="ModalDialog.Show" class="TextObject">
+							<attr>
+								<left>324</left>
+								<top>180</top>
+								<width>140</width>
+								<height>25</height>
+								<text>查看modalhostwnd示例</text>
+								<zorder>9999</zorder>
+								<visible>1</visible>
+							</attr>
+							<eventlist>
+								<event name="OnLButtonUp" file="MainWnd.lua" func="OnModalLButtonUp" />
+							</eventlist>
+						</obj>
 						<obj id="TabHeader" class="BaseUI.TabHeaderCtrl">
 							<attr>
 								<left>12</left>
@@ -161,6 +187,7 @@
 								<IconTopPos>1</IconTopPos>
 								<IconHAlign>center</IconHAlign>
 								<TextColorID>system.white</TextColorID>
+								<zorder>999</zorder>
 							</attr>
 							<eventlist>
 								<event name="OnInitControl" file="MainWnd.lua" func="TabHeader_OnInitControl" />

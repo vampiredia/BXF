@@ -1,8 +1,8 @@
 <xlue>
-	<control class="BaseUI.TabButton">
+	<control class="Head.TabButton">
 		<style_def>
 			<style name="bkg_normal_texture" type="string">
-				<default></default>
+				<default>texture.tab.head.bkg.normal</default>
 			</style>
 			<style name="bkg_hover_texture" type="string">
 				<default>texture.tab.head.bkg.hover</default>
@@ -70,7 +70,8 @@
 			<attr name="IconVAlign" type="string"><default>top</default></attr>
 			
 			<attr name="text_pos_left" type="int" ><default>0</default></attr>
-			<attr name="text_pos_top" type="int" ><default>5</default></attr>
+			<attr name="text_pos_top" type="int" ><default>0</default></attr>
+			<attr name="text_valign" type="string" ><default>bottom</default></attr>
 		</attr_def>
 		<method_def>
 			<!-- Text Method -->
@@ -91,6 +92,12 @@
 			<OnClick/>
 		</event_def>
 		<objtemplate>
+			<attr>
+				<left>0</left>
+				<top>0</top>
+				<width>74</width>
+				<height>79</height>
+			</attr>
 			<children>
 				<obj id="ctrl" class="TextureObject">
 					<attr>
@@ -100,23 +107,32 @@
 					<children>
 					    <obj id="button.oldbkg" class="TextureObject">
 							<attr>
-								<width>father.width</width>
-								<height>father.height</height>
+								<top>12</top>
+								<left>0</left>
+								<width>74</width>
+								<height>67</height>
 								<alpha>0</alpha>
 							</attr>
 						</obj>
 						<obj id="icon" class="ImageObject">
 							<attr>
-
+								<top>0</top>
+								<left>0</left>
+								<width>64</width>
+								<height>64</height>
+								<valign>top</valign>
+								<halign>center</halign>
 							</attr>
 						</obj>
 						<obj id="text" class="TextObject">
 							<attr>
+								<top>45</top>
 								<width>father.width</width>
-								<height>father.height</height>
+								<height>18</height>
 								<halign>center</halign>
 								<valign>bottom</valign>
 								<wordellipsis>1</wordellipsis>
+								<zorder>1</zorder>
 							</attr>
 						</obj>
 						<obj id="focusrectangle" class="RectangleObject">

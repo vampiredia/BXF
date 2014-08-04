@@ -4,10 +4,27 @@ function OnInitControl(self)
 	--bkg:SetTextureID(attr.BorderTexture)
 end
 
+local funcItemCallBack = 
+	function (itemObj)
+		local attr = itemObj:GetAttribute()
+	end
+
 function TabHeader_OnInitControl(self)
-	self:AddTabItem("TabItem_Notice", "社区通知", "tab.icon.publish.center")
-	self:AddTabItem("TabItem_Announcement", "社区公告", "tab.icon.property.service")
-	self:AddTabItem("TabItem_QA", "问题解答", "tab.icon.community.service")
+	local attr = self:GetAttribute()
+	attr.ItemClass = "Head.TabButton"
+	attr.ButtonWidth = 138
+	attr.ButtonHeight = 33
+	attr.TextFontID = "btText.Tab.title.font"
+	attr.ButtonInternalSpace = 0
+	attr.FuncItemCallBack = funcItemCallBack
+	attr.BtnBkgNormal = "text.tab.btn.normal"
+	attr.BtnBkgHover = "text.tab.btn.hover"
+	attr.BtnBkgDown = "text.tab.btn.down"
+	attr.TextValign = "center"
+	
+	self:AddTabItem("TabItem_Notice", "社区通知", "")
+	self:AddTabItem("TabItem_Announcement", "社区公告", "")
+	self:AddTabItem("TabItem_QA", "问题解答", "")
 end
 
 function OnActiveTabChanged(self, eventName, newid, oldid)

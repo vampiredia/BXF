@@ -8,7 +8,6 @@ local function UpdateRes(self, state, ani)
 			textFont = style.text_hover_font
 			textColor = style.text_hover_color
 		elseif state == "down" then
-		
 			bkgTexture = style.bkg_down_texture
 			textFont = style.text_down_font
 			textColor = style.text_down_color
@@ -84,11 +83,6 @@ function OnInitControl(self)
 	if attr.Text ~= nil and attr.Text ~= "" then
 		textObj:SetText(attr.Text)
 	end
-	
-	local iconObj = self:GetControlObject("icon")
-	iconObj:SetObjPos2(attr.IconLeftPos, attr.IconTopPos, attr.IconSize, attr.IconSize)
-	iconObj:SetHAlign(attr.IconHAlign)
-	iconObj:SetVAlign(attr.IconVAlign)
 
 	UpdateRes(self, newState)	
 	if attr.IsDefaultButton then
@@ -114,6 +108,7 @@ function SetText(self, text)
 	
 	local textObj = self:GetControlObject("text")
 	textObj:SetText(text)
+	textObj:SetVAlign(attr.text_valign)
 	self:SetTextPos(attr.text_pos_left, attr.text_pos_top)
 end
 
@@ -144,6 +139,7 @@ function GetIcon(self, icon)
 end
 
 function SetIconPos(self, x, y)
+	
     local attr = self:GetAttribute()
     attr.IconLeftPos = x
     attr.IconTopPos = y

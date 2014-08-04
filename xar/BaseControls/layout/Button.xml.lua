@@ -415,8 +415,6 @@ function SetDefaultButton(self, isdefault)
 	--这里也先改掉
 	if true then return end
 	
-	
-	
     local attr = self:GetAttribute()
     if isdefault == attr.IsDefaultButton then
         return
@@ -458,4 +456,25 @@ function OnVisibleChange(self, visible)
 		focusrect:SetVisible(false)
 		focusrect:SetAlpha(0)
 	end
+end
+
+function SetIcon(self)
+
+end
+
+function GetIcon(self)
+
+end
+
+function UpdateUI(self)
+
+end
+
+function ChangeStatus(self, newStatus)
+	local attr = self:GetAttribute()	
+	if attr.Status == newStatus then
+		return
+	end	
+	attr.Status = newStatus	
+	self:SetState(attr.Status)	
 end

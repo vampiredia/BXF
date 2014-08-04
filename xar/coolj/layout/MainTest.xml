@@ -128,7 +128,7 @@
 							</children>
 						</obj>
 						<!-- tab header -->
-						<obj id="TabHeader" class="BaseUI.TabHeaderCtrl">
+						<obj id="TabHeader" class="TabHeaderCtrl">
 							<attr>
 								<left>12</left>
 								<top>5</top>

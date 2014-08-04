@@ -2,35 +2,26 @@
 
 function SetButtonActive(self, button, active)
 	local attr = self:GetAttribute()
-	-- if active then
-		-- button:SetNormalBkgTexture(attr.ActiveBtnBkgNormal)
-		-- button:SetHoverBkgTexture(attr.ActiveBtnBkgHover)
-		-- button:SetDownBkgTexture(attr.ActiveBtnBkgDown)
-		-- button:SetDisableBkgTexture(attr.ActiveBtnBkgDisable)
-		-- button:SetTextColorID("color.text.normal")
-	-- else
-		-- button:SetNormalBkgTexture(attr.BtnBkgNormal)
-		-- button:SetHoverBkgTexture(attr.BtnBkgHover)
-		-- button:SetDownBkgTexture(attr.BtnBkgDown)
-		-- button:SetDisableBkgTexture(attr.BtnBkgDisable)
-		-- button:SetTextColorID("color.text.description")
-	-- end
+
 end
 
-
 --	active:bool 是否激活
-function AddTabItem(self, id, text, icon, active)
+function AddTabItem(self, id, text, icon, active, funcItemCallBack)
 	local objExist = self:GetControlObject(id)
 	if objExist ~= nil then
 		return
 	end
+	local attr = self:GetAttribute()
+	if attr.ItemClass == nil then attr.ItemClass = "Head.TabButton" end
 	local xarManager = XLGetObject("Xunlei.UIEngine.XARManager")
 	local objFactory = xarManager:GetXARFactory()
 
-	local attr = self:GetAttribute()
-
 	local bkgObj = self:GetControlObject("bkg")
-	local btn = objFactory:CreateUIObject(id, "BaseUI.TabButton", "BaseUI")
+	local btn = objFactory:CreateUIObject(id, attr.ItemClass, "BaseControls")
+	
+	if attr.FuncItemCallBack ~= nil then 
+		attr.FuncItemCallBack(btn)
+	end
 	
 	local btnAttr = btn:GetAttribute()
 	btnAttr.IconLeftPos = attr.IconLeftPos
@@ -38,10 +29,18 @@ function AddTabItem(self, id, text, icon, active)
 	btnAttr.IconHAlign = attr.IconHAlign
 	btnAttr.IconVAlign = attr.IconVAlign
 	btnAttr.IconSize = attr.IconSize
+	btnAttr.text_valign = attr.TextValign
 	local btnStyle = btn:GetStyle()
 	btnStyle.text_pos_left = attr.TextLeftPos
 	btnStyle.text_pos_top = attr.TextTopPos
 	btnStyle.text_normal_color = attr.TextColorID
+	btnStyle.text_normal_font = attr.TextFontID
+	btnStyle.text_hover_font = attr.TextFontID
+	btnStyle.text_down_font = attr.TextFontID
+	btnStyle.text_disable_font = attr.TextFontID
+	btnStyle.bkg_normal_texture = attr.BtnBkgNormal
+	btnStyle.bkg_hover_texture = attr.BtnBkgHover
+	btnStyle.bkg_down_texture = attr.BtnBkgDown
 	
 	btn:SetText(text)
 	btn:SetIcon(icon)
@@ -81,8 +80,6 @@ function AddTabItem(self, id, text, icon, active)
 	end
 end
 
-
-
 function RemoveTabItem(self, remove_id, active_id)
 	local btn = self:GetControlObject(remove_id)
 	if btn == nil then
@@ -103,10 +100,6 @@ function RemoveTabItem(self, remove_id, active_id)
 	end
 	bkgObj:RemoveChild(btn)
 end
-
-
-
-
 
 function SetActiveTab(self, tabID, fireEvent)
 	local attr = self:GetAttribute()
@@ -138,6 +131,6 @@ function SetActiveTab(self, tabID, fireEvent)
 	end
 end
 
-
 function OnBind(self)
+
 end

@@ -6,7 +6,7 @@
 			<width>850</width>
 			<height>600</height>
 		</attr>
-		
+
 		<obj id="app.bkg" class="CoolJ.BkgCtrl">
 			<attr>
 				<BkgTemplate>MainWnd.Bkg.Shading</BkgTemplate>
@@ -28,11 +28,11 @@
 						<width>father.width-14</width>
 						<height>100</height>
 					</attr>
-					
+
 					<eventlist>
 						<!--<event name="OnRButtonUp" file="MainWnd.lua" func="OnMainWndRButtonUp" />-->
 					</eventlist>
-					
+
 					<children>
 						<obj id="texture.caption.mainwnd.bkg" class="TextureObject">
 							<attr>
@@ -72,7 +72,7 @@
 								<zorder>330</zorder>
 							</attr>
 						</obj>
-						
+
 						<obj id="mainwnd.sysbtn" class="Thunder.System.ButtonEx.Ctrl" >
 							<attr>
 								<left>father.width - 70</left>
@@ -91,7 +91,7 @@
 						</obj>	
 					</children>
 				</obj>
-				
+
 				<obj id="mainwnd.body" class="LayoutObject">
 					<attr>
 						<left>7</left>
@@ -107,7 +107,7 @@
 						<event name="OnDrop" file="MainWnd.lua" func="OnDrop" />
 					</eventlist>
 					<children>
-						
+
 						<!-- personal info -->
 						<!--<obj id="UserInfo" class="LayoutObject">
 							<attr>
@@ -155,7 +155,7 @@
 						<obj id="tab.bkg" class="ImageObject">
 							<attr>
 								<left>0</left>
-								<top>3</top>
+								<top>0</top>
 								<width>father.width</width>
 								<height>76</height>
 								<image>bkg.tab</image>
@@ -164,26 +164,13 @@
 								<drawmode>1</drawmode>
 							</attr>
 						</obj>
-					<obj id="ModalDialog.Show" class="TextObject">
-							<attr>
-								<left>324</left>
-								<top>180</top>
-								<width>140</width>
-								<height>25</height>
-								<text>查看modalhostwnd示例</text>
-								<zorder>9999</zorder>
-								<visible>1</visible>
-							</attr>
-							<eventlist>
-								<event name="OnLButtonUp" file="MainWnd.lua" func="OnModalLButtonUp" />
-							</eventlist>
-						</obj>
-						<obj id="TabHeader" class="BaseUI.TabHeaderCtrl">
+
+						<obj id="TabHeader" class="TabHeaderCtrl">
 							<attr>
 								<left>12</left>
-								<top>5</top>
+								<top>-2</top>
 								<width>father.width-100</width>
-								<height>50</height>
+								<height>74</height>
 								<IconTopPos>1</IconTopPos>
 								<IconHAlign>center</IconHAlign>
 								<TextColorID>system.white</TextColorID>
@@ -200,63 +187,82 @@
 						<obj id="PublishCenterPanel" class="CoolJ.PublishCenterPanel">
 							<attr>
 								<left>0</left>
-								<top>80</top>
+								<top>73</top>
 								<width>father.width</width>
-								<height>father.height-80</height>
+								<height>father.height-73</height>
 							</attr>
 						</obj>
 						<obj id="PropertyServicePanel" class="CoolJ.PropertyServicePanel">
 							<attr>
 								<left>0</left>
-								<top>80</top>
+								<top>73</top>
 								<width>father.width</width>
-								<height>father.height-80</height>
+								<height>father.height-73</height>
 							</attr>
 						</obj>
 						<obj id="CommunityServicePanel" class="CoolJ.CommunityServicePanel">
 							<attr>
 								<left>0</left>
-								<top>80</top>
+								<top>73</top>
 								<width>father.width</width>
-								<height>father.height-80</height>
+								<height>father.height-73</height>
 							</attr>
 						</obj>
 						<obj id="OwnerManagementPanel" class="CoolJ.OwnerManagementPanel">
 							<attr>
 								<left>0</left>
-								<top>80</top>
+								<top>73</top>
 								<width>father.width</width>
-								<height>father.height-80</height>
+								<height>father.height-73</height>
 							</attr>
 						</obj>
 						<obj id="RightsManagementPanel" class="CoolJ.RightsManagementPanel">
 							<attr>
 								<left>0</left>
-								<top>80</top>
+								<top>73</top>
 								<width>father.width</width>
-								<height>father.height-80</height>
+								<height>father.height-73</height>
 							</attr>
 						</obj>
 						<obj id="LogQueryPanel" class="CoolJ.LogQueryPanel">
 							<attr>
 								<left>0</left>
-								<top>80</top>
+								<top>73</top>
 								<width>father.width</width>
-								<height>father.height-80</height>
+								<height>father.height-73</height>
 							</attr>
 						</obj>
 						<obj id="NotifyCenterPanel" class="CoolJ.NotifyCenterPanel">
 							<attr>
 								<left>0</left>
-								<top>80</top>
+								<top>73</top>
 								<width>father.width</width>
-								<height>father.height-80</height>
+								<height>father.height-73</height>
 							</attr>
 						</obj>
 						<!-- -->
 					</children>
 				</obj>
-				
+
+				<!-- footer -->
+				<obj id="footer" class="LayoutObject">
+					<attr>
+						<left>7</left>
+						<top>father.height - 32</top>
+						<width>father.width-14</width>
+						<height>26</height>
+					</attr>
+					<children>
+						<obj id="footer.bkg" class="TextureObject">
+							<attr>
+								<width>father.width</width>
+								<height>father.height</height>
+								<texture>texture.footer.bkg</texture>
+								<zorder>999</zorder>
+							</attr>
+						</obj>
+					</children>
+				</obj>
 				<!-- icon -->
 				<obj class="HostWndIconObject">
 					<attr>
@@ -264,7 +270,7 @@
 						<bigicon>wnd.big</bigicon>
 					</attr>
 				</obj>
-				
+
 				<!-- tray -->
 				<obj id="notifyicon" class="NotifyIconObject">
 					<attr>
@@ -278,10 +284,10 @@
 						<event name="OnLButtonDbClick">
 							local arg = {...}
 							local self = arg[1]
-							
+
 							local objtreeManager = XLGetObject("Xunlei.UIEngine.TreeManager")
 							objtreeManager:DestroyTree(self:GetOwner())
-							
+
 							Quit()
 
 						</event>
@@ -289,7 +295,7 @@
 							local arg = {...}
 							local self = arg[1]
 							self:SetIconVisible(not self:GetIconVisible())
-							
+
 							--XLMessageBox("OnLButtonDown")
 						</event>
 						<event name="OnLButtonUp">
@@ -300,7 +306,7 @@
 							local arg = {...}
 							local self = arg[1]
 							--XLMessageBox("OnRButtonDown")
-							
+
 							local resID = self:GetIconResID()
 							local index = 0;
 							local function OnTimer(tm, id)
@@ -311,7 +317,7 @@
 								end
 								index = index + 1;
 							end
-											
+
 							local timerManager = XLGetObject("Xunlei.UIEngine.TimerManager")
 							timerManager:SetTimer( OnTimer, 500)
 						</event>
@@ -319,12 +325,12 @@
 							local arg = {...}
 							--XLMessageBox("OnRButtonUp")
 						</event>
-						
+
 						<event name="OnContextMenu">
 							local arg = {...}
 							local self = arg[1]
 							self:ShowBalloonTip("hello!!", "bolt", 10000, "info")
-							
+
 							--XLMessageBox("OnContextMenu")
 						</event>
 						<event name="OnSelect">
@@ -335,7 +341,7 @@
 						</event>
 					</eventlist>
 				</obj>
-						
+
 			</children>			
 		</obj>	
 	</objtreetemplate>
@@ -344,8 +350,10 @@
 		<attr> 
 			<title>物管中心</title>
 			<layered>1</layered>
-			<width>850</width>				<!-- 主窗口宽度 -->
-			<height>600</height>			<!-- 主窗口高度 -->
+			<width>850</width>
+			<!-- 主窗口宽度 -->
+			<height>600</height>
+			<!-- 主窗口高度 -->
 			<visible>1</visible>
 			<enable>1</enable>
 			<sysmenu>0</sysmenu>
@@ -355,7 +363,7 @@
 			<toolwindow>1</toolwindow>
 			<border>7,7,7,6</border>
 		</attr>
-		
+
 		<eventlist>
 			<event name="OnSize" file="MainWnd.lua" func="OnSize"/>
 			<event name="OnClose" file="MainWnd.lua" func="OnClose" />

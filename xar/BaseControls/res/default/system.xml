@@ -21,5 +21,6 @@
 	<font id="default.font.edit" height="12" facename="微软雅黑" />
 	<font id="btTask.option.font" height="12" weight="bold" facename="微软雅黑"/>
 	<font id="btTask.title.font" height="14" weight="bold" facename="微软雅黑"/>
+	<font id="btText.Tab.title.font" height="14" facename="微软雅黑"/>
 </resource>
 </xlue>

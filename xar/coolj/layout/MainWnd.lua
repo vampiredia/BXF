@@ -203,6 +203,14 @@ function OnMainWndRButtonUp(self, x, y)
 end
 
 function TabHeader_OnInitControl(self)
+	local attr = self:GetAttribute()
+	attr.ButtonWidth = 67
+	attr.ButtonHeight = 74
+	attr.IconSize = 64
+	attr.TextFontID = "btTask.title.font"
+	attr.ButtonInternalSpace = 20
+	attr.ItemClass = "Head.TabButton"
+	
 	self:AddTabItem("TabItem_PublishCenter", "发布中心", "tab.icon.publish.center")
 	self:AddTabItem("TabItem_PropertyService", "物业服务", "tab.icon.property.service")
 	self:AddTabItem("TabItem_CommunityService", "社区服务", "tab.icon.community.service")

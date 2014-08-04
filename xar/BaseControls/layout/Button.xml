@@ -79,6 +79,10 @@
 			<GetTextWidth file="Button.xml.lua" func="GetTextWidth" />
 			<AddTipText file="Button.xml.lua" func="AddTipText" />
 			<SetDefaultButton file="Button.xml.lua" func="SetDefaultButton" />
+			<SetIcon file="Button.xml.lua" func="SetIcon" />
+			<GetIcon file="Button.xml.lua" func="GetIcon" />
+			<UpdateUI file="Button.xml.lua" func="UpdateUI" />
+			<ChangeStatus file="Button.xml.lua" func="ChangeStatus" />
 		</method_def>
 		<event_def>
 			<OnClick />

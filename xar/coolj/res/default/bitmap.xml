@@ -92,6 +92,14 @@
 		<texture id="texture.mainwnd.border" type="NineInOne" image="bitmap\mainwnd_border.png" />
 		<bitmap id="bkg.tab" image="bitmap\bkg.tab.png" />
 		
+		<texture id="texture.left.bkg" type="Stretch" image="bitmap\texture.left.bkg.png" />
+		<texture id="texture.main.bkg" type="Stretch" image="bitmap\texture.main.bkg.png" />
+		<texture id="text.tab.btn.normal" type="Stretch" image="bitmap\text.tab.btn.normal.png" />
+		<texture id="text.tab.btn.hover" type="Stretch" image="bitmap\text.tab.btn.hover.png" />
+		<texture id="text.tab.btn.down" type="Stretch" image="bitmap\text.tab.btn.down.png" />
+		<!-- footer -->
+		<texture id="texture.footer.bkg" type="Stretch" image="bitmap\texture.footer.bkg.png" />
+		
 		<!-- icon res -->
 		<icon id="wnd.big"  width="32" height="32" file="bitmap\thunder.ico" />
 		<icon id="wnd.small"  width="16" height="16" file="bitmap\thunder.ico" />

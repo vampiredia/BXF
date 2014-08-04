@@ -1,0 +1,8 @@
+<XLUE>
+	<resource>
+		<texture id="texture.tab.head.bkg.normal" type="Stretch" image="TabView\tb.bkg.normal.png" />
+		<texture id="texture.tab.head.bkg.down" type="Stretch" image="TabView\tb.bkg.down.png" />
+		<texture id="texture.tab.head.bkg.hover" type="Stretch" image="TabView\tb.bkg.hover.png" />
+		<texture id="texture.tab.head.bkg.disable" type="Stretch" image="TabView\tb.bkg.disable.png" />
+	</resource>
+</XLUE>

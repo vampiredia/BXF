@@ -5,8 +5,20 @@ function OnInitControl(self)
 end
 
 function TabHeader_OnInitControl(self)
-	self:AddTabItem("TabItem_PreView", "权限预览", "tab.icon.publish.center")
-	self:AddTabItem("TabItem_Managerment", "权限组管理", "tab.icon.property.service")
+	local attr = self:GetAttribute()
+	attr.ItemClass = "Head.TabButton"
+	attr.ButtonWidth = 138
+	attr.ButtonHeight = 33
+	attr.TextFontID = "btText.Tab.title.font"
+	attr.ButtonInternalSpace = 0
+	attr.FuncItemCallBack = funcItemCallBack
+	attr.BtnBkgNormal = "text.tab.btn.normal"
+	attr.BtnBkgHover = "text.tab.btn.hover"
+	attr.BtnBkgDown = "text.tab.btn.down"
+	attr.TextValign = "center"
+	
+	self:AddTabItem("TabItem_PreView", "权限预览", "")
+	self:AddTabItem("TabItem_Managerment", "权限组管理", "")
 end
 
 function OnActiveTabChanged(self, eventName, newid, oldid)

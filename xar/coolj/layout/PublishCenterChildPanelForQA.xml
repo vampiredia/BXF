@@ -139,7 +139,7 @@
 								<height>28</height>
 								<text></text>
 								<font>catalog.font</font>
-								<textcolor>system.navy</textcolor>
+								<textcolor>system.black</textcolor>
 							</attr>
 						</obj>
 						
@@ -242,8 +242,8 @@
 							<attr>
 								<left>515</left>
 								<top>32</top>
-								<width>176</width>
-								<height>422</height>
+								<width>183</width>
+								<height>428</height>
 							</attr>
 							<children>
 								<obj id="colorfill" class="FillObject">
@@ -260,9 +260,8 @@
 										<maskwidth>width</maskwidth>
 										<maskheight>height</maskheight>
 										<maskblendtype>attenunate</maskblendtype>
-										<srccolor>system.purple</srccolor>
-										<destcolor>system.navy</destcolor>
-										<alpha>128</alpha>
+										<srccolor>#dae2e4</srccolor>
+										<destcolor>#dae2e4</destcolor>
 									</attr>
 								</obj>	
 								<obj id="BtnPrev" class="WHome.Button">

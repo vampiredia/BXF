@@ -9,10 +9,12 @@
 
 		<children>
 			<obj id="test" class="ImageObject">
-				<height>85</height>
-				<width>1010</width>
-				<image>bkg.light.top</image>
-				<zorder>3</zorder>
+				<attr>
+					<height>85</height>
+					<width>1010</width>
+					<image>bkg.light.top</image>
+					<zorder>3</zorder>
+				</attr>
 			</obj>
 		</children>
 	</objtemplate>

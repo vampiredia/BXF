@@ -2,13 +2,13 @@
 	<control class="WHome.RichEdit">
 		<attr_def>
 			<attr name="BkgNormalTextureID" type="string">
-				<default>texture.edit.bkg.normal</default>
+				<default>texture.richedit.bkg.normal</default>
 			</attr>
 			<attr name="BkgHoverTextureID" type="string">
-				<default>texture.edit.bkg.hover</default>
+				<default>texture.richedit.bkg.hover</default>
 			</attr>
 			<attr name="BkgDisableTextureID" type="string">
-				<default>texture.edit.bkg.disable</default>
+				<default>texture.richedit.bkg.disable</default>
 			</attr>
 			
 			<attr name="ReadOnlyFont" type="string">

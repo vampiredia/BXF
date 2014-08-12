@@ -19,7 +19,9 @@
 			<attr name="Type" type="string">
 				<default>v</default>
 			</attr>
-
+			<attr name="BkgAreaBitmapID" type="string" >
+				<default>scrollbar.vsb.bkgarea</default>
+			</attr>
 			<attr name="BkgHoverBitmapID" type="string" >
 				<default>scrollbar.vsb.bkg.nil</default>
 			</attr>
@@ -65,7 +67,7 @@
 			</attr>
 
 			<attr name="ThumbBtnMinLength" type="int">
-				<default>15</default>
+				<default>25</default>
 			</attr>
 
 			<attr name="WheelSpeed" type="int">
@@ -87,7 +89,6 @@
 				<default>100</default>
 			</attr>
 			<attr name="ScrollPos" type="int"/>
-			<attr name="MinLength" type="int" ><default>25</default></attr>
 		</attr_def>
 		<method_def>
 			<SetScrollPos file="ScrollBar.xml.lua" func="SetScrollPos"/>
@@ -156,7 +157,7 @@
 										<left>-1</left>
 										<width>father.width</width>
 										<height>10</height>
-										<texture>scrollbar.vsb.bkg.hover</texture>
+										<texture></texture>
 									</attr>
 								</obj>
 								<obj id="bkgdownarea" class="TextureObject">
@@ -244,10 +245,12 @@
 
 	<objtemplate id="CoolJ.VScrollBar">
 		<attr>
-			<width>13</width>
-			<BkgNormalBitmapID>scrollbar.vsb.bkg.normal</BkgNormalBitmapID>
-			<BkgHoverBitmapID>scrollbar.vsb.bkg.hover</BkgHoverBitmapID>
-			<BkgDisableBitmapID>scrollbar.vsb.bkg.normal</BkgDisableBitmapID>
+			<width>12</width>
+			<Type>v</Type>
+			<BkgNormalBitmapID>scrollbar.vsb.bkg.nil</BkgNormalBitmapID>
+			<BkgHoverBitmapID>scrollbar.vsb.bkg.nil</BkgHoverBitmapID>
+			<BkgDisableBitmapID>scrollbar.vsb.bkg.nil</BkgDisableBitmapID>
+			<BkgAreaBitmapID>scrollbar.vsb.bkgarea</BkgAreaBitmapID>
 
 			<PreBtnNormalBitmapID>scrollbar.vsb.prebtn.normal</PreBtnNormalBitmapID>
 			<PreBtnHoverBitmapID>scrollbar.vsb.prebtn.hover</PreBtnHoverBitmapID>
@@ -267,22 +270,24 @@
 	</objtemplate>
 	<objtemplate id="CoolJ.HScrollBar">
 		<attr>
-			<height>13</height>
+			<height>12</height>
 			<Type>h</Type>
-			<BkgHoverBitmapID>scrollbar.hsb.bkg.normal</BkgHoverBitmapID>
-			<BkgNormalBitmapID>scrollbar.hsb.bkg.hover</BkgNormalBitmapID>	
-			<BkgDownBitmapID>scrollbar.hsb.bkg.normal</BkgDownBitmapID>	
-			<BkgDisableBitmapID>scrollbar.hsb.bkg.normal</BkgDisableBitmapID>	
+			<BkgHoverBitmapID>scrollbar.hsb.bkg.nil</BkgHoverBitmapID>
+			<BkgNormalBitmapID>scrollbar.hsb.bkg.nil</BkgNormalBitmapID>	
+			<BkgDownBitmapID>scrollbar.hsb.bkg.nil</BkgDownBitmapID>	
+			<BkgDisableBitmapID>scrollbar.hsb.bkg.nil</BkgDisableBitmapID>	
+			
+			<BkgAreaBitmapID>scrollbar.hsb.bkgarea</BkgAreaBitmapID>
 
-			<PreBtnNormalBitmapID>scrollbar.vsb.prebtn.normal</PreBtnNormalBitmapID>	
-			<PreBtnHoverBitmapID>scrollbar.vsb.prebtn.hover</PreBtnHoverBitmapID>	
-			<PreBtnDownBitmapID>scrollbar.vsb.prebtn.down</PreBtnDownBitmapID>	
-			<PreBtnDisableBitmapID>scrollbar.vsb.prebtn.normal</PreBtnDisableBitmapID>	
+			<PreBtnNormalBitmapID>scrollbar.hsb.prebtn.normal</PreBtnNormalBitmapID>	
+			<PreBtnHoverBitmapID>scrollbar.hsb.prebtn.hover</PreBtnHoverBitmapID>	
+			<PreBtnDownBitmapID>scrollbar.hsb.prebtn.down</PreBtnDownBitmapID>	
+			<PreBtnDisableBitmapID>scrollbar.hsb.prebtn.normal</PreBtnDisableBitmapID>	
 
-			<NextBtnNormalBitmapID>scrollbar.vsb.nextbtn.normal</NextBtnNormalBitmapID>	
-			<NextBtnHoverBitmapID>scrollbar.vsb.nextbtn.hover</NextBtnHoverBitmapID>	
-			<NextBtnDownBitmapID>scrollbar.vsb.nextbtn.down</NextBtnDownBitmapID>	
-			<NextBtnDisableBitmapID>scrollbar.vsb.nextbtn.normal</NextBtnDisableBitmapID>	
+			<NextBtnNormalBitmapID>scrollbar.hsb.nextbtn.normal</NextBtnNormalBitmapID>	
+			<NextBtnHoverBitmapID>scrollbar.hsb.nextbtn.hover</NextBtnHoverBitmapID>	
+			<NextBtnDownBitmapID>scrollbar.hsb.nextbtn.down</NextBtnDownBitmapID>	
+			<NextBtnDisableBitmapID>scrollbar.hsb.nextbtn.normal</NextBtnDisableBitmapID>	
 
 
 			<ThumbBtnNormalBitmapID>scrollbar.hsb.thumb.normal</ThumbBtnNormalBitmapID>

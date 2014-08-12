@@ -57,7 +57,7 @@
 								<BackgroundTexture/>
 								<ScrollBarClassNameV>ListView.ScrollBarV</ScrollBarClassNameV>
 								<ScrollBarClassNameH>ListView.ScrollBarH</ScrollBarClassNameH>
-								<ScrollBarSize>20</ScrollBarSize>
+								<ScrollBarSize>12</ScrollBarSize>
 								<HeaderClassName>ListView.Header</HeaderClassName>
 								<HeaderHeight>30</HeaderHeight>
 								<PreloadDataCount>50</PreloadDataCount>

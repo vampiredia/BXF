@@ -8,13 +8,6 @@ function GetTextItemFactory()
 	callbackTable.CreateObject = 
 		function (userdata, column)
 			local objFactory = XLGetObject("Xunlei.UIEngine.ObjectFactory")
-			--[[
-			if column == 6 then 
-				local button = objFactory:CreateUIObject(nil,"BaseUI.Button")
-				local cookie, ret = button:AttachListener("OnClick", true, OnButtonClicked)
-				return button
-			else return objFactory:CreateUIObject(nil,"TextObject") end
-			]]
 			return objFactory:CreateUIObject(nil,"WHome.Edit")
 		end
 	callbackTable.GetRowHeight = 

@@ -63,6 +63,9 @@
 		<texture id="scrollbar.vsb.bkg.hover" type="ThreeInOneV" image="scrollbar\scrollbar.thumb.02.png" />
 		<texture id="scrollbar.vsb.bkg.down" type="ThreeInOneV" image="scrollbar\scrollbar.thumb.06.png" />
 		
+		<texture id="scrollbar.vsb.bkgarea" type="ThreeInOneV" image="scrollbar\scrollbar.thumb.02.png" />
+		<texture id="scrollbar.hsb.bkgarea" type="ThreeInOneH" image="scrollbar\scrollbar.thumb.04.png" />
+		
 		<texture id="scrollbar.hsb.thumb.normal" type="ThreeInOneH" image="scrollbar\scrollbar.thumb.04.png" />
 		<texture id="scrollbar.hsb.thumb.hover" type="ThreeInOneH" image="scrollbar\scrollbar.thumb.03.png" />
 		<texture id="scrollbar.hsb.thumb.down" type="ThreeInOneH" image="scrollbar\scrollbar.thumb.04.png" />

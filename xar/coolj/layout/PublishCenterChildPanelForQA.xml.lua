@@ -89,11 +89,11 @@ function LB_OnListItemDbClick(self, event, itemObj, x, y, flags)
 	objControl:GetControlObject("answer"):SetText(itemObj:GetData().answer)
 	objControl:GetControlObject("topic_status"):SetText(itemObj:GetData().topic_status)
 	if itemObj:GetData().status == 'noreply' then
-		objControl:GetControlObject("topic_status"):SetTextColor("system.green")
+		objControl:GetControlObject("topic_status"):SetTextColorResID("system.black")
 	elseif itemObj:GetData().status == 'reply' then
-		objControl:GetControlObject("topic_status"):SetTextColor("system.orange")
+		objControl:GetControlObject("topic_status"):SetTextColorResID("system.black")
 	elseif itemObj:GetData().status == 'close' then
-		objControl:GetControlObject("topic_status"):SetTextColor("system.red")
+		objControl:GetControlObject("topic_status"):SetTextColorResID("system.red")
 	end
 	
 	statuschange(self:GetOwnerControl())
@@ -173,11 +173,11 @@ function showinfo(self, id)
 			self:GetControlObject("answer"):SetText(table_data[i]['answer'])
 			self:GetControlObject("topic_status"):SetText(table_data[i]['topic_status'])
 		if table_data[i]['status'] == 'noreply' then
-			self:GetControlObject("topic_status"):SetTextColor("system.green")
+			self:GetControlObject("topic_status"):SetTextColorResID("system.black")
 		elseif table_data[i]['status'] == 'reply' then
-			self:GetControlObject("topic_status"):SetTextColor("system.orange")
+			self:GetControlObject("topic_status"):SetTextColorResID("system.black")
 		elseif table_data[i]['status'] == 'close' then
-			self:GetControlObject("topic_status"):SetTextColor("system.red")
+			self:GetControlObject("topic_status"):SetTextColorResID("system.red")
 		end
 			statuschange(self)				
 		end

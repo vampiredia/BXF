@@ -1,0 +1,8 @@
+<XLUE>
+	<resource>
+		<texture id="texture.richedit.bkg.normal" type="NineInOne" image="RichEdit\bkg.png" />
+		<texture id="texture.richedit.bkg.hover" type="NineInOne" image="RichEdit\bkg.png" />
+		<texture id="texture.richedit.bkg.down" type="NineInOne" image="RichEdit\bkg.png" />
+		<texture id="texture.richedit.bkg.disable" type="NineInOne" image="RichEdit\bkg.png" />
+	</resource>
+</XLUE>

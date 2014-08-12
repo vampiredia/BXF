@@ -25,6 +25,8 @@ function OnClickNewNoticePageToMainPage(self)
 end
 
 function OnClickNoticeHistory(self)
+
+	MessageBox(nil, "title", "content")
 	PageChange(self, "main.page", "history.notice.page")
 	
 	local controlObj = self:GetOwnerControl()

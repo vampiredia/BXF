@@ -315,6 +315,9 @@ function OnBind(self)
 	
 	local bkgdown = bkg:GetControlObject("bkgdownarea")
 	bkgdown:SetTextureID(attr.BkgDownBitmapID)
+	
+	local bkgarea = bkg:GetControlObject("bkgarea")
+	bkgarea:SetTextureID(attr.BkgAreaBitmapID)
 end
 
 function OnInitControl(self)

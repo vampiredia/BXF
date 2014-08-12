@@ -86,10 +86,10 @@
 						<maskwidth>width</maskwidth>
 						<maskheight>height</maskheight>
 						<maskblendtype>attenunate</maskblendtype>
-						<srccolor>#000000</srccolor>
-						<destcolor>#000000</destcolor>
+						<srccolor>system.white</srccolor>
+						<destcolor>system.white</destcolor>
 						<alpha>255</alpha>
-						<zorder>340</zorder>
+						<zorder>9999</zorder>
 					</attr>
 					<children>
 						<obj id="text" class="TextObject">
@@ -145,6 +145,7 @@
 				</obj>
 			</children>
 		</obj>
+		
 	</objtreetemplate>
 
 	<hostwndtemplate id="CoolJ.MessageBox" class="ModalHostWnd" >

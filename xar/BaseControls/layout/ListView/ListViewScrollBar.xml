@@ -36,7 +36,7 @@
 		</event_def>
 		<objtemplate id="ListView.ScrollBarH">
 			<children>
-				<obj id="scrollbar.h" class="BaseUI.ScrollBar" templateid="BaseUI.HScrollBar">
+				<obj id="scrollbar.h" class="CoolJ.ScrollBar" templateid="CoolJ.HScrollBar">
 					<attr>
 						<left>0</left>
 						<top>0</top>
@@ -97,7 +97,7 @@
 		</event_def>
 		<objtemplate id="ListView.ScrollBarV">
 			<children>
-				<obj id="scrollbar.v" class="BaseUI.ScrollBar" templateid="BaseUI.VScrollBar">
+				<obj id="scrollbar.v" class="CoolJ.ScrollBar" templateid="CoolJ.VScrollBar">
 					<attr>
 						<left>0</left>
 						<top>0</top>

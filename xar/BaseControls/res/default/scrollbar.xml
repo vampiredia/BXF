@@ -51,5 +51,36 @@
 		<bitmap id="scrollbar.hsb.small.decorate.normal" imagelist="scrollbar.hsb.small.decorate" index="1"/>
 		<bitmap id="scrollbar.hsb.small.decorate.hover" imagelist="scrollbar.hsb.small.decorate" index="2"/>
 		<bitmap id="scrollbar.hsb.small.decorate.down" imagelist="scrollbar.hsb.small.decorate" index="3"/>
+		
+		
+		<!-- new -->
+		<texture id="scrollbar.hsb.bkg.nil" type="ThreeInOneH" image="scrollbar\scrollbar.thumb.05.png" />
+		<texture id="scrollbar.hsb.bkg.normal" type="ThreeInOneH" image="scrollbar\scrollbar.thumb.05.png" />
+		<texture id="scrollbar.hsb.bkg.hover" type="ThreeInOneH" image="scrollbar\scrollbar.thumb.04.png" />
+		<texture id="scrollbar.hsb.bkg.down" type="ThreeInOneH" image="scrollbar\scrollbar.thumb.05.png" />
+		<texture id="scrollbar.hsb.bkg.nil" type="ThreeInOneH" image="scrollbar\scrollbar.thumb.06.png" />
+		<texture id="scrollbar.vsb.bkg.normal" type="ThreeInOneV" image="scrollbar\scrollbar.thumb.06.png" />
+		<texture id="scrollbar.vsb.bkg.hover" type="ThreeInOneV" image="scrollbar\scrollbar.thumb.02.png" />
+		<texture id="scrollbar.vsb.bkg.down" type="ThreeInOneV" image="scrollbar\scrollbar.thumb.06.png" />
+		
+		<texture id="scrollbar.hsb.thumb.normal" type="ThreeInOneH" image="scrollbar\scrollbar.thumb.04.png" />
+		<texture id="scrollbar.hsb.thumb.hover" type="ThreeInOneH" image="scrollbar\scrollbar.thumb.03.png" />
+		<texture id="scrollbar.hsb.thumb.down" type="ThreeInOneH" image="scrollbar\scrollbar.thumb.04.png" />
+		<texture id="scrollbar.vsb.thumb.normal" type="ThreeInOneV" image="scrollbar\scrollbar.thumb.02.png" />
+		<texture id="scrollbar.vsb.thumb.hover" type="ThreeInOneV" image="scrollbar\scrollbar.thumb.01.png" />
+		<texture id="scrollbar.vsb.thumb.down" type="ThreeInOneV" image="scrollbar\scrollbar.thumb.02.png" />
+		
+		<bitmap id="scrollbar.hsb.prebtn.normal" image="scrollbar\scrollbar.06.png" />
+		<bitmap id="scrollbar.hsb.prebtn.hover" image="scrollbar\scrollbar.05.png" />
+		<bitmap id="scrollbar.hsb.prebtn.down" image="scrollbar\scrollbar.11.png" />
+		<bitmap id="scrollbar.vsb.prebtn.normal" image="scrollbar\scrollbar.02.png" />
+		<bitmap id="scrollbar.vsb.prebtn.hover" image="scrollbar\scrollbar.01.png" />
+		<bitmap id="scrollbar.vsb.prebtn.down" image="scrollbar\scrollbar.09.png" />	
+		<bitmap id="scrollbar.hsb.nextbtn.normal" image="scrollbar\scrollbar.08.png" />
+		<bitmap id="scrollbar.hsb.nextbtn.hover" image="scrollbar\scrollbar.07.png" />
+		<bitmap id="scrollbar.hsb.nextbtn.down" image="scrollbar\scrollbar.11.png" />
+		<bitmap id="scrollbar.vsb.nextbtn.normal" image="scrollbar\scrollbar.04.png" />
+		<bitmap id="scrollbar.vsb.nextbtn.hover" image="scrollbar\scrollbar.03.png" />
+		<bitmap id="scrollbar.vsb.nextbtn.down" image="scrollbar\scrollbar.10.png" />			
 	</resource>
 </XLUE>

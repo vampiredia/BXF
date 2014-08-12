@@ -1,0 +1,294 @@
+<xlue>
+	<animation_def class="CoolJ.ScrollBar.ScrollPosAni">
+		<attr_def>
+			<attr name="speed" type="int"/>
+			<attr name="acceleration" type="int"/>
+		</attr_def>
+		<method_def>
+			<Action file="ScrollBar.xml.lua" func="PosAni_Action"/>
+			<Bind file="ScrollBar.xml.lua" func="PosAni_Bind"/>
+			<SetSpeed file="ScrollBar.xml.lua" func="PosAni_SetSpeed" />
+			<SetRange file="ScrollBar.xml.lua" func="PosAni_SetRange" />
+		</method_def>
+	</animation_def>
+	<animationtemplate id = "CoolJ.ScrollBar.ScrollPosAni.Template" class="CoolJ.ScrollBar.ScrollPosAni"/>
+
+	<control class="CoolJ.ScrollBar">
+		<attr_def>
+			<!-- "v" "h" -->
+			<attr name="Type" type="string">
+				<default>v</default>
+			</attr>
+
+			<attr name="BkgHoverBitmapID" type="string" >
+				<default>scrollbar.vsb.bkg.nil</default>
+			</attr>
+			<attr name="BkgNormalBitmapID" type="string">
+				<default>scrollbar.vsb.bkg.nil</default>	
+			</attr>
+			<attr name="BkgDownBitmapID" type="string" >
+				<default>scrollbar.vsb.bkg.nil</default>	
+			</attr>
+
+			<attr name="PreBtnNormalBitmapID" type="string" >
+				<default>scrollbar.vsb.prebtn.normal</default>	
+			</attr>
+			<attr name="PreBtnHoverBitmapID" type="string" >
+				<default>scrollbar.vsb.prebtn.hover</default>	
+			</attr>
+			<attr name="PreBtnDownBitmapID" type="string" >
+				<default>scrollbar.vsb.prebtn.down</default>	
+			</attr>
+
+			<attr name="NextBtnNormalBitmapID" type="string" >
+				<default>scrollbar.vsb.nextbtn.normal</default>	
+			</attr>
+			<attr name="NextBtnHoverBitmapID" type="string" >
+				<default>scrollbar.vsb.nextbtn.hover</default>	
+			</attr>
+			<attr name="NextBtnDownBitmapID" type="string" >
+				<default>scrollbar.vsb.nextbtn.down</default>	
+			</attr>
+
+			<attr name="NavigationBtnLength" type="int" >
+				<default>12</default>
+			</attr>
+
+			<attr name="ThumbBtnNormalBitmapID" type="string" >
+				<default>scrollbar.vsb.thumb.normal</default>
+			</attr>
+			<attr name="ThumbBtnHoverBitmapID" type="string" >
+				<default>scrollbar.vsb.thumb.hover</default>
+			</attr>
+			<attr name="ThumbBtnDownBitmapID" type="string" >
+				<default>scrollbar.vsb.thumb.down</default>
+			</attr>
+
+			<attr name="ThumbBtnMinLength" type="int">
+				<default>15</default>
+			</attr>
+
+			<attr name="WheelSpeed" type="int">
+				<default>5</default>
+			</attr>
+			<attr name="NavigationSpeed" type="int">
+				<default>2</default>
+			</attr>
+			<attr name="NavigationAcceleration" type="float">
+				<default>2</default>
+			</attr>
+			<attr name="PageSize" type="int">
+				<default>20</default>
+			</attr>
+			<attr name="RangeBegin" type="int">
+				<default>0</default>
+			</attr>
+			<attr name="RangeEnd" type="int">
+				<default>100</default>
+			</attr>
+			<attr name="ScrollPos" type="int"/>
+			<attr name="MinLength" type="int" ><default>25</default></attr>
+		</attr_def>
+		<method_def>
+			<SetScrollPos file="ScrollBar.xml.lua" func="SetScrollPos"/>
+			<GetScrollPos file="ScrollBar.xml.lua" func="GetScrollPos"/>
+
+			<SetScrollRange file="ScrollBar.xml.lua" func="SetScrollRange"/>
+			<GetScrollRange file="ScrollBar.xml.lua" func="GetScrollRange"/>
+
+			<GetPageSize file="ScrollBar.xml.lua" func="GetPageSize"/>
+			<SetPageSize file="ScrollBar.xml.lua" func="SetPageSize"/>
+
+			<SetNavigationSpeed file="ScrollBar.xml.lua" func="SetNavigationSpeed"/>
+			<GetNavigationSpeed file="ScrollBar.xml.lua" func="GetNavigationSpeed"/>
+
+			<OnMouseWheel file="ScrollBar.xml.lua" func="OnMouseWheel"/>
+		</method_def>
+
+		<event_def>
+			<OnHScroll>
+				<param>
+					<int/>
+					<int/>
+				</param>
+			</OnHScroll>
+			<OnVScroll>
+				<param>
+					<int/>
+					<int/>
+				</param>
+			</OnVScroll>
+			<OnScrollBarFocusChange>
+				<param>
+					<bool/>
+				</param>
+			</OnScrollBarFocusChange>
+			<OnScrollBarMouseWheel>
+				<param>
+					<int />
+					<int />
+					<int />
+				</param>
+			</OnScrollBarMouseWheel>
+			<OnScrollPosChange>
+				<param>
+				</param>
+			</OnScrollPosChange>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="ctrl" class="LayoutObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="bkg" class="CoolJ.ImageButton">
+							<attr>
+								<width>father.width</width>
+								<height>father.height</height>
+								<HasFocusLine>false</HasFocusLine>
+								<ResType>texture</ResType>
+							</attr>
+							<children>
+								<obj id="bkgarea" class="TextureObject">
+									<attr>
+										<left>-1</left>
+										<width>father.width</width>
+										<height>10</height>
+										<texture>scrollbar.vsb.bkg.hover</texture>
+									</attr>
+								</obj>
+								<obj id="bkgdownarea" class="TextureObject">
+									<attr>
+										<width>0</width>
+										<height>0</height>
+									</attr>
+									<eventlist>
+										<event name="OnLButtonDown" file="ScrollBar.xml.lua" func="DownArea_OnLButtonDown" />
+										<event name="OnLButtonDown" file="ScrollBar.xml.lua" func="DownArea_OnLButtonDown"/>
+										<event name="OnLButtonDbClick" file="ScrollBar.xml.lua" func="DownArea_OnLButtonDBClick"/>
+										<event name="OnLButtonUp" file="ScrollBar.xml.lua" func="DownArea_OnLButtonUp"/>
+										<event name="OnMouseWheel" file="ScrollBar.xml.lua" func="DownArea_OnMouseWheel" />
+									</eventlist>
+								</obj>
+								<obj id="prebtn" class="CoolJ.ImageButton">
+									<attr>
+										<left>-4</left>
+										<width>father.width</width>
+										<height>10</height>
+										<HasFocusLine>false</HasFocusLine>
+									</attr>
+									<eventlist>
+										<event name="OnLButtonDown" file="ScrollBar.xml.lua" func="PreBtn_OnLButtonDown"/>
+										<event name="OnLButtonDbClick" file="ScrollBar.xml.lua" func="PreBtn_OnLButtonDBClick"/>
+										<event name="OnLButtonUp" file="ScrollBar.xml.lua" func="PreBtn_OnLButtonUp"/>
+										<event name="OnMouseMove" file="ScrollBar.xml.lua" func="PreBtn_OnMouseMove"/>
+										<event name="OnMouseWheel" file="ScrollBar.xml.lua" func="PreBtn_OnMouseWheel" />
+									</eventlist>
+								</obj>
+								<obj id="nextbtn" class="CoolJ.ImageButton">
+									<attr>
+										<left>-4</left>
+										<width>father.width</width>
+										<height>10</height>
+										<HasFocusLine>false</HasFocusLine>
+									</attr>
+									<eventlist>
+										<!--<event name="OnClick" file="ScrollBar.xml.lua" func="NextBtn_OnClick"/>-->
+										<event name="OnLButtonDown" file="ScrollBar.xml.lua" func="NextBtn_OnLButtonDown"/>
+										<event name="OnLButtonDbClick" file="ScrollBar.xml.lua" func="NextBtn_OnLButtonDBClick"/>
+										<event name="OnLButtonUp" file="ScrollBar.xml.lua" func="NextBtn_OnLButtonUp"/>
+										<event name="OnMouseMove" file="ScrollBar.xml.lua" func="NextBtn_OnMouseMove"/>
+										<event name="OnMouseWheel" file="ScrollBar.xml.lua" func="NextBtn_OnMouseWheel" />
+									</eventlist>
+								</obj>
+								<obj id="thumbbtn" class="CoolJ.ImageButton">
+									<attr>
+										<left>-1</left>
+										<width>father.width</width>
+										<height>10</height>
+										<HasFocusLine>false</HasFocusLine>
+										<ResType>texture</ResType>
+									</attr>
+									<eventlist>
+										<event name="OnMouseMove" file="ScrollBar.xml.lua" func="ThumbBtn_OnMouseMove"/>
+										<event name="OnMouseLeave" file="ScrollBar.xml.lua" func="ThumbBtn_OnMouseLeave"/>
+										<event name="OnLButtonDown" file="ScrollBar.xml.lua" func="ThumbBtn_OnLButtonDown"/>
+										<event name="OnLButtonUp" file="ScrollBar.xml.lua" func="ThumbBtn_OnLButtonUp"/>
+										<event name="OnMouseWheel" file="ScrollBar.xml.lua" func="ThumbBtn_OnMouseWheel" />
+									</eventlist>
+								</obj>
+							</children>
+							<eventlist>
+								<!--<event name="OnClick" file="ScrollBar.xml.lua" func="Bkg_OnClick" />-->
+								<event name="OnLButtonDown" file="ScrollBar.xml.lua" func="Bkg_OnLButtonDown"/>
+								<event name="OnLButtonUp" file="ScrollBar.xml.lua" func="Bkg_OnLButtonUp"/>
+								<event name="OnMouseWheel" file="ScrollBar.xml.lua" func="Bkg_OnMouseWheel"/>
+							</eventlist>
+						</obj>
+
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnBind" file="ScrollBar.xml.lua" func="OnBind" />
+				<event name="OnInitControl" file="ScrollBar.xml.lua" func="OnInitControl"/>
+				<event name="OnMouseWheel" file="ScrollBar.xml.lua" func="OnMouseWheel"/>
+				<event name="OnEnableChange" file="ScrollBar.xml.lua" func="OnEnableChange"/>
+				<event name="OnVisibleChange" file="ScrollBar.xml.lua" func="OnVisibleChange"/>
+				<event name="OnPosChange" file="ScrollBar.xml.lua" func="OnPosChange"/>
+			</eventlist>
+		</objtemplate>
+	</control>
+
+	<objtemplate id="CoolJ.VScrollBar">
+		<attr>
+			<width>13</width>
+			<BkgNormalBitmapID>scrollbar.vsb.bkg.normal</BkgNormalBitmapID>
+			<BkgHoverBitmapID>scrollbar.vsb.bkg.hover</BkgHoverBitmapID>
+			<BkgDisableBitmapID>scrollbar.vsb.bkg.normal</BkgDisableBitmapID>
+
+			<PreBtnNormalBitmapID>scrollbar.vsb.prebtn.normal</PreBtnNormalBitmapID>
+			<PreBtnHoverBitmapID>scrollbar.vsb.prebtn.hover</PreBtnHoverBitmapID>
+			<PreBtnDownBitmapID>scrollbar.vsb.prebtn.down</PreBtnDownBitmapID>
+			<PreBtnDisableBitmapID>scrollbar.vsb.prebtn.normal</PreBtnDisableBitmapID>
+
+			<NextBtnNormalBitmapID>scrollbar.vsb.nextbtn.normal</NextBtnNormalBitmapID>
+			<NextBtnHoverBitmapID>scrollbar.vsb.nextbtn.hover</NextBtnHoverBitmapID>
+			<NextBtnDownBitmapID>scrollbar.vsb.nextbtn.down</NextBtnDownBitmapID>
+			<NextBtnDisableBitmapID>scrollbar.vsb.nextbtn.normal</NextBtnDisableBitmapID>
+
+			<ThumbBtnNormalBitmapID>scrollbar.vsb.thumb.normal</ThumbBtnNormalBitmapID>
+			<ThumbBtnHoverBitmapID>scrollbar.vsb.thumb.hover</ThumbBtnHoverBitmapID>
+			<ThumbBtnDownBitmapID>scrollbar.vsb.thumb.down</ThumbBtnDownBitmapID>
+			<ThumbBtnDisableBitmapID>scrollbar.vsb.thumb.normal</ThumbBtnDisableBitmapID>
+		</attr>
+	</objtemplate>
+	<objtemplate id="CoolJ.HScrollBar">
+		<attr>
+			<height>13</height>
+			<Type>h</Type>
+			<BkgHoverBitmapID>scrollbar.hsb.bkg.normal</BkgHoverBitmapID>
+			<BkgNormalBitmapID>scrollbar.hsb.bkg.hover</BkgNormalBitmapID>	
+			<BkgDownBitmapID>scrollbar.hsb.bkg.normal</BkgDownBitmapID>	
+			<BkgDisableBitmapID>scrollbar.hsb.bkg.normal</BkgDisableBitmapID>	
+
+			<PreBtnNormalBitmapID>scrollbar.vsb.prebtn.normal</PreBtnNormalBitmapID>	
+			<PreBtnHoverBitmapID>scrollbar.vsb.prebtn.hover</PreBtnHoverBitmapID>	
+			<PreBtnDownBitmapID>scrollbar.vsb.prebtn.down</PreBtnDownBitmapID>	
+			<PreBtnDisableBitmapID>scrollbar.vsb.prebtn.normal</PreBtnDisableBitmapID>	
+
+			<NextBtnNormalBitmapID>scrollbar.vsb.nextbtn.normal</NextBtnNormalBitmapID>	
+			<NextBtnHoverBitmapID>scrollbar.vsb.nextbtn.hover</NextBtnHoverBitmapID>	
+			<NextBtnDownBitmapID>scrollbar.vsb.nextbtn.down</NextBtnDownBitmapID>	
+			<NextBtnDisableBitmapID>scrollbar.vsb.nextbtn.normal</NextBtnDisableBitmapID>	
+
+
+			<ThumbBtnNormalBitmapID>scrollbar.hsb.thumb.normal</ThumbBtnNormalBitmapID>
+			<ThumbBtnHoverBitmapID>scrollbar.hsb.thumb.hover</ThumbBtnHoverBitmapID>
+			<ThumbBtnDownBitmapID>scrollbar.hsb.thumb.down</ThumbBtnDownBitmapID>
+			<ThumbBtnDisableBitmapID>scrollbar.hsb.thumb.normal</ThumbBtnDisableBitmapID>
+		</attr>
+	</objtemplate>
+</xlue>

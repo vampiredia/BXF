@@ -2,36 +2,58 @@ local function SetStatus(self, newState, forceupdate)
     local attr = self:GetAttribute()
     if forceupdate or newState ~= attr.Status then
         local ownerTree = self:GetOwner()
-        local bkg = self:GetControlObject("button.bkg")
-
-        if newState == 1 then
-            bkg:SetResID(attr.NormalBkgID)
-        elseif newState == 2 then
-            bkg:SetResID(attr.HoverBkgID)
-        elseif newState == 3 then
-            bkg:SetResID(attr.DownBkgID)
-        elseif newState == 4 then
-            bkg:SetResID(attr.DisableBkgID)
-        end
-
+		if attr.ResType == "bitmap" then
+			local bkg = self:GetControlObject("bitmap.button.bkg")
+			if newState == 1 then
+				bkg:SetResID(attr.NormalBkgID)
+			elseif newState == 2 then
+				bkg:SetResID(attr.HoverBkgID)
+			elseif newState == 3 then
+				bkg:SetResID(attr.DownBkgID)
+			elseif newState == 4 then
+				bkg:SetResID(attr.DisableBkgID)
+			end		
+		else
+			local bkg = self:GetControlObject("texture.button.bkg")
+			if newState == 1 then
+				bkg:SetTextureID(attr.NormalBkgID)
+			elseif newState == 2 then
+				bkg:SetTextureID(attr.HoverBkgID)
+			elseif newState == 3 then
+				bkg:SetTextureID(attr.DownBkgID)
+			elseif newState == 4 then
+				bkg:SetTextureID(attr.DisableBkgID)
+			end			
+		end
         attr.Status = newState
     end
 end
 
 function UpdateUI(self)
     local attr = self:GetAttribute()
-	local bkg = self:GetControlObject("button.bkg")
-
-	if attr.Status == 1 then
-		bkg:SetResID(attr.NormalBkgID)
-	elseif attr.Status == 2 then
-		bkg:SetResID(attr.HoverBkgID)
-	elseif attr.Status == 3 then
-		bkg:SetResID(attr.DownBkgID)
-	elseif attr.Status == 4 then
-		bkg:SetResID(attr.DisableBkgID)
+	if attr.ResType == "bitmap" then
+		local bkg = self:GetControlObject("bitmap.button.bkg")
+		if newState == 1 then
+			bkg:SetResID(attr.NormalBkgID)
+		elseif newState == 2 then
+			bkg:SetResID(attr.HoverBkgID)
+		elseif newState == 3 then
+			bkg:SetResID(attr.DownBkgID)
+		elseif newState == 4 then
+			bkg:SetResID(attr.DisableBkgID)
+		end		
+	else
+		local bkg = self:GetControlObject("texture.button.bkg")
+		if newState == 1 then
+			bkg:SetTextureID(attr.NormalBkgID)
+		elseif newState == 2 then
+			bkg:SetTextureID(attr.HoverBkgID)
+		elseif newState == 3 then
+			bkg:SetTextureID(attr.DownBkgID)
+		elseif newState == 4 then
+			bkg:SetTextureID(attr.DisableBkgID)
+		end			
 	end
-
 end
 
 function OnLButtonDown(self)
@@ -42,8 +64,6 @@ function OnLButtonDown(self)
 		SetStatus(self, 3)
 	end
 end
-
-
 
 function OnLButtonUp(self, x, y, flags)
 	local attr = self:GetAttribute()
@@ -97,7 +117,6 @@ function OnMouseMove(self, x, y)
     end
 end
 
-
 function OnMouseLeave(self)
     local attr = self:GetAttribute()
     if attr.Status ~= 4 then
@@ -108,12 +127,21 @@ function OnMouseLeave(self)
     end
 end
 
-
 function OnBind(self)
     local attr = self:GetAttribute()
-    local bkg = self:GetControlObject("button.bkg")
-	if attr.NormalBkgID then
-		bkg:SetResID(attr.NormalBkgID)
+	if attr.ResType == "bitmap" then 
+		local bkg = self:GetControlObject("bitmap.button.bkg")
+		bkg:SetVisible(1)
+		if attr.NormalBkgID then
+			bkg:SetResID(attr.NormalBkgID)
+		end
+		bkg:SetDrawMode(attr.DrawMode)	
+	else
+		local bkg = self:GetControlObject("texture.button.bkg")
+		bkg:SetVisible(1)
+		if attr.NormalBkgID then
+			bkg:SetTextureID(attr.NormalBkgID)
+		end			
 	end
 end
 
@@ -192,8 +220,11 @@ function RemoveTip(self)
 end
 
 function SetButtonAlpha(self, alpha)
-	local bkgObj = self:GetControlObject("button.bkg")
-	bkgObj:SetAlpha(alpha)
+	local attr = self:GetAttribute()
+	if attr.ResType == "bitmap" then
+		local bkgObj = self:GetControlObject("bitmap.button.bkg")
+		bkgObj:SetAlpha(alpha)
+	end
 end
 
 function OnEnableChange(self, enable)

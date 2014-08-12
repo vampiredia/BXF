@@ -76,13 +76,11 @@
 					</attr>
 				</obj>
 			</children>
-			<event_list>
+			<templateeventlist>
 				<event name="OnInitControl" file="ListItem.xml.lua" func="OnInitControl" />
 				<event name="OnItemStatusChanged" file="ListItem.xml.lua" func="OnItemStatusChanged" />
-			</event_list>
+			</templateeventlist>
 		</objtemplate>
-		<eventlist>
-		</eventlist>
 	</control>
 
 	<control class="WHome.ListItem">
@@ -177,7 +175,5 @@
 				<event name="OnChar" file="ListItem.xml.lua" func="Item_OnChar" />
 			</eventlist>
 		</objtemplate>
-		<eventlist>
-		</eventlist>
 	</control>
 </xlue>

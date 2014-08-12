@@ -1,5 +1,5 @@
 <xlue>
-	<control class="WHome.ImageButton">
+	<control class="CoolJ.ImageButton">
 		<attr_def>
 			<attr name="NormalBkgID" type="string" />
 			<attr name="HoverBkgID" type="string" />
@@ -8,6 +8,8 @@
 			<attr name="EnableRightBtnClick" type="bool" ><default>false</default></attr>
 			<attr name="Status" type="int"><default>1</default></attr>
             <attr name="HandHover" type="bool"><default>false</default></attr>
+			<attr name="DrawMode" type="int" ><default>0</default></attr>
+			<attr name="ResType" type="string" ><default>bitmap</default></attr>
 		</attr_def>
 		<method_def>
 			<UpdateUI file="ImageButton.xml.lua" func="UpdateUI" />
@@ -22,12 +24,22 @@
 		</event_def>
 		<objtemplate>
 			<children>
-				<obj id="button.bkg" class="ImageObject">
+				<obj id="bitmap.button.bkg" class="ImageObject">
 					<attr>
 						<left>0</left>
 						<top>0</top>
 						<width>father.width</width>
 						<height>father.height</height>
+						<visible>0</visible>
+					</attr>
+				</obj>
+				<obj id="texture.button.bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<visible>0</visible>
 					</attr>
 				</obj>
 			</children>

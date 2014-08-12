@@ -81,6 +81,7 @@ function OnHScroll(self, int1, int2)
 end
 
 function OnScrollBarMouseWheel(self, name, x, y, distance)
+	
 	local ThumbPos = self:GetThumbPos()
 	self:SetThumbPos(ThumbPos - distance / 10)
 end
@@ -372,9 +373,11 @@ function OnSetSBPageSize(self, vertical, pagesize)
 	--XLPrint(string.format("Edit:OnSetSBPageSize() vertical=%s,pagesize=%s",tostring(vertical),tostring(pagesize)))
 	if vertical then
 		local var = self:GetOwnerControl():GetControlObject("vsb")	
+		if var == nil then return end
 		var:SetPageSize(pagesize)
 	else
 		local var = self:GetOwnerControl():GetControlObject("hsb")	
+		if var == nil then return end
 		var:SetPageSize(pagesize)
 	end
 end
@@ -428,12 +431,14 @@ function OnSetSBVisible(self, vertical, visible)
 	--XLPrint(string.format("Edit:OnSetSBVisible() vertical=%s,visible=%s",tostring(vertical),tostring(visible)))
 	if vertical then
 		local var = self:GetOwnerControl():GetControlObject("vsb")	
+		if var == nil then return end
 		var:SetVisible(visible)
 		if not visible then
 			var:SetScrollRange( 0, 0 )
 		end
 	else
 		local var = self:GetOwnerControl():GetControlObject("hsb")	
+		if var == nil then return end
 		var:SetVisible(visible)
 		if not visible then
 			var:SetScrollRange( 0, 0 )
@@ -445,6 +450,7 @@ function OnSetSBRect(self, vertical, left, top, right, bottom)
 	XLPrint(string.format("Edit:OnSetSBRect() vertical=%s,left, top, right, bottom=%d,%d,%d,%d",tostring(vertical),left, top, right, bottom))
 	if vertical then
 		local var = self:GetOwnerControl():GetControlObject("vsb")
+		if var == nil then return end
 		if self:GetScrollVisible( false ) then
 			var:SetObjPos(left,top,right,bottom+10)
 		else
@@ -452,6 +458,7 @@ function OnSetSBRect(self, vertical, left, top, right, bottom)
 		end
 	else
 		local var = self:GetOwnerControl():GetControlObject("hsb")
+		if var == nil then return end
 		if self:GetScrollVisible( true ) then
 			var:SetObjPos(left+4,top,right+4,bottom)
 		else
@@ -463,9 +470,9 @@ end
 function OnGetSBIdealSize(self, vertical)
 	--XLPrint(string.format("Edit:OnGetSBIdealSize() vertical=%s",tostring(vertical)))
 	if vertical then
-		return 10,0
+		return 12,0
 	else
-		return 0,10
+		return 0,12
 	end	
 end
 

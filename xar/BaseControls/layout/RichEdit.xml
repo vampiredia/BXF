@@ -39,7 +39,7 @@
 			</attr>
 			
 			<attr name="Multiline" type="bool">
-				<default>false</default>
+				<default>true</default>
 			</attr>
 			
 			<attr name="MaxLength" type="int" />
@@ -174,21 +174,17 @@
 								<readonly>0</readonly>
                             </attr>
 							<children>
-								<obj id="vsb" class="WHome.ScrollBar">
+								<obj id="vsb" class="CoolJ.ScrollBar">
 									<attr>
-										<Type>1</Type>
-										<ThumbBtn_normal>texture.vsb.big.thumb.normal</ThumbBtn_normal>
-										<ThumbBtn_hover>texture.vsb.big.thumb.hover</ThumbBtn_hover>
-										<ThumbBtn_down>texture.vsb.big.thumb.down</ThumbBtn_down>
-
+										<Type>v</Type>
 										<SideBtnLength>0</SideBtnLength>
 										<PageSize>0</PageSize>
 										<RangeBegin>0</RangeBegin>
 										<RangeEnd>0</RangeEnd>
 										<ScrollPos>0</ScrollPos>
 										<visible>false</visible>			
-										<width>23</width>
-										<ThumbBtnWidth>11</ThumbBtnWidth> 
+										<width>12</width>
+										<ThumbBtnWidth>12</ThumbBtnWidth> 
 										<ThumbRightMagrin>2</ThumbRightMagrin>
 										<cursor>IDC_ARROW</cursor>
 									</attr>
@@ -197,32 +193,7 @@
 										<event name="OnScrollBarMouseWheel" file="RichEdit.xml.lua" func="OnScrollBarMouseWheel" />
 									</eventlist>			
 								</obj>
-								<obj id="hsb" class="WHome.ScrollBar">
-									<attr>
-										<Type>0</Type>
-										<NormalBkn>texture.hsb.big.bkg.normal</NormalBkn>
-										<HoverBkn>texture.hsb.big.bkg.hover</HoverBkn>
-										<ThumbBtn_normal>texture.hsb.big.thumb.normal</ThumbBtn_normal>
-										<ThumbBtn_hover>texture.hsb.big.thumb.hover</ThumbBtn_hover>
-										<ThumbBtn_down>texture.hsb.big.thumb.down</ThumbBtn_down>										
-										<SideBtnLength>0</SideBtnLength>
-										<PageSize>0</PageSize>
-										<RangeBegin>0</RangeBegin>
-										<RangeEnd>0</RangeEnd>
-										<visible>false</visible>
-										<height>23</height>
-										<cursor>IDC_ARROW</cursor>
-										<ThumbBtnWidth>11</ThumbBtnWidth> 
-										<ThumbRightMagrin>2</ThumbRightMagrin>
-										<NormalDecorateID>scrollbar.hsb.big.decorate.normal</NormalDecorateID>
-										<HoverDecorateID>scrollbar.hsb.big.decorate.hover</HoverDecorateID>
-										<DownDecorateID>scrollbar.hsb.big.decorate.down</DownDecorateID>
-									</attr>
-									<eventlist>
-										<event name="OnHScroll" file="Edit.xml.lua" func="OnHScroll"/>
-										<event name="OnScrollBarMouseWheel" file="Edit.xml.lua" func="OnScrollBarMouseWheel" />
-									</eventlist>
-								</obj>
+								
 							</children>
 							<eventlist>
 								<event name="OnMouseMove" file="RichEdit.xml.lua" func="Edit_OnMouseMove" />

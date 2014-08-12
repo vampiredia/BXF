@@ -18,7 +18,7 @@
 				<UseLight>false</UseLight>	
 			</attr>
 			<eventlist>
-				<event name="OnInitControl" file="MainWnd.lua" func="OnInitControl" />
+				<event name="OnInitControl" file="MainWnd.xml.lua" func="OnInitControl" />
 			</eventlist>
 			<children>
 				<obj id="caption" class="CaptionObject">
@@ -30,7 +30,7 @@
 					</attr>
 
 					<eventlist>
-						<!--<event name="OnRButtonUp" file="MainWnd.lua" func="OnMainWndRButtonUp" />-->
+						<!--<event name="OnRButtonUp" file="MainWnd.xml.lua" func="OnMainWndRButtonUp" />-->
 					</eventlist>
 
 					<children>
@@ -84,9 +84,9 @@
 								<MaxShow>false</MaxShow>
 							</attr>
 							<eventlist>
-								<event name="OnClose" file="MainWnd.lua" func="OnClose" />
-								<event name="OnInitControl" file="MainWnd.lua" func="OnSysBtnInitControl" />
-								<event name="OnMinisize" file="MainWnd.lua" func="OnMinisize" />
+								<event name="OnClose" file="MainWnd.xml.lua" func="OnClose" />
+								<event name="OnInitControl" file="MainWnd.xml.lua" func="OnSysBtnInitControl" />
+								<event name="OnMinisize" file="MainWnd.xml.lua" func="OnMinisize" />
 							</eventlist>
 						</obj>	
 					</children>
@@ -101,10 +101,10 @@
 						<enabledrop>1</enabledrop>
 					</attr>
 					<eventlist>
-						<event name="OnDragQuery" file="MainWnd.lua" func="OnDragQuery" />
-						<event name="OnDragEnter" file="MainWnd.lua" func="OnDragEnter" />
-						<event name="OnDragOver" file="MainWnd.lua" func="OnDragOver" />
-						<event name="OnDrop" file="MainWnd.lua" func="OnDrop" />
+						<event name="OnDragQuery" file="MainWnd.xml.lua" func="OnDragQuery" />
+						<event name="OnDragEnter" file="MainWnd.xml.lua" func="OnDragEnter" />
+						<event name="OnDragOver" file="MainWnd.xml.lua" func="OnDragOver" />
+						<event name="OnDrop" file="MainWnd.xml.lua" func="OnDrop" />
 					</eventlist>
 					<children>
 
@@ -177,8 +177,8 @@
 								<zorder>999</zorder>
 							</attr>
 							<eventlist>
-								<event name="OnInitControl" file="MainWnd.lua" func="TabHeader_OnInitControl" />
-								<event name="OnActiveTabChanged" file="MainWnd.lua" func="OnActiveTabChanged" />
+								<event name="OnInitControl" file="MainWnd.xml.lua" func="TabHeader_OnInitControl" />
+								<event name="OnActiveTabChanged" file="MainWnd.xml.lua" func="OnActiveTabChanged" />
 							</eventlist>
 						</obj>
 						<!-- -->
@@ -281,6 +281,7 @@
 							local arg = {...}
 							--XLMessageBox("OnMouseMove")
 						</event>
+						<event name="OnMouseEnter" file="MainWnd.xml.lua" func="Tray_OnMouseEnter" />
 						<event name="OnLButtonDbClick">
 							local arg = {...}
 							local self = arg[1]
@@ -329,7 +330,7 @@
 						<event name="OnContextMenu">
 							local arg = {...}
 							local self = arg[1]
-							self:ShowBalloonTip("hello!!", "bolt", 10000, "info")
+							self:SetTip("hello world")
 
 							--XLMessageBox("OnContextMenu")
 						</event>
@@ -365,8 +366,8 @@
 		</attr>
 
 		<eventlist>
-			<event name="OnSize" file="MainWnd.lua" func="OnSize"/>
-			<event name="OnClose" file="MainWnd.lua" func="OnClose" />
+			<event name="OnSize" file="MainWnd.xml.lua" func="OnSize"/>
+			<event name="OnClose" file="MainWnd.xml.lua" func="OnClose" />
 		</eventlist>		
 	</hostwndtemplate>	
 </xlue>

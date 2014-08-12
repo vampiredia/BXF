@@ -16,6 +16,10 @@ local mbDir = folderDir.."MessageBox.lua"
 local mdMessageBox = XLLoadModule(mbDir)
 mdMessageBox.RegisterGlobal()
 
+local nbDir = folderDir.."NotifyBox.lua"
+local mdNotifyBox = XLLoadModule(nbDir)
+mdNotifyBox.RegisterGlobal()
+
 function CreateLoginWnd()
     local templateManager = XLGetObject("Xunlei.UIEngine.TemplateManager")
     local frameHostWndTemplate = templateManager:GetTemplate("CoolJ.LoginWnd", "HostWndTemplate")

@@ -564,5 +564,5 @@ function BTN_Main_Add(self)
 end
 
 function BTN_Sub_Add(self)
-	operation.SubAdd(nil, {id="new", name="", content="", telphone="", area_code="", pid=0})
+	operation.SubAdd(nil, {id="new", name="", content="", telphone="", area_code="010", pid=0})
 end

@@ -51,26 +51,47 @@
 							<attr>
 								<top>200</top>
 								<left>140</left>
-								<width>100</width>
-								<height>40</height>
+								<width>102</width>
+								<height>34</height>
 								<valign>center</valign>
 								<Text>发布新通知</Text>
-								<TextColor>system.orange</TextColor>
+								<NormalBkgID>general.maigc.button.normal</NormalBkgID>
+								<DownBkgID>general.maigc.button.down</DownBkgID>
+								<DisableBkgID>general.maigc.button.disable</DisableBkgID>
+								<HoverBkgID>general.maigc.button.hover</HoverBkgID>	
 							</attr>
 							<eventlist>
 								<event name="OnClick" file="PublishCenterChildPanelForNotice.xml.lua" func="OnClickNewNotice" />
 							</eventlist>
 						</obj>
+<!-- JUST ONLY FOR TEST
+						<obj id="test" class="CoolJ.ImageButton">
+							<attr>
+								<left>350</left>
+								<top>300</top>
+								<width>60</width>
+								<height>60</height>
+								<NormalBkgID>image.button.test</NormalBkgID>
+								<HoverBkgID>image.button.test</HoverBkgID>
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="PublishCenterChildPanelForNotice.xml.lua" func="Test_OnClick" />
+							</eventlist>
+							
+						</obj>
+-->
 						<obj id="BtnNoticeHistory" class="WHome.Button">
 							<attr>
 								<top>200</top>
 								<left>400</left>
-								<width>100</width>
-								<height>40</height>
+								<width>102</width>
+								<height>34</height>
 								<valign>center</valign>
 								<Text>查看历史通知</Text>
-								<TextColor>system.orange</TextColor>
-
+								<NormalBkgID>general.maigc.button.normal</NormalBkgID>
+								<DownBkgID>general.maigc.button.down</DownBkgID>
+								<DisableBkgID>general.maigc.button.disable</DisableBkgID>
+								<HoverBkgID>general.maigc.button.hover</HoverBkgID>	
 							</attr>
 							<eventlist>
 								<event name="OnClick" file="PublishCenterChildPanelForNotice.xml.lua" func="OnClickNoticeHistory" />

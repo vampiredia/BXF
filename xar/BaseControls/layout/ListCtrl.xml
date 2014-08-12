@@ -157,7 +157,7 @@
 						<endellipsis>1</endellipsis>
 					</attr>
 				</obj>
-				<obj id="btn" class="WHome.ImageButton">
+				<obj id="btn" class="CoolJ.ImageButton">
 					<attr>
 						<left>0</left>
 						<top>0</top>

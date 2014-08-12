@@ -146,3 +146,7 @@ function LB_OnListItemDbClick(self, event, itemObj, x, y, flags)
 	PageChange(self, "history.notice.page", "new.notice.page")
 	
 end
+
+function OnClickNoticeHistory1(self)
+	AddNotify(self)
+end

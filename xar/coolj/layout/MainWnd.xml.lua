@@ -175,6 +175,7 @@ function GetScreenPos(menuRoot, x, y)
 	
 	return x, y, width, height
 end	
+
 function OnMainWndRButtonUp(self, x, y)
 		
 	local templateMananger = XLGetObject("Xunlei.UIEngine.TemplateManager")				
@@ -202,6 +203,14 @@ function OnMainWndRButtonUp(self, x, y)
 end
 
 function TabHeader_OnInitControl(self)
+	local attr = self:GetAttribute()
+	attr.ButtonWidth = 67
+	attr.ButtonHeight = 74
+	attr.IconSize = 64
+	attr.TextFontID = "btTask.title.font"
+	attr.ButtonInternalSpace = 20
+	attr.ItemClass = "Head.TabButton"
+	
 	self:AddTabItem("TabItem_PublishCenter", "发布中心", "tab.icon.publish.center")
 	self:AddTabItem("TabItem_PropertyService", "物业服务", "tab.icon.property.service")
 	self:AddTabItem("TabItem_CommunityService", "社区服务", "tab.icon.community.service")
@@ -209,14 +218,6 @@ function TabHeader_OnInitControl(self)
 	self:AddTabItem("TabItem_RightsManagement", "权限管理", "tab.icon.rights.management")
 	self:AddTabItem("TabItem_LogQuery", "日志查询", "tab.icon.log.query")
 	self:AddTabItem("TabItem_NotifyCenter", "通知中心", "tab.icon.notify.center")
---[[
-	self:AddTabItem("MainPanel","常见控件","",true)
-	self:AddTabItem("RichEdit","富文本")
-	self:AddTabItem("IE","Web")
-	self:AddTabItem("Flash","Flash")
-	self:AddTabItem("Res", "Resource")
-	self:AddTabItem("Animation", "Animation")
-]]
 end
 
 function OnActiveTabChanged(self, eventName, newid, oldid)
@@ -256,9 +257,15 @@ function OnActiveTabChanged(self, eventName, newid, oldid)
 	elseif newid == "TabItem_PropertyService" then	
 		propertyServicePanel:SetVisible(true)
 		propertyServicePanel:SetChildrenVisible(true)
+		-- get data from web
+		local obj = propertyServicePanel:GetControlObject("PropertyServiceChildPanelForService")
+		AsynCall(function() obj:Get_PropertyServiceInfo() end)
 	elseif newid == "TabItem_CommunityService" then
 		communityServicehPanel:SetVisible(true)
 		communityServicehPanel:SetChildrenVisible(true)
+		-- get data from web
+		local obj = communityServicehPanel:GetControlObject("CommunityServiceChildPanelForService")
+		AsynCall(function() obj:Get_CommunityServiceInfo() end)
 	elseif newid == "TabItem_OwnerManagement" then
 		ownerManagementPanel:SetVisible(true)
 		ownerManagementPanel:SetChildrenVisible(true)
@@ -273,4 +280,23 @@ function OnActiveTabChanged(self, eventName, newid, oldid)
         notifyCenterPanel:SetChildrenVisible(true)
 	end
 
+end
+
+function test(self)
+	self:SetIcon('tab.icon.publish.center')
+end
+
+function OnInitControl(self)
+	self:SetBkgType(1)
+end
+
+function OnModalLButtonUp(self)
+	MessageBox(nil, "物管", "这只是一个测试用的文本列表，hello lydia！话有点短，我在多说点，再多说点。。。\
+								这只是一个测试用的文本列表，hello lydia！话有点短，我在多说点，再多说点。。。\
+								这只是一个测试用的文本列表，hello lydia！话有点短，我在多说点，再多说点。。。\
+								这只是一个测试用的文本列表，hello lydia！话有点短，我在多说点，再多说点。。。")
+end
+
+function Tray_OnMouseEnter(self)
+	XLMessageBox(44)
 end

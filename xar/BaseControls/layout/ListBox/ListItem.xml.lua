@@ -26,14 +26,14 @@ function OnInitControl(self)
 	end
 
 	if attr.ItemType == 2 then
-		local objBtnDel = objFactory:CreateUIObject(attr.ItemBtnDelID, "WHome.ImageButton")
+		local objBtnDel = objFactory:CreateUIObject(attr.ItemBtnDelID, "CoolJ.ImageButton")
 		itemObj:AddChild(objBtnDel)
 		objBtnDel:SetVisible(false)
 		objBtnDel:SetChildrenVisible(false)
 	end
 	
 	if attr.ItemType == 3 then 
-		local objBtnAdd = objFactory:CreateUIObject(attr.ItemBtnAddID, "WHome.ImageButton")
+		local objBtnAdd = objFactory:CreateUIObject(attr.ItemBtnAddID, "CoolJ.ImageButton")
 		itemObj:AddChild(objBtnAdd)
 		objBtnAdd:SetVisible(false)
 		objBtnAdd:SetChildrenVisible(false)

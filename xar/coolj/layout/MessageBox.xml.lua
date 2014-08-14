@@ -42,17 +42,3 @@ function OnClose(self)
 	
 	hostwnd:EndDialog(0)
 end
-
-function OnPostCreateInstance(self, obj, userdata)
-	local root = obj:GetRootObject()
-	if userdata['caption'] ~= nil then
-		root:GetControlObject("caption.text"):SetText(userdata['caption'])
-	end
-	if userdata['text'] ~= nil then
-		root:GetControlObject("text"):SetText(userdata['text'])
-	end	
-end
-
-function OnPreCreateInstance(self, userdata)
-	
-end

@@ -19,6 +19,16 @@ function MessageBox(hWnd, caption, text, icon)
 		if modalHostWnd then
 			local objectTreeTemplate = templateMananger:GetTemplate("CoolJ.MessageBox","ObjectTreeTemplate")
 			if objectTreeTemplate then
+				local function OnPostCreateInstance(self, obj, userdata)
+						local root = obj:GetRootObject()
+						if userdata['caption'] ~= nil then
+							root:GetControlObject("caption.text"):SetText(userdata['caption'])
+						end
+						if userdata['text'] ~= nil then
+							root:GetControlObject("text"):SetText(userdata['text'])
+						end					
+					end
+				local cookie = objectTreeTemplate:AttachListener("OnPostCreateInstance", true, OnPostCreateInstance)
 				local uiObjectTree = objectTreeTemplate:CreateInstance("CoolJ.MessageBox.Instance", nil ,{text=text, caption=caption})
 				if uiObjectTree then
 					modalHostWnd:BindUIObjectTree(uiObjectTree)

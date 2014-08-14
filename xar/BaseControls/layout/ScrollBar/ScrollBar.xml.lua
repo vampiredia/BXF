@@ -377,6 +377,7 @@ function GetPageSize(self)
 end
 
 function SetPageSize(self,pgsize)
+	--XLMessageBox(pgsize)
 	local attr = self:GetAttribute()
 	if pgsize ~= attr.PageSize then
 		if pgsize > attr.Range then
@@ -385,6 +386,7 @@ function SetPageSize(self,pgsize)
 			pgsize = 1
 		end
 		attr.PageSize = pgsize
+		--XLMessageBox(pgsize)
 		rawForceRefresh(self)
 	end
 end

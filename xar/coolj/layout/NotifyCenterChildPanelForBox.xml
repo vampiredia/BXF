@@ -1,0 +1,126 @@
+<xlue>
+	<control class="CoolJ.NotifyBox.Left.Head">
+		<attr_def>
+			<attr name="Height" type="int" >
+				<default>30</default>
+			</attr>
+			<attr name="Width" type="int" >
+				<default>266</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<SetText file="NotifyCenterChildPanelForBox.xml.lua" func="NLH_SetText" />
+			<GetText file="NotifyCenterChildPanelForBox.xml.lua" func="NLH_GetText" />
+		</method_def>
+		<event_def>
+
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>266</width>
+						<height>30</height>
+						<texture>texture.notify.head.bkg</texture>
+					</attr>
+					<children>
+						<obj id="text" class="TextObject">
+							<attr>
+								<left>5</left>
+								<top>0</top>
+								<width>father.width - 4</width>
+								<height>father.height</height>
+								<valign>center</valign>
+								<halign>left</halign>
+								<text>消息盒子</text>
+							</attr>
+						</obj>
+					</children>
+				</obj>
+			</children>
+		</objtemplate>
+	</control>
+
+	<control class="CoolJ.NotifyCenterChildPanelForBox">
+		<attr_def>
+			<attr name="BorderTexture" type="string">
+				<default>texture.tabbody.border</default>
+			</attr>
+		</attr_def>
+		<method_def>
+
+		</method_def>
+		<event_def>
+
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<alpha>168</alpha>
+					</attr>
+				</obj>
+
+				<obj id="ctrl" class="LayoutObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="left.layout" class="TextureObject">
+							<attr>
+								<left>1</left>
+								<top>1</top>
+								<width>266</width>
+								<height>459</height>
+								<texture>texture.notify.left.bkg</texture>
+							</attr>
+							<children>
+								<obj id="left.list" class="CoolJ.SimpleListCtrl">
+									<attr>
+										<width>father.width</width>
+										<height>father.height</height>
+										
+									</attr>
+									<eventlist>
+										<event name="OnInitControl" file="NotifyCenterChildPanelForBox.xml.lua" func="LIST_OnInitControl" />
+									</eventlist>
+								</obj>
+							</children>
+						</obj>
+						<obj id="right.layout" class="LayoutObject">
+							<attr>
+								<left>268</left>
+								<top>1</top>
+								<width>429</width>
+								<height>459</height>
+							</attr>
+							<children>
+								<obj id="right.bkg" class="TextureObject">
+									<attr>
+										<width>father.width</width>
+										<height>father.height</height>
+										<texture>texture.notify.right.bkg</texture>
+									</attr>
+								</obj>								
+							</children>
+							<eventlist>
+
+							</eventlist>
+						</obj>
+					</children>
+				</obj>
+
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="NotifyCenterChildPanelForBox.xml.lua" func="OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

@@ -107,5 +107,11 @@
 		<!-- tray res -->
 		 <icon id="systray.big"  width="32" height="32" file="bitmap\thunder.ico" />
 		 <icon id="systray.small"  width="16" height="16" file="bitmap\thunder.ico" />
+		 
+		 <texture id="texture.notify.head" type="Stretch" image="bitmap\texture.notify.head.png" />
+		 <imagelist id="imagelist.notify.bkg" vertical="0" splitter="1" varyblock="1" image="bitmap\imagelist.notify.bkg.png"/>
+		<texture id="texture.notify.head.bkg" type="Stretch" imagelist="imagelist.notify.bkg" index="1"/>
+		<texture id="texture.notify.left.bkg" type="Stretch" imagelist="imagelist.notify.bkg" index="2"/>
+		<texture id="texture.notify.right.bkg" type="Stretch" imagelist="imagelist.notify.bkg" index="3"/>
 	</resource>
 </XLUE>	

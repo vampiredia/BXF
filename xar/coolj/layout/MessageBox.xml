@@ -6,10 +6,7 @@
 			<width>2000</width>
 			<height>2000</height>
 		</attr>
-		<templateeventlist>
-			<event name="OnPreCreateInstance" file="MessageBox.xml.lua" func="OnPreCreateInstance" />
-			<event name="OnPostCreateInstance" file="MessageBox.xml.lua" func="OnPostCreateInstance" />
-		</templateeventlist>
+
 		<obj id="app.bkg" class="CoolJ.BkgCtrl">
 			<attr>
 				<BkgTemplate>MainWnd.Bkg.Shading</BkgTemplate>

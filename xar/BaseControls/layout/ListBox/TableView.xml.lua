@@ -1973,7 +1973,7 @@ function DoDragOperation(ViewCtrlObj, x, y, flags)
 		end
 	end
 	
-	local shell = XLGetObject( "Xunlei.UIEngine.OSShell" )
+	local shell = XLGetObject( "CoolJ.OSShell" )
 	local tl,tt,tr,tb = ViewCtrlObj:GetOwner():GetBindHostWnd():GetWindowRect()
 	local mx, my = shell:GetCursorPos()
 	if not (tl<=mx and mx<=tr and tt<=my and my<=tb) then

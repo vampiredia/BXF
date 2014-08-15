@@ -43,6 +43,189 @@
 		</objtemplate>
 	</control>
 
+	<control class="CoolJ.NotifyBox.Left.Item">
+		<attr_def>
+			<attr name="Height" type="int" >
+				<default>50</default>
+			</attr>
+			<attr name="Width" type="int" >
+				<default>266</default>
+			</attr>			
+		</attr_def>
+		<method_def>
+			<SetSel file="NotifyCenterChildPanelForBox.xml.lua" func="NLI_SetSel" />
+			<Click file="NotifyCenterChildPanelForBox.xml.lua" func="NLI_Click" />
+		</method_def>
+		<event_def>
+
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>266</width>
+						<height>50</height>
+						<texture/>
+					</attr>
+					<children>
+						<obj id="title" class="TextObject">
+							<attr>
+								<left>15</left>
+								<top>12</top>
+								<width>154</width>
+								<height>15</height>
+								<valign>center</valign>
+								<halign>left</halign>
+								<text>天作孽犹可恕、自作孽不可活</text>
+								<endellipsis>1</endellipsis>
+								<wordellipsis>1</wordellipsis>
+							</attr>
+							<eventlist>
+								<event name="OnMouseWheel" file="NotifyCenterChildPanelForBox.xml.lua" func="OnMouseWheel" />
+								<event name="OnLButtonDown" file="NotifyCenterChildPanelForBox.xml.lua" func="ITEM_OnLButtonDown" />
+							</eventlist>
+						</obj>
+						<obj id="content" class="TextObject">
+							<attr>
+								<left>15</left>
+								<top>30</top>
+								<width>154</width>
+								<height>15</height>
+								<valign>center</valign>
+								<halign>left</halign>
+								<text>My date with a vampire</text>
+								<endellipsis>1</endellipsis>
+								<wordellipsis>1</wordellipsis>
+								<textcolor>system.gray</textcolor>
+							</attr>
+							<eventlist>
+								<event name="OnMouseWheel" file="NotifyCenterChildPanelForBox.xml.lua" func="OnMouseWheel" />
+								<event name="OnLButtonDown" file="NotifyCenterChildPanelForBox.xml.lua" func="ITEM_OnLButtonDown" />
+							</eventlist>
+						</obj>
+						<obj id="datetime" class="TextObject">
+							<attr>
+								<left>177</left>
+								<top>0</top>
+								<width>64</width>
+								<height>45</height>
+								<valign>center</valign>
+								<halign>center</halign>
+								<text>14-08-07</text>
+							</attr>
+							<eventlist>
+								<event name="OnMouseWheel" file="NotifyCenterChildPanelForBox.xml.lua" func="OnMouseWheel" />
+								<event name="OnLButtonDown" file="NotifyCenterChildPanelForBox.xml.lua" func="ITEM_OnLButtonDown" />
+							</eventlist>
+						</obj>
+					</children>
+					<eventlist>
+						<event name="OnMouseWheel" file="NotifyCenterChildPanelForBox.xml.lua" func="OnMouseWheel" />
+						<event name="OnLButtonDown" file="NotifyCenterChildPanelForBox.xml.lua" func="ITEM_OnLButtonDown" />
+					</eventlist>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnLButtonDown" file="NotifyCenterChildPanelForBox.xml.lua" func="LIST_ITEM_OnLButtonDown" />
+			</eventlist>
+		</objtemplate>
+	</control>
+
+	<control class="CoolJ.NotifyBox.Right.Item">
+		<attr_def>
+			<attr name="Height" type="int" >
+				<default>58</default>
+			</attr>
+			<attr name="Width" type="int" >
+				<default>415</default>
+			</attr>
+			<attr name="MiniEditHeight" type="int" >
+				<default>32</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<SetSel file="NotifyCenterChildPanelForBox.xml.lua" func="NRI_SetSel" />
+			<Click file="NotifyCenterChildPanelForBox.xml.lua" func="NRI_Click" />
+			<SetContent file="NotifyCenterChildPanelForBox.xml.lua" func="NRI_SetContent" />
+		</method_def>
+		<event_def>
+
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>415</width>
+						<height>58</height>
+						<texture>texture.tasklist.item.bk</texture>
+					</attr>
+					<children>
+						<obj id="title" class="EditObject">
+							<attr>
+								<left>10</left>
+								<top>2</top>
+								<width>father.width - 20</width>
+								<height>15</height>
+								<valign>center</valign>
+								<halign>left</halign>
+								<text>沃鱼 2014/8/14 12:03:17</text>
+								<textcolor>system.blue</textcolor>
+								<readonly>0</readonly>
+								<transparent>1</transparent>
+								<nocaret>1</nocaret>
+								<allowbeep>0</allowbeep>
+								<autourldetect>1</autourldetect>
+							</attr>
+							<eventlist>
+								<event name="OnLinkNotify" file="NotifyCenterChildPanelForBox.xml.lua" func="OnLinkNotify" />
+								<event name="OnMouseWheel" file="NotifyCenterChildPanelForBox.xml.lua" func="OnMouseWheel" />
+								<event name="OnLButtonDown" file="NotifyCenterChildPanelForBox.xml.lua" func="ITEM_OnLButtonDown" />
+							</eventlist>
+						</obj>
+						<obj id="content" class="EditObject">
+							<attr>
+								<left>10</left>
+								<top>20</top>
+								<width>father.width - 20</width>
+								<height>father.height-26</height>
+								<valign>center</valign>
+								<halign>left</halign>
+								<text/>
+								<readonly>1</readonly>
+								<transparent>1</transparent>
+								<multiline>1</multiline>
+								<nocaret>1</nocaret>
+								<allowbeep>0</allowbeep>
+								<autourldetect>1</autourldetect>
+								<autohscroll>0</autohscroll>
+								<autovscroll>0</autovscroll>
+							</attr>
+							<eventlist>
+								<event name="OnLinkNotify" file="NotifyCenterChildPanelForBox.xml.lua" func="OnLinkNotify" />
+								<event name="OnMouseWheel" file="NotifyCenterChildPanelForBox.xml.lua" func="OnMouseWheel" />
+								<event name="OnLButtonDown" file="NotifyCenterChildPanelForBox.xml.lua" func="ITEM_OnLButtonDown" />
+							</eventlist>
+						</obj>
+					</children>
+					<eventlist>
+						<event name="OnLButtonDown" file="NotifyCenterChildPanelForBox.xml.lua" func="ITEM_OnLButtonDown" />
+						<event name="OnMouseWheel" file="NotifyCenterChildPanelForBox.xml.lua" func="OnMouseWheel" />
+					</eventlist>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnMouseWheel" file="NotifyCenterChildPanelForBox.xml.lua" func="OnMouseWheel" />
+				<event name="OnLButtonDown" file="NotifyCenterChildPanelForBox.xml.lua" func="LIST_ITEM_OnLButtonDown" />
+				<event name="OnBind" file="NotifyCenterChildPanelForBox.xml.lua" func="LIST_ITEM_OnBind" />
+				<event name="OnInitControl" file="NotifyCenterChildPanelForBox.xml.lua" func="LIST_ITEM_OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+
 	<control class="CoolJ.NotifyCenterChildPanelForBox">
 		<attr_def>
 			<attr name="BorderTexture" type="string">
@@ -86,29 +269,73 @@
 									<attr>
 										<width>father.width</width>
 										<height>father.height</height>
-										
 									</attr>
 									<eventlist>
 										<event name="OnInitControl" file="NotifyCenterChildPanelForBox.xml.lua" func="LIST_OnInitControl" />
+										<event name="OnSelectChanged" file="NotifyCenterChildPanelForBox.xml.lua" func="OnSelectChanged" />
 									</eventlist>
 								</obj>
 							</children>
 						</obj>
-						<obj id="right.layout" class="LayoutObject">
+						<obj id="right.layout" class="TextureObject">
 							<attr>
 								<left>268</left>
 								<top>1</top>
 								<width>429</width>
 								<height>459</height>
+								<texture>texture.notify.right.bkg</texture>
 							</attr>
 							<children>
-								<obj id="right.bkg" class="TextureObject">
+								<obj id="right.head" class="LayoutObject">
 									<attr>
+										<top>1</top>
+										<left>1</left>
 										<width>father.width</width>
-										<height>father.height</height>
-										<texture>texture.notify.right.bkg</texture>
+										<height>60</height>
 									</attr>
-								</obj>								
+									<children>
+										<obj id="right.head.title" class="TextObject">
+											<attr>
+												<left>6</left>
+												<top>5</top>
+												<width>father.width-12</width>
+												<height>18</height>
+												<valign>center</valign>
+												<halign>left</halign>
+												<endellipsis>1</endellipsis>
+												<wordellipsis>1</wordellipsis>
+												<font>default.font.bold</font>
+												<text>住址：1号楼2单元403室</text>
+											</attr>
+										</obj>
+										<obj id="right.head.content" class="TextObject">
+											<attr>
+												<left>6</left>
+												<top>28</top>
+												<width>father.width-12</width>
+												<height>18</height>
+												<valign>center</valign>
+												<halign>left</halign>
+												<endellipsis>1</endellipsis>
+												<wordellipsis>1</wordellipsis>
+												<textcolor>system.gray</textcolor>
+												<text>电话：13811124365</text>
+											</attr>
+										</obj>
+									</children>
+								</obj>
+								<obj id="right.content" class="CoolJ.SimpleListCtrl">
+									<attr>
+										<left>1</left>
+										<top>62</top>
+										<width>father.width-2</width>
+										<height>father.height-63</height>
+									</attr>
+									<eventlist>
+										<event name="OnInitControl" file="NotifyCenterChildPanelForBox.xml.lua" func="LIST_Sub_OnInitControl" />
+										<event name="OnSelectChanged" file="NotifyCenterChildPanelForBox.xml.lua" func="OnSelectChanged" />
+									</eventlist>
+								</obj>
 							</children>
 							<eventlist>
 

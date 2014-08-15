@@ -615,7 +615,7 @@ function OnKeyDown(self, uChar, uRepeatCount)
 	end
 	local direction = 0
 	local attr = self:GetAttribute()
-	local shell = XLGetObject( "Xunlei.UIEngine.OSShell" )
+	local shell = XLGetObject( "CoolJ.OSShell" )
 	if attr.Type == 1 and 40 == uChar and shell:GetKeyState( 17 ) >= 0 then		-- VK_DOWN 40
 		direction = 2
 	elseif attr.Type == 1 and 38 == uChar and shell:GetKeyState( 17 ) >= 0 then		-- VK_UP 38

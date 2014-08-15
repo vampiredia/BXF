@@ -353,7 +353,7 @@ local function CalculateTipPos(self, tippedObj, tipType, tipWidth, tipHeight, cu
 	if attr == nil then
 		return 0, 0, 0, 0
 	end
-	local osShell = XLGetObject( "Xunlei.UIEngine.OSShell" )
+	local osShell = XLGetObject( "CoolJ.OSShell" )
 	local ownerTree = tippedObj:GetOwner()
 	local ownerHostWnd = ownerTree:GetBindHostWnd()
 	local aniFactory = XLGetObject("Xunlei.UIEngine.AnimationFactory")
@@ -414,7 +414,7 @@ local function AddRelatedGroupTip(self, groupName, tippedObj, bUseWindow, tipCtr
 	
 	
 	local timeMgr = XLGetObject("Xunlei.UIEngine.TimerManager")
-	local osShell = XLGetObject( "Xunlei.UIEngine.OSShell" )
+	local osShell = XLGetObject( "CoolJ.OSShell" )
 	local xarManager = XLGetObject("Xunlei.UIEngine.XARManager")
 	local xarFactory = xarManager:GetXARFactory()
 	local ownerTree = tippedObj:GetOwner()
@@ -538,7 +538,7 @@ local function RemoveRelatedGroupTip(self, groupName, tippedObj)
 end
 
 local function ShowRelatedGroupTip(self, tippedObj)
-	local osShell = XLGetObject( "Xunlei.UIEngine.OSShell" )
+	local osShell = XLGetObject( "CoolJ.OSShell" )
 	local ownerTree = tippedObj:GetOwner()
 	local ownerHostWnd = ownerTree:GetBindHostWnd()
 	local x, y = osShell:GetCursorPos()
@@ -553,7 +553,7 @@ local function ShowRelatedGroupTip(self, tippedObj)
 	
 	local timeMgr = XLGetObject("Xunlei.UIEngine.TimerManager")
 	local attr = self:GetTippedObjAttribute(tippedObj)
-	local osShell = XLGetObject( "Xunlei.UIEngine.OSShell" )
+	local osShell = XLGetObject( "CoolJ.OSShell" )
 	local xarManager = XLGetObject("Xunlei.UIEngine.XARManager")
 	local xarFactory = xarManager:GetXARFactory()
 	local ownerTree = tippedObj:GetOwner()

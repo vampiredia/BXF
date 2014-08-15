@@ -117,6 +117,7 @@
 						<DisableBkgID>blue.big.button.disable</DisableBkgID>
 						<HoverBkgID>blue.big.button.hover</HoverBkgID>
 						<ShowFocusRect>false</ShowFocusRect>
+						<visible>0</visible>
 					</attr>
 					<eventlist>
 						<event name="OnClick" file="MessageBox.xml.lua" func="OnClick" />
@@ -135,6 +136,7 @@
 						<DisableBkgID>green.button.disable</DisableBkgID>
 						<HoverBkgID>green.button.hover</HoverBkgID>
 						<ShowFocusRect>false</ShowFocusRect>
+						<visible>0</visible>
 					</attr>
 					<eventlist>
 						<event name="OnClick" file="MessageBox.xml.lua" func="OnClick" />

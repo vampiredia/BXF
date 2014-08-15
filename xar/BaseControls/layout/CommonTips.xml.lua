@@ -32,7 +32,7 @@ function GetTipRect(self, hostCtrl)
 	end
 	
 	local attr = self:GetAttribute()
-	local shell = XLGetObject( "Xunlei.UIEngine.OSShell" )
+	local shell = XLGetObject( "CoolJ.OSShell" )
 	local waLeft,waTop,waRight,waBottom = shell:GetWorkArea()
 	local ownerTree = self:GetOwner()
 	local hostWnd = ownerTree:GetBindHostWnd()

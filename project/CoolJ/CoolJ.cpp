@@ -16,6 +16,7 @@
 #include "./LuaSkinManager.h"
 #include "./LuaHttpCore.h"
 #include "HttpCore.h"
+#include "./LuaOSShellCore.h"
 
 // only test
 #include <iostream>
@@ -200,6 +201,8 @@ bool InitLuaCore()
 
 	LuaHttpCore::RegisterClass(hEnv);
 	LuaHttpCoreFactory::RegisterObj(hEnv);
+	LuaOSShellCore::RegisterSelf(hEnv);
+	
 
 	XLLRT_ReleaseEnv(hEnv);
 

@@ -1,5 +1,5 @@
 local json = require('json')
-local table_data = nil
+local table_data = {}
 
 function OnInitControl(self)
 	local attr = self:GetAttribute()
@@ -26,7 +26,7 @@ end
 
 function OnClickNoticeHistory(self)
 
-	MessageBox(nil, "title", "content")
+	MessageBox(nil, "业主消息", "8号楼1单元402室 杨百 正在联系电路维修热线！ \n联系电话：13811152323")
 	PageChange(self, "main.page", "history.notice.page")
 	
 	local controlObj = self:GetOwnerControl()

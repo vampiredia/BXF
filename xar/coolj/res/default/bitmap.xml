@@ -113,5 +113,7 @@
 		<texture id="texture.notify.head.bkg" type="Stretch" imagelist="imagelist.notify.bkg" index="1"/>
 		<texture id="texture.notify.left.bkg" type="Stretch" imagelist="imagelist.notify.bkg" index="2"/>
 		<texture id="texture.notify.right.bkg" type="Stretch" imagelist="imagelist.notify.bkg" index="3"/>
+		
+		<texture id="texture.listctrl.selected" type="NineInOne" image="bitmap\texture.listctrl.selected.png" />
 	</resource>
 </XLUE>	

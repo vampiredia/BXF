@@ -395,19 +395,19 @@ function CB__OnFocusChange( combo, focus, dest )
         return
     end
     if not attr.OnTab then
-        --local left, top, right, bottom = control:GetAbsPos()
-        --local osShell = XLGetObject("Xunlei.UIEngine.OSShell")
-        --local x, y = osShell:GetCursorPos()
+        local left, top, right, bottom = control:GetAbsPos()
+        local osShell = XLGetObject("CoolJ.OSShell")
+        local x, y = osShell:GetCursorPos()
         
-        --local hostwndManager = XLGetObject("Xunlei.UIEngine.HostWndManager")
-        --local newtaskdlg = hostwndManager:GetHostWnd(attr.HostWndID)
-		--if newtaskdlg then
-			--local nleft, ntop, nright, nbottom = newtaskdlg:GetWindowRect()
-			--local absleft, abstop, absright, absbottom = left + nleft, top + ntop, right + nleft, bottom + ntop + attr.cur_list_height 
-			--if (x > absleft) and (x < absright) and (y > abstop) and (y < absbottom-4) then			
-				--return
-			--end
-		--end
+        local hostwndManager = XLGetObject("Xunlei.UIEngine.HostWndManager")
+        local newtaskdlg = hostwndManager:GetHostWnd(attr.HostWndID)
+		if newtaskdlg then
+			local nleft, ntop, nright, nbottom = newtaskdlg:GetWindowRect()
+			local absleft, abstop, absright, absbottom = left + nleft, top + ntop, right + nleft, bottom + ntop + attr.cur_list_height 
+			if (x > absleft) and (x < absright) and (y > abstop) and (y < absbottom-4) then			
+				return
+			end
+		end
     end
     attr.OnTab = false
 	attr.ShowList = false

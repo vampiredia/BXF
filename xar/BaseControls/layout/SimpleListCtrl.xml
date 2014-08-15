@@ -9,6 +9,7 @@
 			<SetSel file="SimpleListCtrl.xml.lua" func="List_SetSel" />
 			<GetSel file="SimpleListCtrl.xml.lua" func="List_GetSel" />
 			<InsertItem file="SimpleListCtrl.xml.lua" func="InsertItem" />
+			<IsItemValid file="SimpleListCtrl.xml.lua" func="IsItemValid" />
 			<DeleteAllItems file="SimpleListCtrl.xml.lua" func="DeleteAllItems" />
 			<SetAdjust file="SimpleListCtrl.xml.lua" func="SetAdjust" />
 			<MouseWheel file="SimpleListCtrl.xml.lua" func="MouseWheel" />

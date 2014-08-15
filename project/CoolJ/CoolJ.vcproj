@@ -375,6 +375,26 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="OSShell"
+			>
+			<File
+				RelativePath=".\LuaOSShellCore.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\LuaOSShellCore.h"
+				>
+			</File>
+			<File
+				RelativePath=".\OSShellCore.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\OSShellCore.h"
+				>
+			</File>
+		</Filter>
 		<File
 			RelativePath=".\ReadMe.txt"
 			>

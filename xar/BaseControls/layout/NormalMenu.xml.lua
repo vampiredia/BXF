@@ -150,7 +150,7 @@ function GetScreenPos(self, x, y, dontCalc)
 	local menuTree = self:GetOwner()
 	local menuHostWnd = menuTree:GetBindHostWnd()
 	
-	local osshell = XLGetObject( "Xunlei.UIEngine.OSShell" )
+	local osshell = XLGetObject( "CoolJ.OSShell" )
 	local lleft, ltop, lright, lbottom = 0,0,1200,800
 	local rleft, rtop, rright, rbottom = 0,0,1200,800
 	local sleft, stop, sright, sbotton

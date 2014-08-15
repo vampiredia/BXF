@@ -26,7 +26,7 @@ function ShowMenu(self, menunHostWndTemplateID, menuTreeTemplateID, menuObjID, p
 	local menuContext = menuTree:GetUIObject(menuObjID)
 	menuContext:SetFocus( true )
 	
-	local osShell = XLGetObject("Xunlei.UIEngine.OSShell")
+	local osShell = XLGetObject("CoolJ.OSShell")
 	x = 12
 	y = 20
 	if x == nil or y == nil then

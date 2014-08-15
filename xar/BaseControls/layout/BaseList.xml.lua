@@ -841,14 +841,14 @@ function InnerOnKeyDown(self, uChar)
 	local attr = self:GetAttribute()
 
 	local multiSelect = attr.MultiSelect
-	local shell = XLGetObject( "Xunlei.UIEngine.OSShell" )
+	local shell = XLGetObject( "CoolJ.OSShell" )
 	local ctrlDown, shiftDown = false, false
---	if shell:GetKeyState(0x11) < 0 then
---		ctrlDown = true
---	end
---	if shell:GetKeyState(0x10) < 0 then
---		shiftDown = true
---	end
+	if shell:GetKeyState(0x11) < 0 then
+		ctrlDown = true
+	end
+	if shell:GetKeyState(0x10) < 0 then
+		shiftDown = true
+	end
 
 	local lastSelectItemIndex = GetItemIndexByID(self, attr.LastSelectItemID)	--lastSelectItemIndex从1开始
 	if lastSelectItemIndex == nil then

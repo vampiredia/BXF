@@ -241,6 +241,15 @@
 							</attr>
 						</obj>
 						<!-- -->
+						
+						<obj id="Notify.Container" class="CoolJ.Notify.Container">
+							<attr>
+								<left>139</left>
+								<top>504</top>
+								<width>696</width>
+								<height>29</height>
+							</attr>
+						</obj>
 					</children>
 				</obj>
 

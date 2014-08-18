@@ -12,7 +12,7 @@ function CreateNotifyBox()
 	end
 end
 
-function AddNotify(obj, caption, table_data)
+function AddPushNotify(obj, caption, table_data)
 	local ret = 0
 
 	local hostWndManager = XLGetObject("Xunlei.UIEngine.HostWndManager")
@@ -23,8 +23,15 @@ function AddNotify(obj, caption, table_data)
 	end
 end
 
+function AddNotify(self, text)
+	local tree = self:GetOwner()
+	local obj = tree:GetRootObject():GetObject("Notify.Container")
+	if obj == nil then return end
+	obj:AddNotify(text)
+end
+
 function RegisterGlobal()
 	--XLSetGlobal("CreateNotifyBox", CreateNotifyBox)
-	--XLSetGlobal("AddNotify", AddNotify)
+	XLSetGlobal("AddNotify", AddNotify)
 	--CreateNotifyBox()
 end

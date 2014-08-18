@@ -150,5 +150,5 @@ function LB_OnListItemDbClick(self, event, itemObj, x, y, flags)
 end
 
 function OnClickNoticeHistory1(self)
-	AddNotify(self)
+	AddNotify(self, math.random(1,1000))
 end

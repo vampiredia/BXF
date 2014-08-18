@@ -532,6 +532,7 @@ function Set_PropertyServiceInfo(self)
 				--GlobalDataTable = response['result']['service']
 				--operation.LoadData()
 				--XLMessageBox("OK")
+				AddNotify(self, "保存成功！")
 			end
 		end
 	)

@@ -40,6 +40,12 @@
 	<bitmap id="system.btn.exit.hover" imagelist="imagelist.systembutton.close" index="2"/>
 	<bitmap id="system.btn.exit.down" imagelist="imagelist.systembutton.close" index="3"/>
 	<bitmap id="system.btn.exit.disable" imagelist="imagelist.systembutton.close" index="1"/>
+	
+	<imagelist id="imagelist.notify.close" vertical="0" splitter="1" varyblock="1" image="systembutton\imagelist.notify.close.png" />
+	<bitmap id="bitmap.notify.close.normal" imagelist="imagelist.notify.close" index="1" />
+	<bitmap id="bitmap.notify.close.hover" imagelist="imagelist.notify.close" index="2" />
+	<bitmap id="bitmap.notify.close.down" imagelist="imagelist.notify.close" index="3" />
 		
+	<texture id="texture.notify.bkg.green" type="Stretch" image="systembutton\texture.notify.bkg.green.png" />
 </resource>
 </xlue>

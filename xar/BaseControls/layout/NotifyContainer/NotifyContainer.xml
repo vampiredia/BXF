@@ -1,0 +1,119 @@
+<xlue>
+	<control class="CoolJ.Notify">
+		<attr_def>
+			<attr name="ShowTime" type="int" >
+				<default>0</default>
+			</attr>
+			<attr name="Status" type="string" >
+				<defalut>show</defalut>
+			</attr>
+		</attr_def>
+		<method_def>
+			<SetText file="NotifyContainer.xml.lua" func="SetText" />
+			<GetText file="NotifyContainer.xml.lua" func="GetText" />
+			<UpdateUI file="NotifyContainer.xml.lua" func="CN_NotifyUpdate" />
+		</method_def>
+		<event_def>
+			<OnClose>
+				<param>
+					<int />
+				</param>
+			</OnClose>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="LayoutObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="bkgcolor" class="TextureObject">
+							<attr>
+								<width>father.width</width>
+								<height>father.height</height>
+								<texture>texture.notify.bkg.green</texture>
+							</attr>
+							<children>
+								<obj id="message" class="TextObject">
+									<attr>
+										<left>15</left>
+										<width>father.width</width>
+										<height>father.height</height>
+										<valign>center</valign>
+										<text>操作成功！</text>
+									</attr>
+								</obj>
+								<obj id="operations" class="LayoutObject">
+									<attr>
+										<left/>
+										<top/>
+										<width/>
+										<height/>
+									</attr>
+								</obj>
+								<obj id="close" class="CoolJ.ImageButton">
+									<attr>
+										<left>675</left>
+										<top>6</top>
+										<width>17</width>
+										<height>17</height>
+										<NormalBkgID>bitmap.notify.close.normal</NormalBkgID>
+										<HoverBkgID>bitmap.notify.close.hover</HoverBkgID>
+										<DownBkgID>bitmap.notify.close.down</DownBkgID>
+									</attr>
+									<eventlist>
+										<event name="OnClick" file="NotifyContainer.xml.lua" func="CN_OnClose" />
+									</eventlist>
+								</obj>
+							</children>
+						</obj>
+					</children>
+
+				</obj>		
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="NotifyContainer.xml.lua" func="CN_OnInitControl" />
+				<event name="OnBind" file="NotifyContainer.xml.lua" func="CN_OnBind" />
+			</eventlist>
+		</objtemplate>
+	</control>
+
+	<control class="CoolJ.Notify.Container">
+		<attr_def>
+			<attr name="Pos_X" type="int" >
+				<default>0</default>
+			</attr>
+			<attr name="Pos_Y" type="int" >
+				<default>0</default>
+			</attr>
+			<attr name="ItemWidth" type="int" >
+				<default>696</default>
+			</attr>
+			<attr name="ItemHeight" type="int" >
+				<default>29</default>
+			</attr>
+			<attr name="Index" type="int" >
+				<default>0</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<AddNotify file="NotifyContainer.xml.lua" func="AddNotify" />
+			<RemoveNotify file="NotifyContainer.xml.lua" func="RemoveNotify" />
+			<RemoveAllNotify file="NotifyContainer.xml.lua" func="RemoveAllNotify" />
+			<UpdateUI file="NotifyContainer.xml.lua" func="UpdateUI" />
+		</method_def>
+		<event_def>
+
+		</event_def>
+		<objtemplate>
+			<children>
+
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="NotifyContainer.xml.lua" func="CNC_OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+
+</xlue>

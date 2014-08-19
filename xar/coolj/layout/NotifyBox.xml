@@ -1,26 +1,115 @@
 <xlue>
-	<objtemplate id ="CoolJ.Notify.Panel" class="LayoutObject" >
+<objtreetemplate  id="CoolJ.NotifyBox" >
 		<attr>
-			<left>0</left>
-			<top>0</top>
-			<width>father.width</width>
-			<height>father.height</height>
+			<left>-200</left>
+			<top>-200</top>
+			<width>2000</width>
+			<height>2000</height>
 		</attr>
 
-		<children>
-			<obj id="test" class="ImageObject">
-				<attr>
-					<height>85</height>
-					<width>1010</width>
-					<image>bkg.light.top</image>
-					<zorder>3</zorder>
-				</attr>
-			</obj>
-		</children>
-	</objtemplate>
+		<obj id="app.bkg" class="CoolJ.BkgCtrl">
+			<attr>
+				<BkgTemplate>MainWnd.Bkg.Shading</BkgTemplate>
+				<left>0</left>
+				<top>0</top>
+				<width>336</width>
+				<height>185</height>
+				<alpha>255</alpha>
+				<UseLight>false</UseLight>	
+			</attr>
+			
+			<children>
+				<obj id="caption" class="CaptionObject">
+					<attr>
+						<left>7</left>
+						<top>7</top>
+						<width>father.width-14</width>
+						<height>100</height>
+					</attr>
+					<children>
+						<obj id="texture.caption.mainwnd.bkg" class="TextureObject">
+							<attr>
+								<width>father.width</width>
+								<height>father.height</height>
+								<texture>caption.mainwnd.bkg</texture>
+								<zorder>320</zorder>
+								<alpha>255</alpha>
+							</attr>
 
+						</obj>
+						<obj id="caption.text" class="TextObject">
+							<attr>
+								<!-- 使用表达式局中-->
+								<left>10</left> 
+								<top>8</top>
+								<width>80</width>
+								<height>22</height>			
+								<text>物管中心</text>
+								<textcolor>system.white</textcolor>
+								<font>caption.font</font>
+								<zorder>330</zorder>
+							</attr>
+						</obj>
 
-	<hostwndtemplate id="CoolJ.NotifyBox" class="TipsHostWnd" >
+						<obj id="mainwnd.sysbtn" class="Thunder.System.ButtonEx.Ctrl" >
+							<attr>
+								<left>father.width - 35</left>
+								<top>0</top>								
+								<width>60</width>
+								<height>20</height>
+								<zorder>330</zorder>		
+								<ItemWidthIsSame>false</ItemWidthIsSame>
+								<MaxShow>false</MaxShow>
+								<MiniShow>false</MiniShow>
+							</attr>
+							<eventlist>
+								<event name="OnClose" file="NotifyBox.xml.lua" func="OnClose" />
+							</eventlist>
+						</obj>	
+					</children>
+				</obj>
+
+				<obj id="content.bkg" class="FillObject">
+					<attr>
+						<left>7</left>
+						<top>40</top>
+						<filltype>Monochrome</filltype>
+						<blendtype>Source</blendtype>
+						<width>father.width - 14</width>
+						<height>father.height - 72</height>
+						<srcpt>0,0</srcpt>
+						<destpt>width,height</destpt>
+						<maskleft>0</maskleft>
+						<masktop>0</masktop>
+						<maskwidth>width</maskwidth>
+						<maskheight>height</maskheight>
+						<maskblendtype>attenunate</maskblendtype>
+						<srccolor>system.white</srccolor>
+						<destcolor>system.white</destcolor>
+						<alpha>255</alpha>
+						<zorder>9999</zorder>
+					</attr>
+					<children>
+						<obj id="content.text" class="TextObject">
+							<attr>
+								<left>20</left>
+								<top>15</top>
+								<width>father.width - 40</width>
+								<height>father.height - 30</height>
+								<multiline>1</multiline>
+								<endellipsis>1</endellipsis>
+								<wordellipsis>1</wordellipsis>
+								<text></text>
+							</attr>
+						</obj>
+					</children>
+				</obj>
+			</children>
+		</obj>
+		
+	</objtreetemplate>
+
+	<hostwndtemplate id="CoolJ.NotifyBox.Wnd" class="FrameHostWnd" >
 		<attr> 
 			<title/>
 			<layered>1</layered>
@@ -36,11 +125,6 @@
 			<topmost>1</topmost>
 			<visible>1</visible>
 			<fps>30</fps>
-		</attr>
-
-		<eventlist>
-			<event name="OnCreate" file="NotifyBox.xml.lua" func="OnCreate" />
-			<event name="OnSize" file="NotifyBox.xml.lua" func="OnSize"/>
-		</eventlist>		
+		</attr>		
 	</hostwndtemplate>	
 </xlue>

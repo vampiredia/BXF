@@ -109,6 +109,9 @@ end
 function SetReadOnly(self, enable)
     local edit = self:GetControlObject("newedit.edit")
     edit:SetReadOnly(enable)
+	
+	local attr = self:GetAttribute()
+	attr.ReadOnly = enable
 end
 
 function SetMultiline(self, enable)

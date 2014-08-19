@@ -37,7 +37,7 @@ function OnActiveTabChanged(self, eventName, newid, oldid)
 	if newid =="TabItem_PropertyService" then
 		propertyServiceChildPanelForService:SetVisible(true)
 		propertyServiceChildPanelForService:SetChildrenVisible(true)
-		--propertyServiceChildPanelForService:Get_PropertyServiceInfo()
+		propertyServiceChildPanelForService:Get_PropertyServiceInfo()
 	elseif newid == "TabItem_PropertyInfo" then
 		propertyServiceChildPanelForInfo:SetVisible(true)
 		propertyServiceChildPanelForInfo:SetChildrenVisible(true)

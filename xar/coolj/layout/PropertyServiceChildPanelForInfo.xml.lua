@@ -7,7 +7,6 @@ local json = require('json')
 local operation = {}
 local GlobalObj = {}
 local GlobalDataTable = {}
-local GlobalReadOnly = true
 local GlobalControl = nil
 
 -------------------------------------------------------------------------------
@@ -39,8 +38,11 @@ function GetItemFactory()
 				itemObj:SetVisible(false)
 			else
 				itemObj = objFactory:CreateUIObject(nil,"WHome.Edit")
-				itemObj:SetBorder(not GlobalReadOnly)
-				itemObj:SetReadOnly(GlobalReadOnly)
+				local attr = itemObj:GetAttribute()
+				attr.ReadOnly = true
+				itemObj:SetBorder(false)
+				itemObj:SetReadOnly(true)
+
 				local cookie, ret = itemObj:AttachListener("OnEditChange", true, LV_OnEditChange)			
 			end
 			table.insert(GlobalObj, itemObj)
@@ -270,8 +272,22 @@ function LC_Pay_OnInitControl(self)
 	--self:InsertColumn("payinfo", 330, "缴费账号", "left", "left", 5, true, 200)
 end
 
+function PanelInit(self)
+	for i=1, #GlobalObj do
+		local obj = GlobalObj[i]
+		if obj:GetClass() == "WHome.Button" then obj:SetVisible(false) end
+		if obj:GetClass() == "WHome.Edit" or obj:GetClass() == "CoolJ.Telphone.ListView" then
+			obj:SetBorder(false)
+			obj:SetReadOnly(true)
+		end
+	end
+	
+	self:GetControlObject("btn.edit.info"):SetText("编辑")
+end
 
 function Get_PropertyServiceInfo(self)
+	PanelInit(self)
+	
 	local httpclient = XLGetObject("Whome.HttpCore.Factory"):CreateInstance()
 	httpclient:AttachResultListener(
 		function(result) 

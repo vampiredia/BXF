@@ -489,11 +489,6 @@ function BES_OnClick(self)
 	end	
 end
 
--- 加载信息
-function Get_PropertyServiceInfo(self)
-
-end
-
 function OnInitControl_Main_ListView(self)
 	GlobalMainListView = self
 	
@@ -504,7 +499,31 @@ function OnInitControl_Main_ListView(self)
 	self:SetDataModel(dataModelUserData, dataModelCallbackTable)
 end
 
+function PanelInit(self)
+	for i=1, #GlobalObj do
+		local obj = GlobalObj[i]
+		if obj:GetClass() == "WHome.Edit" then
+			obj:SetBorder(false)
+			obj:SetReadOnly(true)					
+		end
+		if obj:GetClass() == "WHome.Button" and obj:GetAttribute().service == "main" then 
+			obj:SetText("查") 
+		end
+		if obj:GetClass() == "WHome.Button" and obj:GetAttribute().service == "sub" then 
+			obj:SetVisible(false)
+		end
+	end
+	
+	GlobalReadOnly = true
+	self:GetControlObject("btn.edit.service"):SetText("编辑")
+	self:GetControlObject("btn.main.add"):SetVisible(false)
+	self:GetControlObject("btn.sub.add"):SetVisible(false)
+end
+
+-- 加载信息
 function Get_PropertyServiceInfo(self)
+	PanelInit(self)
+	
 	local httpclient = XLGetObject("Whome.HttpCore.Factory"):CreateInstance()
 	httpclient:AttachResultListener(
 		function(result) 

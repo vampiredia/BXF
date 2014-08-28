@@ -4,6 +4,9 @@
 			<attr name="BorderTexture" type="string">
 				<default>texture.tabbody.border</default>
 			</attr>
+			<attr name="IsCheck" type="bool" >
+				<default>false</default>
+			</attr>
 		</attr_def>
 		<method_def>
 
@@ -23,69 +26,678 @@
 					</attr>
 				</obj>
 
-				<obj id="ctrl" class="LayoutObject">
+				<obj id="BtnNoticePublishWarning" class="WHome.TextLink">
+					<attr>
+						<top>5</top>
+						<left>father.width-120</left>
+						<width>100</width>
+						<height>26</height>
+						<valign>center</valign>
+						<Text>社区公告发布须知</Text>
+						<TextColor>system.blue</TextColor>
+					</attr>
+					<eventlist>
+						<event name="OnClick" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnClickNoticePublishWarning" />
+					</eventlist>
+				</obj>
+
+				<!-- 默认发布公告主页，提供操作入口|前期使用后期tab可能采用抽屉的方式 -->
+				<obj id="main.page" class="LayoutObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+						<visible>0</visible>
+					</attr>
+					<children>
+						<obj id="BtnNewNotice" class="WHome.Button">
+							<attr>
+								<top>200</top>
+								<left>140</left>
+								<width>102</width>
+								<height>34</height>
+								<valign>center</valign>
+								<Text>发布新公告</Text>
+								<NormalBkgID>general.maigc.button.normal</NormalBkgID>
+								<DownBkgID>general.maigc.button.down</DownBkgID>
+								<DisableBkgID>general.maigc.button.disable</DisableBkgID>
+								<HoverBkgID>general.maigc.button.hover</HoverBkgID>	
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnClickNewNotice" />
+							</eventlist>
+						</obj>
+						<obj id="BtnNoticeHistory" class="WHome.Button">
+							<attr>
+								<top>200</top>
+								<left>400</left>
+								<width>102</width>
+								<height>34</height>
+								<valign>center</valign>
+								<Text>查看历史公告</Text>
+								<NormalBkgID>general.maigc.button.normal</NormalBkgID>
+								<DownBkgID>general.maigc.button.down</DownBkgID>
+								<DisableBkgID>general.maigc.button.disable</DisableBkgID>
+								<HoverBkgID>general.maigc.button.hover</HoverBkgID>	
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnClickNoticeHistory" />
+							</eventlist>
+						</obj>
+					</children>
+					<eventlist>
+						<event name="OnVisibleChange" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnMainPageVisibleChange" />
+					</eventlist>
+				</obj>
+
+				<!-- 新社区公告发布 -->
+				<obj id="new.notice.page" class="LayoutObject">
 					<attr>
 						<width>father.width</width>
 						<height>father.height</height>
 					</attr>
 					<children>
-						<obj id="edit" class="WHome.Edit">
+						<obj id="BtnGotoMainPage" class="WHome.TextLink">
 							<attr>
-								<left>10</left>
-								<top>35</top>
-								<width>520</width>
-								<height>24</height>
-								<readonly>1</readonly>
-								<text>hello world</text>
-								<transparent>1</transparent>
+								<top>5</top>
+								<left>25</left>
+								<width>160</width>
+								<height>26</height>
+								<valign>center</valign>
+								<Text>返回『社区公告发布』首页</Text>
+								<TextColor>system.blue</TextColor>
 							</attr>
-							<children>
-								
-							</children>
 							<eventlist>
-								
+								<event name="OnClick" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnClickNewNoticePageToMainPage" />
 							</eventlist>
 						</obj>
-						<obj id="listview" class="ListView">
+
+						<!-- 公告标题 -->
+						<obj id="layout.notice.title" class="LayoutObject">
 							<attr>
-								<left>10</left>
-								<top>50 + 30</top>
-								<width>520</width>
-								<height>father.height-130</height>
-								<!-- 以下属性如果用户不设置,会用默认值 -->
-								<!-- 以下属性的值就是默认值 -->
-								<BackgroundTexture/>
-								<ScrollBarClassNameV>ListView.ScrollBarV</ScrollBarClassNameV>
-								<ScrollBarClassNameH>ListView.ScrollBarH</ScrollBarClassNameH>
-								<ScrollBarSize>12</ScrollBarSize>
-								<HeaderClassName>ListView.Header</HeaderClassName>
-								<HeaderHeight>30</HeaderHeight>
-								<PreloadDataCount>50</PreloadDataCount>
+								<left>20</left>
+								<top>40</top>
+								<width>310</width>
+								<height>26</height>
+							</attr>
+							<children>
+								<obj id="text.notice.title" class="TextObject">
+									<attr>
+										<left>0</left>
+										<top>4</top>
+										<width>60</width>
+										<height>18</height>
+										<text>公告标题：</text>
+									</attr>
+								</obj>
+								<obj id="edit.notice.title" class="WHome.Edit">
+									<attr>
+										<left>66</left>
+										<top>1</top>
+										<width>200</width>
+										<height>26</height>
+										<TipText>请输入6-15个汉字</TipText>
+										<NormalTipTextColor>system.gray</NormalTipTextColor>
+									</attr>
+								</obj>
+								<obj id="text.notice.title.tip" class="TextObject">
+									<attr>
+										<left>270</left>
+										<top>8</top>
+										<width>40</width>
+										<height>16</height>
+										<text>(必填项)</text>
+										<textcolor>system.red</textcolor>
+										<font>text.tip.normal.font</font>
+									</attr>
+								</obj>	
+							</children>
+						</obj>
+
+						<!-- 发布范围 -->
+						<obj id="layout.notice.range" class="LayoutObject">
+							<attr>
+								<left>440</left>
+								<top>40</top>
+								<width>211</width>
+								<height>24</height>
+							</attr>
+							<children>
+								<obj id="text.publish.range" class="TextObject">
+									<attr>
+										<left>0</left>
+										<top>4</top>
+										<width>60</width>
+										<height>18</height>
+										<text>发布范围：</text>
+									</attr>
+								</obj>
+								<obj id="cb.publish.range" class="WHome.ComboBox">
+									<attr>
+										<left>66</left>
+										<top>0</top>
+										<width>100</width>
+										<height>24</height>
+										<Text>23</Text>
+									</attr>
+									<eventlist>
+										<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnInitCBControl" />
+									</eventlist>
+								</obj>
+								<obj id="text.notice.title.tip" class="TextObject">
+									<attr>
+										<left>171</left>
+										<top>8</top>
+										<width>40</width>
+										<height>16</height>
+										<text>(默认)</text>
+										<textcolor>system.red</textcolor>
+										<font>text.tip.normal.font</font>
+									</attr>
+								</obj>		
+							</children>
+						</obj>
+
+						<!-- 公告内容 -->
+						<obj id="layout.notice.content" class="LayoutObject">
+							<attr>
+								<left>20</left>
+								<top>80</top>
+								<width>400</width>
+								<height>375</height>
+							</attr>
+							<children>		
+								<obj id="text.notice.content" class="TextObject">
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>60</width>
+										<height>18</height>							
+										<text>公告内容：</text>
+									</attr>
+								</obj>
+								<obj id="text.notice.content.tip" class="TextObject">
+									<attr>
+										<left>66</left>
+										<top>2</top>
+										<width>40</width>
+										<height>16</height>
+										<text>(必填项)</text>
+										<textcolor>system.red</textcolor>
+										<font>text.tip.normal.font</font>
+									</attr>
+								</obj>
+								<obj id="richedit.notice.content" class="WHome.RichEdit">
+									<attr>
+										<left>0</left>
+										<top>26</top>
+										<width>father.width</width>
+										<height>father.height-26</height>
+										<WordWrap>true</WordWrap>
+										<AllowVSB>true</AllowVSB>
+									</attr>
+								</obj>
+							</children>
+						</obj>
+
+						<!-- 有效期 -->
+						<obj id="layout.notice.valid" class="LayoutObject">
+							<attr>
+								<left>440</left>
+								<top>80</top>
+								<width>211</width>
+								<height>24</height>
+							</attr>
+							<children>
+								<obj id="text.notice.valid" class="TextObject">
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>60</width>
+										<height>18</height>							
+										<text>有效期：</text>
+										<halign>left</halign>
+									</attr>
+								</obj>
+								<obj id="cb.notice.valid" class="WHome.ComboBox">
+									<attr>
+										<left>66</left>
+										<top>-3</top>
+										<width>100</width>
+										<height>24</height>
+										<Text>23</Text>
+									</attr>
+									<eventlist>
+										<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="CNV_OnInitControl" />
+									</eventlist>
+								</obj>
+							</children>
+						</obj>
+
+						<!-- 定时推送 -->
+						<obj id="layout.notice.pushtime" class="LayoutObject">
+							<attr>
+								<left>440</left>
+								<top>200</top>
+								<width>211</width>
+								<height>100</height>
+							</attr>
+							<children>
+								<obj id="checkbox.notice.pushtime" class="WHome.CheckBox">
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>80</width>
+										<height>18</height>
+										<Text>定时发布</Text>
+										<ShowFocusRect>false</ShowFocusRect>
+									</attr>
+									<eventlist>
+										<event name="OnCheck" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnCheck" />
+									</eventlist>
+								</obj>
+							</children>
+						</obj>
+
+						<!-- 设定日期、时间 -->
+						<obj id="layout.notice.setting" class="LayoutObject">
+							<attr>
+								<left>440</left>
+								<top>120</top>
+								<width>211</width>
+								<height>100</height>
+							</attr>
+							<children>
+								<obj id="text.notice.setdate" class="TextObject">
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>60</width>
+										<height>18</height>							
+										<text>设定日期：</text>
+										<halign>left</halign>
+									</attr>
+								</obj>
+								<obj id="text.notice.settime" class="TextObject">
+									<attr>
+										<left>0</left>
+										<top>40</top>
+										<width>60</width>
+										<height>18</height>
+										<text>设定时间：</text>
+										<halign>left</halign>
+									</attr>
+								</obj>
+								<obj id="cb.setting.time" class="WHome.ComboBox">
+									<attr>
+										<left>66</left>
+										<top>37</top>
+										<width>100</width>
+										<height>24</height>
+										<Text>23</Text>
+									</attr>
+									<eventlist>
+										<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="CST_OnInitControl" />
+									</eventlist>
+								</obj>
+							</children>
+						</obj>
+
+						<!-- 图片上传控件 -->
+						<obj id="layout.upload.pic" class="LayoutObject">
+							<attr>
+								<left>440</left>
+								<top>240</top>
+								<width>250</width>
+								<height>170</height>
+							</attr>
+							<children>
+								<obj id="text.upload.title" class="TextObject">
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>58</width>
+										<height>24</height>
+										<text>上传图片：</text>
+									</attr>
+								</obj>
+								<obj id="text.upload.tip" class="TextObject">
+									<attr>
+										<left>62</left>
+										<top>0</top>
+										<width>48</width>
+										<height>24</height>
+										<text>(可选项)</text>
+										<textcolor>system.gray</textcolor>
+									</attr>
+								</obj>
+								<obj id="text.upload.notice" class="TextObject">
+									<attr>
+										<left>0</left>
+										<top>24</top>
+										<width>father.width</width>
+										<height>32</height>
+										<multiline>1</multiline>
+										<text>请上传1-5张图片，大小1M。图片将在公告正文下方依次显示。</text>
+										<textcolor>system.gray</textcolor>
+									</attr>
+								</obj>
+								<obj id="rectangle.upload.pic.0.bkg" class="RectangleObject">
+									<attr>
+										<top>65</top>
+										<left>5</left>
+										<width>48</width>
+										<height>48</height>
+										<brush>brush.solid</brush>
+										<brushcolor>system.red</brushcolor>
+										<srcpt>0,0</srcpt>
+										<destpt>width,height</destpt>
+										<visible>1</visible>
+									</attr>
+								</obj>
+								<obj id="rectangle.upload.pic.1.bkg" class="RectangleObject">
+									<attr>
+										<top>65</top>
+										<left>69</left>
+										<width>48</width>
+										<height>48</height>
+										<brush>brush.solid</brush>
+										<brushcolor>system.red</brushcolor>
+										<srcpt>0,0</srcpt>
+										<destpt>width,height</destpt>
+										<visible>1</visible>
+									</attr>
+								</obj>
+								<obj id="rectangle.upload.pic.2.bkg" class="RectangleObject">
+									<attr>
+										<top>65</top>
+										<left>129</left>
+										<width>48</width>
+										<height>48</height>
+										<brush>brush.solid</brush>
+										<brushcolor>system.red</brushcolor>
+										<srcpt>0,0</srcpt>
+										<destpt>width,height</destpt>
+										<visible>1</visible>
+									</attr>
+								</obj>
+								<obj id="rectangle.upload.pic.3.bkg" class="RectangleObject">
+									<attr>
+										<top>65</top>
+										<left>193</left>
+										<width>48</width>
+										<height>48</height>
+										<brush>brush.solid</brush>
+										<brushcolor>system.red</brushcolor>
+										<srcpt>0,0</srcpt>
+										<destpt>width,height</destpt>
+										<visible>1</visible>
+									</attr>
+								</obj>
+								<obj id="rectangle.upload.pic.4.bkg" class="RectangleObject">
+									<attr>
+										<top>121</top>
+										<left>5</left>
+										<width>48</width>
+										<height>48</height>
+										<brush>brush.solid</brush>
+										<brushcolor>system.red</brushcolor>
+										<srcpt>0,0</srcpt>
+										<destpt>width,height</destpt>
+										<visible>1</visible>
+									</attr>
+								</obj>
+								<obj id="rectangle.upload.pic.5.bkg" class="RectangleObject">
+									<attr>
+										<top>121</top>
+										<left>69</left>
+										<width>48</width>
+										<height>48</height>
+										<brush>brush.solid</brush>
+										<brushcolor>system.red</brushcolor>
+										<srcpt>0,0</srcpt>
+										<destpt>width,height</destpt>
+										<visible>1</visible>
+									</attr>
+								</obj>
+							</children>
+						</obj>
+						<obj id="btn.new.notice.preview" class="WHome.Button">
+							<attr>
+								<top>father.height - 32</top>
+								<left>father.width - 250</left>
+								<width>60</width>
+								<height>22</height>
+								<zorder>1000</zorder>	
+								<Text>预览</Text>
+								<NormalBkgID>green.button.normal</NormalBkgID>
+								<DownBkgID>green.button.down</DownBkgID>
+								<DisableBkgID>green.button.disable</DisableBkgID>
+								<HoverBkgID>green.button.hover</HoverBkgID>
+								<ShowFocusRect>false</ShowFocusRect>
+							</attr>
+						</obj>
+						<obj id="btn.new.notice.publish" class="WHome.Button">
+							<attr>
+								<top>father.height - 45</top>
+								<left>father.width-175</left>
+								<width>100</width>
+								<height>36</height>
+								<zorder>1000</zorder>	
+								<NormalBkgID>blue.big.button.normal</NormalBkgID>
+								<DownBkgID>blue.big.button.down</DownBkgID>
+								<DisableBkgID>blue.big.button.disable</DisableBkgID>
+								<HoverBkgID>blue.big.button.hover</HoverBkgID>		
+								<Text>发布</Text>
+								<ShowFocusRect>false</ShowFocusRect>
 							</attr>
 							<eventlist>
-								<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.lua" func="OnInitControl_ListView" />
-								<event name="OnDestroy" file="PublishCenterChildPanelForAnnouncement.lua" func="OnDestroy_ListView" />
-								<event name="VerticalScrollPosChanged">
-									-- 监听自定义控件自定义事件方法一:
-									-- 请注意参数获取及参数顺序
-									local arg={...}
-									local listViewObj = arg[1]
-									local eventName = arg[2]
-									local oldPos = arg[3]
-									local newPos =arg[4]
-								</event>
-								<event name="VisibleItemChanged">
-									local arg={...}
-									-- Warn("first:"..(arg[3]).." last:"..(arg[4]))
-								</event>
+								<event name="OnClick" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="BTN_PublishNotice" />
 							</eventlist>
 						</obj>
 					</children>
 				</obj>
+				<obj id="history.notice.page" class="LayoutObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="BtnGotoMainPage" class="WHome.TextLink">
+							<attr>
+								<top>5</top>
+								<left>25</left>
+								<width>160</width>
+								<height>26</height>
+								<valign>center</valign>
+								<Text>返回『社区公告发布』首页</Text>
+								<TextColor>system.blue</TextColor>
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnClickHistoryNoticePageToMainPage" />
+							</eventlist>
+						</obj>
+						<obj id="layout.operate.area" class="LayoutObject">
+							<attr>
+								<left>5</left>
+								<top>35</top>
+								<width>father.width-10</width>
+								<height>60</height>
+							</attr>
+							<children>
+								<obj id="layout.search.publish.author" class="LayoutObject">
+									<attr>
+										<left>10</left>
+										<top>5</top>
+										<width>230</width>
+										<height>24</height>
+									</attr>
+									<children>
+										<obj id="text.search.publish.author" class="TextObject">
+											<attr>
+												<left>0</left>
+												<top>3</top>
+												<width>56</width>
+												<height>18</height>
+												<text>发布人：</text>
+											</attr>
+										</obj>
+										<obj id="cb.search.publish.author" class="WHome.ComboBox">
+											<attr>
+												<top>0</top>
+												<left>61</left>
+												<width>140</width>
+												<height>24</height>
+											</attr>
+											<eventlist>
+												<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="CSPA_OnInitControl" />
+											</eventlist>
+										</obj>			
+									</children>
+								</obj>
 
+								<obj id="layout.search.publish.date" class="LayoutObject">
+									<attr>
+										<left>330</left>
+										<top>5</top>
+										<width>230</width>
+										<height>24</height>
+									</attr>
+									<children>
+										<obj id="text.search.publish.date" class="TextObject">
+											<attr>
+												<left>0</left>
+												<top>3</top>
+												<width>56</width>
+												<height>18</height>
+												<text>发布时间：</text>
+											</attr>
+										</obj>	
+										<obj id="cb.search.publish.date" class="WHome.ComboBox">
+											<attr>
+												<top>0</top>
+												<left>60</left>
+												<width>140</width>
+												<height>24</height>
+											</attr>
+											<eventlist>
+												<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="CSPD_OnInitControl" />
+											</eventlist>	
+										</obj>									
+									</children>
+								</obj>
+
+								<obj id="layout.search.publish.status" class="LayoutObject">
+									<attr>
+										<left>10</left>
+										<top>37</top>
+										<width>230</width>
+										<height>24</height>
+									</attr>
+									<children>
+										<obj id="text.search.publish.status" class="TextObject">
+											<attr>
+												<left>0</left>
+												<top>3</top>
+												<width>56</width>
+												<height>18</height>
+												<text>状态：</text>
+											</attr>
+										</obj>
+										<obj id="cb.search.publish.status" class="WHome.ComboBox">
+											<attr>
+												<top>0</top>
+												<left>61</left>
+												<width>140</width>
+												<height>24</height>
+											</attr>
+											<eventlist>
+												<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="CSPS_OnInitControl" />
+											</eventlist>
+										</obj>
+									</children>
+								</obj>
+
+								<obj id="layout.search.publish.id" class="LayoutObject">
+									<attr>
+										<left>330</left>
+										<top>36</top>
+										<width>260</width>
+										<height>26</height>
+									</attr>
+									<children>
+										<obj id="text.search.publish.id" class="TextObject">
+											<attr>
+												<left>0</left>
+												<top>4</top>
+												<width>56</width>
+												<height>18</height>
+												<text>按ID搜索：</text>
+											</attr>
+										</obj>	
+										<obj id="cb.search.publish.id" class="WHome.Edit">
+											<attr>
+												<top>0</top>
+												<left>60</left>
+												<width>140</width>
+												<height>26</height>
+												<TipText>点击输入</TipText>
+												<NormalTipTextColor>system.gray</NormalTipTextColor>
+											</attr>
+										</obj>										
+									</children>
+								</obj>
+
+								<obj id="button.search" class="WHome.Button">
+									<attr>
+										<left>600</left>
+										<top>15</top>
+										<width>64</width>
+										<height>36</height>
+										<NormalBkgID>green.button.normal</NormalBkgID>
+										<DownBkgID>green.button.down</DownBkgID>
+										<DisableBkgID>green.button.disable</DisableBkgID>
+										<HoverBkgID>green.button.hover</HoverBkgID>		
+										<Text>搜索</Text>
+									</attr>
+								</obj>
+							</children>
+						</obj>
+						<obj id="layout.result.list.area" class="LayoutObject">
+							<attr>
+								<left>1</left>
+								<top>108</top>
+								<width>father.width-1</width>
+								<height>father.height-108</height>
+							</attr>
+							<children>
+								<obj id="rectangle.result.list.area" class="RectangleObject">
+									<attr>
+										<width>father.width</width>
+										<height>father.height</height>
+										<srcpt>0,0</srcpt>
+										<destpt>width,height</destpt>
+										<brush>brush.solid</brush>
+										<brushcolor>system.red</brushcolor>
+										<visible>0</visible>
+									</attr>
+								</obj>
+								<obj id="tableview.result.list" class="WHome.ListCtrl">
+									<attr>
+										<width>father.width</width>
+										<height>father.height</height>
+									</attr>
+									<eventlist>
+										<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="LB_OnInitControl" />
+										<event name="OnListItemDbClick" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="LB_OnListItemDbClick" />
+									</eventlist>
+								</obj>
+							</children>
+						</obj>
+					</children>
+				</obj>
 			</children>
 			<eventlist>
-				<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.lua" func="OnInitControl" />
+				<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnInitControl" />
 			</eventlist>
 		</objtemplate>
 	</control>

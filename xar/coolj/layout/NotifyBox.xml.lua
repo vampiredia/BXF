@@ -51,16 +51,54 @@ function OnSize(self)
 end
 
 function OnClose(self)
-	local attr = self:GetOwner():GetRootObject():GetAttribute()
-	--XLMessageBox(attr.Type)
-	
-	local handleID = "CoolJ.NotifyBox."..attr.Type..".Instance"
-	local hostwndManager = XLGetObject("Xunlei.UIEngine.HostWndManager")
-	hostwndManager:RemoveHostWnd(handleID)
-	
-	local objtreeManager = XLGetObject("Xunlei.UIEngine.TreeManager")	
-	objtreeManager:DestroyTree(handleID)
-	
+	AniShow(self)
+--[[
+
 	NotifyBoxPositionChange()
+]]
+end
+
+function AniShow(self)
+	local owner = self:GetOwner()
+	local root = owner:GetRootObject()
+	local attr = root:GetAttribute()
+	local handleID = "CoolJ.NotifyBox."..attr.Type..".Instance"
+	local hostWndManager = XLGetObject("Xunlei.UIEngine.HostWndManager")
+	local ownerHwnd = hostWndManager:GetHostWnd(handleID)
+	local l,t,r,b = ownerHwnd:GetWindowRect()
+	
+	local aniFactory = XLGetObject("Xunlei.UIEngine.AnimationFactory")
+	local posAni = aniFactory:CreateAnimation("PosChangeAnimation")
+	posAni:SetTotalTime(110)
+	posAni:BindLayoutObj(root)
+	posAni:SetKeyFramePos(0, 0, 0, 5)
+	owner:AddAnimation(posAni)
+	posAni:Resume()
+
+	local alphaAni = aniFactory:CreateAnimation("AlphaChangeAnimation")
+	alphaAni:SetTotalTime(110)
+	alphaAni:BindObj(root:GetControlObject("texture.caption.mainwnd.bkg"))
+	alphaAni:SetKeyFrameAlpha(255, 100)
+	owner:AddAnimation(alphaAni)
+	alphaAni:Resume()
+	
+	local onAniFinish = 
+		function (ani)
+			local attr = self:GetOwner():GetRootObject():GetAttribute()
+			--XLMessageBox(attr.Type)
+	
+			local handleID = "CoolJ.NotifyBox."..attr.Type..".Instance"
+			local hostwndManager = XLGetObject("Xunlei.UIEngine.HostWndManager")
+			hostwndManager:RemoveHostWnd(handleID)
+	
+			local objtreeManager = XLGetObject("Xunlei.UIEngine.TreeManager")	
+			objtreeManager:DestroyTree(handleID)			
+		end
+	posAni:AttachListener(true,onAniFinish)
+	
+end
+
+function AniHide()
+
 end
 

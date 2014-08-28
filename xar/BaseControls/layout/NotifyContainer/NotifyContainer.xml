@@ -26,6 +26,7 @@
 					<attr>
 						<width>father.width</width>
 						<height>father.height</height>
+						<zorder>9000</zorder>
 					</attr>
 					<children>
 						<obj id="bkgcolor" class="TextureObject">

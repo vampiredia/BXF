@@ -214,8 +214,12 @@ function CB__OnInitControl(self)
     lblayout:SetVisible(false, true)
 
 	CB_OnEnableChange(self, self:GetEnable())
+	
+	-- TODO lydia
+	-- 第一次展开ComboBox时，不能触发OnSelect事件，提前AttachListener一次
+	-- 先这样子
+	CB_InitControl(self)
 end
-
 
 function CB__Edit__OnChange(self)
     local control = self:GetOwnerControl()
@@ -526,6 +530,22 @@ function HighlightFocus(self, boolean)
 	end
 end
 
+function CB_InitControl(self)
+	local control = self
+    local attr = control:GetAttribute()
+    if not control:GetEnable() then
+        return
+    end
+    local lblayout = control:GetControlObject("listbox.layout")
+	
+	local objFactory = XLGetObject("Xunlei.UIEngine.ObjectFactory")
+    listbox = objFactory:CreateUIObject("listbox","WHome.ComboListBox")
+	
+	listbox:AttachListener("OnSelect", true, CLB_SelectItem)
+	lblayout:AddChild(listbox)
+	lblayout:RemoveChild(listbox)
+end
+
 function ExpandList( self )
     local control = self
     local attr = control:GetAttribute()
@@ -558,7 +578,8 @@ function ExpandList( self )
         end
         
         
-        listbox:AttachListener("OnSelect", true, CLB_SelectItem)
+        attr.Cookie = listbox:AttachListener("OnSelect", true, CLB_SelectItem)
+		--XLMessageBox(attr.Cookie)
         local lbleft, lbtop, lbright, lbbottom = lblayout:GetObjPos()
         lblayout:SetObjPos(0, height, width, attr.ListHeight)
         lblayout:AddChild(listbox)
@@ -620,7 +641,9 @@ function ExpandList( self )
         end
         function onAniFinish(self, old, new)
             if new == 4 then
+				listbox:RemoveListener("OnSelect", attr.Cookie)
                 lblayout:RemoveChild(listbox)
+				
 				attr.ShowList = false
                 lblayout:SetVisible(false, true)
             end
@@ -638,7 +661,7 @@ function ExpandList( self )
         posAni:Resume()
 		attr.ShowList = false
         control:FireExtEvent("OnListExpandChange", false, right - left, bottom - top)
-    end
+	end
 	-- 由于不能触发CB__BtnOnFocusChange(false)事件，导致新建面板那边焦点动画异常，使用以下方法并未导致什么异常，所以就这样做，Mark By Sqh
 	local comboEdit = self:GetControlObject("combo.edit")
 	comboEdit:SetFocus(true)

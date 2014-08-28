@@ -25,12 +25,12 @@ function OnClickNewNoticePageToMainPage(self)
 end
 
 function OnClickNoticeHistory(self)
---[[
+
 	--MessageBox(nil, "业主消息", "8号楼1单元402室 杨百 正在联系电路维修热线！ \n联系电话：13811152323")
-	AddNotifyBox("业主信息", "8号楼1单元402室 杨百 正在联系电路维修热线！\n联系电话：13811152323", "Owner")
+	--AddNotifyBox("业主信息", "8号楼1单元402室 杨百 正在联系电路维修热线！\n联系电话：13811152323", "Owner")
 	AddNotifyBox("救助信息", "16号楼3单元708室 张乐 发出救助信息！\n紧急联系人：张小宝\n紧急联系电话：13811153235", "OnCall")
+--[[	
 	
-	]]
 	PageChange(self, "main.page", "history.notice.page")
 	
 	local controlObj = self:GetOwnerControl()
@@ -55,7 +55,7 @@ function OnClickNoticeHistory(self)
 		end
 	)
 	httpclient:Perform(url, "GET", param)
-	
+]]	
 end
 
 function OnClickHistoryNoticePageToMainPage(self)

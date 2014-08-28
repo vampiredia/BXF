@@ -267,7 +267,7 @@
 								<width>father.width</width>
 								<height>father.height</height>
 								<texture>texture.footer.bkg</texture>
-								<zorder>999</zorder>
+								<zorder>9999</zorder>
 							</attr>
 						</obj>
 					</children>

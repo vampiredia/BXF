@@ -1,5 +1,9 @@
-XLLoadModule("D:/DEV_PROJECT/trunk/dev_pms/xar/BaseControls/layout/TipsHelper.lua")["RegisterObject"]()
+local path = __document
+local index = string.find(path, "/[^/]*$")
+local rootDir = string.sub(path,1,index)
 
-XLLoadModule("D:/DEV_PROJECT/trunk/dev_pms/xar/BaseControls/layout/MenuHelper.lua")["RegisterObject"]()
+XLLoadModule(rootDir.."TipsHelper.lua")["RegisterObject"]()
 
-XLLoadModule("D:/DEV_PROJECT/trunk/dev_pms/xar/BaseControls/layout/Particle.Elements.lua")["RegisterObject"]()
+XLLoadModule(rootDir.."MenuHelper.lua")["RegisterObject"]()
+
+XLLoadModule(rootDir.."Particle.Elements.lua")["RegisterObject"]()

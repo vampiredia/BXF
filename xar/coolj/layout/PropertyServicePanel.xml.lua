@@ -20,6 +20,7 @@ function TabHeader_OnInitControl(self)
 	
 	self:AddTabItem("TabItem_PropertyService", "物业服务", "")
 	self:AddTabItem("TabItem_PropertyInfo", "物业信息", "")
+	
 end
 
 function OnActiveTabChanged(self, eventName, newid, oldid)
@@ -37,7 +38,7 @@ function OnActiveTabChanged(self, eventName, newid, oldid)
 	if newid =="TabItem_PropertyService" then
 		propertyServiceChildPanelForService:SetVisible(true)
 		propertyServiceChildPanelForService:SetChildrenVisible(true)
-		propertyServiceChildPanelForService:Get_PropertyServiceInfo()
+		--propertyServiceChildPanelForService:Get_PropertyServiceInfo()
 	elseif newid == "TabItem_PropertyInfo" then
 		propertyServiceChildPanelForInfo:SetVisible(true)
 		propertyServiceChildPanelForInfo:SetChildrenVisible(true)

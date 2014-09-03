@@ -66,6 +66,7 @@
 		<texture id="texture.tasklist.select_item.bk" type="NineInOne" image="bitmap\task_select_item_bk.png"/>
 		
 		<bitmap id="animation.simple.image" path="bitmap\anisimple.png"/>
+		<texture id="animation.simple.texture" type="Stretch" image="bitmap\anisimple.png" />
 		<imageseq id="simpleseq"  imagelist="imagelist.platform.button.image"/>
 		
 		<gif id="gif.test" file="bitmap\test.gif"/>

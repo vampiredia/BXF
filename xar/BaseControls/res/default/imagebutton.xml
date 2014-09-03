@@ -1,5 +1,10 @@
 <xlue>
 <resource>
 	<bitmap id="image.button.test" image="imagebutton\icon.png" />
+	
+	<imagelist id="imagelist.ad.close" splitter="1" vertical="0" varyblock="1" image="ImageButton\imagelist.close.png"/>
+	<bitmap id="bitmap.ad.close.normal"  imagelist="imagelist.ad.close" index="1"/>
+	<bitmap id="bitmap.ad.close.hover" imagelist="imagelist.ad.close" index="2"/>
+	<bitmap id="bitmap.ad.close.down" imagelist="imagelist.ad.close" index="3"/>
 </resource>
 </xlue>

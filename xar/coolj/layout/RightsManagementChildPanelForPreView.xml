@@ -1,13 +1,15 @@
 <xlue>
 	<control class="CoolJ.RightsManagementChildPanelForPreView">
 		<attr_def>
-			<attr name="BorderTexture" type="string"><default>texture.tabbody.border</default></attr>
+			<attr name="BorderTexture" type="string">
+				<default>texture.tabbody.border</default>
+			</attr>
 		</attr_def>
 		<method_def>
-			
+
 		</method_def>
 		<event_def>
-			
+
 		</event_def>
 		<objtemplate>
 			<children>
@@ -20,25 +22,29 @@
 						<alpha>168</alpha>
 					</attr>
 				</obj>
-				
+
 				<obj id="ctrl" class="LayoutObject">
 					<attr>
 						<width>father.width</width>
 						<height>father.height</height>
 					</attr>
 					<children>
-						<obj class="TextObject">
+
+						<obj id="tree" class="TreeCtrl">
 							<attr>
-								<width>father.width</width>
-								<height>father.height</height>
-								<text>My data with you|RightsManagementChildPanelForPreView</text>
-								<halign>center</halign>
-								<valign>center</valign>
+								<left>5</left>
+								<top>50</top>
+								<width>120</width>
+								<height>father.height-150</height>
 							</attr>
+							<eventlist>
+								<event name="OnSelectChanged" file="MainWnd.xml.lua" func="OnSelectChanged" />
+								<event name="OnInitControl" file="RightsManagementChildPanelForPreView.xml.lua" func="TC_OnInitControl" />
+							</eventlist>
 						</obj>
 					</children>
 				</obj>
-						
+
 			</children>
 			<eventlist>
 				<event name="OnInitControl" file="RightsManagementChildPanelForPreView.xml.lua" func="OnInitControl" />

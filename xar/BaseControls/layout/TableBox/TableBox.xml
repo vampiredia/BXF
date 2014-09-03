@@ -1,0 +1,304 @@
+<xlue>
+	<control class="CoolJ.TableBox">
+		<attr_def>
+			<attr name="ColumnNum" type="int" >
+				<default>2</default>
+			</attr>
+			<attr name="ItemWidth" type="int" >
+				<default>0</default>
+			</attr>
+			<attr name="ItemHeight" type="int" >
+				<default>0</default>
+			</attr>
+			<attr name="IsDrag" type="bool" >
+				<default>true</default>
+			</attr>
+			<attr name="IsShowVSCroll" type="bool" >
+				<default>true</default>
+			</attr>
+			<attr name="NormalItemBkgID" type="string" >
+				<default/>
+			</attr>
+			<attr name="HoverItemBkgID" type="string" >
+				<default/>
+			</attr>
+			<attr name="DownItemBkgID" type="string" >
+				<default/>
+			</attr>
+			<attr name="Margin" type="int" >
+				<default>5</default>
+			</attr>
+
+		</attr_def>
+		<method_def>
+			<AddItem file="TableBox.xml.lua" func="TB_AddItem" />
+			<DelItem file="TableBox.xml.lua" func="TB_DelItem" />
+			<DelAllItem file="TableBox.xml.lua" func="TB_DelAllItem" />
+			<UpdateUI file="TableBox.xml.lua" func="TB_UpdateUI" />
+			<MoveItem file="TableBox.xml.lua" func="TB_MoveItem" />
+		</method_def>
+		<event_def>
+			<OnItemMoveBegin>
+				<param>
+				</param>
+			</OnItemMoveBegin>
+			<OnItemMove>
+				<param>
+					<layoutobj/>
+					<int/>
+					<int/>
+				</param>
+			</OnItemMove>
+			<OnItemMoveEnd>
+				<param>
+				</param>
+			</OnItemMoveEnd>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<texture>animation.simple.texture</texture>
+						<alpha>68</alpha>
+					</attr>
+					<children>
+						<obj id="Content" class="LayoutObject">
+							<attr>
+								<left>2</left>
+								<top>3</top>
+								<width>father.width - 4</width>
+								<height>father.height - 5</height>
+							</attr>
+							<children>
+								<obj id="Item" class="LayoutObject">
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>father.width + 3</width>
+										<height>father.height - 4</height>
+										<limitchild>1</limitchild>
+										<enableinput>true</enableinput>
+										
+									</attr>
+								</obj>
+								<obj id="vscroll" class="CoolJ.ScrollBar">
+									<attr>
+										<Type>v</Type>
+										<SideBtnLength>0</SideBtnLength>
+										<PageSize>20</PageSize>
+										<RangeBegin>0</RangeBegin>
+										<RangeEnd>100</RangeEnd>
+										<ScrollPos>0</ScrollPos>
+										<ThumbBtnWidth>12</ThumbBtnWidth> 
+										<ThumbRightMagrin>2</ThumbRightMagrin>
+										
+										<left>father.width-11</left>
+										<top>-3</top>
+										<width>12</width>
+										<height>father.height+5</height>
+										<zorder>600</zorder>
+									</attr>
+									<eventlist>
+										<event name="OnVScroll" file="TableBox.xml.lua" func="TB_OnVScroll" />
+										<event name="OnScrollBarMouseWheel" file="TableBox.xml.lua" func="TB_OnScrollBarMouseWheel" />
+									</eventlist>
+								</obj>
+							</children>
+							<eventlist>
+								
+							</eventlist>
+						</obj>
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="TableBox.xml.lua" func="TB_OnInitControl" />
+				<event name="OnItemMove" file="TableBox.xml.lua" func="TB_OnItemMove" />
+				<event name="OnItemMoveEnd" file="TableBox.xml.lua" func="TB_OnItemMoveEnd" />
+			</eventlist>
+		</objtemplate>
+	</control>
+
+	<control class="CoolJ.TableFAQItem">
+		<attr_def>
+			<attr name="ItemWidth" type="int" >
+				<default>0</default>
+			</attr>
+			<attr name="ItemHeight" type="int" >
+				<default>0</default>
+			</attr>
+			<attr name="NormalItemBkgID" type="string" >
+				<default>texture.tablebox.item.normal</default>
+			</attr>
+			<attr name="SelectItemBkgID" type="string" >
+				<default>texture.tablebox.item.select</default>
+			</attr>
+			<attr name="MoveEnable" type="bool" >
+				<default>true</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<SetText file="TableBox.xml.lua" func="TFI_SetText" />
+		</method_def>
+		<event_def>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+						<texture>texture.tablebox.item.normal</texture>
+						<cursor>IDC_ARROW</cursor>
+					</attr>
+					<children>
+						<obj id="tip" class="TextObject">
+							<attr>
+								<left>4</left>
+								<top>5</top>
+								<width>32</width>
+								<height>18</height>
+								<valign>center</valign>
+								<halign>left</halign>
+								<text>问题：</text>
+							</attr>
+						</obj>
+						<obj id="question" class="TextObject">
+							<attr>
+								<left>44</left>
+								<top>5</top>
+								<width>210</width>
+								<height>18</height>
+								<valign>center</valign>
+								<halign>left</halign>
+								<text>怎么交电费</text>
+							</attr>
+						</obj>
+						<obj id="answer" class="TextObject">
+							<attr>
+								<left>4</left>
+								<top>35</top>
+								<width>father.width-8</width>
+								<height>father.height-40</height>
+								<text>你说怎么交电费，该哪交就哪交去呗</text>
+							</attr>
+						</obj>
+						<obj id="copy" class="WHome.Button">
+							<attr>
+								<left>father.width-55</left>
+								<top>father.height-31</top>
+								<width>50</width>
+								<height>26</height>
+								<zorder>100</zorder>
+								<Text>复制</Text>
+								<NormalBkgID>green.button.normal</NormalBkgID>
+								<HoverBkgID>green.button.hover</HoverBkgID>
+								<DownBkgID>green.button.down</DownBkgID>
+							</attr>
+							<eventlist>
+
+							</eventlist>
+						</obj>
+						<obj id="close" class="CoolJ.ImageButton">
+							<attr>
+								<left>father.width-27</left>
+								<top>0</top>
+								<width>27</width>
+								<height>27</height>
+								<NormalBkgID>bitmap.ad.close.normal</NormalBkgID>
+								<HoverBkgID>bitmap.ad.close.hover</HoverBkgID>
+								<DownBkgID>bitmap.ad.close.down</DownBkgID>
+								
+							</attr>
+						</obj>
+					</children>
+					<eventlist>
+
+						<event name="OnLButtonDown" file="TableBox.xml.lua" func="TFI_OnLButtonDown" />
+						<event name="OnLButtonUp" file="TableBox.xml.lua" func="TFI_OnLButtonUp" />
+						<event name="OnMouseMove" file="TableBox.xml.lua" func="TFI_OnMouseMove" />
+						<event name="OnMouseLeave" file="TableBox.xml.lua" func="TFI_OnMouseLeave" />
+
+					</eventlist>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="TableBox.xml.lua" func="TFI_OnInitControl" />
+				<event name="OnDrop" file="TableBox.xml.lua" func="TFI_OnDrop" />
+				<event name="OnDragQuery" file="TableBox.xml.lua" func="TFI_OnDragQuery" />
+				<event name="OnDragEnter" file="TableBox.xml.lua" func="TFI_OnDragEnter" />
+				<event name="OnDragOver" file="TableBox.xml.lua" func="TFI_OnDragOver" />
+
+			</eventlist>
+		</objtemplate>
+	</control>
+
+	<control class="CoolJ.TableAddItem">
+		<attr_def>
+			<attr name="ItemWidth" type="int" >
+				<default>0</default>
+			</attr>
+			<attr name="ItemHeight" type="int" >
+				<default>0</default>
+			</attr>
+			<attr name="NormalItemBkgID" type="string" >
+				<default/>
+			</attr>
+			<attr name="HoverItemBkgID" type="string" >
+				<default/>
+			</attr>
+			<attr name="DownItemBkgID" type="string" >
+				<default/>
+			</attr>		
+			<attr name="MoveEnable" type="bool" >
+				<default>false</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<SetText file="TableBox.xml.lua" func="TAI_SetText" />
+			<SetIcon file="TableBox.xml.lua" func="TAI_SetIcon" />
+		</method_def>
+		<event_def>
+			<OnClick />
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="btn" class="WHome.Button">
+							<attr>
+								<width>father.width</width>
+								<height>father.height</height>
+								<NormalBkgID>texture.tablebox.item.normal</NormalBkgID>
+								<HoverBkgID>texture.tablebox.item.select</HoverBkgID>
+								<DownBkgID>texture.tablebox.item.select</DownBkgID>
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="TableBox.xml.lua" func="TAI_OnClick" />
+								<event name="OnMouseMove" file="TableBox.xml.lua" func="TAI_OnMouseMove" />
+								<event name="OnMouseLeave" file="TableBox.xml.lua" func="TAI_OnMouseLeave" />
+								<event name="OnLButtonDown" file="TableBox.xml.lua" func="TAI_OnLButtonDown" />
+								<event name="OnLButtonUp" file="TableBox.xml.lua" func="TAI_OnLButtonUp" />
+							</eventlist>
+						</obj>
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="TableBox.xml.lua" func="TAI_OnInitControl" />
+				<event name="OnDrop" file="TableBox.xml.lua" func="TAI_OnDrop" />
+				<event name="OnDragQuery" file="TableBox.xml.lua" func="TAI_OnDragQuery" />
+				<event name="OnDragEnter" file="TableBox.xml.lua" func="TAI_OnDragEnter" />
+				<event name="OnDragOver" file="TableBox.xml.lua" func="TAI_OnDragOver" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

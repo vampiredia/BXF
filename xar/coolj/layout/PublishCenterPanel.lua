@@ -25,15 +25,16 @@ function TabHeader_OnInitControl(self)
 	self:AddTabItem("TabItem_Notice", "社区通知", "")
 	self:AddTabItem("TabItem_Announcement", "社区公告", "")
 	self:AddTabItem("TabItem_QA", "问题解答", "")
+	self:AddTabItem("TabItem_FAQ", "物管FAQ", "")
 end
 
 function OnActiveTabChanged(self, eventName, newid, oldid)
 	local ownerTree = self:GetOwner()
 
 	local publishCenterChildPanelForNotice = ownerTree:GetUIObject("app.bkg:PublishCenterPanel:PublishCenterChildPanelForNotice")
-
 	local publishCenterChildPanelForAnnouncement = ownerTree:GetUIObject("app.bkg:PublishCenterPanel:PublishCenterChildPanelForAnnouncement")
 	local publishCenterChildPanelForQA = ownerTree:GetUIObject("app.bkg:PublishCenterPanel:PublishCenterChildPanelForQA")
+	local publishCenterChildPanelForFAQ = ownerTree:GetUIObject("app.bkg:PublishCenterPanel:PublishCenterChildPanelForFAQ")
 	
 	publishCenterChildPanelForNotice:SetVisible(false)
     publishCenterChildPanelForNotice:SetChildrenVisible(false)
@@ -43,6 +44,9 @@ function OnActiveTabChanged(self, eventName, newid, oldid)
     
     publishCenterChildPanelForQA:SetVisible(false)
     publishCenterChildPanelForQA:SetChildrenVisible(false)
+	
+	publishCenterChildPanelForFAQ:SetVisible(false)
+	publishCenterChildPanelForFAQ:SetChildrenVisible(false)
 	
 	if newid =="TabItem_Notice" then
 		publishCenterChildPanelForNotice:SetVisible(true)
@@ -54,6 +58,9 @@ function OnActiveTabChanged(self, eventName, newid, oldid)
 	    publishCenterChildPanelForQA:SetVisible(true)
         publishCenterChildPanelForQA:SetChildrenVisible(true)
 		AsynCall(function() publishCenterChildPanelForQA:Get_QAData() end)
+	elseif newid == "TabItem_FAQ" then
+		publishCenterChildPanelForFAQ:SetVisible(true)
+        publishCenterChildPanelForFAQ:SetChildrenVisible(true)
 	end
 
 end

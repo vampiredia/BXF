@@ -1,0 +1,56 @@
+<xlue>
+	<control class="CoolJ.PublishCenterChildPanelForFAQ">
+		<attr_def>
+			<attr name="BorderTexture" type="string">
+				<default>texture.tabbody.border</default>
+			</attr>
+		</attr_def>
+		<method_def>
+
+		</method_def>
+		<event_def>
+
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<alpha>168</alpha>
+					</attr>
+				</obj>
+				<obj id="tree.faq" class="TreeCtrl">
+					<attr>
+						<left>5</left>
+						<top>36</top>
+						<width>140</width>
+						<height>father.height-44</height>
+					</attr>
+					<eventlist>
+						<event name="OnSelectChanged" file="PublishCenterChildPanelForFAQ.xml.lua" func="OnSelectChanged" />
+						<event name="OnInitControl" file="PublishCenterChildPanelForFAQ.xml.lua" func="TC_OnInitControl" />
+					</eventlist>
+				</obj>
+				<obj id="test" class="CoolJ.TableBox">
+					<attr>
+						<left>145</left>
+						<top>32</top>
+						<width>father.width-145</width>
+						<height>father.height-35</height>
+						<ItemWidth>258</ItemWidth>
+						<ItemHeight>130</ItemHeight>
+					</attr>
+					<eventlist>
+						<event name="OnInitControl" file="PublishCenterChildPanelForFAQ.xml.lua" func="TB_OnInitControl" />
+					</eventlist>
+				</obj>			
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="PublishCenterChildPanelForFAQ.xml.lua" func="OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

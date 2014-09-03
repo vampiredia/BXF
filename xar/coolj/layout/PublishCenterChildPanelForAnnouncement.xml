@@ -381,6 +381,7 @@
 										<textcolor>system.gray</textcolor>
 									</attr>
 								</obj>
+<!--
 								<obj id="rectangle.upload.pic.0.bkg" class="RectangleObject">
 									<attr>
 										<top>65</top>
@@ -459,6 +460,7 @@
 										<visible>1</visible>
 									</attr>
 								</obj>
+-->
 							</children>
 						</obj>
 						<obj id="btn.new.notice.preview" class="WHome.Button">

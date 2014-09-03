@@ -1,0 +1,29 @@
+<XLUE>
+	<resource>		
+		<!-- font -->
+		<font id="font.category.item.normal" height="12" facename="微软雅黑"  />
+		<font id="font.category.item" height="12" facename="微软雅黑"  />
+		<font id="font.category.item.bold" weight="bold" height="12" facename="微软雅黑"  />
+
+		<!-- color -->
+
+		<!-- bitmap -->
+		<imagelist id="imagelist.category" splitter="1" vertical="0" varyblock="1" image="TreeCtrl\imagelist.category.png"/>
+
+		<bitmap id="bitmap.category.item.all"  imagelist="imagelist.category" index="1"/>  
+		<bitmap id="bitmap.category.item.downloading"  imagelist="imagelist.category" index="2"/>  
+		<bitmap id="bitmap.category.item.complete"  imagelist="imagelist.category" index="3"/>  
+		<bitmap id="bitmap.category.item.collection"  imagelist="imagelist.category" index="4"/>  
+		<bitmap id="bitmap.category.item.recycle"  imagelist="imagelist.category" index="5"/>  
+
+		<bitmap id="bitmap.categorytree.expand" imagelist="imagelist.category" index="6"/>  
+		<bitmap id="bitmap.categorytree.collapse" imagelist="imagelist.category" index="7"/>  
+
+		<bitmap id="bitmap.category.mask" path="bitmap\bitmap.category.mask.png" />  
+		<bitmap id="bitmap.category.arrow" path="bitmap\bitmap.category.arrow.png" />  
+		
+		<imagelist id="plugin.item.list" vertical="0" varyblock="1" splitter="1" image="TreeCtrl\mainwnd_share_hover.png"/>
+		<texture id="texture.category.item.select" type="Stretch" imagelist="plugin.item.list" index="10" />
+		<texture id="texture.category.item.hover" type="ThreeInOneH" imagelist="plugin.item.list" index="12" />
+	</resource>
+</XLUE>

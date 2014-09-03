@@ -120,6 +120,13 @@
 								<height>father.height</height>
 							</attr>
 						</obj>
+						<obj id="PublishCenterChildPanelForFAQ" class="CoolJ.PublishCenterChildPanelForFAQ">
+							<attr>
+								<left>138</left>
+								<width>father.width-138</width>
+								<height>father.height</height>
+							</attr>
+						</obj>
 					</children>
 				</obj>
 						

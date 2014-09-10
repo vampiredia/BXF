@@ -76,25 +76,25 @@
 			</attr>
 		</attr_def>
 		<method_def>
-			<SetScrollPos file="ScrollBar.xml.lua" func="SetScrollPos"/>
-			<SetScrollRange file="ScrollBar.xml.lua" func="SetScrollRange"/>
-			<GetScrollPos file="ScrollBar.xml.lua" func="GetScrollPos"/>
-			<GetScrollRange file="ScrollBar.xml.lua" func="GetScrollRange"/>
-			<UpdateThumbPos file="ScrollBar.xml.lua" func="UpdateThumbPos"/>
-			<UpdatePos file="ScrollBar.xml.lua" func="UpdatePos"/>
-			<SetThumbPos file="ScrollBar.xml.lua" func="SetThumbPos"/>
-			<GetThumbPos file="ScrollBar.xml.lua" func="GetThumbPos"/>
-			<GetThumbHeight file="ScrollBar.xml.lua" func="GetThumbHeight"/>
-			<GetPageSize file="ScrollBar.xml.lua" func="GetPageSize"/>
-			<SetPageSize file="ScrollBar.xml.lua" func="SetPageSize"/>
-			<LBtn_OnLeftBtnDown file="ScrollBar.xml.lua" func="LBtn_OnLeftBtnDown"/>
-			<RBtn_OnLeftBtnDown file="ScrollBar.xml.lua" func="RBtn_OnLeftBtnDown"/>
-			<ThumbBtn_OnMouseMove file="ScrollBar.xml.lua" func="ThumbBtn_OnMouseMove"/>
-			<ThumbBtn_OnLeftBtnDown file="ScrollBar.xml.lua" func="ThumbBtn_OnLeftBtnDown"/>
-			<ThumbBtn_OnLeftBtnUp file="ScrollBar.xml.lua" func="ThumbBtn_OnLeftBtnUp"/>
-			<SetState file="ScrollBar.xml.lua" func="SetState"/>
-			<SetFirstTip file="ScrollBar.xml.lua" func="SetFirstTip"/>
-			<OnMouseWheel file="ScrollBar.xml.lua" func="OnMouseWheel"/>
+			<SetScrollPos file="ScrollBarOld.xml.lua" func="SetScrollPos"/>
+			<SetScrollRange file="ScrollBarOld.xml.lua" func="SetScrollRange"/>
+			<GetScrollPos file="ScrollBarOld.xml.lua" func="GetScrollPos"/>
+			<GetScrollRange file="ScrollBarOld.xml.lua" func="GetScrollRange"/>
+			<UpdateThumbPos file="ScrollBarOld.xml.lua" func="UpdateThumbPos"/>
+			<UpdatePos file="ScrollBarOld.xml.lua" func="UpdatePos"/>
+			<SetThumbPos file="ScrollBarOld.xml.lua" func="SetThumbPos"/>
+			<GetThumbPos file="ScrollBarOld.xml.lua" func="GetThumbPos"/>
+			<GetThumbHeight file="ScrollBarOld.xml.lua" func="GetThumbHeight"/>
+			<GetPageSize file="ScrollBarOld.xml.lua" func="GetPageSize"/>
+			<SetPageSize file="ScrollBarOld.xml.lua" func="SetPageSize"/>
+			<LBtn_OnLeftBtnDown file="ScrollBarOld.xml.lua" func="LBtn_OnLeftBtnDown"/>
+			<RBtn_OnLeftBtnDown file="ScrollBarOld.xml.lua" func="RBtn_OnLeftBtnDown"/>
+			<ThumbBtn_OnMouseMove file="ScrollBarOld.xml.lua" func="ThumbBtn_OnMouseMove"/>
+			<ThumbBtn_OnLeftBtnDown file="ScrollBarOld.xml.lua" func="ThumbBtn_OnLeftBtnDown"/>
+			<ThumbBtn_OnLeftBtnUp file="ScrollBarOld.xml.lua" func="ThumbBtn_OnLeftBtnUp"/>
+			<SetState file="ScrollBarOld.xml.lua" func="SetState"/>
+			<SetFirstTip file="ScrollBarOld.xml.lua" func="SetFirstTip"/>
+			<OnMouseWheel file="ScrollBarOld.xml.lua" func="OnMouseWheel"/>
 		</method_def>
 		
 		<event_def>
@@ -159,8 +159,8 @@
 								<ShowFocusRect>false</ShowFocusRect>
 							</attr>
 							<eventlist>
-								<event name="OnKeyUp" file="ScrollBar.xml.lua" func="RouteToFather__OnChar"/>
-								<event name="OnKeyDown" file="ScrollBar.xml.lua" func="RouteToFather__OnChar"/>
+								<event name="OnKeyUp" file="ScrollBarOld.xml.lua" func="RouteToFather__OnChar"/>
+								<event name="OnKeyDown" file="ScrollBarOld.xml.lua" func="RouteToFather__OnChar"/>
 							</eventlist>
 						</obj>
 						<obj id="scrollbar.rightbtn" class="WHome.Button">
@@ -173,8 +173,8 @@
 								<ShowFocusRect>false</ShowFocusRect>
 							</attr>
 							<eventlist>
-								<event name="OnKeyUp" file="ScrollBar.xml.lua" func="RouteToFather__OnChar"/>
-								<event name="OnKeyDown" file="ScrollBar.xml.lua" func="RouteToFather__OnChar"/>
+								<event name="OnKeyUp" file="ScrollBarOld.xml.lua" func="RouteToFather__OnChar"/>
+								<event name="OnKeyDown" file="ScrollBarOld.xml.lua" func="RouteToFather__OnChar"/>
 							</eventlist>
 							
 						</obj>
@@ -196,17 +196,17 @@
 								</obj>
 							</children>
 							<eventlist>
-								<event name="OnKeyUp" file="ScrollBar.xml.lua" func="RouteToFather__OnChar"/>
-								<event name="OnKeyDown" file="ScrollBar.xml.lua" func="RouteToFather__OnChar"/>
-								<event name="OnFocusChange" file="ScrollBar.xml.lua" func="OnBtnFocusChange"/>
-								<event name="OnButtonMouseMove" file="ScrollBar.xml.lua" func="OnButtonMouseMove"/>
-								<event name="OnButtonMouseLeave" file="ScrollBar.xml.lua" func="OnButtonMouseLeave"/>
-								<event name="OnButtonMouseDown" file="ScrollBar.xml.lua" func="OnButtonMouseDown"/>
-								<event name="OnLButtonDown" file="ScrollBar.xml.lua" func="OnBtnLButtonDown" />
-								<event name="OnLButtonUp" file="ScrollBar.xml.lua" func="OnBtnLButtonUp" />
-                                <event name="OnMouseMove" file="ScrollBar.xml.lua" func="ThumbBtn__OnMouse" redirect="control" />
-                                <event name="OnMouseLeave" file="ScrollBar.xml.lua" func="ThumbBtn__OnMouse" redirect="control" />
-								<event name="OnMouseWheel" file="ScrollBar.xml.lua" func="ThumbBtn__OnMouseWheel"/>
+								<event name="OnKeyUp" file="ScrollBarOld.xml.lua" func="RouteToFather__OnChar"/>
+								<event name="OnKeyDown" file="ScrollBarOld.xml.lua" func="RouteToFather__OnChar"/>
+								<event name="OnFocusChange" file="ScrollBarOld.xml.lua" func="OnBtnFocusChange"/>
+								<event name="OnButtonMouseMove" file="ScrollBarOld.xml.lua" func="OnButtonMouseMove"/>
+								<event name="OnButtonMouseLeave" file="ScrollBarOld.xml.lua" func="OnButtonMouseLeave"/>
+								<event name="OnButtonMouseDown" file="ScrollBarOld.xml.lua" func="OnButtonMouseDown"/>
+								<event name="OnLButtonDown" file="ScrollBarOld.xml.lua" func="OnBtnLButtonDown" />
+								<event name="OnLButtonUp" file="ScrollBarOld.xml.lua" func="OnBtnLButtonUp" />
+                                <event name="OnMouseMove" file="ScrollBarOld.xml.lua" func="ThumbBtn__OnMouse" redirect="control" />
+                                <event name="OnMouseLeave" file="ScrollBarOld.xml.lua" func="ThumbBtn__OnMouse" redirect="control" />
+								<event name="OnMouseWheel" file="ScrollBarOld.xml.lua" func="ThumbBtn__OnMouseWheel"/>
 							</eventlist>
 							
 						</obj>
@@ -214,17 +214,17 @@
 				</obj>
 			</children>
 			<eventlist>
-				<event name="OnBind" file="ScrollBar.xml.lua" func="OnBind"/>
-				<event name="OnPosChange" file="ScrollBar.xml.lua" func="OnPosChange"/>
-				<event name="OnLButtonDown" file="ScrollBar.xml.lua" func="OnLButtonDown"/>
-				<event name="OnInitControl" file="ScrollBar.xml.lua" func="OnInitControl"/>
-				<event name="OnMouseMove" file="ScrollBar.xml.lua" func="OnMouseMove" redirect="control"/>
-				<event name="OnMouseLeave" file="ScrollBar.xml.lua" func="OnMouseLeave" redirect="control"/>
-				<event name="OnMouseWheel" file="ScrollBar.xml.lua" func="OnMouseWheel"/>
-				<event name="OnKeyDown" file="ScrollBar.xml.lua" func="OnKeyDown" />
+				<event name="OnBind" file="ScrollBarOld.xml.lua" func="OnBind"/>
+				<event name="OnPosChange" file="ScrollBarOld.xml.lua" func="OnPosChange"/>
+				<event name="OnLButtonDown" file="ScrollBarOld.xml.lua" func="OnLButtonDown"/>
+				<event name="OnInitControl" file="ScrollBarOld.xml.lua" func="OnInitControl"/>
+				<event name="OnMouseMove" file="ScrollBarOld.xml.lua" func="OnMouseMove" redirect="control"/>
+				<event name="OnMouseLeave" file="ScrollBarOld.xml.lua" func="OnMouseLeave" redirect="control"/>
+				<event name="OnMouseWheel" file="ScrollBarOld.xml.lua" func="OnMouseWheel"/>
+				<event name="OnKeyDown" file="ScrollBarOld.xml.lua" func="OnKeyDown" />
 				
-				<event name="OnEnableChange" file="ScrollBar.xml.lua" func="OnEnableChange" />
-				<event name="OnVisibleChange" file="ScrollBar.xml.lua" func="OnVisibleChange" />
+				<event name="OnEnableChange" file="ScrollBarOld.xml.lua" func="OnEnableChange" />
+				<event name="OnVisibleChange" file="ScrollBarOld.xml.lua" func="OnVisibleChange" />
 			</eventlist>
 		</objtemplate>
 	</control>

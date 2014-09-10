@@ -1,0 +1,61 @@
+<xlue>
+	<control class="CoolJ.TableAddItem">
+		<attr_def>
+			<attr name="ItemWidth" type="int" >
+				<default>0</default>
+			</attr>
+			<attr name="ItemHeight" type="int" >
+				<default>0</default>
+			</attr>
+			<attr name="NormalItemBkgID" type="string" >
+				<default/>
+			</attr>
+			<attr name="HoverItemBkgID" type="string" >
+				<default/>
+			</attr>
+			<attr name="DownItemBkgID" type="string" >
+				<default/>
+			</attr>		
+			<attr name="MoveEnable" type="bool" >
+				<default>false</default>
+			</attr>
+			<attr name="DragMouse" type="bool" >
+				<default>false</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<SetText file="TableAddItem.xml.lua" func="TAI_SetText" />
+			<SetIcon file="TableAddItem.xml.lua" func="TAI_SetIcon" />
+		</method_def>
+		<event_def>
+			<OnClick />
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="btn" class="WHome.Button">
+							<attr>
+								<width>father.width</width>
+								<height>father.height</height>
+								<NormalBkgID>texture.tablebox.item.normal</NormalBkgID>
+								<HoverBkgID>texture.tablebox.item.select</HoverBkgID>
+								<DownBkgID>texture.tablebox.item.select</DownBkgID>
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="TableAddItem.xml.lua" func="TAI_OnClick" />
+							</eventlist>
+						</obj>
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="TableAddItem.xml.lua" func="TAI_OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

@@ -100,11 +100,11 @@ function AddNotifyBox(caption, text, tp)
 	NotifyBoxUpdate()
 end
 
-function AddNotify(self, text)
+function AddNotify(self, text, timeout)
 	local tree = self:GetOwner()
 	local obj = tree:GetRootObject():GetObject("Notify.Container")
 	if obj == nil then return end
-	obj:AddNotify(text)
+	obj:AddNotify(text, timeout)
 end
 
 function RegisterGlobal()

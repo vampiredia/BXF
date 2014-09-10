@@ -4,7 +4,7 @@
 			<attr name="BorderTexture" type="string"><default>texture.tabbody.border</default></attr>
 		</attr_def>
 		<method_def>
-			
+			<PageChange file="LogQueryChildPanelForOperate.xml.lua" func="PageChange" />
 		</method_def>
 		<event_def>
 			
@@ -20,28 +20,10 @@
 						<alpha>168</alpha>
 					</attr>
 				</obj>
-				
-				<obj id="ctrl" class="LayoutObject">
-					<attr>
-						<width>father.width</width>
-						<height>father.height</height>
-					</attr>
-					<children>
-						<obj class="TextObject">
-							<attr>
-								<width>father.width</width>
-								<height>father.height</height>
-								<text>My data with you|LogQueryChildPanelForOperate</text>
-								<halign>center</halign>
-								<valign>center</valign>
-							</attr>
-						</obj>
-					</children>
-				</obj>
-						
 			</children>
 			<eventlist>
 				<event name="OnInitControl" file="LogQueryChildPanelForOperate.xml.lua" func="OnInitControl" />
+				<event name="OnPosChange" file="LogQueryChildPanelForOperate.xml.lua" func="OnPosChange" />
 			</eventlist>
 		</objtemplate>
 	</control>

@@ -61,7 +61,7 @@ function CN_NotifyUpdate(self, status)
 	attr.Status = status
 end
 
-function AddNotify(self, text)
+function AddNotify(self, text, timeout)
 	local attr = self:GetAttribute()
 	
 	local obj = self:GetControlObject("item.notify")
@@ -75,7 +75,8 @@ function AddNotify(self, text)
 	
 	local timerManager = XLGetObject("Xunlei.UIEngine.TimerManager")
 	if attr.NotifyTimerID ~= nil then timerManager:KillTimer(attr.NotifyTimerID) end
-	attr.NotifyTimerID = timerManager:SetTimer(function() UpdateUI(self, "hide_ani", true) end, 5000)
+	if timeout == nil then timeout = 5000 end
+	attr.NotifyTimerID = timerManager:SetTimer(function() UpdateUI(self, "hide_ani", true) end, timeout)
 end
 
 function RemoveNotify(self)

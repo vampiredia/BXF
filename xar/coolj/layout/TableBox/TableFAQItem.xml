@@ -1,0 +1,122 @@
+<xlue>
+	<control class="CoolJ.TableFAQItem">
+		<attr_def>
+			<attr name="ItemWidth" type="int" >
+				<default>0</default>
+			</attr>
+			<attr name="ItemHeight" type="int" >
+				<default>0</default>
+			</attr>
+			<attr name="NormalItemBkgID" type="string" >
+				<default>texture.tablebox.item.normal</default>
+			</attr>
+			<attr name="SelectItemBkgID" type="string" >
+				<default>texture.tablebox.item.select</default>
+			</attr>
+			<attr name="MoveEnable" type="bool" >
+				<default>true</default>
+			</attr>
+			<attr name="DragMouse" type="bool" >
+				<default>false</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<SetText file="TableFAQItem.xml.lua" func="TFI_SetText" />
+			<SetHitTest file="TableFAQItem.xml.lua" func="TFI_SetHitTest" />
+			<SetCaptionText file="TableFAQItem.xml.lua" func="TFI_SetCaptionText" />
+			<GetCaptionText file="TableFAQItem.xml.lua" func="TFI_GetCaptionText" />
+			<SetAnswerText file="TableFAQItem.xml.lua" func="TFI_SetAnswerText" />
+			<GetAnswerText file="TableFAQItem.xml.lua" func="TFI_GetAnswerText" />
+		</method_def>
+		<event_def>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="tip" class="TextObject">
+							<attr>
+								<left>4</left>
+								<top>5</top>
+								<width>32</width>
+								<height>18</height>
+								<valign>center</valign>
+								<halign>left</halign>
+								<text>问题：</text>
+							</attr>
+						</obj>
+						<obj id="question" class="TextObject">
+							<attr>
+								<left>44</left>
+								<top>5</top>
+								<width>210</width>
+								<height>18</height>
+								<valign>center</valign>
+								<halign>left</halign>
+								<text>怎么交电费</text>
+							</attr>
+						</obj>
+						<obj id="answer" class="WHome.Edit">
+							<attr>
+								<left>4</left>
+								<top>35</top>
+								<width>father.width-8</width>
+								<height>father.height-40</height>
+								<Text>你说怎么交电费，该哪交就哪交去呗</Text>
+								<Border>false</Border>
+								<ReadOnly>false</ReadOnly>
+								<Multiline>true</Multiline>
+							</attr>
+						</obj>
+						<obj id="copy" class="WHome.Button">
+							<attr>
+								<left>father.width-55</left>
+								<top>father.height-31</top>
+								<width>50</width>
+								<height>26</height>
+								<zorder>999</zorder>
+								<Text>复制</Text>
+								<NormalBkgID>green.button.normal</NormalBkgID>
+								<HoverBkgID>green.button.hover</HoverBkgID>
+								<DownBkgID>green.button.down</DownBkgID>
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="TableFAQItem.xml.lua" func="TFI_Btn_OnCopy" />
+							</eventlist>
+						</obj>
+						<obj id="close" class="CoolJ.ImageButton">
+							<attr>
+								<left>father.width-27</left>
+								<top>0</top>
+								<width>27</width>
+								<height>27</height>
+								<NormalBkgID>bitmap.ad.close.normal</NormalBkgID>
+								<HoverBkgID>bitmap.ad.close.hover</HoverBkgID>
+								<DownBkgID>bitmap.ad.close.down</DownBkgID>
+								<visible>0</visible>
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="TableFAQItem.xml.lua" func="TFI_Btn_OnClose" />
+							</eventlist>
+						</obj>
+					</children>
+					<eventlist>
+						<event name="OnLButtonDown" file="TableFAQItem.xml.lua" func="TFI_OnLButtonDown" />
+						<event name="OnLButtonUp" file="TableFAQItem.xml.lua" func="TFI_OnLButtonUp" />
+						<event name="OnMouseMove" file="TableFAQItem.xml.lua" func="TFI_OnMouseMove" />
+						<event name="OnMouseLeave" file="TableFAQItem.xml.lua" func="TFI_OnMouseLeave" />
+					</eventlist>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="TableFAQItem.xml.lua" func="TFI_OnInitControl" />
+				<event name="OnControlMouseEnter" file="TableFAQItem.xml.lua" func="TFI_OnControlMouseEnter" />
+				<event name="OnControlMouseLeave" file="TableFAQItem.xml.lua" func="TFI_OnControlMouseLeave" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

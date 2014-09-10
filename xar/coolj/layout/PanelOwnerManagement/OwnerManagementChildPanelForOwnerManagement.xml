@@ -1,0 +1,244 @@
+<xlue>
+	<control class="CoolJ.OwnerManagementChildPanelForOwnerManagement">
+		<attr_def>
+			<attr name="BorderTexture" type="string">
+				<default>texture.tabbody.border</default>
+			</attr>
+		</attr_def>
+		<method_def>
+
+		</method_def>
+		<event_def>
+
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<alpha>168</alpha>
+					</attr>
+				</obj>
+
+				<obj id="ctrl" class="LayoutObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<!-- 查询规则 -->
+						<obj id="RadioGroup" class="WHome.RadioButtonContainer">
+							<attr>
+								<left>10</left>
+								<top>35</top>
+								<width>father.width-120</width>
+								<height>60</height>
+							</attr>
+							<eventlist>
+								<event name="OnInitControl" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="RG_OnInitControl" />
+								<event name="OnButtonSelectedChanged" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="RG_OnButtonSelectedChanged" />
+							</eventlist>
+						</obj>
+						<!-- 查询条件 -->
+						<obj id="layout.search.area" class="LayoutObject">
+							<attr>
+								<left>10</left>
+								<top>65</top>
+								<width>father.width-20</width>
+								<height>24</height>
+							</attr>
+							<children>
+								<obj id="layout.address" class="LayoutObject">
+									<attr>
+										<width>father.width</width>
+										<height>father.height</height>
+									</attr>
+									<children>
+										<obj id="text.building" class="TextObject">
+											<attr>
+												<left>0</left>
+												<top>3</top>
+												<width>48</width>
+												<height>18</height>
+												<text>楼宇号：</text>
+												<textcolor>system.red</textcolor>
+											</attr>
+										</obj>
+										<obj id="cb.building" class="WHome.ComboBox">
+											<attr>
+												<left>50</left>
+												<top>0</top>
+												<width>80</width>
+												<height>24</height>
+											</attr>
+											<eventlist>
+												<event name="OnInitControl" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="CBB_OnInitControl" />
+											</eventlist>
+										</obj>
+										<obj id="text.unit" class="TextObject">
+											<attr>
+												<left>160</left>
+												<top>3</top>
+												<width>48</width>
+												<height>18</height>
+												<text>单元号：</text>
+												<textcolor>system.red</textcolor>
+											</attr>
+										</obj>
+										<obj id="cb.unit" class="WHome.ComboBox">
+											<attr>
+												<left>210</left>
+												<top>0</top>
+												<width>80</width>
+												<height>24</height>
+											</attr>
+											<eventlist>
+												<event name="OnInitControl" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="CBU_OnInitControl" />
+											</eventlist>
+										</obj>
+										<obj id="text.floor" class="TextObject">
+											<attr>
+												<left>320</left>
+												<top>3</top>
+												<width>48</width>
+												<height>18</height>
+												<text>楼层：</text>
+												<textcolor>system.red</textcolor>
+											</attr>
+										</obj>
+										<obj id="cb.floor" class="WHome.ComboBox">
+											<attr>
+												<left>370</left>
+												<top>0</top>
+												<width>80</width>
+												<height>24</height>
+											</attr>
+											<eventlist>
+												<event name="OnInitControl" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="CBF_OnInitControl" />
+											</eventlist>
+										</obj>
+										<obj id="text.room" class="TextObject">
+											<attr>
+												<left>480</left>
+												<top>3</top>
+												<width>48</width>
+												<height>18</height>
+												<text>房门号：</text>
+												<textcolor>system.red</textcolor>
+											</attr>
+										</obj>
+										<obj id="cb.room" class="WHome.ComboBox">
+											<attr>
+												<left>530</left>
+												<top>0</top>
+												<width>80</width>
+												<height>24</height>
+											</attr>
+											<eventlist>
+												<event name="OnInitControl" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="CBR_OnInitControl" />
+											</eventlist>
+										</obj>
+									</children>
+								</obj>
+								<obj id="layout.name" class="LayoutObject">
+									<attr>
+										<width>father.width</width>
+										<height>father.height</height>
+									</attr>
+									<children>
+										<obj id="text.name" class="TextObject">
+											<attr>
+												<left>0</left>
+												<top>3</top>
+												<width>130</width>
+												<height>18</height>
+												<text>输入要查找的业主姓名：</text>
+												<textcolor>system.red</textcolor>
+											</attr>
+										</obj>
+										<obj id="cb.name" class="WHome.ComboBox">
+											<attr>
+												<left>132</left>
+												<top>0</top>
+												<width>80</width>
+												<height>24</height>
+											</attr>
+											<eventlist>
+												<event name="OnInitControl" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="CBN_OnInitControl" />
+											</eventlist>
+										</obj>
+									</children>
+								</obj>
+								<obj id="layout.pay" class="LayoutObject">
+									<attr>
+										<width>father.width</width>
+										<height>father.height</height>
+									</attr>
+									<children>
+										<obj id="text.pay" class="TextObject">
+											<attr>
+												<left>0</left>
+												<top>3</top>
+												<width>68</width>
+												<height>18</height>
+												<text>缴费状态：</text>
+												<textcolor>system.red</textcolor>
+											</attr>
+										</obj>
+										<obj id="cb.pay" class="WHome.ComboBox">
+											<attr>
+												<left>70</left>
+												<top>0</top>
+												<width>80</width>
+												<height>24</height>
+											</attr>
+											<eventlist>
+												<event name="OnInitControl" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="CBP_OnInitControl" />
+											</eventlist>
+										</obj>
+									</children>
+								</obj>
+							</children>
+						</obj>
+						<obj id="btn.search" class="WHome.Button">
+							<attr>
+								<top>50</top>
+								<left>638</left>
+								<width>44</width>
+								<height>25</height>
+								<valign>center</valign>
+								<NormalBkgID>green.button.normal</NormalBkgID>
+								<DownBkgID>green.button.down</DownBkgID>
+								<DisableBkgID>green.button.disable</DisableBkgID>
+								<HoverBkgID>green.button.hover</HoverBkgID>
+								<Text>搜索</Text>	
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="BTN_OnSearch" />
+							</eventlist>
+						</obj>	
+						<obj id="tableview.owner.list" class="WHome.ListCtrl">
+							<attr>
+								<left>10</left>
+								<top>100</top>
+								<width>father.width-20</width>
+								<height>father.height-130</height>
+								<VisibleHScrollBarSize>12</VisibleHScrollBarSize>
+							</attr>
+							<eventlist>
+								<event name="OnInitControl" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="LC_OnPublicInitControl" />
+								<event name="OnListItemClick" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="LC_OnListItemClick" />
+							</eventlist>
+						</obj>	
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

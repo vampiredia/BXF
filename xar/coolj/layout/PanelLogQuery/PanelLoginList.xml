@@ -1,0 +1,125 @@
+<xlue>
+	<control class="CoolJ.PanelLoginList">
+		<attr_def>
+			
+		</attr_def>
+		<method_def>
+
+		</method_def>
+		<event_def>
+
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+						<alpha>168</alpha>
+					</attr>
+					<children>
+						<obj id="layout.select" class="LayoutObject">
+							<attr>
+								<left>10</left>
+								<top>40</top>
+								<width>father.width-10</width>
+								<height>26</height>
+							</attr>
+							<children>
+								<obj id="text.admin" class="TextObject">
+									<attr>
+										<left>0</left>
+										<top>3</top>
+										<width>48</width>
+										<height>18</height>
+										<text>管理员：</text>
+									</attr>
+								</obj>
+								<obj id="cb.admin" class="WHome.ComboBox">
+									<attr>
+										<left>50</left>
+										<top>0</top>
+										<width>80</width>
+										<height>24</height>
+									</attr>
+									<eventlist>
+										<event name="OnInitControl" file="PanelLoginList.xml.lua" func="CBA_OnInitControl" />
+									</eventlist>
+								</obj>
+								<obj id="text.time" class="TextObject">
+									<attr>
+										<left>140</left>
+										<top>3</top>
+										<width>64</width>
+										<height>18</height>
+										<text>选择时段：</text>
+									</attr>
+								</obj>
+								<obj id="btn.select" class="WHome.Button">
+									<attr>
+										<top>0</top>
+										<left>father.width-10-44</left>
+										<width>44</width>
+										<height>24</height>
+										<valign>center</valign>
+										<NormalBkgID>green.button.normal</NormalBkgID>
+										<DownBkgID>green.button.down</DownBkgID>
+										<DisableBkgID>green.button.disable</DisableBkgID>
+										<HoverBkgID>green.button.hover</HoverBkgID>
+										<Text>筛选</Text>	
+									</attr>
+									<eventlist>
+										<event name="OnClick" file="PanelLoginList.xml.lua" func="BTN_OnSelect" />
+									</eventlist>
+								</obj>	
+							</children>
+						</obj>
+						<obj id="layout.info" class="LayoutObject">
+							<attr>
+								<left>10</left>
+								<top>70</top>
+								<width>father.width-20</width>
+								<height>father.height-110</height>
+								<limitchild>1</limitchild>
+							</attr>
+							<children>
+								<obj id="tableview.owner.list" class="WHome.ListCtrl">
+									<attr>
+										<top>2</top>
+										<width>father.width</width>
+										<height>father.height</height>
+									</attr>
+									<eventlist>
+										<event name="OnInitControl" file="PanelLoginList.xml.lua" func="LC_OnInitControl" />
+										<event name="OnListItemClick" file="PanelLoginList.xml.lua" func="LC_OnListItemClick" />
+									</eventlist>
+								</obj>	
+							</children>
+						</obj>
+						<obj id="btn.export" class="WHome.Button">
+							<attr>
+								<top>father.height-10-24</top>
+								<left>father.width-81-15</left>
+								<width>81</width>
+								<height>28</height>
+								<valign>center</valign>
+								<NormalBkgID>green.button.normal</NormalBkgID>
+								<DownBkgID>green.button.down</DownBkgID>
+								<DisableBkgID>green.button.disable</DisableBkgID>
+								<HoverBkgID>green.button.hover</HoverBkgID>
+								<Text>导出表格</Text>
+							</attr>
+							<eventlist>
+								
+							</eventlist>
+						</obj>
+					</children>
+				</obj>
+
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="PanelLoginList.xml.lua" func="OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

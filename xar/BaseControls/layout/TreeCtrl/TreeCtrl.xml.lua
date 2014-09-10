@@ -171,6 +171,11 @@ function SetText(self,value)
 	txt:SetText(value)
 end
 
+function GetText(self)
+	local txt = self:GetControlObject("ItemText")
+	return txt:GetText()
+end
+
 function BindAttr(self, itemattr)
 	if itemattr == nil then 
 		self:SetObjPos(0,0,0,0)

@@ -77,9 +77,9 @@
 										<RangeEnd>100</RangeEnd>
 										<ScrollPos>0</ScrollPos>
 										<ThumbBtnWidth>12</ThumbBtnWidth> 
-										<ThumbRightMagrin>2</ThumbRightMagrin>
+										<ThumbRightMagrin>0</ThumbRightMagrin>
 										<cursor>IDC_ARROW</cursor>
-										<left>father.width-18</left>
+										<left>father.width-12</left>
 										<top>0</top>
 										<width>12</width>
 										<height>father.height - 4</height>
@@ -112,6 +112,7 @@
         </attr_def>
         <method_def>
 			<SetText file="TreeCtrl.xml.lua" func="SetText" />
+			<GetText file="TreeCtrl.xml.lua" func="GetText" />
 			<BindAttr file="TreeCtrl.xml.lua" func="BindAttr" />
         </method_def>
         <objtemplate>

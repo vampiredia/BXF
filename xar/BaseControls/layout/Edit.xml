@@ -125,6 +125,7 @@
 			<Undo file="Edit.xml.lua" func="Undo" />
 			<LineLength file="Edit.xml.lua" func="LineLength" />
 			<ReplaceSel file="Edit.xml.lua" func="ReplaceSel" />
+			<Copy file="Edit.xml.lua" func="Copy" />
 			
 			<!--全键盘支持-->
 			<SetControlTabOrder file = "Edit.xml.lua" func = "SetControlTabOrder" />

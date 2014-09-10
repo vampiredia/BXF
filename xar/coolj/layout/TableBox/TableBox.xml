@@ -1,0 +1,143 @@
+<xlue>
+	<control class="CoolJ.TableBox">
+		<attr_def>
+			<attr name="ColumnNum" type="int" >
+				<default>2</default>
+			</attr>
+			<attr name="ItemWidth" type="int" >
+				<default>0</default>
+			</attr>
+			<attr name="ItemHeight" type="int" >
+				<default>0</default>
+			</attr>
+			<attr name="IsDrag" type="bool" >
+				<default>true</default>
+			</attr>
+			<attr name="IsShowVScroll" type="bool" >
+				<default>true</default>
+			</attr>
+			<attr name="NormalItemBkgID" type="string" >
+				<default/>
+			</attr>
+			<attr name="HoverItemBkgID" type="string" >
+				<default/>
+			</attr>
+			<attr name="DownItemBkgID" type="string" >
+				<default/>
+			</attr>
+			<attr name="Margin" type="int" >
+				<default>5</default>
+			</attr>
+			<attr name="VScrollShow" type="bool" >
+				<default>true</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<AddItem file="TableBox.xml.lua" func="TB_AddItem" />
+			<DelItem file="TableBox.xml.lua" func="TB_DelItem" />
+			<DelAllItem file="TableBox.xml.lua" func="TB_DelAllItem" />
+			<UpdateUI file="TableBox.xml.lua" func="TB_UpdateUI" />
+			<MoveItem file="TableBox.xml.lua" func="TB_MoveItem" />
+			<UpdateVScroll file="TableBox.xml.lua" func="TB_UpdateVScroll" />
+			<MouseWheel file="TableBox.xml.lua" func="TB_MouseWheel" />
+			<AdjustTop file="TableBox.xml.lua" func="TB_AdjustTop" />
+			<IsVScrollVisible file="TableBox.xml.lua" func="TB_IsVScrollVisible" />
+		</method_def>
+		<event_def>
+			<OnItemMoveBegin>
+				<param>
+				</param>
+			</OnItemMoveBegin>
+			<OnItemMove>
+				<param>
+					<layoutobj/>
+					<int/>
+					<int/>
+				</param>
+			</OnItemMove>
+			<OnItemMoveEnd>
+				<param>
+				</param>
+			</OnItemMoveEnd>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<texture>animation.simple.texture</texture>
+						<alpha>68</alpha>
+					</attr>
+					<children>
+						<obj id="Content" class="LayoutObject">
+							<attr>
+								<left>2</left>
+								<top>3</top>
+								<width>father.width - 4</width>
+								<height>father.height - 5</height>
+							</attr>
+							<children>
+								<obj id="Item" class="LayoutObject">
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>father.width + 3</width>
+										<height>father.height - 4</height>
+										<limitchild>1</limitchild>
+										<enableinput>true</enableinput>	
+									</attr>
+									<children>
+										<obj id="add" class="CoolJ.TableAddItem">
+											<attr>
+												<width>0</width>
+												<height>0</height>
+											</attr>
+										</obj>
+									</children>
+								</obj>
+								<obj id="vscroll" class="CoolJ.ScrollBar">
+									<attr>
+										<Type>v</Type>
+										<SideBtnLength>0</SideBtnLength>
+										<PageSize>0</PageSize>
+										<RangeBegin>0</RangeBegin>
+										<RangeEnd>0</RangeEnd>
+										<ScrollPos>0</ScrollPos>
+										<ThumbBtnWidth>12</ThumbBtnWidth> 
+										<ThumbRightMagrin>2</ThumbRightMagrin>
+										<visible>false</visible>
+										<left>father.width-11</left>
+										<top>-3</top>
+										<width>12</width>
+										<height>father.height+5</height>
+									</attr>
+									<eventlist>
+										<event name="OnInitControl" file="TableBox.xml.lua" func="TB_VSCroll_OnInitControl" />
+										<event name="OnVScroll" file="TableBox.xml.lua" func="TB_OnVScroll" />
+										<event name="OnScrollBarMouseWheel" file="TableBox.xml.lua" func="TB_OnScrollBarMouseWheel" />
+										<event name="OnScrollPosChange" file="TableBox.xml.lua" func="TB_OnScrollPosChange" />
+									</eventlist>
+								</obj>
+							</children>
+							<eventlist>
+								
+							</eventlist>
+						</obj>
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="TableBox.xml.lua" func="TB_OnInitControl" />
+				<event name="OnItemMove" file="TableBox.xml.lua" func="TB_OnItemMove" />
+				<event name="OnItemMoveEnd" file="TableBox.xml.lua" func="TB_OnItemMoveEnd" />
+				<event name="OnPosChange" file="TableBox.xml.lua" func="TB_OnPosChange" />
+				<event name="OnControlMouseWheel" file="TableBox.xml.lua" func="TB_OnControlMouseWheel" />
+				
+			</eventlist>
+		</objtemplate>
+	</control>
+
+</xlue>

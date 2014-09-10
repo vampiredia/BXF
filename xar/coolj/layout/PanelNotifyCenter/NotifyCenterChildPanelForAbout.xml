@@ -52,7 +52,7 @@
 						<obj id="tableview.info.list" class="WHome.ListCtrl">
 							<attr>
 								<left>10</left>
-								<top>100</top>
+								<top>150</top>
 								<width>340</width>
 								<height>200</height>
 							</attr>
@@ -63,9 +63,9 @@
 						<obj id="text.info" class="TextObject">
 							<attr>
 								<left>10</left>
-								<top>130</top>
+								<top>180</top>
 								<width>340</width>
-								<height>60</height>
+								<height>80</height>
 								<halign>center</halign>
 								<valign>center</valign>
 								<text>北京恒源天游技术有限公司

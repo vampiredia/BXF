@@ -804,3 +804,12 @@ function GetBorder(self)
 	local attr = self:GetAttribute()
 	return attr.Border
 end
+
+function Copy(self)
+    local edit = self:GetControlObject("newedit.edit")
+	if edit ~= nil then
+		edit:SetSelAll()
+		edit:Copy()
+		
+	end
+end

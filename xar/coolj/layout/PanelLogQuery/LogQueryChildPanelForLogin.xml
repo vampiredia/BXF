@@ -1,0 +1,32 @@
+<xlue>
+	<control class="CoolJ.LogQueryChildPanelForLogin">
+		<attr_def>
+			<attr name="BorderTexture" type="string">
+				<default>texture.tabbody.border</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<PageChange file="LogQueryChildPanelForLogin.xml.lua" func="PageChange" />
+		</method_def>
+		<event_def>
+
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<alpha>168</alpha>
+					</attr>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="LogQueryChildPanelForLogin.xml.lua" func="OnInitControl" />
+				<event name="OnPosChange" file="LogQueryChildPanelForLogin.xml.lua" func="OnPosChange" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

@@ -38,7 +38,7 @@
 								<height>father.height-150</height>
 							</attr>
 							<eventlist>
-								<event name="OnSelectChanged" file="MainWnd.xml.lua" func="OnSelectChanged" />
+								<event name="OnSelectChanged" file="RightsManagementChildPanelForPreView.xml.lua" func="OnSelectChanged" />
 								<event name="OnInitControl" file="RightsManagementChildPanelForPreView.xml.lua" func="TC_OnInitControl" />
 							</eventlist>
 						</obj>

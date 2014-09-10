@@ -5,15 +5,16 @@ function OnInitControl(self)
 end
 
 function TB_OnInitControl(self)
+--[[
 	local attr = self:GetAttribute()
 	local objFactory = XLGetObject("Xunlei.UIEngine.ObjectFactory")
 	
-	for i=1, 7 do
+	for i=1, 4 do
 		local obj = objFactory:CreateUIObject(nil, "CoolJ.TableFAQItem")
 		obj:SetText(i)
 		self:AddItem(obj)
-		
 	end
+]]
 end
 
 function TC_OnInitControl(self)
@@ -26,4 +27,8 @@ function TC_OnInitControl(self)
 			self:InsertItemText(sub_value, item)
 		end
 	end
+end
+
+function TC_OnSelectChanged(self, method, obj)
+	XLMessageBox(obj:GetText())
 end

@@ -30,7 +30,7 @@
 						<height>father.height-44</height>
 					</attr>
 					<eventlist>
-						<event name="OnSelectChanged" file="PublishCenterChildPanelForFAQ.xml.lua" func="OnSelectChanged" />
+						<event name="OnSelectChanged" file="PublishCenterChildPanelForFAQ.xml.lua" func="TC_OnSelectChanged" />
 						<event name="OnInitControl" file="PublishCenterChildPanelForFAQ.xml.lua" func="TC_OnInitControl" />
 					</eventlist>
 				</obj>

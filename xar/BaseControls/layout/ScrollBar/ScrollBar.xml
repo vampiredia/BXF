@@ -134,6 +134,7 @@
 			<OnScrollPosChange>
 				<param>
 				</param>
+					<int />
 			</OnScrollPosChange>
 		</event_def>
 		<objtemplate>

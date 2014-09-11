@@ -107,7 +107,6 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	{
 		if (msg.message == WM_HTTP_NOTIFIER)
 		{
-
 			curlPerformThreadArgument a = (curlPerformThreadArgument)msg.wParam;
 			HttpCore *pHttpCore = a->pHttpCore;
 			pHttpCore->FireResultEvent(a->response.c_str());

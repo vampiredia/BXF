@@ -42,9 +42,13 @@ public:
 	static int GetWorkArea( lua_State* luaState);
 	static int IsClipboardTextFormatAvailable(lua_State* luaState);
 	static int OpenUrl( lua_State* luaState );
-
+	static int UUID( lua_State* luaState );
+	static int FileOpenDialog( lua_State* luaState );
 
 	static int DeleteSelf(lua_State* luaState);
+
+private:
+	static char* Guid_Maker(char* strBuf);
 };
 
 class LuaOSShellCoreFactory

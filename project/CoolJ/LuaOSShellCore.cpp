@@ -2,7 +2,8 @@
 #include "LuaOSShellCore.h"
 #include "./HttpClient.h"
 
-#include   "shellapi.h" 
+#include "shellapi.h" 
+#include <atldlgs.h>
 
 LuaOSShellCore::LuaOSShellCore(void)
 {
@@ -20,6 +21,8 @@ static XLLRTGlobalAPI LuaOSShellCoreMemberFunctions[] =
 	{"GetWorkArea",						LuaOSShellCore::GetWorkArea						},
 	{"IsClipboardTextFormatAvailable",	LuaOSShellCore::IsClipboardTextFormatAvailable	},
 	{"OpenUrl",							LuaOSShellCore::OpenUrl							},
+	{"UUID",							LuaOSShellCore::UUID							},
+	{"FileOpenDialog",					LuaOSShellCore::FileOpenDialog					},
 
 	{"__gc",						LuaOSShellCore::DeleteSelf				},
 
@@ -153,6 +156,64 @@ int LuaOSShellCore::OpenUrl(lua_State *luaState)
 	return 1;
 }
 
+int LuaOSShellCore::UUID(lua_State* luaState)
+{
+	OSShellCore** ppOSShellCore = reinterpret_cast<OSShellCore**>(luaL_checkudata(luaState, 1, COOLJ_OSSHELL_LUA_CLASS));
+	if (ppOSShellCore && *ppOSShellCore)
+	{
+		char strUUID[64];
+		Guid_Maker(strUUID);
+
+		lua_pushstring(luaState, strUUID);
+
+		return 1;
+	}
+
+	lua_pushnil(luaState);
+	return 1;	
+}
+
+int LuaOSShellCore::FileOpenDialog( lua_State* luaState )
+{
+	OSShellCore** ppOSShellCore = reinterpret_cast<OSShellCore**>(luaL_checkudata(luaState, 1, COOLJ_OSSHELL_LUA_CLASS));
+	if (ppOSShellCore && *ppOSShellCore)
+	{
+		const char* type = lua_tostring(luaState, 2);
+		const char* 
+
+		TCHAR *szFilters = _T("所有文件(*.*)\0*.*\0\0");
+		if (NULL != type && strcmp(type, "image") == 0)
+		{
+			
+			szFilters = _T("图像文件(*.png*.bmp*.jpg*.jpeg*.gif)\0*.png;*.bmp;*.jpg;*.jpeg;*.gif\0\0");
+		}
+
+		//TCHAR szFilters[] = _T("图像文件(*.png*.bmp*.jpg*.jpeg*.gif)\0*.png;*.bmp;*.jpg;*.jpeg;*.gif\0\0");
+		WTL::CFileDialog fileDialog(TRUE, NULL, NULL, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, szFilters);
+		fileDialog.DoModal();
+
+		char *strFileTitle = Convert::LPWSTRToUTF8(fileDialog.m_szFileTitle);
+		char *strFileName = Convert::LPWSTRToUTF8(fileDialog.m_szFileName);
+	
+		lua_pushstring(luaState, strFileTitle);
+		lua_pushstring(luaState, strFileName);
+
+		if (strFileName)
+		{
+			delete strFileName;
+		}
+		if (strFileTitle)
+		{
+			delete strFileTitle;
+		}
+
+		return 2;
+	}
+
+	lua_pushnil(luaState);
+	return 1;
+}
+
 int LuaOSShellCore::DeleteSelf(lua_State* luaState)
 {
 // 	OSShellCore** ppOSShellCore = reinterpret_cast<OSShellCore**>(luaL_checkudata(luaState, 1, COOLJ_OSSHELL_LUA_CLASS));   
@@ -161,4 +222,24 @@ int LuaOSShellCore::DeleteSelf(lua_State* luaState)
 // 		delete (*ppOSShellCore);
 // 	}
 	return 0;
+}
+
+char* LuaOSShellCore::Guid_Maker(char* strBuf)
+{
+	memset(strBuf, 0, 64);
+	GUID guid;
+	if(S_OK == CoCreateGuid(&guid))
+	{
+		_snprintf(strBuf, 64, 
+			"{%08X-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X}", 
+			guid.Data1, 
+			guid.Data2, 
+			guid.Data3, 
+			guid.Data4[0], guid.Data4[1],
+			guid.Data4[2], guid.Data4[3],
+			guid.Data4[4], guid.Data4[5],
+			guid.Data4[6], guid.Data4[7]);
+	}
+
+	return strBuf;
 }

@@ -44,6 +44,8 @@ public:
 	static int OpenUrl( lua_State* luaState );
 	static int UUID( lua_State* luaState );
 	static int FileOpenDialog( lua_State* luaState );
+	static int Html( lua_State* luaState );
+	static int DoScript( lua_State* luaState );
 
 	static int DeleteSelf(lua_State* luaState);
 

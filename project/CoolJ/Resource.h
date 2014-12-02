@@ -34,7 +34,7 @@
 #endif
 
 
-#define WM_HTTP_NOTIFIER	WM_USER + 101
+#define WM_HTTP_NOTIFIER	WM_USER + 2152
 
 //#define HTTP_API_URL	"http://www.api.whome.com"
 #define HTTP_API_URL	"http://182.18.29.195"

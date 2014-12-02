@@ -3,6 +3,7 @@
 #include "./HttpClient.h"
 
 #include "shellapi.h" 
+#include <comdef.h>
 #include <atldlgs.h>
 
 LuaOSShellCore::LuaOSShellCore(void)
@@ -23,6 +24,8 @@ static XLLRTGlobalAPI LuaOSShellCoreMemberFunctions[] =
 	{"OpenUrl",							LuaOSShellCore::OpenUrl							},
 	{"UUID",							LuaOSShellCore::UUID							},
 	{"FileOpenDialog",					LuaOSShellCore::FileOpenDialog					},
+	{"Html",							LuaOSShellCore::Html							},
+	{"DoScript",						LuaOSShellCore::DoScript						},
 
 	{"__gc",						LuaOSShellCore::DeleteSelf				},
 
@@ -179,7 +182,6 @@ int LuaOSShellCore::FileOpenDialog( lua_State* luaState )
 	if (ppOSShellCore && *ppOSShellCore)
 	{
 		const char* type = lua_tostring(luaState, 2);
-		const char* 
 
 		TCHAR *szFilters = _T("所有文件(*.*)\0*.*\0\0");
 		if (NULL != type && strcmp(type, "image") == 0)
@@ -208,6 +210,114 @@ int LuaOSShellCore::FileOpenDialog( lua_State* luaState )
 		}
 
 		return 2;
+	}
+
+	lua_pushnil(luaState);
+	return 1;
+}
+
+int LuaOSShellCore::Html( lua_State* luaState )
+{
+	OSShellCore** ppOSShellCore = reinterpret_cast<OSShellCore**>(luaL_checkudata(luaState, 1, COOLJ_OSSHELL_LUA_CLASS));
+	if (ppOSShellCore && *ppOSShellCore)
+	{
+		IWebBrowser2** lplpWB = reinterpret_cast<IWebBrowser2**>(lua_touserdata(luaState, 2));
+		IDispatch *pDisp = NULL;
+		if (S_OK == (*lplpWB)->get_Document(&pDisp))
+		{
+			IHTMLDocument2 *pHtmlDoc = NULL;
+			if (S_OK == pDisp->QueryInterface(IID_IHTMLDocument2, (void**)&pHtmlDoc))
+			{
+				IDispatch *pScript = NULL;
+				if (S_OK == pHtmlDoc->get_Script((IDispatch**)&pScript))
+				{
+					const char* method = lua_tostring(luaState, 3);
+					CComBSTR bstrMember(method);
+					DISPID dispid;
+					if (S_OK == pScript->GetIDsOfNames(IID_NULL, &bstrMember, 1, LOCALE_SYSTEM_DEFAULT, &dispid))
+					{
+						DISPPARAMS dispparams; 
+						memset(&dispparams, 0, sizeof(DISPPARAMS)); 
+						dispparams.cArgs = 0; 
+						dispparams.cNamedArgs = 0;  
+
+						EXCEPINFO excepInfo;
+						memset(&excepInfo, 0, sizeof(EXCEPINFO));
+						CComVariant vaResult;
+						UINT nArgErr = (UINT)-1;
+						HRESULT hr = pScript->Invoke(dispid, IID_NULL, 0, DISPATCH_METHOD, &dispparams, &vaResult, &excepInfo, &nArgErr);
+						if (hr == S_OK)
+						{
+							if (vaResult.vt != VT_NULL || vaResult.vt != VT_EMPTY)
+							{
+								vaResult.ChangeType(VT_BSTR);
+								_bstr_t tmp = vaResult.bstrVal;
+								const char *op = tmp;
+								lua_pushstring(luaState,op);
+								
+								return 1;
+							}
+						}
+					}
+				}
+			}
+		}
+		lua_pushstring(luaState, "");
+		return 1;
+	}
+
+	lua_pushnil(luaState);
+	return 1;
+}
+
+
+int LuaOSShellCore::DoScript( lua_State* luaState )
+{
+	OSShellCore** ppOSShellCore = reinterpret_cast<OSShellCore**>(luaL_checkudata(luaState, 1, COOLJ_OSSHELL_LUA_CLASS));
+	if (ppOSShellCore && *ppOSShellCore)
+	{
+		IWebBrowser2** lplpWB = reinterpret_cast<IWebBrowser2**>(lua_touserdata(luaState, 2));
+		IDispatch *pDisp = NULL;
+		if (S_OK == (*lplpWB)->get_Document(&pDisp))
+		{
+			IHTMLDocument2 *pHtmlDoc = NULL;
+			if (S_OK == pDisp->QueryInterface(IID_IHTMLDocument2, (void**)&pHtmlDoc))
+			{
+				IDispatch *pScript = NULL;
+				if (S_OK == pHtmlDoc->get_Script((IDispatch**)&pScript))
+				{
+					CComBSTR bstrMember("Html");
+					DISPID dispid;
+					if (S_OK == pScript->GetIDsOfNames(IID_NULL, &bstrMember, 1, LOCALE_SYSTEM_DEFAULT, &dispid))
+					{
+						DISPPARAMS dispparams; 
+						memset(&dispparams, 0, sizeof(DISPPARAMS)); 
+						dispparams.cArgs = 0; 
+						dispparams.cNamedArgs = 0;  
+
+						EXCEPINFO excepInfo;
+						memset(&excepInfo, 0, sizeof(EXCEPINFO));
+						CComVariant vaResult;
+						UINT nArgErr = (UINT)-1;
+						HRESULT hr = pScript->Invoke(dispid, IID_NULL, 0, DISPATCH_METHOD, &dispparams, &vaResult, &excepInfo, &nArgErr);
+						if (hr == S_OK)
+						{
+							if (vaResult.vt != VT_NULL || vaResult.vt != VT_EMPTY)
+							{
+								vaResult.ChangeType(VT_BSTR);
+								_bstr_t tmp = vaResult.bstrVal;
+								const char *op = tmp;
+								lua_pushstring(luaState,op);
+
+								return 1;
+							}
+						}
+					}
+				}
+			}
+		}
+		lua_pushstring(luaState, "");
+		return 1;
 	}
 
 	lua_pushnil(luaState);

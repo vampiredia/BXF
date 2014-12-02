@@ -11,7 +11,8 @@
 		<color id="system.navy" value="#000080"/>
 		<color id="system.indigo" value="#4b0082"/>
 		<color id="system.violet" value="#ee82ee"/>
-
+		
+		<color id="calendar.line" red="241" green="241" blue="241" alpha="255" />
 		<!-- 
 		+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		-->

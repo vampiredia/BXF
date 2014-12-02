@@ -23,7 +23,7 @@
 					</attr>
 				</obj>
 
-				<obj id="ctrl" class="LayoutObject">
+				<obj id="ctrl_list" class="LayoutObject">
 					<attr>
 						<width>father.width</width>
 						<height>father.height</height>
@@ -231,8 +231,291 @@
 							<eventlist>
 								<event name="OnInitControl" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="LC_OnPublicInitControl" />
 								<event name="OnListItemClick" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="LC_OnListItemClick" />
+								<event name="OnListItemDbClick" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="LC_OnListItemDbClick" />
 							</eventlist>
 						</obj>	
+					</children>
+				</obj>
+				
+				<obj id="ctrl_info" class="LayoutObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="BtnGoBack" class="WHome.TextLink">
+							<attr>
+								<left>10</left>
+								<top>5</top>
+								<width>father.width - 20</width>
+								<height>26</height>
+								<Text>返回『业主管理』首页</Text>
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="OnClickInfoPageToListPage" />
+							</eventlist>
+						</obj>
+						<obj id="text.tip.edit" class="TextObject">
+							<attr>
+								<left>10</left>
+								<top>50</top>
+								<width>80</width>
+								<height>26</height>
+								<hlign>right</hlign>
+								<text>当前编辑：</text>
+							</attr>
+						</obj>
+						<obj id="text.info.address" class="TextObject">
+							<attr>
+								<left>85</left>
+								<top>50</top>
+								<width>160</width>
+								<height>26</height>
+								<text>1号楼 3单元 2002号</text>
+							</attr>
+						</obj>
+						<obj id="text.info.uid" class="TextObject">
+							<attr>
+								<left>230</left>
+								<top>50</top>
+								<width>160</width>
+								<height>26</height>
+								<text>业主ID：01990398</text>
+								<textcolor>system.red</textcolor>
+							</attr>
+						</obj>
+						<obj id="layout.name" class="LayoutObject">
+							<attr>
+								<left>10</left>
+								<top>80</top>
+								<width>father.width-20</width>
+								<height>30</height>
+							</attr>
+							<children>
+								<obj id="text.tip.name" class="TextObject">
+									<attr>
+										<width>60</width>
+										<height>father.height</height>
+										<valign>center</valign>
+										<halign>right</halign>
+										<text>姓名：</text>
+									</attr>
+								</obj>
+								<obj id="text.info.name" class="WHome.Edit">
+									<attr>
+										<left>70</left>
+										<width>150</width>
+										<height>father.height</height>
+										<TipText>请输入2-5个汉字</TipText>
+										<Text>黄蓉</Text>
+										<NormalTipTextColor>system.gray</NormalTipTextColor>
+									</attr>
+								</obj>
+								<obj id="text.tip.name.warning" class="TextObject">
+									<attr>
+										<left>225</left>
+										<width>60</width>
+										<height>father.height</height>
+										<valign>center</valign>
+										<text>(必填项)</text>
+										<textcolor>system.red</textcolor>
+										<font>small.font.bold</font>
+									</attr>
+								</obj>
+							</children>
+						</obj>
+						<obj id="layout.telphone" class="LayoutObject">
+							<attr>
+								<left>10</left>
+								<top>120</top>
+								<width>father.width-20</width>
+								<height>30</height>
+							</attr>
+							<children>
+								<obj id="text.tip.telphone" class="TextObject">
+									<attr>
+										<width>60</width>
+										<height>father.height</height>
+										<valign>center</valign>
+										<halign>right</halign>
+										<text>电话：</text>
+									</attr>
+								</obj>
+								<obj id="text.info.area" class="WHome.Edit">
+									<attr>
+										<left>70</left>
+										<width>48</width>
+										<height>father.height</height>
+										<TipText>区号</TipText>
+										<Text>010</Text>
+										<NormalTipTextColor>system.gray</NormalTipTextColor>
+									</attr>
+								</obj>
+								<obj id="text.tip.-" class="TextObject">
+									<attr>
+										<left>118</left>
+										<width>16</width>
+										<height>father.height</height>
+										<valign>center</valign>
+										<halign>center</halign>
+										<text>-</text>
+									</attr>
+								</obj>
+								<obj id="text.info.phone" class="WHome.Edit">
+									<attr>
+										<left>134</left>
+										<width>94</width>
+										<height>father.height</height>
+										<TipText>区号</TipText>
+										<Text>13811153243</Text>
+										<NormalTipTextColor>system.gray</NormalTipTextColor>
+									</attr>
+								</obj>
+								<obj id="text.tip.phone.warning" class="TextObject">
+									<attr>
+										<left>230</left>
+										<width>60</width>
+										<height>father.height</height>
+										<valign>center</valign>
+										<text>(必填项)</text>
+										<textcolor>system.red</textcolor>
+										<font>small.font.bold</font>
+									</attr>
+								</obj>
+							</children>
+						</obj>
+						<obj id="layout.property" class="LayoutObject">
+							<attr>
+								<left>10</left>
+								<top>160</top>
+								<width>father.width-20</width>
+								<height>30</height>
+							</attr>
+							<children>
+								<obj id="text.tip.property" class="TextObject">
+									<attr>
+										<width>60</width>
+										<height>father.height</height>
+										<valign>center</valign>
+										<halign>right</halign>
+										<text>性质：</text>
+									</attr>
+								</obj>
+								<obj id="cb.property" class="WHome.ComboBox">
+									<attr>
+										<left>70</left>
+										<top>0</top>
+										<width>80</width>
+										<height>24</height>
+									</attr>
+									<eventlist>
+										<event name="OnInitControl" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="CBPY_OnInitControl" />
+									</eventlist>
+								</obj>
+							</children>
+						</obj>
+						<obj id="layout.card" class="LayoutObject">
+							<attr>
+								<left>10</left>
+								<top>200</top>
+								<width>father.width - 20</width>
+								<height>30</height>
+							</attr>
+							<children>
+								<obj id="text.tip.card" class="TextObject">
+									<attr>
+										<width>60</width>
+										<height>father.height</height>
+										<valign>center</valign>
+										<halign>right</halign>
+										<text>身份证号：</text>
+									</attr>
+								</obj>
+								<obj id="text.info.card" class="WHome.Edit">
+									<attr>
+										<left>70</left>
+										<width>150</width>
+										<height>father.height</height>
+										<TipText>请输入姓名对应身份证号</TipText>
+										<Text>102011198701201111</Text>
+										<NormalTipTextColor>system.gray</NormalTipTextColor>
+									</attr>
+								</obj>
+								<obj id="text.tip.card.warning" class="TextObject">
+									<attr>
+										<left>225</left>
+										<width>60</width>
+										<height>father.height</height>
+										<valign>center</valign>
+										<text>(必填项)</text>
+										<textcolor>system.red</textcolor>
+										<font>small.font.bold</font>
+									</attr>
+								</obj>
+							</children>
+						</obj>
+						<obj id="layout.photo" class="LayoutObject">
+							<attr>
+								<left>10</left>
+								<top>240</top>
+								<width>father.width - 20</width>
+								<height>30</height>
+							</attr>
+							<children>
+								<obj id="text.tip.photo" class="TextObject">
+									<attr>
+										<width>80</width>
+										<height>father.height</height>
+										<valign>center</valign>
+										<halign>right</halign>
+										<text>身份证照片：</text>
+									</attr>
+								</obj>
+								<obj id="btn.upload" class="WHome.Button">
+									<attr>
+										<top>4</top>
+										<left>85</left>
+										<width>48</width>
+										<height>22</height>
+										<valign>center</valign>
+										<NormalBkgID>blue.button.normal</NormalBkgID>
+										<DownBkgID>blue.button.down</DownBkgID>
+										<DisableBkgID>blue.button.disable</DisableBkgID>
+										<HoverBkgID>blue.button.hover</HoverBkgID>
+										<Text>上传</Text>
+									</attr>
+								</obj>
+								<obj id="cb.card.photo" class="WHome.CheckBox">
+									<attr>
+										<left>145</left>
+										<width>80</width>
+										<height>father.height</height>
+										<Text>身份未验证</Text>
+										<ShowFocusRect>false</ShowFocusRect>
+									</attr>
+									<eventlist>
+										<event name="OnCheck" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="CCP_OnCheck" />
+									</eventlist>
+								</obj>
+							</children>
+						</obj>
+						<obj id="btn.save" class="WHome.Button">
+							<attr>
+								<left>200</left>
+								<top>father.height - 80</top>
+								<width>64</width>
+								<height>25</height>
+								<valign>center</valign>
+								<NormalBkgID>green.button.normal</NormalBkgID>
+								<DownBkgID>green.button.down</DownBkgID>
+								<DisableBkgID>green.button.disable</DisableBkgID>
+								<HoverBkgID>green.button.hover</HoverBkgID>
+								<Text>保存修改</Text>
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="BTN_OnSave" />
+							</eventlist>
+						</obj>
 					</children>
 				</obj>
 			</children>

@@ -64,22 +64,19 @@
 								<event name="OnClick" file="PublishCenterChildPanelForNotice.xml.lua" func="OnClickNewNotice" />
 							</eventlist>
 						</obj>
-<!-- JUST ONLY FOR TEST
-						<obj id="test" class="CoolJ.ImageButton">
+
+<!-- JUST ONLY FOR TEST 
+						<obj id="test" class="CoolJ.CalendarBox">
 							<attr>
 								<left>350</left>
-								<top>300</top>
-								<width>60</width>
-								<height>60</height>
-								<NormalBkgID>image.button.test</NormalBkgID>
-								<HoverBkgID>image.button.test</HoverBkgID>
+								<top>212</top>
+								<width>345</width>
+								<height>246</height>
 							</attr>
-							<eventlist>
-								<event name="OnClick" file="PublishCenterChildPanelForNotice.xml.lua" func="Test_OnClick" />
-							</eventlist>
-							
 						</obj>
 -->
+
+<!-- JUST ONLY FOR TEST -->
 						<obj id="BtnNoticeHistory" class="WHome.Button">
 							<attr>
 								<top>200</top>
@@ -97,6 +94,7 @@
 								<event name="OnClick" file="PublishCenterChildPanelForNotice.xml.lua" func="OnClickNoticeHistory" />
 							</eventlist>
 						</obj>
+<!-- -->
 					</children>
 					<eventlist>
 						<event name="OnVisibleChange" file="PublishCenterChildPanelForNotice.xml.lua" func="OnMainPageVisibleChange" />
@@ -212,6 +210,20 @@
 								<width>58</width>
 								<height>24</height>
 								<text>上传图片：</text>
+							</attr>
+						</obj>
+
+						<obj id="container.upload" class="CoolJ.Upload.Container">
+							<attr>
+								<left>10</left>
+								<top>305</top>
+								<width>81</width>
+								<height>81</height>
+								<Margin>8</Margin>
+								<ItemWidth>81</ItemWidth>
+								<ItemHeight>81</ItemHeight>
+								<ColumnNum>5</ColumnNum>
+								<MaxNum>5</MaxNum>
 							</attr>
 						</obj>
 						<obj id="text.upload.tip" class="TextObject">

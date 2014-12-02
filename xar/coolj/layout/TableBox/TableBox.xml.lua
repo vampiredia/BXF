@@ -12,19 +12,13 @@ function TB_AddItem(self, obj)
 	local datacenter = self:GetAttribute().DataCenterFactory
 	local item = self:GetControlObject("Item")
 	item:AddChild(obj)
-	obj:SetCaptionText(math.random(0, 9999))
-	obj:SetAnswerText(math.random(0, 9999))
-	local oattr = obj:GetAttribute()
-	oattr.MoveEnable = true
 	table.insert(datacenter, {object=obj})
-	
 	self:UpdateUI()
 	
 	if self:IsVScrollVisible() then
 		attr.CurTop = attr.CurTop + attr.ItemHeight + attr.Margin*2
 		self:UpdateUI()
 	end
-	
 end
 
 function TB_DelItem(self, obj)
@@ -80,8 +74,10 @@ function TB_UpdateUI(self)
 	local r = l + attr.ItemWidth
 	local b = t + attr.ItemHeight
 	local addObj = self:GetControlObject("add")
-	addObj:SetObjPos(l, t, r, b)
-	
+	if addObj ~= nil then 
+		addObj:SetObjPos(l, t, r, b)
+	end
+
 	self:UpdateVScroll()
 end
 
@@ -237,4 +233,19 @@ end
 function TB_IsVScrollVisible(self)
 	local vscroll = self:GetControlObject("vscroll")
 	return vscroll:GetVisible()
+end
+
+function TB_AddDefaultItem(self, obj)
+	local attr = self:GetAttribute()
+	if self:GetID() == nil then return end
+	
+	local datacenter = self:GetAttribute().DataCenterFactory
+	local item = self:GetControlObject("Item")
+	item:AddChild(obj)
+	self:UpdateUI()
+	
+	if self:IsVScrollVisible() then
+		attr.CurTop = attr.CurTop + attr.ItemHeight + attr.Margin*2
+		self:UpdateUI()
+	end	
 end

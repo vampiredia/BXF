@@ -98,6 +98,8 @@
 		<texture id="text.tab.btn.normal" type="Stretch" image="bitmap\text.tab.btn.normal.png" />
 		<texture id="text.tab.btn.hover" type="Stretch" image="bitmap\text.tab.btn.hover.png" />
 		<texture id="text.tab.btn.down" type="Stretch" image="bitmap\text.tab.btn.down.png" />
+		<texture id="texture.upload.item.bkg" type="Stretch" image="bitmap\texture.upload.item.bkg.png" />
+		
 		<!-- footer -->
 		<texture id="texture.footer.bkg" type="Stretch" image="bitmap\texture.footer.bkg.png" />
 		

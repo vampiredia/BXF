@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xlue>
+	<control class="CoolJ.Upload.Container">
+		<attr_def>
+			<attr name="MaxNum" type="int" >
+				<default>5</default>
+			</attr>
+			<attr name="ColumnNum" type="int" >
+				<default>3</default>
+			</attr>
+			<attr name="ItemWidth" type="int" >
+				<default>48</default>
+			</attr>
+			<attr name="ItemHeight" type="int" >
+				<default>48</default>
+			</attr>
+			<attr name="Margin" type="int" >
+				<default>5</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<AddItem file="UploadContainer.xml.lua" func="AddItem" />
+			<DelItem file="UploadContainer.xml.lua" func="DelItem" />
+			<RemoveAllItem file="UploadContainer.xml.lua" func="RemoveAllItem" />
+			<UpdateUI file="UploadContainer.xml.lua" func="UpdateUI" />
+		</method_def>
+		<event_def>
+
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+					<children>
+						<obj id="item" class="LayoutObject">
+							<attr>
+								<left>7</left>
+								<top>7</top>
+								<width>father.width-14</width>
+								<height>father.height-12</height>
+								<limitchild>0</limitchild>
+							</attr>
+						</obj>
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="UploadContainer.xml.lua" func="OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

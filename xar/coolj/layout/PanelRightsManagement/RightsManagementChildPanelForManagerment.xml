@@ -21,20 +21,89 @@
 					</attr>
 				</obj>
 				
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<alpha>168</alpha>
+					</attr>
+				</obj>
+
 				<obj id="ctrl" class="LayoutObject">
 					<attr>
 						<width>father.width</width>
 						<height>father.height</height>
 					</attr>
 					<children>
-						<obj class="TextObject">
+						<obj id="tableview.rights.struct.list" class="WHome.ListCtrl">
 							<attr>
-								<width>father.width</width>
-								<height>father.height</height>
-								<text>My data with you|RightsManagementChildPanelForManagerment</text>
-								<halign>center</halign>
-								<valign>center</valign>
+								<left>10</left>
+								<top>40</top>
+								<width>400</width>
+								<height>48</height>
 							</attr>
+							<eventlist>
+								<event name="OnInitControl" file="RightsManagementChildPanelForManagerment.xml.lua" func="LRS_OnInitControl" />
+							</eventlist>
+						</obj>
+						<obj id="tree" class="TreeCtrl">
+							<attr>
+								<left>10</left>
+								<top>68</top>
+								<width>330</width>
+								<height>father.height-108</height>
+							</attr>
+							<eventlist>
+								<event name="OnSelectChanged" file="RightsManagementChildPanelForManagerment.xml.lua" func="OnSelectChanged" />
+								<event name="OnInitControl" file="RightsManagementChildPanelForManagerment.xml.lua" func="TC_OnInitControl" />
+							</eventlist>
+						</obj>
+						<obj id="tableview.rights.instruction.list" class="WHome.ListCtrl">
+							<attr>
+								<left>father.width - 340</left>
+								<top>40</top>
+								<width>350</width>
+								<height>48</height>
+							</attr>
+							<eventlist>
+								<event name="OnInitControl" file="RightsManagementChildPanelForManagerment.xml.lua" func="LRI_OnInitControl" />
+							</eventlist>
+						</obj>
+						<obj id="btn.export" class="WHome.Button">
+							<attr>
+								<top>father.height-10-24</top>
+								<left>20</left>
+								<width>81</width>
+								<height>28</height>
+								<valign>center</valign>
+								<NormalBkgID>green.button.normal</NormalBkgID>
+								<DownBkgID>green.button.down</DownBkgID>
+								<DisableBkgID>green.button.disable</DisableBkgID>
+								<HoverBkgID>green.button.hover</HoverBkgID>
+								<Text>创建管理员</Text>
+							</attr>
+							<eventlist>
+								
+							</eventlist>
+						</obj>
+						<obj id="btn.export" class="WHome.Button">
+							<attr>
+								<top>father.height-10-24</top>
+								<left>180</left>
+								<width>81</width>
+								<height>28</height>
+								<valign>center</valign>
+								<NormalBkgID>green.button.normal</NormalBkgID>
+								<DownBkgID>green.button.down</DownBkgID>
+								<DisableBkgID>green.button.disable</DisableBkgID>
+								<HoverBkgID>green.button.hover</HoverBkgID>
+								<Text>编辑权限组</Text>
+							</attr>
+							<eventlist>
+								
+							</eventlist>
 						</obj>
 					</children>
 				</obj>

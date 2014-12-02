@@ -155,5 +155,15 @@ function LB_OnListItemDbClick(self, event, itemObj, x, y, flags)
 end
 
 function OnClickNoticeHistory1(self)
-	AddNotify(self, math.random(1,1000))
+	--AddNotify(self, math.random(1,1000))
+	local shell = XLGetObject("CoolJ.OSShell")
+	local a, b = shell:FileOpenDialog("image")
+	XLMessageBox(a)
+	XLMessageBox(b)
+end
+
+function TB_OnInitControl(self)
+	local objFactory = XLGetObject("Xunlei.UIEngine.ObjectFactory")
+	local obj = objFactory:CreateUIObject(nil, "CoolJ.Upload.ItemForImage")
+	self:AddDefaultItem(obj)
 end

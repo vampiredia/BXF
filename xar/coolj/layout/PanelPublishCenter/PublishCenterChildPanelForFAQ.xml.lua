@@ -5,16 +5,9 @@ function OnInitControl(self)
 end
 
 function TB_OnInitControl(self)
---[[
-	local attr = self:GetAttribute()
 	local objFactory = XLGetObject("Xunlei.UIEngine.ObjectFactory")
-	
-	for i=1, 4 do
-		local obj = objFactory:CreateUIObject(nil, "CoolJ.TableFAQItem")
-		obj:SetText(i)
-		self:AddItem(obj)
-	end
-]]
+	local obj = objFactory:CreateUIObject("add", "CoolJ.TableAddItem")
+	self:AddDefaultItem(obj)
 end
 
 function TC_OnInitControl(self)

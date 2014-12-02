@@ -1,0 +1,6 @@
+<XLUE>
+	<resource>
+		<texture id="texture.calendar.bkg" type="Stretch" image="Calendar\texture.calendar.bkg.png" />
+		<bitmap id="bitmap.clock.hour" image="Calendar\bitmap.clock.hour" />
+	</resource>
+</XLUE>

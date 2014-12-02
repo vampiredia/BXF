@@ -2,6 +2,9 @@ function OnInitControl(self)
 	local attr = self:GetAttribute()
 	local bkg = self:GetControlObject("bkg")
 	--bkg:SetTextureID(attr.BorderTexture)
+	
+	--Page_Change(self, "ctrl_list", "ctrl_info")
+	Page_Change(self, "ctrl_info", "ctrl_list")
 end
 
 function LC_OnPublicInitControl(self)
@@ -57,6 +60,16 @@ function CBB_OnInitControl(self)
 		table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = valid_time, Custom = nil, Func = nil })
 	end
 	self:SetText("全部")
+end
+
+function CBPY_OnInitControl(self)
+	local attr = self:GetAttribute()
+	attr.data = {}
+	local temp_data = {"业主"}
+	for i,valid_time in ipairs(temp_data) do
+		table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = valid_time, Custom = nil, Func = nil })
+	end
+	self:SetText("业主")
 end
 
 function CBU_OnInitControl(self)
@@ -138,4 +151,45 @@ end
 
 function BTN_OnSearch(self)
 	
+end
+
+function Page_Change(self, newPage, oldPage)
+	local hidePage = self:GetControlObject(oldPage)
+	if hidePage ~= nil then 
+		hidePage:SetVisible(false)
+		hidePage:SetChildrenVisible(false)
+	end
+	
+	local showPage = self:GetControlObject(newPage)
+	if showPage ~= nil then 
+		showPage:SetVisible(true)
+		showPage:SetChildrenVisible(true)
+	end
+end
+
+function LC_OnListItemDbClick(self)
+	Page_Change(self:GetOwnerControl(), "ctrl_info", "ctrl_list")
+end
+
+function OnClickInfoPageToListPage(self)
+	Page_Change(self:GetOwnerControl(), "ctrl_list", "ctrl_info")
+end
+
+function BTN_OnSave(self)
+ 
+end
+
+function CCP_OnCheck(self, event, state, bClick)
+	if event ~= 'OnCheck' then return end
+	
+	local owner = self:GetOwnerControl()
+	local attr = owner:GetAttribute()
+	attr.IsCheck = state
+	--NoticePosInit(owner)
+	--XLMessageBox(owner:GetID())
+	if state then
+		self:SetText("身份已验证")
+	else
+		self:SetText("身份未验证")
+	end
 end

@@ -6,5 +6,10 @@
 	<bitmap id="bitmap.ad.close.normal"  imagelist="imagelist.ad.close" index="1"/>
 	<bitmap id="bitmap.ad.close.hover" imagelist="imagelist.ad.close" index="2"/>
 	<bitmap id="bitmap.ad.close.down" imagelist="imagelist.ad.close" index="3"/>
+	
+	<bitmap id="image.btn.left.hover" image="imagebutton\image.btn.left.hover.png" />  
+	<bitmap id="image.btn.left.normal" image="imagebutton\image.btn.left.normal.png" />  
+	<bitmap id="image.btn.right.hover" image="imagebutton\image.btn.right.hover.png" />  
+	<bitmap id="image.btn.right.normal" image="imagebutton\image.btn.right.normal.png" />  
 </resource>
 </xlue>

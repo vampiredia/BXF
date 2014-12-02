@@ -67,6 +67,7 @@ end
 function SetState(self, newState, forceUpdate, noAni)
     local attr = self:GetAttribute()
 	local textObj = self:GetControlObject("button.text")
+	local l,t,r,b = textObj:GetObjPos()
 	
     if forceUpdate or newState ~= attr.NowState then
         local ownerTree = self:GetOwner()
@@ -77,12 +78,14 @@ function SetState(self, newState, forceUpdate, noAni)
 		if attr.NormalBkgID == "general.button.normal" then
 			btntextheight = "father.height-1"
 		end
-		textObj:SetObjPos2(0,0,"father.width",btntextheight)
+		textObj:SetObjPos2(l,t,"father.width",btntextheight)
         if newState == 0 then
             if attr.IsDefaultButton then
                 bkg:SetTextureID(attr.DefaultBkgNormal)
                 SetDefaultAnimation(self)
-            else
+            elseif attr.IsFocus then
+				bkg:SetTextureID(attr.SelectBkgID)
+			else
                 bkg:SetTextureID(attr.NormalBkgID)
             end
 			
@@ -91,7 +94,7 @@ function SetState(self, newState, forceUpdate, noAni)
                 RemoveDefaultAnimation(self)
             end
             if attr.IsDownModifyPos then
-                textObj:SetObjPos2(1,1,"father.width",btntextheight)
+                textObj:SetObjPos2(l+1,t+1,"father.width",btntextheight)
             end
             bkg:SetTextureID(attr.DownBkgID)
         elseif newState == 2 then
@@ -202,6 +205,7 @@ function SetText(self, text)
     textObj:SetText(text)
     local attr = self:GetAttribute()
     attr.Text = text
+	textObj:SetMultiline(attr.Multiline)
 end
 
 function GetText(self)
@@ -316,8 +320,16 @@ function OnFocusChange( self, focus )
 		else
 			if attr.FocusRectWidth ~= 0 and attr.FocusRectHeight ~= 0 then
 				focusrect:SetObjPos(attr.FocusRectLeft, attr.FocusRectTop, attr.FocusRectLeft+attr.FocusRectWidth, attr.FocusRectTop+attr.FocusRectHeight)
+				local bkg = self:GetControlObject("button.bkg")
+				
+				if focus then
+					bkg:SetTextureID(attr.SelectBkgID)
+				else
+					bkg:SetTextureID(attr.NormalBkgID)
+				end
 			end
 			focusrect:SetVisible(focus)
+			attr.IsFocus = focus
 		end
 	end
 end
@@ -336,8 +348,12 @@ function OnInitControl(self)
 	self:SetTextFont(attr.TextFont)
     attr.NowState=0
     local bkg = self:GetControlObject("button.bkg")
-    bkg:SetTextureID(attr.NormalBkgID)
-    SetDefaultAnimation(self)
+	if attr.IsFocus then
+		bkg:SetTextureID(attr.SelectBkgID)
+	else
+		bkg:SetTextureID(attr.NormalBkgID)
+	end
+	SetDefaultAnimation(self)
 	    
     local left, top, right, bottom = self:GetObjPos()
     
@@ -431,8 +447,10 @@ function OnEnableChange(self, enable)
     if enable then
         if attr.IsDefaultButton then
             bkg:SetTextureID(attr.DefaultBkgNormal)
-        else
-		    bkg:SetTextureID(attr.NormalBkgID)
+        elseif attr.IsFocus then
+			bkg:SetTextureID(attr.SelectBkgID)
+		else
+			bkg:SetTextureID(attr.NormalBkgID)
 		end
 		attr.NowState = 0
 		text:SetTextColorResID(attr.TextColor)
@@ -477,4 +495,17 @@ function ChangeStatus(self, newStatus)
 	end	
 	attr.Status = newStatus	
 	self:SetState(attr.Status)	
+end
+
+function SetMultiline(self, multiline)
+	local attr = self:GetAttribute()
+	attr.Multiline = multiline
+	
+	local btntext = self:GetControlObject("button.text")
+	btntext:SetMultiline(attr.Multiline)
+	btntext:SetHAlign("left")
+end
+
+function GetMultiline(self)
+	return self:GetAttribute().Multiline
 end

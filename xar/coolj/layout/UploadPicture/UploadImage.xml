@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xlue>
+	<!-- 图片上传模块 -->
+	<control class="CoolJ.Upload.ItemForImage">
+		<attr_def>
+			<attr name="OnClick" type="bool" >
+				<default>false</default>
+			</attr>
+			<attr name="FillImage" type="bool" >
+				<default>false</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<StrectchImage file="UploadImage.xml.lua" func="StrectchImage" />
+			<LoadImage file="UploadImage.xml.lua" func="LoadImage" />
+		</method_def>
+		<event_def>
+
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+						<texture>texture.upload.item.bkg</texture>
+					</attr>
+					<children>
+						<obj id="image" class="ImageObject">
+							<attr>
+								<width>father.width</width>
+								<height>father.height</height>
+								<valign>center</valign>
+								<halign>center</halign>
+							</attr>
+						</obj>
+						<!--
+						<obj id="close" class="CoolJ.ImageButton">
+							<attr>
+								<left>father.width-27</left>
+								<top>0</top>
+								<width>27</width>
+								<height>27</height>
+								<NormalBkgID>bitmap.ad.close.normal</NormalBkgID>
+								<HoverBkgID>bitmap.ad.close.hover</HoverBkgID>
+								<DownBkgID>bitmap.ad.close.down</DownBkgID>
+								<visible>1</visible>
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="UploadImage.xml.lua" func="OnClose" />
+							</eventlist>
+						</obj>
+						-->
+					</children>
+					<eventlist>
+						<event name="OnInitControl" file="UploadImage.xml.lua" func="OnInitControl" />
+						<event name="OnLButtonDown" file="UploadImage.xml.lua" func="OnLButtonDown" />
+						<event name="OnLButtonUp" file="UploadImage.xml.lua" func="OnLButtonUp" />
+					</eventlist>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnControlMouseEnter" file="UploadImage.xml.lua" func="OnMouseEnter" />
+				<event name="OnControlMouseLeave" file="UploadImage.xml.lua" func="OnMouseLeave" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

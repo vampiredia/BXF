@@ -1,0 +1,241 @@
+<xlue>
+	<control class="CoolJ.CalendarBox">
+		<attr_def>
+			<attr name="IsShowTime" type="bool" >
+				<default>true</default>
+			</attr>
+			<attr name="Level" type="int" >
+				<default>0</default>
+				<!-- 0 | 日期相关 -->
+				<!-- 1 | 月份相关 -->
+				<!-- 2 | 年相关 -->
+				<!-- 3 | 年代相关 -->
+			</attr>
+			<attr name="Century" type="int" >
+				<default>21</default>
+			</attr>
+			<attr name="Age" type="int" >
+				<default>10</default>
+			</attr>
+			<attr name="Year" type="int" >
+				<default>2014</default>
+			</attr>
+			<attr name="Month" type="int" >
+				<default>9</default>
+			</attr>
+			<attr name="Day" type="int" >
+				<default>12</default>
+			</attr>
+			<attr name="Time" type="int" >
+				<default>15:23</default>
+			</attr>
+			
+			<attr name="MinYear" type="int" ><default>2000</default></attr>
+			<attr name="MaxYear" type="int" ><default>2099</default></attr>
+			<attr name="MinMonth" type="int" ><default>1</default></attr>
+			<attr name="MaxMonth" type="int" ><default>12</default></attr>
+			<attr name="MaxLevel" type="int" ><default>3</default></attr>
+			<attr name="MinLevel" type="int" ><default>3</default></attr>
+			
+			<attr name="DayItemWidth" type="int" ><default>23</default></attr>
+			<attr name="DayItemHeight" type="int" ><default>18</default></attr>
+			<attr name="NormalItemWidth" type="int" ><default>40</default></attr>
+			<attr name="NormalItemHeight" type="int" ><default>40</default></attr>
+		</attr_def>
+		<method_def>
+			<GetCurrentDate file="CalendarBox.xml.lua" func="GetCurrentDate" />
+			<GetCurrentTime file="CalendarBox.xml.lua" func="GetCurrentTime" />
+			<GetCurrentDateTime file="CalendarBox.xml.lua" func="GetCurrentDateTime" />
+			<GetData file="CalendarBox.xml.lua" func="GetData" />
+			<SetData file="CalendarBox.xml.lua" func="SetData" />
+			<OnTimer file="CalendarBox.xml.lua" func="OnTimer" />
+			<KillTimer file="CalendarBox.xml.lua" func="KillTimer" />
+			
+			<UpdateTime file="CalendarBox.xml.lua" func="UpdateTime" />
+			<UpdateUI file="CalendarBox.xml.lua" func="UpdateUI" />
+			<UpdateDays file="CalendarBox.xml.lua" func="UpdateDays" />
+			<UpdateMonths file="CalendarBox.xml.lua" func="UpdateMonths" />
+			<UpdateYears file="CalendarBox.xml.lua" func="UpdateYears" />
+			<UpdateAges file="CalendarBox.xml.lua" func="UpdateAges" />
+			
+			<DayAdjust file="CalendarBox.xml.lua" func="DayAdjust" />
+			<IsMonthValid file="CalendarBox.xml.lua" func="IsMonthValid" />
+			<IsYearValid file="CalendarBox.xml.lua" func="IsYearValid" />
+			
+			<ChangeDate file="CalendarBox.xml.lua" func="ChangeDate" />
+			<SetSelect file="CalendarBox.xml.lua" func="SetSelect" />
+			<GetSelect file="CalendarBox.xml.lua" func="GetSelect" />
+		</method_def>
+		<event_def>
+			<OnDataChange>
+				<param>
+
+				</param>
+			</OnDataChange>
+			<OnMonthChange>
+				<param>
+				</param>
+			</OnMonthChange>
+			<OnSelect>
+				<param>
+				</param>
+			</OnSelect>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+						<texture>texture.calendar.bkg</texture>
+					</attr>
+					<children>
+						<obj id="content" class="TextureObject">
+							<attr>
+								<left>8</left>
+								<top>8</top>
+								<width>father.width-16</width>
+								<height>father.height-16</height>
+							</attr>
+							<children>
+								<obj id="layout.date" class="LayoutObject">
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>father.width</width>
+										<height>48</height>
+									</attr>
+									<children>
+										<obj id="textlink.current.date" class="WHome.TextLink">
+											<attr>
+												<left>120</left>
+												<top>16</top>
+												<width>father.width-240</width>
+												<height>father.height-30</height>
+												<HAlign>center</HAlign>
+												<Text>2014年9月12日</Text>
+												<TextColor>system.blue</TextColor>
+											</attr>
+											<eventlist>
+												<event name="OnClick" file="CalendarBox.xml.lua" func="BTN_OnCurrentDate" />
+											</eventlist>
+										</obj>										
+									</children>
+								</obj>
+
+								<obj id="layout.box.date" class="LayoutObject">
+									<attr>
+										<left>12</left>
+										<top>50</top>
+										<width>166</width>
+										<height>152</height>
+									</attr>
+									<children>
+										<obj id="layout.header" class="LayoutObject">
+											<attr>
+												<width>father.width</width>
+												<height>25</height>
+											</attr>
+											<children>
+												<obj id="title" class="WHome.TextLink">
+													<attr>
+														<left>43</left>
+														<top>4</top>
+														<width>80</width>
+														<height>18</height>
+														<Text>2014年9月</Text>
+														<TextColor>system.black</TextColor>
+														<HoverFont>default.font.link</HoverFont>
+														<HAlign>center</HAlign>
+													</attr>
+													<eventlist>
+														<event name="OnClick" file="CalendarBox.xml.lua" func="BTN_OnTop" />
+													</eventlist>
+												</obj>
+												<obj id="btn.left" class="CoolJ.ImageButton">
+													<attr>
+														<left>4</left>
+														<top>8</top>
+														<width>9</width>
+														<height>9</height>
+														<NormalBkgID>image.btn.left.normal</NormalBkgID>
+														<HoverBkgID>image.btn.left.hover</HoverBkgID>
+														<DownBkgID>image.btn.left.hover</DownBkgID>
+													</attr>
+													<eventlist>
+														<event name="OnClick" file="CalendarBox.xml.lua" func="BTN_OnLeft" />
+													</eventlist>
+												</obj>
+												<obj id="btn.right" class="CoolJ.ImageButton">
+													<attr>
+														<left>father.width-13</left>
+														<top>8</top>
+														<width>9</width>
+														<height>9</height>
+														<NormalBkgID>image.btn.right.normal</NormalBkgID>
+														<HoverBkgID>image.btn.right.hover</HoverBkgID>
+														<DownBkgID>image.btn.right.hover</DownBkgID>
+													</attr>
+													<eventlist>
+														<event name="OnClick" file="CalendarBox.xml.lua" func="BTN_OnRight" />
+													</eventlist>
+												</obj>
+											</children>
+										</obj>
+										<obj id="layout.content" class="LayoutObject">
+											<attr>
+												<left>2</left>
+												<top>27</top>
+												<width>father.width-4</width>
+												<height>father.height-27</height>
+											</attr>
+											<children>
+												
+											</children>
+											<eventlist>
+												<event name="OnInitControl" file="CalendarBox.xml.lua" func="LC_OnInitControl" />
+											</eventlist>
+										</obj>
+									</children>
+								</obj>
+								<!--
+								<obj id="layout.box.clock" class="LayoutObject">
+									<attr>
+										<left>217</left>
+										<top>180</top>
+										<width>64</width>
+										<height>40</height>
+									</attr>
+									<children>
+										<obj id="text.time" class="TextObject">
+											<attr>
+												<width>father.width</width>
+												<height>18</height>
+												<text>15:34:48</text>
+												<halign>center</halign>
+											</attr>
+										</obj>
+										<obj id="text.week" class="TextObject">
+											<attr>
+												<top>father.height-18</top>
+												<width>father.width</width>
+												<height>18</height>
+												<text>星期五</text>
+												<halign>center</halign>
+												<textcolor>system.gray</textcolor>
+											</attr>
+										</obj>
+									</children>
+								</obj>
+								-->
+							</children>
+						</obj>
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="CalendarBox.xml.lua" func="OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

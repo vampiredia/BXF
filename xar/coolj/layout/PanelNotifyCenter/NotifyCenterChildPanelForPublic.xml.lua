@@ -43,3 +43,8 @@ function LC_OnListItemClick(self, event, itemObj, x, y, flags)
 	local infoObj = self:GetOwnerControl():GetControlObject("edit.info")
 	infoObj:SetText(content)
 end
+
+function OnClick_Copy(self)
+	local info = self:GetOwnerControl():GetControlObject("edit.info")
+	info:Copy()
+end

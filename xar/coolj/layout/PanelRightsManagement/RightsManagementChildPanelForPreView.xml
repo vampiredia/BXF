@@ -29,22 +29,59 @@
 						<height>father.height</height>
 					</attr>
 					<children>
-
+						<obj id="tableview.rights.struct.list" class="WHome.ListCtrl">
+							<attr>
+								<left>10</left>
+								<top>40</top>
+								<width>400</width>
+								<height>48</height>
+							</attr>
+							<eventlist>
+								<event name="OnInitControl" file="RightsManagementChildPanelForPreView.xml.lua" func="LRS_OnInitControl" />
+							</eventlist>
+						</obj>
 						<obj id="tree" class="TreeCtrl">
 							<attr>
-								<left>5</left>
-								<top>50</top>
-								<width>120</width>
-								<height>father.height-150</height>
+								<left>10</left>
+								<top>68</top>
+								<width>330</width>
+								<height>father.height-108</height>
 							</attr>
 							<eventlist>
 								<event name="OnSelectChanged" file="RightsManagementChildPanelForPreView.xml.lua" func="OnSelectChanged" />
 								<event name="OnInitControl" file="RightsManagementChildPanelForPreView.xml.lua" func="TC_OnInitControl" />
 							</eventlist>
 						</obj>
+						<obj id="tableview.rights.instruction.list" class="WHome.ListCtrl">
+							<attr>
+								<left>father.width - 340</left>
+								<top>40</top>
+								<width>350</width>
+								<height>48</height>
+							</attr>
+							<eventlist>
+								<event name="OnInitControl" file="RightsManagementChildPanelForPreView.xml.lua" func="LRI_OnInitControl" />
+							</eventlist>
+						</obj>
+						<obj id="btn.export" class="WHome.Button">
+							<attr>
+								<top>father.height-10-24</top>
+								<left>140</left>
+								<width>81</width>
+								<height>28</height>
+								<valign>center</valign>
+								<NormalBkgID>green.button.normal</NormalBkgID>
+								<DownBkgID>green.button.down</DownBkgID>
+								<DisableBkgID>green.button.disable</DisableBkgID>
+								<HoverBkgID>green.button.hover</HoverBkgID>
+								<Text>预设方案</Text>
+							</attr>
+							<eventlist>
+								
+							</eventlist>
+						</obj>
 					</children>
 				</obj>
-
 			</children>
 			<eventlist>
 				<event name="OnInitControl" file="RightsManagementChildPanelForPreView.xml.lua" func="OnInitControl" />

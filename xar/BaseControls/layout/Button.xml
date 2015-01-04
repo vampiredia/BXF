@@ -18,6 +18,7 @@
 			<attr name="NowState" type="int" />
 			<attr name="TextColor" type="string" ><default>system.black</default></attr>
 			<attr name="TextFont" type="string" ><default>button.default.font</default></attr>
+			<attr name="TextHalign" type="string" ><default>center</default></attr>
 			<attr name="DisableTextColor" type="string" ><default>system.gray</default></attr>
 			<attr name="TabID" type="int"/>
 			<attr name="ValidLeft" type="int"/>
@@ -68,7 +69,7 @@
 				<default>0</default>
 			</attr>
             <attr name="IsDownModifyPos" type="bool">
-                <default>true</default>
+                <default>false</default>
             </attr>
 			<attr name="Multiline" type="bool" >
 				<default>false</default>
@@ -80,7 +81,9 @@
 			<GetText file="Button.xml.lua" func="GetText" />
 			<SetTextColor file="Button.xml.lua" func="SetTextColor" />
 			<SetTextFont file="Button.xml.lua" func="SetTextFont" />
+			<SetTextHalign file="Button.xml.lua" func="SetTextHalign" />
 			<SetTextPos file="Button.xml.lua" func="SetTextPos" />
+			<GetTextPos file="Button.xml.lua" func="GetTextPos" />
 			<SetBitmap file="Button.xml.lua" func="SetBitmap" />
 			<SetSpaceMagrin file="Button.xml.lua" func="SetSpaceMagrin" />
 			<GetTextWidth file="Button.xml.lua" func="GetTextWidth" />

@@ -65,7 +65,8 @@
 			<attr name="Icon" type="string"><default></default></attr>
 			<attr name="IconLeftPos" type="int"><default>0</default></attr>
 			<attr name="IconTopPos" type="int"><default>0</default></attr>
-			<attr name="IconSize" type="int"><default>70</default></attr>
+			<attr name="IconWidth" type="int"><default>70</default></attr>
+			<attr name="IconHeight" type="int"><default>70</default></attr>
 			<attr name="IconHAlign" type="string"><default>left</default></attr>
 			<attr name="IconVAlign" type="string"><default>top</default></attr>
 			
@@ -95,8 +96,8 @@
 			<attr>
 				<left>0</left>
 				<top>0</top>
-				<width>74</width>
-				<height>79</height>
+				<width>90</width>
+				<height>119</height>
 			</attr>
 			<children>
 				<obj id="ctrl" class="TextureObject">

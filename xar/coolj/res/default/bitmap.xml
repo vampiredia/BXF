@@ -11,11 +11,17 @@
 		<bitmap id="bitmap.sysbtn.max.normal" imagelist="imagelist.sysbtn.max" index="1"/>
 		<bitmap id="bitmap.sysbtn.max.hover" imagelist="imagelist.sysbtn.max" index="2"/>
 		<bitmap id="bitmap.sysbtn.max.down" imagelist="imagelist.sysbtn.max" index="3"/>
-
+		
 		<imagelist id="imagelist.sysbtn.mini" vertical="0" splitter="1" varyblock="1" image="bitmap\imagelist.sysbtn.mini.png"/>
 		<bitmap id="bitmap.sysbtn.mini.normal" imagelist="imagelist.sysbtn.mini" index="1"/>
 		<bitmap id="bitmap.sysbtn.mini.hover" imagelist="imagelist.sysbtn.mini" index="2"/>
 		<bitmap id="bitmap.sysbtn.mini.down" imagelist="imagelist.sysbtn.mini" index="3"/>		
+		
+		<!--
+		<bitmap id="bitmap.sysbtn.mini.normal" path="bitmap\zuixiaohua_1.png"/>
+		<bitmap id="bitmap.sysbtn.mini.hover" path="bitmap\zuixiaohua_2.png"/>
+		<bitmap id="bitmap.sysbtn.mini.down" path="bitmap\zuixiaohua_3.png"/>
+		-->
 			
 		<imagelist id="imagelist.platform.button.image" vertical="0" splitter="1" varyblock="1" image="bitmap\imagelist.platform.button.png"/>
 		
@@ -83,12 +89,19 @@
 		<bitmap id="texture.lp.head.image" image="bitmap\texture.lp.head.image.png" />
 		
 		<bitmap id="tab.icon.community.service" path="bitmap\tab.icon.community.service.png"/>
+		<bitmap id="tab.icon.community.service.select" path="bitmap\tab.icon.community.service.select.png"/>
 		<bitmap id="tab.icon.log.query" path="bitmap\tab.icon.log.query.png"/>
+		<bitmap id="tab.icon.log.query.select" path="bitmap\tab.icon.log.query.select.png"/>
 		<bitmap id="tab.icon.notify.center" path="bitmap\tab.icon.notify.center.png"/>
+		<bitmap id="tab.icon.notify.center.select" path="bitmap\tab.icon.notify.center.select.png"/>
 		<bitmap id="tab.icon.owner.managerment" path="bitmap\tab.icon.owner.managerment.png"/>
+		<bitmap id="tab.icon.owner.managerment.select" path="bitmap\tab.icon.owner.managerment.select.png"/>
 		<bitmap id="tab.icon.property.service" path="bitmap\tab.icon.property.service.png"/>
+		<bitmap id="tab.icon.property.service.select" path="bitmap\tab.icon.property.service.select.png"/>
 		<bitmap id="tab.icon.publish.center" path="bitmap\tab.icon.publish.center.png"/>
+		<bitmap id="tab.icon.publish.center.select" path="bitmap\tab.icon.publish.center.select.png"/>
 		<bitmap id="tab.icon.rights.management" path="bitmap\tab.icon.rights.management.png"/>
+		<bitmap id="tab.icon.rights.management.select" path="bitmap\tab.icon.rights.management.select.png"/>
 		<texture id="bkg.border.shadow" type="NineInOne" image="bitmap\bkg.shadow.png"/>   
 		<texture id="texture.mainwnd.border" type="NineInOne" image="bitmap\mainwnd_border.png" />
 		<bitmap id="bkg.tab" image="bitmap\bkg.tab.png" />
@@ -118,5 +131,16 @@
 		<texture id="texture.notify.right.bkg" type="Stretch" imagelist="imagelist.notify.bkg" index="3"/>
 		
 		<texture id="texture.listctrl.selected" type="NineInOne" image="bitmap\texture.listctrl.selected.png" />
+		
+		<texture id="texture.btn.notice.history.down.bkg" type="Stretch" image="bitmap\btn_notice_history_down.png" />
+		<texture id="texture.btn.notice.history.normal.bkg" type="Stretch" image="bitmap\btn_notice_history_normal.png" />
+		<texture id="texture.btn.notice.history.hover.bkg" type="Stretch" image="bitmap\btn_notice_history_hover.png" />
+		<texture id="texture.btn.notice.new.down.bkg" type="Stretch" image="bitmap\btn_notice_new_down.png" />
+		<texture id="texture.btn.notice.new.normal.bkg" type="Stretch" image="bitmap\btn_notice_new_normal.png" />
+		<texture id="texture.btn.notice.new.hover.bkg" type="Stretch" image="bitmap\btn_notice_new_hover.png" />
+		
+		<texture id="texture.btn.warn.normal.bkg" type="Stretch" image="bitmap\btn_warn_normal.png" />
+		<texture id="texture.btn.warn.hover.bkg" type="Stretch" image="bitmap\btn_warn_hover.png" />
+		<texture id="texture.btn.warn.down.bkg" type="Stretch" image="bitmap\btn_warn_down.png" />
 	</resource>
 </XLUE>	

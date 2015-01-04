@@ -346,6 +346,7 @@ function OnInitControl(self)
     self:SetText(attr.Text)
 	self:SetTextColor(attr.TextColor)
 	self:SetTextFont(attr.TextFont)
+	self:SetTextHalign(attr.TextHalign)
     attr.NowState=0
     local bkg = self:GetControlObject("button.bkg")
 	if attr.IsFocus then
@@ -397,6 +398,14 @@ function SetTextColor(self, color)
 	attr.TextColor = color
     local textObj = self:GetControlObject("button.text")
     textObj:SetTextColorResID(color)
+end
+
+function SetTextHalign(self, halign)
+	if halign == nil then return end
+	local attr = self:GetAttribute()
+	attr.TextHalign = halign
+    local textObj = self:GetControlObject("button.text")
+    textObj:SetHAlign(halign)
 end
 
 function SetTextFont(self, font)
@@ -508,4 +517,9 @@ end
 
 function GetMultiline(self)
 	return self:GetAttribute().Multiline
+end
+
+function GetTextPos(self)
+	local textObj = self:GetControlObject("button.text")
+	 return textObj:GetObjPos()
 end

@@ -1,6 +1,11 @@
 ﻿<XLUE>
 	<resource>
 		<font id="text.tip.normal.font" height="11.5" facename="微软雅黑" />
+		<font id="caption.font" height="13" weight="bold" facename="微软雅黑"/>
+		<font id="subcaption.font" height="14" weight="bold" facename="微软雅黑" />
+		<font id="text.tab.font" height="14" weight="bold" facename="微软雅黑" />
+		<font id="text.btn.bold.font" height="14" weight="bold" facename="微软雅黑" />
+		<font id="text.common.bold.font" height="14" weight="bold" facename="微软雅黑" />
 		
 		<!-- 
 		+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

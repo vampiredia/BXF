@@ -8,7 +8,7 @@ function TabHeader_OnInitControl(self)
 	local attr = self:GetAttribute()
 	attr.ItemClass = "Head.TabButton"
 	attr.ButtonWidth = 138
-	attr.ButtonHeight = 33
+	attr.ButtonHeight = 55
 	attr.TextFontID = "btText.Tab.title.font"
 	attr.ButtonInternalSpace = 0
 	attr.FuncItemCallBack = funcItemCallBack

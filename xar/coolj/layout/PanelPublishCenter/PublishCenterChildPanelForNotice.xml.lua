@@ -167,3 +167,8 @@ function TB_OnInitControl(self)
 	local obj = objFactory:CreateUIObject(nil, "CoolJ.Upload.ItemForImage")
 	self:AddDefaultItem(obj)
 end
+
+function OnClickNoticePublishWarningInitControl(self)
+	local l,t,r,b = self:GetTextPos()
+	self:SetTextPos(l+10, t, r-l, b-t)
+end

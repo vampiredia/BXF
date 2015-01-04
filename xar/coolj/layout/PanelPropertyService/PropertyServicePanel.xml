@@ -60,12 +60,13 @@
 								<obj id="panel.category.tabheader" class="TabHeaderCtrl">
 									<attr>
 										<left>0</left>
-										<top>10</top>
+										<top>0</top>
 										<width>father.width-100</width>
 										<height>50</height>
 										<IconTopPos>1</IconTopPos>
 										<IconHAlign>center</IconHAlign>
-										<TextColorID>system.black</TextColorID>
+										<TextColorID>system.white</TextColorID>
+										<TextFontID>text.tab.font</TextFontID>
 										<TabDirection>vertical</TabDirection>
 									</attr>
 									<eventlist>

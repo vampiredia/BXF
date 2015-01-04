@@ -23,22 +23,6 @@
 					</attr>
 				</obj>
 
-				<obj id="BtnNoticePublishWarning" class="WHome.TextLink">
-					<attr>
-						<top>5</top>
-						<left>father.width-120</left>
-						<width>100</width>
-						<height>26</height>
-						<valign>center</valign>
-						<Text>社区通知发布须知</Text>
-
-						<TextColor>system.blue</TextColor>
-					</attr>
-					<eventlist>
-						<event name="OnClick" file="PublishCenterChildPanelForNotice.xml.lua" func="OnClickNoticePublishWarning" />
-					</eventlist>
-				</obj>
-
 				<!-- 默认发布通知主页，提供操作入口|前期使用后期tab可能采用抽屉的方式 -->
 				<obj id="main.page" class="LayoutObject">
 					<attr>
@@ -47,18 +31,36 @@
 						<visible>0</visible>
 					</attr>
 					<children>
+					<obj id="BtnNoticePublishWarning" class="WHome.Button">
+					<attr>
+						<top>8</top>
+						<left>father.width-162</left>
+						<width>166</width>
+						<height>41</height>
+						<Text>社区通知发布须知</Text>
+						<TextFont>text.btn.bold.font</TextFont>
+						<TextColor>system.white</TextColor>
+						<NormalBkgID>texture.btn.warn.normal.bkg</NormalBkgID>
+						<DownBkgID>texture.btn.warn.down.bkg</DownBkgID>
+						<DisableBkgID></DisableBkgID>
+						<HoverBkgID>texture.btn.warn.hover.bkg</HoverBkgID>	
+					</attr>
+					<eventlist>
+						<event name="OnInitControl" file="PublishCenterChildPanelForNotice.xml.lua" func="OnClickNoticePublishWarningInitControl" />
+						<event name="OnClick" file="PublishCenterChildPanelForNotice.xml.lua" func="OnClickNoticePublishWarning" />
+					</eventlist>
+				</obj>
 						<obj id="BtnNewNotice" class="WHome.Button">
 							<attr>
-								<top>200</top>
+								<top>105</top>
 								<left>140</left>
-								<width>102</width>
-								<height>34</height>
+								<width>128</width>
+								<height>129</height>
 								<valign>center</valign>
-								<Text>发布新通知</Text>
-								<NormalBkgID>general.maigc.button.normal</NormalBkgID>
-								<DownBkgID>general.maigc.button.down</DownBkgID>
-								<DisableBkgID>general.maigc.button.disable</DisableBkgID>
-								<HoverBkgID>general.maigc.button.hover</HoverBkgID>	
+								<NormalBkgID>texture.btn.notice.new.normal.bkg</NormalBkgID>
+								<DownBkgID>texture.btn.notice.new.down.bkg</DownBkgID>
+								<DisableBkgID></DisableBkgID>
+								<HoverBkgID>texture.btn.notice.new.hover.bkg</HoverBkgID>	
 							</attr>
 							<eventlist>
 								<event name="OnClick" file="PublishCenterChildPanelForNotice.xml.lua" func="OnClickNewNotice" />
@@ -79,16 +81,15 @@
 <!-- JUST ONLY FOR TEST -->
 						<obj id="BtnNoticeHistory" class="WHome.Button">
 							<attr>
-								<top>200</top>
+								<top>105</top>
 								<left>400</left>
-								<width>102</width>
-								<height>34</height>
+								<width>128</width>
+								<height>129</height>
 								<valign>center</valign>
-								<Text>查看历史通知</Text>
-								<NormalBkgID>general.maigc.button.normal</NormalBkgID>
-								<DownBkgID>general.maigc.button.down</DownBkgID>
-								<DisableBkgID>general.maigc.button.disable</DisableBkgID>
-								<HoverBkgID>general.maigc.button.hover</HoverBkgID>	
+								<NormalBkgID>texture.btn.notice.history.normal.bkg</NormalBkgID>
+								<DownBkgID>texture.btn.notice.history.down.bkg</DownBkgID>
+								<DisableBkgID></DisableBkgID>
+								<HoverBkgID>texture.btn.notice.history.hover.bkg</HoverBkgID>
 							</attr>
 							<eventlist>
 								<event name="OnClick" file="PublishCenterChildPanelForNotice.xml.lua" func="OnClickNoticeHistory" />
@@ -111,12 +112,14 @@
 						<obj id="BtnGotoMainPage" class="WHome.TextLink">
 							<attr>
 								<top>5</top>
-								<left>25</left>
+								<left>28</left>
 								<width>160</width>
 								<height>26</height>
 								<valign>center</valign>
-								<Text>返回『社区通知发布』首页</Text>
-								<TextColor>system.blue</TextColor>
+								<Text>返回社区通知</Text>
+								<TextColor>system.black</TextColor>
+								<Font>text.common.bold.font</Font>
+								<HoverFont>text.common.bold.font</HoverFont>
 							</attr>
 							<eventlist>
 								<event name="OnClick" file="PublishCenterChildPanelForNotice.xml.lua" func="OnClickNewNoticePageToMainPage" />
@@ -301,6 +304,25 @@
 						<height>father.height</height>
 					</attr>
 					<children>
+						<obj id="BtnNoticePublishWarning" class="WHome.Button">
+					<attr>
+						<top>8</top>
+						<left>father.width-162</left>
+						<width>166</width>
+						<height>41</height>
+						<Text>社区通知发布须知</Text>
+						<TextFont>text.btn.bold.font</TextFont>
+						<TextColor>system.white</TextColor>
+						<NormalBkgID>texture.btn.warn.normal.bkg</NormalBkgID>
+						<DownBkgID>texture.btn.warn.down.bkg</DownBkgID>
+						<DisableBkgID></DisableBkgID>
+						<HoverBkgID>texture.btn.warn.hover.bkg</HoverBkgID>	
+					</attr>
+					<eventlist>
+						<event name="OnInitControl" file="PublishCenterChildPanelForNotice.xml.lua" func="OnClickNoticePublishWarningInitControl" />
+						<event name="OnClick" file="PublishCenterChildPanelForNotice.xml.lua" func="OnClickNoticePublishWarning" />
+					</eventlist>
+				</obj>
 						<obj id="BtnGotoMainPage" class="WHome.TextLink">
 							<attr>
 								<top>5</top>

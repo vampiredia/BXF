@@ -139,12 +139,11 @@ function GetIcon(self, icon)
 end
 
 function SetIconPos(self, x, y)
-	
     local attr = self:GetAttribute()
     attr.IconLeftPos = x
     attr.IconTopPos = y
     local iconObj = self:GetControlObject("icon")
-    iconObj:SetObjPos2(x, y, attr.IconSize, attr.IconSize)
+    iconObj:SetObjPos2(x, y, attr.IconWidth, attr.IconHeight)
 end
 
 function OnVisibleChange(self, visible)

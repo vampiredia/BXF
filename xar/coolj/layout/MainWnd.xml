@@ -26,7 +26,7 @@
 						<left>7</left>
 						<top>7</top>
 						<width>father.width-14</width>
-						<height>100</height>
+						<height>119</height>
 					</attr>
 
 					<eventlist>
@@ -48,7 +48,7 @@
 							<attr>
 								<!-- 使用表达式局中-->
 								<left>10</left> 
-								<top>8</top>
+								<top>6</top>
 								<width>80</width>
 								<height>22</height>			
 								<text>物管中心</text>
@@ -62,11 +62,26 @@
 							<attr>
 								<!-- 使用表达式局中-->
 								<left>100</left> 
-								<top>8</top>
+								<top>6</top>
 								<width>father.width - 200</width>
 								<height>24</height>			
 								<text>远洋山水</text>
 								<halign>center</halign>
+								<textcolor>system.white</textcolor>
+								<font>subcaption.font</font>
+								<zorder>330</zorder>
+							</attr>
+						</obj>
+						
+						<obj id="login.text" class="TextObject">
+							<attr>
+								<!-- 使用表达式局中-->
+								<left>father.width - 120</left> 
+								<top>5</top>
+								<width>36</width>
+								<height>24</height>			
+								<text>登录</text>
+								
 								<textcolor>system.white</textcolor>
 								<font>subcaption.font</font>
 								<zorder>330</zorder>
@@ -95,9 +110,9 @@
 				<obj id="mainwnd.body" class="LayoutObject">
 					<attr>
 						<left>7</left>
-						<top>35</top>
+						<top>53</top>
 						<width>father.width-14</width>
-						<height>father.height-64</height>
+						<height>father.height-59</height>
 						<enabledrop>1</enabledrop>
 					</attr>
 					<eventlist>
@@ -167,14 +182,21 @@
 
 						<obj id="TabHeader" class="TabHeaderCtrl">
 							<attr>
-								<left>12</left>
-								<top>-2</top>
+								<left>38</left>
+								<top>-45</top>
 								<width>father.width-100</width>
-								<height>74</height>
+								<height>118</height>
 								<IconTopPos>1</IconTopPos>
 								<IconHAlign>center</IconHAlign>
 								<TextColorID>system.white</TextColorID>
 								<zorder>999</zorder>
+								<ButtonWidth>84</ButtonWidth>
+								<ButtonHeight>118</ButtonHeight>
+								<IconHeight>72</IconHeight>
+								<IconHAlign>center</IconHAlign>
+								<IconVAlign>bottom</IconVAlign>
+								<IconWidth>66</IconWidth>
+								<ButtonInternalSpace>7</ButtonInternalSpace>
 							</attr>
 							<eventlist>
 								<event name="OnInitControl" file="MainWnd.xml.lua" func="TabHeader_OnInitControl" />
@@ -259,7 +281,7 @@
 						<left>7</left>
 						<top>father.height - 32</top>
 						<width>father.width-14</width>
-						<height>26</height>
+						<height>1</height>
 					</attr>
 					<children>
 						<obj id="footer.bkg" class="TextureObject">
@@ -268,6 +290,7 @@
 								<height>father.height</height>
 								<texture>texture.footer.bkg</texture>
 								<zorder>9999</zorder>
+								<visible>false</visible>
 							</attr>
 						</obj>
 					</children>

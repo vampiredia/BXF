@@ -204,20 +204,16 @@ end
 
 function TabHeader_OnInitControl(self)
 	local attr = self:GetAttribute()
-	attr.ButtonWidth = 67
-	attr.ButtonHeight = 74
-	attr.IconSize = 64
 	attr.TextFontID = "btTask.title.font"
-	attr.ButtonInternalSpace = 20
 	attr.ItemClass = "Head.TabButton"
 	
-	self:AddTabItem("TabItem_PublishCenter", "发布中心", "tab.icon.publish.center")
-	self:AddTabItem("TabItem_PropertyService", "物业服务", "tab.icon.property.service")
-	self:AddTabItem("TabItem_CommunityService", "社区服务", "tab.icon.community.service")
-	self:AddTabItem("TabItem_OwnerManagement", "业主管理", "tab.icon.owner.managerment")
-	self:AddTabItem("TabItem_RightsManagement", "权限管理", "tab.icon.rights.management")
-	self:AddTabItem("TabItem_LogQuery", "日志查询", "tab.icon.log.query")
-	self:AddTabItem("TabItem_NotifyCenter", "通知中心", "tab.icon.notify.center")
+	self:AddTabItem("TabItem_PublishCenter", "", "tab.icon.publish.center", "tab.icon.publish.center.select")
+	self:AddTabItem("TabItem_PropertyService", "", "tab.icon.property.service", "tab.icon.property.service.select")
+	self:AddTabItem("TabItem_CommunityService", "", "tab.icon.community.service", "tab.icon.community.service.select")
+	self:AddTabItem("TabItem_OwnerManagement", "", "tab.icon.owner.managerment", "tab.icon.owner.managerment.select")
+	self:AddTabItem("TabItem_RightsManagement", "", "tab.icon.rights.management", "tab.icon.rights.management.select")
+	self:AddTabItem("TabItem_LogQuery", "", "tab.icon.log.query", "tab.icon.log.query.select")
+	self:AddTabItem("TabItem_NotifyCenter", "", "tab.icon.notify.center", "tab.icon.notify.center.select")
 end
 
 function OnActiveTabChanged(self, eventName, newid, oldid)

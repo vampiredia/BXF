@@ -6,7 +6,7 @@ function SetButtonActive(self, button, active)
 end
 
 --	active:bool 是否激活
-function AddTabItem(self, id, text, icon, active, funcItemCallBack)
+function AddTabItem(self, id, text, icon, icon_select, active, funcItemCallBack)
 	local objExist = self:GetControlObject(id)
 	if objExist ~= nil then
 		return
@@ -28,7 +28,8 @@ function AddTabItem(self, id, text, icon, active, funcItemCallBack)
 	btnAttr.IconTopPos = attr.IconTopPos
 	btnAttr.IconHAlign = attr.IconHAlign
 	btnAttr.IconVAlign = attr.IconVAlign
-	btnAttr.IconSize = attr.IconSize
+	btnAttr.IconWidth = attr.IconWidth
+	btnAttr.IconHeight = attr.IconHeight
 	btnAttr.text_valign = attr.TextValign
 	local btnStyle = btn:GetStyle()
 	btnStyle.text_pos_left = attr.TextLeftPos
@@ -41,9 +42,12 @@ function AddTabItem(self, id, text, icon, active, funcItemCallBack)
 	btnStyle.bkg_normal_texture = attr.BtnBkgNormal
 	btnStyle.bkg_hover_texture = attr.BtnBkgHover
 	btnStyle.bkg_down_texture = attr.BtnBkgDown
+	btnAttr.NormalIcon = icon
+	btnAttr.SelectIcon = icon_select
 	
 	btn:SetText(text)
 	btn:SetIcon(icon)
+	btn:SetIconPos((attr.ButtonWidth-attr.IconWidth)/2, attr.ButtonHeight-attr.IconHeight)
 	btn:UpdateUI()
 	local pos = 0
 	local btnCount = bkgObj:GetChildCount()
@@ -66,8 +70,10 @@ function AddTabItem(self, id, text, icon, active, funcItemCallBack)
 	end
 	btn:AttachListener("OnClick", true, OnButtonClick)
 	bkgObj:AddChild(btn)
+	local bkgl, bkgt, bkgr, bkgb = bkgObj:GetObjPos()
+	local bkgHeight = bkgb - bkgt
 	if attr.TabDirection == "horizontal" then
-		btn:SetObjPos(pos, 0, pos + attr.ButtonWidth, 0 + attr.ButtonHeight)
+		btn:SetObjPos(pos, 0, pos + attr.ButtonWidth, attr.ButtonHeight)
 	elseif attr.TabDirection == "vertical" then
 		btn:SetObjPos(0, pos, 0 + attr.ButtonWidth, pos + attr.ButtonHeight)
 	end
@@ -101,6 +107,15 @@ function RemoveTabItem(self, remove_id, active_id)
 	bkgObj:RemoveChild(btn)
 end
 
+function SetBtnIcon(self, btn, state)
+	local btnAttr = btn:GetAttribute()
+	if state == 'normal' then 
+		if btnAttr.NormalIcon ~= nil then btn:SetIcon(btnAttr.NormalIcon) end
+	elseif state == 'down' then 
+		if btnAttr.SelectIcon ~= nil then btn:SetIcon(btnAttr.SelectIcon) end
+	end
+end
+
 function SetActiveTab(self, tabID, fireEvent)
 	local attr = self:GetAttribute()
 	if attr.CurrentActiveTab == tabID then
@@ -114,6 +129,7 @@ function SetActiveTab(self, tabID, fireEvent)
 
 	SetButtonActive(self, btn, true)
 	btn:ChangeStatus("down")
+	SetBtnIcon(self, btn, 'down')
 	
 	local pre_active = attr.CurrentActiveTab
 	if pre_active ~= nil then
@@ -123,6 +139,7 @@ function SetActiveTab(self, tabID, fireEvent)
 		end
 		SetButtonActive(self, btn, false)
 		btn:ChangeStatus("normal")
+		SetBtnIcon(self, btn, 'normal')
 	end
 	
 	attr.CurrentActiveTab = tabID

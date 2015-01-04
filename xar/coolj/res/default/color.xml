@@ -35,9 +35,9 @@
 
 
 		<color id="taskinfo.basic.text.font.color" red="81" green="81" blue="81" alpha="255"/>
-		<color id="mainwnd.bkg.top.color"  blue="233" green="234" red="222" alpha="255"/>
-		<color id="mainwnd.bkg.bottom.color"  blue="233" green="234" red="222" alpha="255"/>
-		<color id="mainwnd.bkg.fill.color"  blue="233" green="234" red="222" alpha="255"/>
+		<color id="mainwnd.bkg.top.color"  blue="244" green="244" red="244" alpha="255"/>
+		<color id="mainwnd.bkg.bottom.color"  blue="244" green="244" red="244" alpha="255"/>
+		<color id="mainwnd.bkg.fill.color"  blue="244" green="244" red="244" alpha="255"/>
 		<color id="mainwnd.font.bkg.src" blue="255" green="255" red="255" alpha="190"/>
 		<color id="mainwnd.font.bkg.dst" blue="0" green="0" red="0" alpha="0"/>
 

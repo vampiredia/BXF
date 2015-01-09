@@ -71,6 +71,8 @@
 			</attr>
 		</attr_def>
 		<method_def>
+			<GetLength file="RichEdit.xml.lua" func="GetLength" />
+			<GetMaxLength file="RichEdit.xml.lua" func="GetMaxLength" />
 			<GetSel file="RichEdit.xml.lua" func="GetSel" />
 			<SetSel file="RichEdit.xml.lua" func="SetSel" />
 			<SetNoCaret file="RichEdit.xml.lua" func="SetNoCaret"/>

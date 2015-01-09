@@ -100,10 +100,8 @@ function GetSel( self )
 end
 
 function GetText(self)
-    local edit = self:GetControlObject("newedit.edit")
-	local ownerattr = edit:GetOwnerControl():GetAttribute()
-	local text = edit:GetText()
-    return text
+    local attr = self:GetAttribute()
+    return attr.Text
 end
 
 function SetReadOnly(self, enable)
@@ -159,10 +157,10 @@ function OnBind(self)
 	end
 	
 	if not attr.EditCustom then
-		attr.EditLeft = 0
-		attr.EditTop = 4
-		attr.EditWidth = "father.width - 4"
-		attr.EditHeight = "father.height - 7"
+		attr.EditLeft = 8
+		attr.EditTop = 9
+		attr.EditWidth = "father.width - 22"
+		attr.EditHeight = "father.height - 17"
 	end
     edit:SetObjPos(attr.EditLeft, attr.EditTop, ""..attr.EditLeft.."+"..attr.EditWidth, ""..attr.EditTop.."+"..attr.EditHeight)
 end

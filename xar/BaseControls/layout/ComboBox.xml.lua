@@ -207,7 +207,7 @@ function CB__OnInitControl(self)
         nowLeft = nowLeft + attr.DesWidth + 2
 	end
 	local right = "father.width - " .. tostring(attr.EditRight) .. " - "..attr.EditRightMargin
-    edit:SetObjPos( ""..nowLeft.."-" .. tostring(attr.EditLeftMargin), tostring(attr.EditTopMargin), right, "father.height - " .. tostring(attr.EditBottomMargin) )
+    edit:SetObjPos( ""..nowLeft.."+" .. tostring(attr.EditLeftMargin), tostring(attr.EditTopMargin), right, "father.height - " .. tostring(attr.EditBottomMargin) )
     btn:SetObjPos("father.width - " .. tostring(attr.ExpandIconLeft), "0", "father.width - " .. tostring(attr.ExpandIconLeft) .. " + " .. tostring(attr.ExpandIconWidth), "father.height")
 --    btn:SetObjPos(width - 2 - 22, 0, width - 2, height)
     local lblayout = self:GetControlObject("listbox.layout")

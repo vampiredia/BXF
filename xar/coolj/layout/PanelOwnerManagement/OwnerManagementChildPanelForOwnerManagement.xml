@@ -304,8 +304,8 @@
 								<obj id="text.info.name" class="WHome.Edit">
 									<attr>
 										<left>70</left>
-										<width>150</width>
-										<height>father.height</height>
+										<width>170</width>
+										<height>36</height>
 										<TipText>请输入2-5个汉字</TipText>
 										<Text>黄蓉</Text>
 										<NormalTipTextColor>system.gray</NormalTipTextColor>
@@ -503,17 +503,54 @@
 							<attr>
 								<left>200</left>
 								<top>father.height - 80</top>
-								<width>64</width>
-								<height>25</height>
+								<width>103</width>
+								<height>32</height>
 								<valign>center</valign>
-								<NormalBkgID>green.button.normal</NormalBkgID>
-								<DownBkgID>green.button.down</DownBkgID>
-								<DisableBkgID>green.button.disable</DisableBkgID>
-								<HoverBkgID>green.button.hover</HoverBkgID>
+								<NormalBkgID>texture.button.blue.normal</NormalBkgID>
+								<DownBkgID>texture.button.blue.down</DownBkgID>
+								<DisableBkgID>texture.button.blue.disable</DisableBkgID>
+								<HoverBkgID>texture.button.blue.hover</HoverBkgID>
 								<Text>保存修改</Text>
+								<TextColor>system.white</TextColor>
 							</attr>
 							<eventlist>
 								<event name="OnClick" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="BTN_OnSave" />
+							</eventlist>
+						</obj>
+						<obj id="btn.save" class="WHome.Button">
+							<attr>
+								<left>200</left>
+								<top>father.height - 40</top>
+								<width>103</width>
+								<height>32</height>
+								<valign>center</valign>
+								<NormalBkgID>texture.button.green.normal</NormalBkgID>
+								<DownBkgID>texture.button.green.down</DownBkgID>
+								<DisableBkgID>texture.button.green.disable</DisableBkgID>
+								<HoverBkgID>texture.button.green.hover</HoverBkgID>
+								<Text>保存修改</Text>
+								<TextColor>system.white</TextColor>
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="OwnerManagementChildPanelForOwnerManagement.xml.lua" func="BTN_OnSave" />
+							</eventlist>
+						</obj>
+						<obj id="btn.small" class="WHome.Button">
+							<attr>
+								<left>400</left>
+								<top>father.height - 80</top>
+								<width>77</width>
+								<height>32</height>
+								<valign>center</valign>
+								<NormalBkgID>texture.button.small.blue.normal</NormalBkgID>
+								<DownBkgID>texture.button.small.blue.down</DownBkgID>
+								<DisableBkgID>texture.button.small.blue.disable</DisableBkgID>
+								<HoverBkgID>texture.button.small.blue.hover</HoverBkgID>
+								<Text>保存修改</Text>
+								<TextColor>system.white</TextColor>
+							</attr>
+							<eventlist>
+								
 							</eventlist>
 						</obj>
 					</children>

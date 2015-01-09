@@ -65,27 +65,31 @@
 								<top>6</top>
 								<width>father.width - 200</width>
 								<height>24</height>			
-								<text>远洋山水</text>
+								<text/>
 								<halign>center</halign>
 								<textcolor>system.white</textcolor>
 								<font>subcaption.font</font>
 								<zorder>330</zorder>
 							</attr>
 						</obj>
-						
-						<obj id="login.text" class="TextObject">
+
+						<obj id="login.text" class="WHome.TextLink">
 							<attr>
 								<!-- 使用表达式局中-->
 								<left>father.width - 120</left> 
 								<top>5</top>
 								<width>36</width>
 								<height>24</height>			
-								<text>登录</text>
-								
-								<textcolor>system.white</textcolor>
-								<font>subcaption.font</font>
+								<Text>登录</Text>
+								<TextColor>system.white</TextColor>
+								<HoverTextColor>system.white</HoverTextColor>
+								<Font>subcaption.font</Font>
+								<HoverFont>subcaption.font</HoverFont>
 								<zorder>330</zorder>
 							</attr>
+							<eventlist>
+								<event name="OnClick" file="MainWnd.xml.lua" func="OnLogin" />
+							</eventlist>
 						</obj>
 
 						<obj id="mainwnd.sysbtn" class="Thunder.System.ButtonEx.Ctrl" >
@@ -124,12 +128,13 @@
 					<children>
 
 						<!-- personal info -->
-						<!--<obj id="UserInfo" class="LayoutObject">
+						<obj id="UserInfo" class="LayoutObject">
 							<attr>
 								<left>father.width-130</left>
 								<top>8</top>
 								<width>115</width>
 								<height>48</height>
+								<zorder>999</zorder>
 							</attr>
 							<children>
 								<obj id="UserHeadPic" class="ImageObject">
@@ -148,7 +153,7 @@
 										<left>64</left>
 										<width>father.width-left</width>
 										<height>24</height>
-										<text>Lydia</text>
+										<text></text>
 									</attr>
 								</obj>
 								<obj id="BtnLogout" class="WHome.TextLink">
@@ -161,10 +166,13 @@
 										<Text>退出</Text>
 										<TextColor>system.black</TextColor>
 									</attr>
+									<eventlist>
+										<event name="OnClick" file="MainWnd.xml.lua" func="OnLogout" />
+									</eventlist>
 								</obj>
 							</children>
 						</obj>
-						-->
+						
 						<!-- tab header -->
 						<!-- -->
 						<obj id="tab.bkg" class="ImageObject">
@@ -263,7 +271,7 @@
 							</attr>
 						</obj>
 						<!-- -->
-						
+
 						<obj id="Notify.Container" class="CoolJ.Notify.Container">
 							<attr>
 								<left>139</left>

@@ -10,9 +10,9 @@
             <attr name="DisableBkgID" type="string">
                 <default>texture.edit.bkg.disable</default>
             </attr>
-			<attr name="DisableTextColor" type="string"><default>color.text.normal</default></attr>
-			<attr name="NormalTextColor" type="string"><default>color.text.normal</default></attr>
-			<attr name="HoverTextColor" type="string"><default>color.text.normal</default></attr>
+			<attr name="DisableTextColor" type="string"><default>edit.default.font.color</default></attr>
+			<attr name="NormalTextColor" type="string"><default>edit.default.font.color</default></attr>
+			<attr name="HoverTextColor" type="string"><default>edit.default.font.color</default></attr>
             <attr name="Text" type="string" ><default></default></attr>
 			<attr name="TipText" type="string" ><default></default></attr>
 			<attr name="NormalTipTextColor" type="string" ><default>color.text.normal</default></attr>
@@ -61,7 +61,7 @@
                 <default>false</default>
             </attr>
 			<attr name="Font" type="string">
-				<default>newtask.edit.font</default>
+				<default>edit.default.font</default>
 			</attr>
 			<attr name="Password" type="bool">
 				<default>fasle</default>

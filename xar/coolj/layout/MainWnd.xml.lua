@@ -36,7 +36,6 @@ local function ChangeColor(hBitmap)
 	end
 end
 
-
 function OnSize(self, sizetype, width, height)
 
 	if type_ == "min" then
@@ -111,6 +110,8 @@ function OnDrop(self, dataObject, keyState, x, y)
 end
 
 function OnClose(self)
+	-- user state logout
+	Logout(nil)
 	
 	local hostwndManager = XLGetObject("Xunlei.UIEngine.HostWndManager")
 	local hostwnd = hostwndManager:GetHostWnd("CoolJ.MainWnd.Instance")
@@ -282,7 +283,56 @@ function test(self)
 	self:SetIcon('tab.icon.publish.center')
 end
 
+function Login(self)
+	local app = XLGetObject("CoolJ.App")
+	local ret, status = app:GetString("Community", "Community_State", "")
+	if status == 'ok' then
+		local communityCaptionObj = self:GetControlObject("community.text")
+		local ret, caption = app:GetString("Community", "Community_Caption", "")
+		communityCaptionObj:SetVisible(true)
+		communityCaptionObj:SetText(caption)
+		
+		local loginObj = self:GetControlObject("login.text")
+		loginObj:SetVisible(false)
+		
+		local userInfoObj = self:GetControlObject("UserInfo")
+		userInfoObj:SetVisible(true)
+		userInfoObj:SetChildrenVisible(true)
+		local ret, nick = app:GetString("Community", "Community_Nick", "")
+		local nickObj = self:GetControlObject("UserName")
+		nickObj:SetText(nick)
+	else
+		local communityCaptionObj = self:GetControlObject("community.text")
+		if communityCaptionObj ~= nil then communityCaptionObj:SetVisible(false) end
+		local loginObj = self:GetControlObject("login.text")
+		if loginObj ~= nil then loginObj:SetVisible(true) end
+		local userInfoObj = self:GetControlObject("UserInfo")
+		if userInfoObj ~= nil then
+			userInfoObj:SetVisible(false)
+			userInfoObj:SetChildrenVisible(false)
+		end
+	end
+end
+
+function Logout(self)
+	local app = XLGetObject("CoolJ.App")
+	app:SetString("Community", "Community_State" ,"")
+	app:SetString("Community", "Community_Ak" ,"")
+	
+	if self == nil then return end
+	local communityCaptionObj = self:GetControlObject("community.text")
+	if communityCaptionObj ~= nil then communityCaptionObj:SetVisible(false) end
+	local loginObj = self:GetControlObject("login.text")
+	if loginObj ~= nil then loginObj:SetVisible(true) end
+	local userInfoObj = self:GetControlObject("UserInfo")
+	if userInfoObj ~= nil then
+		userInfoObj:SetVisible(false)
+		userInfoObj:SetChildrenVisible(false)
+	end
+end
+
 function OnInitControl(self)
+	Login(self)
 	self:SetBkgType(1)
 end
 
@@ -295,4 +345,16 @@ end
 
 function Tray_OnMouseEnter(self)
 	XLMessageBox(44)
+end
+
+function OnLogin(self)
+	local app = XLGetObject("CoolJ.App")
+	ret = LoginWnd(nil)
+	if ret == 1 then Login(self:GetOwnerControl()) end
+end
+
+
+
+function OnLogout(self)
+	Logout(self:GetOwnerControl())
 end

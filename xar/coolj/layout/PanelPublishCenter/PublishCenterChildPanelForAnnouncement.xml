@@ -26,21 +26,6 @@
 					</attr>
 				</obj>
 
-				<obj id="BtnNoticePublishWarning" class="WHome.TextLink">
-					<attr>
-						<top>5</top>
-						<left>father.width-120</left>
-						<width>100</width>
-						<height>26</height>
-						<valign>center</valign>
-						<Text>社区公告发布须知</Text>
-						<TextColor>system.blue</TextColor>
-					</attr>
-					<eventlist>
-						<event name="OnClick" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnClickNoticePublishWarning" />
-					</eventlist>
-				</obj>
-
 				<!-- 默认发布公告主页，提供操作入口|前期使用后期tab可能采用抽屉的方式 -->
 				<obj id="main.page" class="LayoutObject">
 					<attr>
@@ -49,18 +34,36 @@
 						<visible>0</visible>
 					</attr>
 					<children>
+						<obj id="BtnNoticePublishWarning" class="WHome.Button">
+							<attr>
+								<top>8</top>
+								<left>father.width-162</left>
+								<width>166</width>
+								<height>41</height>
+								<Text>社区公告发布须知</Text>
+								<TextFont>text.btn.bold.font</TextFont>
+								<TextColor>system.white</TextColor>
+								<NormalBkgID>texture.btn.warn.normal.bkg</NormalBkgID>
+								<DownBkgID>texture.btn.warn.down.bkg</DownBkgID>
+								<DisableBkgID/>
+								<HoverBkgID>texture.btn.warn.hover.bkg</HoverBkgID>	
+							</attr>
+							<eventlist>
+								<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnClickNoticePublishWarningInitControl" />
+								<event name="OnClick" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnClickNoticePublishWarning" />
+							</eventlist>
+						</obj>
 						<obj id="BtnNewNotice" class="WHome.Button">
 							<attr>
-								<top>200</top>
+								<top>105</top>
 								<left>140</left>
-								<width>102</width>
-								<height>34</height>
+								<width>128</width>
+								<height>129</height>
 								<valign>center</valign>
-								<Text>发布新公告</Text>
-								<NormalBkgID>general.maigc.button.normal</NormalBkgID>
-								<DownBkgID>general.maigc.button.down</DownBkgID>
-								<DisableBkgID>general.maigc.button.disable</DisableBkgID>
-								<HoverBkgID>general.maigc.button.hover</HoverBkgID>	
+								<NormalBkgID>texture.btn.notice.new.normal.bkg</NormalBkgID>
+								<DownBkgID>texture.btn.notice.new.down.bkg</DownBkgID>
+								<DisableBkgID/>
+								<HoverBkgID>texture.btn.notice.new.hover.bkg</HoverBkgID>	
 							</attr>
 							<eventlist>
 								<event name="OnClick" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnClickNewNotice" />
@@ -68,16 +71,15 @@
 						</obj>
 						<obj id="BtnNoticeHistory" class="WHome.Button">
 							<attr>
-								<top>200</top>
+								<top>105</top>
 								<left>400</left>
-								<width>102</width>
-								<height>34</height>
+								<width>128</width>
+								<height>129</height>
 								<valign>center</valign>
-								<Text>查看历史公告</Text>
-								<NormalBkgID>general.maigc.button.normal</NormalBkgID>
-								<DownBkgID>general.maigc.button.down</DownBkgID>
-								<DisableBkgID>general.maigc.button.disable</DisableBkgID>
-								<HoverBkgID>general.maigc.button.hover</HoverBkgID>	
+								<NormalBkgID>texture.btn.notice.history.normal.bkg</NormalBkgID>
+								<DownBkgID>texture.btn.notice.history.down.bkg</DownBkgID>
+								<DisableBkgID/>
+								<HoverBkgID>texture.btn.notice.history.hover.bkg</HoverBkgID>
 							</attr>
 							<eventlist>
 								<event name="OnClick" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnClickNoticeHistory" />
@@ -96,26 +98,65 @@
 						<height>father.height</height>
 					</attr>
 					<children>
+						<obj id="BtnNoticePublishWarning" class="WHome.Button">
+							<attr>
+								<top>8</top>
+								<left>father.width-162</left>
+								<width>166</width>
+								<height>41</height>
+								<Text>社区公告发布须知</Text>
+								<TextFont>text.btn.bold.font</TextFont>
+								<TextColor>system.white</TextColor>
+								<NormalBkgID>texture.btn.warn.normal.bkg</NormalBkgID>
+								<DownBkgID>texture.btn.warn.down.bkg</DownBkgID>
+								<DisableBkgID/>
+								<HoverBkgID>texture.btn.warn.hover.bkg</HoverBkgID>	
+							</attr>
+							<eventlist>
+								<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnClickNoticePublishWarningInitControl" />
+								<event name="OnClick" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnClickNoticePublishWarning" />
+							</eventlist>
+						</obj>
+						<obj id="texture.back" class="TextureObject">
+							<attr>
+								<left>13</left>
+								<top>18</top>
+								<width>20</width>
+								<height>20</height>
+								<texture>texture.back.bkg</texture>
+							</attr>
+						</obj>
 						<obj id="BtnGotoMainPage" class="WHome.TextLink">
 							<attr>
-								<top>5</top>
-								<left>25</left>
+								<top>15</top>
+								<left>38</left>
 								<width>160</width>
 								<height>26</height>
 								<valign>center</valign>
-								<Text>返回『社区公告发布』首页</Text>
-								<TextColor>system.blue</TextColor>
+								<Text>返回社区公告</Text>
+								<TextColor>system.black</TextColor>
+								<Font>text.btn.bold.font</Font>
+								<HoverFont>text.btn.bold.font</HoverFont>
 							</attr>
 							<eventlist>
 								<event name="OnClick" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnClickNewNoticePageToMainPage" />
 							</eventlist>
+						</obj>
+						<obj id="texture.xiahuaxian" class="TextureObject">
+							<attr>
+								<left>38</left>
+								<top>54</top>
+								<width>father.width-38</width>
+								<height>1</height>
+								<texture>texture.xiahuaxian.bkg</texture>
+							</attr>
 						</obj>
 
 						<!-- 公告标题 -->
 						<obj id="layout.notice.title" class="LayoutObject">
 							<attr>
 								<left>20</left>
-								<top>40</top>
+								<top>58</top>
 								<width>310</width>
 								<height>26</height>
 							</attr>
@@ -123,7 +164,7 @@
 								<obj id="text.notice.title" class="TextObject">
 									<attr>
 										<left>0</left>
-										<top>4</top>
+										<top>8</top>
 										<width>60</width>
 										<height>18</height>
 										<text>公告标题：</text>
@@ -132,20 +173,20 @@
 								<obj id="edit.notice.title" class="WHome.Edit">
 									<attr>
 										<left>66</left>
-										<top>1</top>
-										<width>200</width>
-										<height>26</height>
+										<top>0</top>
+										<width>250</width>
+										<height>34</height>
 										<TipText>请输入6-15个汉字</TipText>
 										<NormalTipTextColor>system.gray</NormalTipTextColor>
 									</attr>
 								</obj>
 								<obj id="text.notice.title.tip" class="TextObject">
 									<attr>
-										<left>270</left>
-										<top>8</top>
+										<left>320</left>
+										<top>10</top>
 										<width>40</width>
 										<height>16</height>
-										<text>(必填项)</text>
+										<text>必填项</text>
 										<textcolor>system.red</textcolor>
 										<font>text.tip.normal.font</font>
 									</attr>
@@ -156,8 +197,8 @@
 						<!-- 发布范围 -->
 						<obj id="layout.notice.range" class="LayoutObject">
 							<attr>
-								<left>440</left>
-								<top>40</top>
+								<left>430</left>
+								<top>58</top>
 								<width>211</width>
 								<height>24</height>
 							</attr>
@@ -165,7 +206,7 @@
 								<obj id="text.publish.range" class="TextObject">
 									<attr>
 										<left>0</left>
-										<top>4</top>
+										<top>8</top>
 										<width>60</width>
 										<height>18</height>
 										<text>发布范围：</text>
@@ -175,8 +216,8 @@
 									<attr>
 										<left>66</left>
 										<top>0</top>
-										<width>100</width>
-										<height>24</height>
+										<width>150</width>
+										<height>34</height>
 										<Text>23</Text>
 									</attr>
 									<eventlist>
@@ -185,11 +226,11 @@
 								</obj>
 								<obj id="text.notice.title.tip" class="TextObject">
 									<attr>
-										<left>171</left>
-										<top>8</top>
+										<left>223</left>
+										<top>10</top>
 										<width>40</width>
 										<height>16</height>
-										<text>(默认)</text>
+										<text>默认</text>
 										<textcolor>system.red</textcolor>
 										<font>text.tip.normal.font</font>
 									</attr>
@@ -201,9 +242,9 @@
 						<obj id="layout.notice.content" class="LayoutObject">
 							<attr>
 								<left>20</left>
-								<top>80</top>
-								<width>400</width>
-								<height>375</height>
+								<top>138</top>
+								<width>father.width-40</width>
+								<height>180</height>
 							</attr>
 							<children>		
 								<obj id="text.notice.content" class="TextObject">
@@ -221,7 +262,18 @@
 										<top>2</top>
 										<width>40</width>
 										<height>16</height>
-										<text>(必填项)</text>
+										<text>必填项</text>
+										<textcolor>system.red</textcolor>
+										<font>text.tip.normal.font</font>
+									</attr>
+								</obj>
+								<obj id="text.notice.words.tip" class="TextObject">
+									<attr>
+										<left>father.width-110</left>
+										<top>2</top>
+										<width>100</width>
+										<height>16</height>
+										<text>还能输入400个汉字</text>
 										<textcolor>system.red</textcolor>
 										<font>text.tip.normal.font</font>
 									</attr>
@@ -234,7 +286,11 @@
 										<height>father.height-26</height>
 										<WordWrap>true</WordWrap>
 										<AllowVSB>true</AllowVSB>
+										<MaxLength>400</MaxLength>
 									</attr>
+									<eventlist>
+										<event name="OnEditChange" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnEditChange" />
+									</eventlist>
 								</obj>
 							</children>
 						</obj>
@@ -242,8 +298,8 @@
 						<!-- 有效期 -->
 						<obj id="layout.notice.valid" class="LayoutObject">
 							<attr>
-								<left>440</left>
-								<top>80</top>
+								<left>20</left>
+								<top>98</top>
 								<width>211</width>
 								<height>24</height>
 							</attr>
@@ -251,7 +307,7 @@
 								<obj id="text.notice.valid" class="TextObject">
 									<attr>
 										<left>0</left>
-										<top>0</top>
+										<top>8</top>
 										<width>60</width>
 										<height>18</height>							
 										<text>有效期：</text>
@@ -261,9 +317,9 @@
 								<obj id="cb.notice.valid" class="WHome.ComboBox">
 									<attr>
 										<left>66</left>
-										<top>-3</top>
-										<width>100</width>
-										<height>24</height>
+										<top>0</top>
+										<width>120</width>
+										<height>34</height>
 										<Text>23</Text>
 									</attr>
 									<eventlist>
@@ -276,8 +332,8 @@
 						<!-- 定时推送 -->
 						<obj id="layout.notice.pushtime" class="LayoutObject">
 							<attr>
-								<left>440</left>
-								<top>200</top>
+								<left>240</left>
+								<top>98</top>
 								<width>211</width>
 								<height>100</height>
 							</attr>
@@ -285,7 +341,7 @@
 								<obj id="checkbox.notice.pushtime" class="WHome.CheckBox">
 									<attr>
 										<left>0</left>
-										<top>0</top>
+										<top>7</top>
 										<width>80</width>
 										<height>18</height>
 										<Text>定时发布</Text>
@@ -301,8 +357,8 @@
 						<!-- 设定日期、时间 -->
 						<obj id="layout.notice.setting" class="LayoutObject">
 							<attr>
-								<left>440</left>
-								<top>120</top>
+								<left>340</left>
+								<top>98</top>
 								<width>211</width>
 								<height>100</height>
 							</attr>
@@ -310,7 +366,7 @@
 								<obj id="text.notice.setdate" class="TextObject">
 									<attr>
 										<left>0</left>
-										<top>0</top>
+										<top>8</top>
 										<width>60</width>
 										<height>18</height>							
 										<text>设定日期：</text>
@@ -319,8 +375,8 @@
 								</obj>
 								<obj id="text.notice.settime" class="TextObject">
 									<attr>
-										<left>0</left>
-										<top>40</top>
+										<left>126</left>
+										<top>8</top>
 										<width>60</width>
 										<height>18</height>
 										<text>设定时间：</text>
@@ -329,10 +385,10 @@
 								</obj>
 								<obj id="cb.setting.time" class="WHome.ComboBox">
 									<attr>
-										<left>66</left>
-										<top>37</top>
-										<width>100</width>
-										<height>24</height>
+										<left>195</left>
+										<top>0</top>
+										<width>112</width>
+										<height>34</height>
 										<Text>23</Text>
 									</attr>
 									<eventlist>
@@ -345,9 +401,9 @@
 						<!-- 图片上传控件 -->
 						<obj id="layout.upload.pic" class="LayoutObject">
 							<attr>
-								<left>440</left>
-								<top>240</top>
-								<width>250</width>
+								<left>20</left>
+								<top>336</top>
+								<width>father.width-40</width>
 								<height>170</height>
 							</attr>
 							<children>
@@ -364,70 +420,75 @@
 									<attr>
 										<left>62</left>
 										<top>0</top>
-										<width>48</width>
+										<width>father.width-62</width>
 										<height>24</height>
-										<text>(可选项)</text>
-										<textcolor>system.gray</textcolor>
-									</attr>
-								</obj>
-								<obj id="text.upload.notice" class="TextObject">
-									<attr>
-										<left>0</left>
-										<top>24</top>
-										<width>father.width</width>
-										<height>32</height>
 										<multiline>1</multiline>
-										<text>请上传1-5张图片，大小1M。图片将在公告正文下方依次显示。</text>
+										<text>可选项 请上传1-5张图片，大小1M。支付图片格式为jpg、png。图片将在公告正文下方依次显示。</text>
 										<textcolor>system.gray</textcolor>
 									</attr>
 								</obj>
 								<obj id="container.upload" class="CoolJ.Upload.Container">
 									<attr>
 										<left>-13</left>
-										<top>48</top>
+										<top>8</top>
 										<width>81</width>
 										<height>81</height>
 										<Margin>8</Margin>
 										<ItemWidth>48</ItemWidth>
 										<ItemHeight>48</ItemHeight>
-										<ColumnNum>4</ColumnNum>
-										<MaxNum>5</MaxNum>
+										<ColumnNum>10</ColumnNum>
+										<MaxNum>10</MaxNum>
 									</attr>
 								</obj>
 							</children>
 						</obj>
 						<obj id="btn.new.notice.preview" class="WHome.Button">
 							<attr>
-								<top>father.height - 32</top>
-								<left>father.width - 250</left>
-								<width>60</width>
-								<height>22</height>
-								<zorder>1000</zorder>	
-								<Text>预览</Text>
-								<NormalBkgID>green.button.normal</NormalBkgID>
-								<DownBkgID>green.button.down</DownBkgID>
-								<DisableBkgID>green.button.disable</DisableBkgID>
-								<HoverBkgID>green.button.hover</HoverBkgID>
-								<ShowFocusRect>false</ShowFocusRect>
+								<top>father.height - 45</top>
+								<left>100</left>
+								<width>103</width>
+								<height>32</height>
+								<valign>center</valign>
+								<NormalBkgID>texture.button.blue.normal</NormalBkgID>
+								<DownBkgID>texture.button.blue.down</DownBkgID>
+								<DisableBkgID>texture.button.blue.disable</DisableBkgID>
+								<HoverBkgID>texture.button.blue.hover</HoverBkgID>
+								<Text>预 览</Text>
+								<TextColor>system.white</TextColor>
 							</attr>
 						</obj>
 						<obj id="btn.new.notice.publish" class="WHome.Button">
 							<attr>
+								<left>300</left>
 								<top>father.height - 45</top>
-								<left>father.width-175</left>
-								<width>100</width>
-								<height>36</height>
-								<zorder>1000</zorder>	
-								<NormalBkgID>blue.big.button.normal</NormalBkgID>
-								<DownBkgID>blue.big.button.down</DownBkgID>
-								<DisableBkgID>blue.big.button.disable</DisableBkgID>
-								<HoverBkgID>blue.big.button.hover</HoverBkgID>		
-								<Text>发布</Text>
-								<ShowFocusRect>false</ShowFocusRect>
+								<width>103</width>
+								<height>32</height>
+								<valign>center</valign>
+								<NormalBkgID>texture.button.green.normal</NormalBkgID>
+								<DownBkgID>texture.button.green.down</DownBkgID>
+								<DisableBkgID>texture.button.green.disable</DisableBkgID>
+								<HoverBkgID>texture.button.green.hover</HoverBkgID>
+								<Text>发 布</Text>
+								<TextColor>system.white</TextColor>
 							</attr>
 							<eventlist>
 								<event name="OnClick" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="BTN_PublishNotice" />
 							</eventlist>
+						</obj>
+						<obj id="btn.new.notice.edit.change" class="WHome.Button">
+							<attr>
+								<top>father.height - 45</top>
+								<left>500</left>
+								<width>103</width>
+								<height>32</height>
+								<valign>center</valign>
+								<NormalBkgID>texture.button.blue.normal</NormalBkgID>
+								<DownBkgID>texture.button.blue.down</DownBkgID>
+								<DisableBkgID>texture.button.blue.disable</DisableBkgID>
+								<HoverBkgID>texture.button.blue.hover</HoverBkgID>
+								<Text>放弃修改</Text>
+								<TextColor>system.white</TextColor>
+							</attr>
 						</obj>
 					</children>
 				</obj>
@@ -437,24 +498,44 @@
 						<height>father.height</height>
 					</attr>
 					<children>
+						<obj id="texture.back" class="TextureObject">
+							<attr>
+								<left>13</left>
+								<top>18</top>
+								<width>20</width>
+								<height>20</height>
+								<texture>texture.back.bkg</texture>
+							</attr>
+						</obj>
 						<obj id="BtnGotoMainPage" class="WHome.TextLink">
 							<attr>
-								<top>5</top>
-								<left>25</left>
+								<top>15</top>
+								<left>38</left>
 								<width>160</width>
 								<height>26</height>
 								<valign>center</valign>
-								<Text>返回『社区公告发布』首页</Text>
-								<TextColor>system.blue</TextColor>
+								<Text>返回社区公告</Text>
+								<TextColor>system.black</TextColor>
+								<Font>text.btn.bold.font</Font>
+								<HoverFont>text.btn.bold.font</HoverFont>
 							</attr>
 							<eventlist>
 								<event name="OnClick" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="OnClickHistoryNoticePageToMainPage" />
 							</eventlist>
 						</obj>
+						<obj id="texture.xiahuaxian" class="TextureObject">
+							<attr>
+								<left>38</left>
+								<top>54</top>
+								<width>father.width-38</width>
+								<height>1</height>
+								<texture>texture.xiahuaxian.bkg</texture>
+							</attr>
+						</obj>
 						<obj id="layout.operate.area" class="LayoutObject">
 							<attr>
 								<left>5</left>
-								<top>35</top>
+								<top>54</top>
 								<width>father.width-10</width>
 								<height>60</height>
 							</attr>
@@ -470,18 +551,18 @@
 										<obj id="text.search.publish.author" class="TextObject">
 											<attr>
 												<left>0</left>
-												<top>3</top>
+												<top>8</top>
 												<width>56</width>
 												<height>18</height>
-												<text>发布人：</text>
+												<text>发布人</text>
 											</attr>
 										</obj>
 										<obj id="cb.search.publish.author" class="WHome.ComboBox">
 											<attr>
 												<top>0</top>
-												<left>61</left>
-												<width>140</width>
-												<height>24</height>
+												<left>50</left>
+												<width>120</width>
+												<height>34</height>
 											</attr>
 											<eventlist>
 												<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="CSPA_OnInitControl" />
@@ -492,7 +573,7 @@
 
 								<obj id="layout.search.publish.date" class="LayoutObject">
 									<attr>
-										<left>330</left>
+										<left>200</left>
 										<top>5</top>
 										<width>230</width>
 										<height>24</height>
@@ -501,10 +582,10 @@
 										<obj id="text.search.publish.date" class="TextObject">
 											<attr>
 												<left>0</left>
-												<top>3</top>
+												<top>8</top>
 												<width>56</width>
 												<height>18</height>
-												<text>发布时间：</text>
+												<text>发布时间</text>
 											</attr>
 										</obj>	
 										<obj id="cb.search.publish.date" class="WHome.ComboBox">
@@ -512,7 +593,7 @@
 												<top>0</top>
 												<left>60</left>
 												<width>140</width>
-												<height>24</height>
+												<height>34</height>
 											</attr>
 											<eventlist>
 												<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="CSPD_OnInitControl" />
@@ -532,18 +613,18 @@
 										<obj id="text.search.publish.status" class="TextObject">
 											<attr>
 												<left>0</left>
-												<top>3</top>
+												<top>8</top>
 												<width>56</width>
 												<height>18</height>
-												<text>状态：</text>
+												<text>状态</text>
 											</attr>
 										</obj>
 										<obj id="cb.search.publish.status" class="WHome.ComboBox">
 											<attr>
 												<top>0</top>
-												<left>61</left>
-												<width>140</width>
-												<height>24</height>
+												<left>50</left>
+												<width>120</width>
+												<height>34</height>
 											</attr>
 											<eventlist>
 												<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="CSPS_OnInitControl" />
@@ -554,8 +635,8 @@
 
 								<obj id="layout.search.publish.id" class="LayoutObject">
 									<attr>
-										<left>330</left>
-										<top>36</top>
+										<left>415</left>
+										<top>5</top>
 										<width>260</width>
 										<height>26</height>
 									</attr>
@@ -563,18 +644,18 @@
 										<obj id="text.search.publish.id" class="TextObject">
 											<attr>
 												<left>0</left>
-												<top>4</top>
+												<top>8</top>
 												<width>56</width>
 												<height>18</height>
-												<text>按ID搜索：</text>
+												<text>按ID搜索</text>
 											</attr>
 										</obj>	
 										<obj id="cb.search.publish.id" class="WHome.Edit">
 											<attr>
 												<top>0</top>
-												<left>60</left>
-												<width>140</width>
-												<height>26</height>
+												<left>50</left>
+												<width>120</width>
+												<height>34</height>
 												<TipText>点击输入</TipText>
 												<NormalTipTextColor>system.gray</NormalTipTextColor>
 											</attr>
@@ -585,14 +666,16 @@
 								<obj id="button.search" class="WHome.Button">
 									<attr>
 										<left>600</left>
-										<top>15</top>
-										<width>64</width>
-										<height>36</height>
-										<NormalBkgID>green.button.normal</NormalBkgID>
-										<DownBkgID>green.button.down</DownBkgID>
-										<DisableBkgID>green.button.disable</DisableBkgID>
-										<HoverBkgID>green.button.hover</HoverBkgID>		
+										<top>7</top>
+										<width>77</width>
+										<height>32</height>
+										<valign>center</valign>
+										<NormalBkgID>texture.button.small.blue.normal</NormalBkgID>
+										<DownBkgID>texture.button.small.blue.down</DownBkgID>
+										<DisableBkgID>texture.button.small.blue.disable</DisableBkgID>
+										<HoverBkgID>texture.button.small.blue.hover</HoverBkgID>
 										<Text>搜索</Text>
+										<TextColor>system.white</TextColor>
 									</attr>
 								</obj>
 							</children>
@@ -600,9 +683,9 @@
 						<obj id="layout.result.list.area" class="LayoutObject">
 							<attr>
 								<left>1</left>
-								<top>108</top>
+								<top>132</top>
 								<width>father.width-1</width>
-								<height>father.height-108</height>
+								<height>father.height-135</height>
 							</attr>
 							<children>
 								<obj id="rectangle.result.list.area" class="RectangleObject">

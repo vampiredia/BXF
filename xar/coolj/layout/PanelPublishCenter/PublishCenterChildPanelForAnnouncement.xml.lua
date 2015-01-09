@@ -171,9 +171,9 @@ function OnCheck(self, event, state, bClick)
 	--NoticePosInit(owner)
 	--XLMessageBox(owner:GetID())
 	if state then
-		AniPosChangeShow(owner)
+		--AniPosChangeShow(owner)
 	else
-		AniPosChangeHide(owner)
+		--AniPosChangeHide(owner)
 	end
 end
 
@@ -252,14 +252,14 @@ function NoticePosInit(owner)
 		objSetting:SetVisible(true)
 		objSetting:SetChildrenVisible(true)
 		
-		objPush:SetObjPos2(440, 200, 211, 100)
-		objPic:SetObjPos2(440, 240, 250, 170)
+		--objPush:SetObjPos2(440, 200, 211, 100)
+		--objPic:SetObjPos2(440, 240, 250, 170)
 	else
-		objSetting:SetVisible(false)
-		objSetting:SetChildrenVisible(false)
+		--objSetting:SetVisible(false)
+		--objSetting:SetChildrenVisible(false)
 		
-		objPush:SetObjPos2(440, 120, 211, 100)
-		objPic:SetObjPos2(440, 160, 250, 170)
+		--objPush:SetObjPos2(440, 120, 211, 100)
+		--objPic:SetObjPos2(440, 160, 250, 170)
 	end
 end
 
@@ -309,4 +309,19 @@ function CSPS_OnInitControl(self)
 		table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = valid_time, Custom = nil, Func = nil })
 	end
 	self:SetText("全部")
+end
+
+function OnEditChange(self)
+	local textLength = self:GetLength()
+	if textLength == nil then return end
+	local textMaxLength = self:GetMaxLength()
+	if textMaxLength == nil then return end
+	--XLMessageBox(textMaxLength)
+	local wordTips = self:GetOwnerControl():GetControlObject("text.notice.words.tip")
+	if wordTips ~= nil then wordTips:SetText("还能输入"..textMaxLength-textLength.."个汉字") end
+end
+
+function OnClickNoticePublishWarningInitControl(self)
+	local l,t,r,b = self:GetTextPos()
+	self:SetTextPos(l+10, t, r-l, b-t)
 end

@@ -1,5 +1,26 @@
 <xlue>
 <resource>
+	<!-- 新版资源 BEGIN -->
+	<imagelist id="imagelist.btn.normal.bkg" vertical="1" splitter="1" varyblock="1" image="button\btn.normal.png"/>
+	<texture id="texture.button.blue.normal" type="Stretch" imagelist="imagelist.btn.normal.bkg" index="1"/>
+	<texture id="texture.button.blue.hover" type="Stretch" imagelist="imagelist.btn.normal.bkg" index="2"/>
+	<texture id="texture.button.blue.down" type="Stretch" imagelist="imagelist.btn.normal.bkg" index="3"/>
+	<texture id="texture.button.blue.disable" type="Stretch" imagelist="imagelist.btn.normal.bkg" index="4"/>
+	<texture id="texture.button.green.normal" type="Stretch" imagelist="imagelist.btn.normal.bkg" index="5"/>
+	<texture id="texture.button.green.hover" type="Stretch" imagelist="imagelist.btn.normal.bkg" index="6"/>
+	<texture id="texture.button.green.down" type="Stretch" imagelist="imagelist.btn.normal.bkg" index="7"/>
+	<texture id="texture.button.green.disable" type="Stretch" imagelist="imagelist.btn.normal.bkg" index="8"/>
+	
+	<imagelist id="imagelist.btn.small.bkg" vertical="1" splitter="1" varyblock="1" image="button\btn.small.png"/>
+	<texture id="texture.button.small.blue.normal" type="Stretch" imagelist="imagelist.btn.small.bkg" index="1"/>
+	<texture id="texture.button.small.blue.hover" type="Stretch" imagelist="imagelist.btn.small.bkg" index="2"/>
+	<texture id="texture.button.small.blue.down" type="Stretch" imagelist="imagelist.btn.small.bkg" index="3"/>
+	<texture id="texture.button.small.blue.disable" type="Stretch" imagelist="imagelist.btn.small.bkg" index="4"/>
+	
+	<font id="button.default.font" height="12" weight="bold" facename="微软雅黑"/>
+	<!-- 新版资源 END -->
+	
+	
 	<imagelist id="imagelist.btn.normal.green.bkg" vertical="0" splitter="1" varyblock="1" image="button\btn.normal.green.bkg.png"/>
 	<texture id="green.button.normal" type="NineInOne" imagelist="imagelist.btn.normal.green.bkg" index="1"/>
 	<texture id="green.button.down" type="NineInOne" imagelist="imagelist.btn.normal.green.bkg" index="3"/>
@@ -54,7 +75,5 @@
 	<texture id="texture.btn.search.down" type="Stretch" imagelist="imagelist.search.bkg" index="1"/>
 	<texture id="texture.btn.search.normal" type="Stretch" imagelist="imagelist.search.bkg" index="2"/>
 	<texture id="texture.btn.search.hover" type="Stretch" imagelist="imagelist.search.bkg" index="3"/>
-	
-	<font id="button.default.font" height="12" facename="微软雅黑"/>
 </resource>
 </xlue>

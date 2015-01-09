@@ -4,7 +4,7 @@
 	<control class="WHome.ListBox.HeaderItem">
 		<attr_def>
 			<attr name="NormalBkgID" type="string" ><!-- Normal背景ID -->
-				<default>texture.listctrl.item.bkg.hover</default>
+				<default>texture.listctrl.item.bkg.normal</default>
 			</attr>
 			<attr name="HoverBkgID" type="string" ><!-- Hover背景ID -->
 				<default>texture.listctrl.item.bkg.hover</default>

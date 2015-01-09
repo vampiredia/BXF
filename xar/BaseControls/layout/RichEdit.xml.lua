@@ -550,3 +550,15 @@ function SetSel(self, startPos, endPos)
 	
 	return edit:SetSel(startPos, endPos)
 end
+
+function GetLength(self)
+	local richEdit = self:GetControlObject("edit")
+	if richEdit == nil then return end
+	return richEdit:GetLength()
+end
+
+function GetMaxLength(self)
+	local richEdit = self:GetControlObject("edit")
+	if richEdit == nil then return end
+	return richEdit:GetMaxLength()
+end

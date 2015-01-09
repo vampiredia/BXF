@@ -2,10 +2,10 @@
 	<control class="WHome.ComboBox">
 		<attr_def>
 			<attr name="NormalBkgID" type="string" >
-				<default>texture.combolistbox.bkg</default>
+				<default>texture.edit.bkg.normal</default>
 			</attr>
 			<attr name="HoverBkgID" type="string" >
-				<default>combo.item.bkg.hover</default>
+				<default>texture.edit.bkg.hover</default>
 			</attr>
 			<attr name="DisableBkgID" type="string" />
 			<attr name="DisableTextColor" type="string">
@@ -36,16 +36,16 @@
 				<default>0</default>
 			</attr>
 			<attr name="EditLeftMargin" type="int">
-				<default>3</default>
+				<default>8</default>
 			</attr>
 			<attr name="EditTopMargin" type="int">
-				<default>3</default>
+				<default>8</default>
 			</attr>
 			<attr name="EditBottomMargin" type="int">
 				<default>4</default>
 			</attr>
 			<attr name="EditRightMargin" type="int">
-				<default>3</default>
+				<default>5</default>
 			</attr>
 			<attr name="EditRight" type="int">
 				<default>24</default>
@@ -54,7 +54,7 @@
 				<default>22</default>
 			</attr>
 			<attr name="ExpandIconLeft" type="int">
-				<default>24</default>
+				<default>29</default>
 			</attr>
 			<attr name="IconWidth" type="int">
 				<default>0</default>

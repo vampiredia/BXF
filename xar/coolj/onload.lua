@@ -12,64 +12,9 @@ local cmDir = folderDir.."CheckMethod.lua"
 local mdCheckMethod = XLLoadModule(cmDir)
 mdCheckMethod.RegisterGlobal()
 
-local mbDir = folderDir.."MessageBox.lua"
-local mdMessageBox = XLLoadModule(mbDir)
-mdMessageBox.RegisterGlobal()
-
-local nbDir = folderDir.."NotifyBox.lua"
-local mdNotifyBox = XLLoadModule(nbDir)
-mdNotifyBox.RegisterGlobal()
-
-function CreateLoginWnd()
-    local templateManager = XLGetObject("Xunlei.UIEngine.TemplateManager")
-    local frameHostWndTemplate = templateManager:GetTemplate("CoolJ.LoginWnd", "HostWndTemplate")
-    if frameHostWndTemplate == nil then
-        return 
-    end
-    
-    local frameHostWnd = frameHostWndTemplate:CreateInstance("CoolJ.LoginWnd.Instance")
-    if frameHostWnd == nil then
-        return
-    end
-    
-    local objectTreeTemplate = templateManager:GetTemplate("CoolJ.LoginObjTree","ObjectTreeTemplate")
-    if objectTreeTemplate == nil then 
-        return
-    end
-    
-    local uiObjectTree = objectTreeTemplate:CreateInstance("CoolJ.LoginObjTree.Instance")
-    if uiObjectTree == nil then
-		return
-	end
-	
-	frameHostWnd:BindUIObjectTree(uiObjectTree)
-	
-	local app = XLGetObject("CoolJ.App")
-	
-	-- 读取配置选项里面的 主界面是否透明 并做相应的初始化
-	local opaque = app:GetInt("ConfigGraphics", "ConfigGraphics_MainWndOpaque", 0)
-	if opaque == 1 then
-		frameHostWnd:SetLayered(false)
-	else
-		--读取透明度
-		local alpha = app:GetInt("ConfigGraphics", "ConfigGraphics_MainWndAlpha", 200)
-	end
-
-	-- 读取配置选项里面的 界面是否开启毛玻璃效果
-	local enableBlur = app:GetInt("ConfigGraphics", "ConfigGraphics_EnableBlur", 0)
-	
-	local hostwndManager = XLGetObject("Xunlei.UIEngine.HostWndManager")
-	if opaque == 0 and enableBlur == 1 then
-		hostwndManager:SetSystemBlur(true)
-	else
-		hostwndManager:SetSystemBlur(false)
-	end
-	
-    frameHostWnd:Create()
-	frameHostWnd:Center()
-	
-	return frameHostWnd
-end
+local modalDir = folderDir.."Modal.lua"
+local mdModal = XLLoadModule(modalDir)
+mdModal.RegisterGlobal()
 
 function CreateMainWnd()
 	local templateMananger = XLGetObject("Xunlei.UIEngine.TemplateManager")
@@ -156,9 +101,5 @@ local hostwnd = CreateMainWnd()
 if hostwnd ~= nil then
 	hostwnd:SetVisible(true)
 end
-
---local hostwnd = CreateLoginWnd()
---if hostwnd ~= nil then
---end
 
 

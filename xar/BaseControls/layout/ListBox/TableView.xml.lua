@@ -568,6 +568,8 @@ end
 
 --TableCtrl控件可见性改变函数
 function ViewCtrl_OnVisibleChange(ViewCtrlObj, IsVisible)
+	local ViewCtrlAttr = ViewCtrlObj:GetAttribute()
+	if ViewCtrlAttr.IsInited == nil or ViewCtrlAttr.IsInited == false then return end
 	if IsVisible == true then
 		--ViewCtrlObj:ReloadData(nil)
 		ViewCtrl_UpdateScrollInfo(ViewCtrlObj)
@@ -998,6 +1000,8 @@ function InitTableViewAttr(ViewCtrlObj)
 	--关键字：对应数据的ItemIndex
 	--值：对象的ID
 	ViewCtrlAttr.VisibleObjMap = {} 
+	
+	ViewCtrlAttr.IsInited = true
 end
 
 --子对象的坐标转换为父对象的坐标
@@ -1580,7 +1584,7 @@ end
 function GetSelectedItemIndexSortedList(ViewCtrlObj)
 	local SelectedArray = {}
 	local ViewCtrlAttr = ViewCtrlObj:GetAttribute()
-	local hr, selcetList = ViewCtrlAttr.DataSource:GetSelectedItemIndexList()
+	local selcetList = ViewCtrlAttr.DataSource:GetSelectedItemIndexList()
 	if selcetList ~= nil and #selcetList ~= 0 then
 		for key, value in pairs(selcetList) do
 			local insertIndex = #SelectedArray + 1

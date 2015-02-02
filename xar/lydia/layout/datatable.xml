@@ -1,0 +1,19 @@
+<xlue>
+	<control class="datatable">
+		<attr_def>
+			
+		</attr_def>
+		<method_def>
+			<Add file="datatable.xml.lua" func="Add" />
+			<ClearAll file="datatable.xml.lua" func="ClearAll" />
+		</method_def>
+		<event_def>
+			
+		</event_def>
+		<objtemplate>
+			<children>
+				
+			</children>
+		</objtemplate>
+	</control>
+</xlue>

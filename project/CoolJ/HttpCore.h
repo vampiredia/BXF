@@ -10,12 +10,13 @@ class HttpCore;
 
 typedef struct _t_curlPerformThreadArgument
 {
-	std::string host, param, method, response;
+	std::string host, param, method, response, header;
+	long http_code;
 	HttpCore *pHttpCore;
 	DWORD idthread;
 }curlPerformThreadArgumentRec, *curlPerformThreadArgument;
 
-typedef void (*funcResultCallBack) (DWORD dwUserData1, DWORD dwUserData2, const char* szResult);
+typedef void (*funcResultCallBack) (DWORD dwUserData1, DWORD dwUserData2, const char* szResult, const int nHttpCode);
 
 struct CallbackNode
 {
@@ -38,7 +39,7 @@ public:
 	int AttachResultListener(DWORD dwUserData1, DWORD dwUserData2, funcResultCallBack pfnCallBack);
 	int AttachProcessListener(DWORD dwUserData1, DWORD dwUserData2, funcResultCallBack pfnCallBack);
 
-	void FireResultEvent(const char* szResult);
+	void FireResultEvent(const char* szResult, const int nHttpCode);
 
 protected:
 	std::vector<CallbackNode> m_allCallBack;

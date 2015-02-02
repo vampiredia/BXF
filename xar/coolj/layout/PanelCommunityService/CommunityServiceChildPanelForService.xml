@@ -54,18 +54,7 @@
 								<valign>center</valign>
 							</attr>
 						</obj>
-						<obj id="btn.edit.service" class="WHome.Button">
-							<attr>
-								<left>father.width - 50</left>
-								<top>5</top>
-								<width>40</width>
-								<height>20</height>
-								<Text>编辑</Text>
-							</attr>
-							<eventlist>
-								<event name="OnClick" file="CommunityServiceChildPanelForService.xml.lua" func="BES_OnClick" />
-							</eventlist>
-						</obj>
+			
 						<obj id="main.listview" class="ListView">
 							<attr>
 								<left>10</left>

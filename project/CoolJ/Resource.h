@@ -37,6 +37,6 @@
 #define WM_HTTP_NOTIFIER	WM_USER + 2152
 
 //#define HTTP_API_URL	"http://www.api.whome.com"
-#define HTTP_API_URL	"http://182.18.29.195"
+#define HTTP_API_URL	"http://192.168.1.10:8080"
 //#define HTTP_API_URL	"http://127.0.0.1"
 

@@ -63,6 +63,7 @@ function OnLButtonDown(self)
 		attr.Capture = true
 		SetStatus(self, 3)
 	end
+	self:FireExtEvent("OnLButtonDown")
 end
 
 function OnLButtonUp(self, x, y, flags)
@@ -82,6 +83,7 @@ function OnLButtonUp(self, x, y, flags)
 			self:FireExtEvent("OnClick")
 		end
 	end
+	self:FireExtEvent("OnLButtonUp")
 end
 
 function OnRButtonDown(self)

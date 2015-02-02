@@ -1,4 +1,146 @@
 <xlue>
+	<control class="CoolJ.Notice.List">
+		<attr_def>
+			
+		</attr_def>
+		<method_def>
+			<SetText file="ListData.xml.lua" func="SetText" />
+			<SetPosition file="ListData.xml.lua" func="SetPosition" />
+		</method_def>
+		<event_def>
+			<OnItemMouseEvent> <!-- Item各种鼠标事件 -->
+				<param>
+					<string /> <!-- 事件类型 -->
+					<int /> <!-- x -->
+					<int /> <!-- y -->
+					<int /> <!-- flags -->
+					</param>
+			</OnItemMouseEvent>	
+			<OnItemEvent> <!-- Item自定义事件 -->
+				<param>
+					<string/>		<!-- 事件的类型	-->
+					<table /> 		<!-- 数据table-->
+					<layoutobj/>    <!-- 对象 -->
+				</param>
+			</OnItemEvent>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<texture>listbox.item.bkg.normal</texture>
+					</attr>
+					<children>
+						<obj id="text.id" class="TextObject">
+							<attr>
+								<left>0</left>
+								<top>0</top>
+								<width>60</width>
+								<height>father.height</height>
+								<text>id</text>
+								<valign>center</valign>
+								<halign>center</halign>
+							</attr>
+						</obj>
+						<obj id="text.title" class="TextObject">
+							<attr>
+								<left>60</left>
+								<top>0</top>
+								<width>240</width>
+								<height>father.height</height>
+								<text>title</text>
+								<valign>center</valign>
+								<halign>left</halign>
+							</attr>
+						</obj>
+						<obj id="text.author" class="TextObject">
+							<attr>
+								<left>300</left>
+								<top>0</top>
+								<width>80</width>
+								<height>father.height</height>
+								<text>title</text>
+								<valign>center</valign>
+								<halign>left</halign>
+							</attr>
+						</obj>
+						<obj id="text.s_time" class="TextObject">
+							<attr>
+								<left>380</left>
+								<top>0</top>
+								<width>120</width>
+								<height>father.height</height>
+								<text>title</text>
+								<valign>center</valign>
+								<halign>left</halign>
+							</attr>
+						</obj>
+						<obj id="text.status" class="TextObject">
+							<attr>
+								<left>500</left>
+								<top>0</top>
+								<width>60</width>
+								<height>father.height</height>
+								<text>status</text>
+								<valign>center</valign>
+								<halign>left</halign>
+							</attr>
+						</obj>
+						<obj id="btn.details" class="LayoutObject">
+							<attr>
+								<left>560</left>
+								<top>0</top>
+								<width>60</width>
+								<height>father.height</height>
+							</attr>
+							<children>
+								<obj id="textlink.details" class="WHome.TextLink">
+									<attr>
+										<left>10</left>
+										<top>0</top>
+										<width>father.height</width>
+										<height>father.height</height>
+										<HAlign>center</HAlign>
+										<Text>查看</Text>
+										<TextColor>system.blue</TextColor>
+									</attr>
+									<eventlist>
+										<event name="OnClick" file="ListData.xml.lua" func="Btn_OnDetails" />
+									</eventlist>
+								</obj>
+								<obj id="texture.details" class="TextureObject">
+									<attr>
+										<left>50</left>
+										<top>(father.height-20)/2</top>
+										<width>20</width>
+										<height>20</height>
+										<texture>listbox.item.btn.details</texture>
+									</attr>
+								</obj>
+							</children>
+						</obj>
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="ListData.xml.lua" func="Item_OnInitControl" />
+				<event name="OnLButtonDown" file="ListData.xml.lua" func="Item_OnLButtonDown" />
+				<event name="OnLButtonUp" file="ListData.xml.lua" func="Item_OnLButtonUp" />
+				<event name="OnLButtonDbClick" file="ListData.xml.lua" func="Item_OnLButtonDbClick" />
+				<event name="OnRButtonDown" file="ListData.xml.lua" func="Item_OnRButtonDown" />
+				<event name="OnRButtonUp" file="ListData.xml.lua" func="Item_OnRButtonUp" />
+				<event name="OnMouseWheel" file="ListData.xml.lua" func="Item_OnMouseWheel" />
+				<event name="OnMouseMove" file="ListData.xml.lua" func="Item_OnMouseMove" />
+				<event name="OnMouseHover" file="ListData.xml.lua" func="Item_OnMouseHover" />
+				<event name="OnMouseLeave" file="ListData.xml.lua" func="Item_OnMouseLeave" />
+			</eventlist>
+		</objtemplate>
+	</control>
+	
 	<control class="WHome.DataSource">
 		<attr_def>
 			<attr name="ItemCount" type="int" ><default>0</default></attr> <!-- 节点总数 -->
@@ -46,7 +188,7 @@
 			<SaveUIObjectState file="ListData.xml.lua" func="DC_SaveUIObjectState" />
 			<SetItemBkgType file="ListData.xml.lua" func="DC_SetItemBkgType" />
 			<GetItemObjPos file="ListData.xml.lua" func="DC_GetItemObjPos" />
-			
+			<UpdateItemInfo file="ListData.xml.lua" func="DC_UpdateItemInfo" />
 		</method_def>
 		<event_def>
 			

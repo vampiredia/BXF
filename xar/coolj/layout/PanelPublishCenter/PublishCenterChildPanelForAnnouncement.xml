@@ -563,6 +563,7 @@
 												<left>50</left>
 												<width>120</width>
 												<height>34</height>
+												<zorder>9999</zorder>
 											</attr>
 											<eventlist>
 												<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="CSPA_OnInitControl" />
@@ -594,6 +595,7 @@
 												<left>60</left>
 												<width>140</width>
 												<height>34</height>
+												<zorder>9999</zorder>
 											</attr>
 											<eventlist>
 												<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="CSPD_OnInitControl" />
@@ -625,6 +627,7 @@
 												<left>50</left>
 												<width>120</width>
 												<height>34</height>
+												<zorder>9999</zorder>
 											</attr>
 											<eventlist>
 												<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="CSPS_OnInitControl" />
@@ -699,6 +702,7 @@
 										<visible>0</visible>
 									</attr>
 								</obj>
+								<!--
 								<obj id="tableview.result.list" class="WHome.ListCtrl">
 									<attr>
 										<width>father.width</width>
@@ -707,6 +711,24 @@
 									<eventlist>
 										<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="LB_OnInitControl" />
 										<event name="OnListItemDbClick" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="LB_OnListItemDbClick" />
+									</eventlist>
+								</obj>
+								-->
+								<obj id="lb.result" class="WHome.ListBox">
+									<attr>
+										<width>father.width</width>
+										<height>father.height</height>
+										<HeaderItemChangeBkg>texture.listctrl.item.bkg.normal</HeaderItemChangeBkg>
+										<useDirectBoxSelect>false</useDirectBoxSelect>
+										<onlySingleSelect>true</onlySingleSelect>
+										<iToLeftDis>0</iToLeftDis>
+										<HScrollVisible>false</HScrollVisible>
+										<iItemSpacing>0</iItemSpacing>
+									</attr>
+									<eventlist>
+										<event name="OnInitControl" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="LB_OnInitControl" />
+										<event name="OnHeaderItemPosChanged" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="LB_OnHeaderItemPosChanged" />
+										<event name="OnItemEvent" file="PublishCenterChildPanelForAnnouncement.xml.lua" func="LB_OnItemEvent" />
 									</eventlist>
 								</obj>
 							</children>

@@ -1,6 +1,15 @@
 local json = require('json')
 local table_data = {}
 
+local headerTable = {
+	{HeaderItemId='id', ItemWidth=60, Text="编号", TextLeftOffset=2, TextHalign="left", SubItem=false, MaxSize=300, MiniSize=40, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=1},
+	{HeaderItemId='title', ItemWidth=240, Text="通知标题", TextLeftOffset=2, TextHalign="left", SubItem=false, MaxSize=300, MiniSize=40, ShowSplitter=true, ShowSortIcon=true, IncludeNext=false, SortProperty=1},
+	{HeaderItemId='author', ItemWidth=80, Text="提交人", TextLeftOffset=2, TextHalign="left", SubItem=false, MaxSize=300, MiniSize=40, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=1},
+	{HeaderItemId='s_time', ItemWidth=120, Text="提交日期", TextLeftOffset=2, TextHalign="left", SubItem=false, MaxSize=300, MiniSize=40, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=1},
+	{HeaderItemId='status', ItemWidth=60, Text="状态", TextLeftOffset=2, TextHalign="left", SubItem=false, MaxSize=300, MiniSize=40, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=1},
+	{HeaderItemId='other', ItemWidth=60, Text="", TextLeftOffset=2, TextHalign="left", SubItem=false, MaxSize=300, MiniSize=40, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=1}
+}
+
 function OnInitControl(self)
 	local attr = self:GetAttribute()
 	local bkg = self:GetControlObject("bkg")
@@ -38,15 +47,15 @@ function OnClickNoticeHistory(self)
 		function(result)
 			table_result = json.decode(result)
 			if table_result['ret'] == 0 then
-				local objList = controlObj:GetObject("tableview.result.list")
+				--local objList = controlObj:GetObject("tableview.result.list")
 				table_data = table_result['result']['notice_list']
 				for i=1, #table_data do
 					table_data[i]['author'] = '管理员'
 					table_data[i]['status'] = '正常'
 					table_data[i]['modify_time'] = os.date("%c", table_data[i]['modify_time'])
 				end
-				objList:ClearItems()
-				objList:InsertItemList(table_data, true)
+				--objList:ClearItems()
+				--objList:InsertItemList(table_data, true)
 			end
 		end
 	)
@@ -83,23 +92,18 @@ function PageChange(self, old, new)
 end
 
 function LB_OnInitControl(self)
-	-- columnID, 
-	-- columnWidth, 
-	-- title, 
-	-- header halign
-	-- item halign
-	-- textPos, 
-	-- custom, 
-	-- minWidth, 
-	-- bkgtexture, 
-	-- canSort, 
-	-- sortFunc, 
-	-- headerTextColor
-	self:InsertColumn("id", 40, "编号", "center", "center", 5, true, 40)
-	self:InsertColumn("title", 240, "通知标题", "center", "left", 15, true, 140)
-	self:InsertColumn("author", 90, "发布人", "center", "center", 15, true, 40)
-	self:InsertColumn("modify_time", 140, "发布时间", "center", "center", 15, true, 40)
-	self:InsertColumn("status", 60, "状态", "center", "center", 5, true, 40)
+	-- add header
+	table.foreach(headerTable, function(i, v) self:InsertColumn(v) end);
+	self:ReloadHeader()
+	
+	-- add data
+	local objFactory = XLGetObject("Xunlei.UIEngine.ObjectFactory")
+	local datasource = objFactory:CreateUIObject(1, "WHome.DataSource")
+	datasource:InitControl()
+	local dataconverter = objFactory:CreateUIObject(2, "WHome.DataConverter")
+	dataconverter:InitControl()
+	self:SetDataSourceAndDataConverter(datasource, dataconverter)
+	self:ReloadData()
 end
 
 function TV_OnInitControl(self)
@@ -148,12 +152,7 @@ function BTN_PublishNotice(self)
 ]]
 end
 
-function LB_OnListItemDbClick(self, event, itemObj, x, y, flags)
-	if table_data == nil then 
-		return
-	end
-	PageChange(self, "history.notice.page", "new.notice.page")
-	
+function LB_OnListItemDbClick(self, event, itemObj, x, y, flags)	
 end
 
 function OnClickNoticeHistory1(self)
@@ -324,4 +323,17 @@ end
 function OnClickNoticePublishWarningInitControl(self)
 	local l,t,r,b = self:GetTextPos()
 	self:SetTextPos(l+10, t, r-l, b-t)
+end
+
+function LB_OnHeaderItemPosChanged(self, event, isDrag, GridInfoList)
+	if isDrag == true then
+		self:GetTableViewObj():UpdateItemInfo(isDrag, GridInfoList)
+	end
+end
+
+function LB_OnItemEvent(self)
+	if table_data == nil then 
+		return
+	end
+	PageChange(self, "history.notice.page", "new.notice.page")
 end

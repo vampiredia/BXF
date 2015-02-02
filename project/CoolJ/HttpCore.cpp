@@ -35,7 +35,7 @@ int HttpCore::AttachResultListener(DWORD dwUserData1,DWORD dwUserData2,funcResul
 	return 0;
 }
 
-void HttpCore::FireResultEvent(const char* szResult)
+void HttpCore::FireResultEvent(const char* szResult, const int nHttpCode)
 {
 // 	stringstream sstr;
 // 	sstr << m_allCallBack.size() << '\n';
@@ -44,6 +44,6 @@ void HttpCore::FireResultEvent(const char* szResult)
 // 	OutputDebugStringA(str.c_str());
 	for(size_t i = 0;i < m_allCallBack.size();++ i)
 	{
-		m_allCallBack[i].pfnCallBack(m_allCallBack[i].dwUserData1, m_allCallBack[i].dwUserData2, szResult);
+		m_allCallBack[i].pfnCallBack(m_allCallBack[i].dwUserData1, m_allCallBack[i].dwUserData2, szResult, nHttpCode);
 	}
 }

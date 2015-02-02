@@ -161,7 +161,6 @@
 				</obj>
 			</children>
 		</obj>
-
 	</objtreetemplate>
 
 	<hostwndtemplate id="CoolJ.LoginWnd" class="ModalHostWnd" >

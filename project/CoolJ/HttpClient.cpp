@@ -18,6 +18,19 @@ size_t curlResponseData(void* buffer, size_t size, size_t nmemb, void* lpVoid)
 	return nmemb;
 }
 
+size_t curlDataData(void* buffer, size_t size, size_t nmemb, void* lpVoid)
+{
+	std::string* str = dynamic_cast<std::string*>((std::string *)lpVoid);
+	if( NULL == str || NULL == buffer )
+	{
+		return -1;
+	}
+
+	char* pData = (char*)buffer;
+	str->append(pData, size * nmemb);
+	return nmemb;
+}
+
 unsigned __stdcall curlPerformThreadProc(void *pArguments)
 {
 	std::string response;
@@ -27,6 +40,7 @@ unsigned __stdcall curlPerformThreadProc(void *pArguments)
 	CHttpClient::GetInstance()->Init();
 
 	CURL *curl = curl_easy_init();
+
 	if(NULL == curl)
 	{
 		return CURLE_FAILED_INIT;
@@ -42,18 +56,21 @@ unsigned __stdcall curlPerformThreadProc(void *pArguments)
 	curl_easy_setopt(curl, CURLOPT_VERBOSE, 1);
 	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, curlResponseData);
 	curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&a->response);
+	//curl_easy_setopt(curl, CURLOPT_HEADERFUNCTION, curlDataData);
+	//curl_easy_setopt(curl, CURLOPT_HEADERDATA, (void *)&a->header);
 	curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);
 	//curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, 3);
 	//curl_easy_setopt(curl, CURLOPT_TIMEOUT, 3);
 	
 	int res = curl_easy_perform(curl);
-	curl_easy_cleanup(curl);
-
+	
 	if (res == CURLE_OK)
 	{
+		res = curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &a->http_code);
 		//pHttpCore->FireResultEvent(response.c_str());
 		::PostThreadMessage(a->idthread, WM_HTTP_NOTIFIER, (WPARAM)pArguments, 0);
 	}
+	curl_easy_cleanup(curl);
 	CHttpClient::GetInstance()->m_threadcount--;
 
 	return res;

@@ -184,6 +184,11 @@ function ViewCtrl_SetSelectMode(ViewCtrlObj, onlySingleSelect)
 	ViewCtrlAttr.onlySingleSelect = onlySingleSelect
 end 
 
+function ViewCtrl_SetDragMode(ViewCtrlObj, isCanDrag)
+	local ViewCtrlAttr = ViewCtrlObj:GetAttribute()
+	ViewCtrlAttr.IsCanDrag = isCanDrag
+end
+
 --获得Shift多选时第一个节点
 function ViewCtrl_GetShiftStartItemIndex(ViewCtrlObj)
 	local ViewCtrlAttr = ViewCtrlObj:GetAttribute()
@@ -281,6 +286,7 @@ end
 function ViewCtrl_SelectItem(ViewCtrlObj, ItemIndexList)
 	local ViewCtrlAttr = ViewCtrlObj:GetAttribute()
 	ViewCtrlAttr.DataSource:SelectItem(ItemIndexList)
+	--ViewCtrl_ReloadData(ViewCtrlObj, nil)
 end
 
 --排他性选中某些节点
@@ -288,12 +294,14 @@ end
 function ViewCtrl_ExclusiveSelectItem(ViewCtrlObj, ItemIndexList)
 	local ViewCtrlAttr = ViewCtrlObj:GetAttribute()
 	ViewCtrlAttr.DataSource:ExclusiveSelectItem(ItemIndexList)
+	--ViewCtrl_ReloadData(ViewCtrlObj, nil)
 end
 
 --选中所有节点
 function ViewCtrl_SelectAllItems(ViewCtrlObj)
 	local ViewCtrlAttr = ViewCtrlObj:GetAttribute()
 	ViewCtrlAttr.DataSource:SelectAllItems()
+	--ViewCtrl_ReloadData(ViewCtrlObj, nil)
 end
 
 --取消所有选中
@@ -302,6 +310,7 @@ function ViewCtrl_UnSelectAllItems(ViewCtrlObj)
 	
 	--调用DK接口取消所有选中
 	ViewCtrlAttr.DataSource:UnSelectAllItems()
+	--ViewCtrl_ReloadData(ViewCtrlObj, nil)
 end
 
 --通过索引获得可见节点对象
@@ -398,6 +407,14 @@ function ViewCtrl_UpdateScrollInfo(ViewCtrlObj, VisibleItemBeginIndex, VisibleIt
 
 	--设置滚动条PageSize, Range
 	SetScrollBarAttr(ViewCtrlObj)
+end
+
+--
+--
+function ViewCtrl_UpdateItemInfo(ViewCtrlObj, isDrag, GridInfoList)
+	local ViewCtrlAttr = ViewCtrlObj:GetAttribute()
+	ViewCtrlAttr.DataConverter:UpdateItemInfo(GridInfoList)
+	ViewCtrlObj:ReloadData()
 end
 
 --设置滚动条位置使节点对象完全可见
@@ -718,6 +735,7 @@ function ViewCtrl_OnLButtonUp(ViewCtrlObj, x, y, flags, ItemObj)
 				ViewCtrlObj:SetShiftStartItemIndex(ItemIndex)
 				ViewCtrlAttr.DataSource:ExclusiveSelectItem({ItemIndex}, "MouseDown")
 			end	
+			--ViewCtrl_ReloadData(ViewCtrlObj, nil)
 		end
 	end	
 	
@@ -800,12 +818,17 @@ function ViewCtrl_OnMouseMove(ViewCtrlObj, x, y, flags, ItemObj)
 			ViewCtrlAttr.CaptureType = 3
 		end
 	elseif ViewCtrlAttr.CaptureType == 3 then
-		DoDragOperation(ViewCtrlObj, x, y, flags)
+		if ViewCtrlAttr.IsCanDrag == true then 
+			DoDragOperation(ViewCtrlObj, x, y, flags)
+		else
+			ViewCtrlAttr.CaptureType = 0
+		end
 	elseif ViewCtrlAttr.CaptureType == 4 then
 		ViewCtrlAttr.CaptureType = 0
 	end
 	
 	x, y = CoordinateChildToParent(ViewCtrlObj, x, y)
+	--ViewCtrl_ReloadData(ViewCtrlObj, nil)
 	ViewCtrlObj:FireExtEvent("OnMouseEvent", "OnMouseMove", x, y, flags, ItemObj)
 end
 
@@ -846,11 +869,11 @@ function ViewCtrl_OnCaptureChange(ViewCtrlObj, bCapture)
 		if ViewCtrlAttr.CaptureType == 3 then
 			--刷新整个列表
 			ViewCtrlObj:FireExtEvent("OnDragFinish")
-			ViewCtrl_ReloadData(ViewCtrlObj, nil)
 			
 			--TVPrint("bear ViewCtrl_OnCaptureChange ViewCtrlAttr.CaptureType = 3")
 			ViewCtrlAttr.CaptureType = 4
 		end
+		ViewCtrl_ReloadData(ViewCtrlObj, nil)
 	end
 end
 
@@ -1175,14 +1198,18 @@ function CreateNewItem(ViewCtrlObj, ItemIndex, ItemData, OperationType)
 		
 		if mouseEventType == "OnLButtonDown" then
 			ViewCtrl_OnLButtonDown(ViewCtrlObj, x, y, flags, ItemCtrlObj)
+			--ViewCtrl_ReloadData(ViewCtrlObj, nil)
 		elseif mouseEventType == "OnLButtonUp" then
 			ViewCtrl_OnLButtonUp(ViewCtrlObj, x, y, flags, ItemCtrlObj)
+			--ViewCtrl_ReloadData(ViewCtrlObj, nil)
 		elseif mouseEventType == "OnLButtonDbClick" then
 			ViewCtrl_OnLButtonDbClick(ViewCtrlObj, x, y, flags, ItemCtrlObj)
 		elseif mouseEventType == "OnRButtonDown" then
 			ViewCtrl_OnRButtonDown(ViewCtrlObj, x, y, flags, ItemCtrlObj)
+			--ViewCtrl_ReloadData(ViewCtrlObj, nil)
 		elseif mouseEventType == "OnRButtonUp" then
 			ViewCtrl_OnRButtonUp(ViewCtrlObj, x, y, flags, ItemCtrlObj)
+			--ViewCtrl_ReloadData(ViewCtrlObj, nil)
 		elseif mouseEventType == "OnMouseWheel" then
 			ViewCtrl_OnMouseWheel(ViewCtrlObj, x, y, flags)
 		elseif mouseEventType == "OnMouseMove" then

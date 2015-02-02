@@ -316,6 +316,9 @@
 			<attr name="TextColor" type="string" ><!-- 表项名字的字体颜色 -->
 				<default>system.black</default>
 			</attr>
+			<attr name="IsCanDrag" type="bool" ><!--是否允许拖拽-->
+				<default>false</default>
+			</attr>
 		</attr_def>
 		<method_def>
 			<GetTableViewObj file="ListBox.xml.lua" func="ListBox_GetTableViewObj" />

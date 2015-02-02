@@ -194,6 +194,107 @@ function LoginWnd(hWnd)
 	return ret
 end
 
+-- NewServiceBox 新建服务分类弹窗函数
+-- Param
+--	hWnd：绑定窗口句柄，nil时指定ID为"CoolJ.MainWnd.Instance"的窗口为父窗口
+--  title：窗口标题
+--  method：方法分类
+--  userdata：用户自定义数据
+function NewServiceBox(hWnd, title, method, userdata)
+	local ret = 0
+	local mainWnd = hWnd
+	local templateMananger = XLGetObject("Xunlei.UIEngine.TemplateManager")
+	local hostWndManager = XLGetObject("Xunlei.UIEngine.HostWndManager")
+	
+	if mainWnd == nil then mainWnd = hostWndManager:GetHostWnd("CoolJ.MainWnd.Instance") end
+	if mainWnd == nil then return ret end
+	
+	local modalHostWndTemplate = templateMananger:GetTemplate("CoolJ.NewServiceBox","HostWndTemplate")
+	if modalHostWndTemplate then
+		local modalHostWnd = modalHostWndTemplate:CreateInstance("CoolJ.NewServiceBox.Instance")
+		if modalHostWnd then
+			local objectTreeTemplate = templateMananger:GetTemplate("CoolJ.NewServiceBox","ObjectTreeTemplate")
+			if objectTreeTemplate then
+				local function OnPostCreateInstance(self, obj, userdata)
+						local root = obj:GetRootObject()
+						if userdata['caption'] ~= nil then
+							root:GetControlObject("caption.text"):SetText(userdata['caption'])
+						end
+						if userdata['text'] ~= nil then
+							root:GetControlObject("text"):SetText(userdata['text'])
+						end					
+					end
+				local cookie = objectTreeTemplate:AttachListener("OnPostCreateInstance", true, OnPostCreateInstance)
+				local uiObjectTree = objectTreeTemplate:CreateInstance("CoolJ.NewServiceBox.Instance", nil ,{method=method, caption=title, userdata=userdata})
+				if uiObjectTree then
+					modalHostWnd:BindUIObjectTree(uiObjectTree)
+
+					ret = modalHostWnd:DoModal(mainWnd:GetWndHandle())
+					-- XLMessageBox(ret)
+				end
+				local objtreeManager = XLGetObject("Xunlei.UIEngine.TreeManager")	
+				objtreeManager:DestroyTree("CoolJ.NewServiceBox.Instance")
+			end
+			hostWndManager:RemoveHostWnd("CoolJ.NewServiceBox.Instance")
+		end
+	end
+	
+	return ret
+end
+
+-- NewSubServiceBox 新建服务子分类弹窗函数
+-- Param
+--	hWnd：绑定窗口句柄，nil时指定ID为"CoolJ.MainWnd.Instance"的窗口为父窗口
+--  title：窗口标题
+--  method：方法分类
+--  userdata：用户自定义数据
+function NewSubServiceBox(hWnd, title, method, userdata)
+	local ret = 0
+	local mainWnd = hWnd
+	local templateMananger = XLGetObject("Xunlei.UIEngine.TemplateManager")
+	local hostWndManager = XLGetObject("Xunlei.UIEngine.HostWndManager")
+	
+	if mainWnd == nil then mainWnd = hostWndManager:GetHostWnd("CoolJ.MainWnd.Instance") end
+	if mainWnd == nil then return ret end
+	
+	local modalHostWndTemplate = templateMananger:GetTemplate("CoolJ.NewSubServiceBox","HostWndTemplate")
+	if modalHostWndTemplate then
+		local modalHostWnd = modalHostWndTemplate:CreateInstance("CoolJ.NewSubServiceBox.Instance")
+		if modalHostWnd then
+			local objectTreeTemplate = templateMananger:GetTemplate("CoolJ.NewSubServiceBox","ObjectTreeTemplate")
+			if objectTreeTemplate then
+				local function OnPostCreateInstance(self, obj, userdata)
+						local root = obj:GetRootObject()
+						if userdata['caption'] ~= nil then
+							root:GetControlObject("caption.text"):SetText(userdata['caption'])
+						end
+						root:GetAttribute().Method = userdata['method']				
+						root:GetAttribute().UserData = userdata['userdata']
+						if userdata['method'] == 'edit_community_service_info' then
+							root:GetControlObject("edit.title"):SetText(userdata['userdata']['name'])
+							root:GetControlObject("edit.content"):SetText(userdata['userdata']['content'])
+							root:GetControlObject("edit.area"):SetText(userdata['userdata']['area'])
+							root:GetControlObject("edit.phone"):SetText(userdata['userdata']['phone'])
+						end
+					end
+				local cookie = objectTreeTemplate:AttachListener("OnPostCreateInstance", true, OnPostCreateInstance)
+				local uiObjectTree = objectTreeTemplate:CreateInstance("CoolJ.NewSubServiceBox.Instance", nil ,{method=method, caption=title, userdata=userdata})
+				if uiObjectTree then
+					modalHostWnd:BindUIObjectTree(uiObjectTree)
+
+					ret = modalHostWnd:DoModal(mainWnd:GetWndHandle())
+					-- XLMessageBox(ret)
+				end
+				local objtreeManager = XLGetObject("Xunlei.UIEngine.TreeManager")	
+				objtreeManager:DestroyTree("CoolJ.NewSubServiceBox.Instance")
+			end
+			hostWndManager:RemoveHostWnd("CoolJ.NewSubServiceBox.Instance")
+		end
+	end
+	
+	return ret
+end
+
 function RegisterGlobal()
 	XLSetGlobal("LoginWnd", LoginWnd)
 	--XLSetGlobal("CreateNotifyBox", CreateNotifyBox)
@@ -201,4 +302,6 @@ function RegisterGlobal()
 	XLSetGlobal("AddNotifyBox", AddNotifyBox)
 	--CreateNotifyBox()
 	XLSetGlobal("MessageBox", MessageBox)
+	XLSetGlobal("NewServiceBox", NewServiceBox)
+	XLSetGlobal("NewSubServiceBox", NewSubServiceBox)
 end

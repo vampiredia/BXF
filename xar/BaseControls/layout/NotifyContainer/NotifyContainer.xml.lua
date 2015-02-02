@@ -26,6 +26,7 @@ function CN_NotifyUpdate(self, status)
 	elseif status == "show_ani" then
 		self:GetControlObject("bkgcolor"):SetAlpha(255)
 		local l,t,r,b = self:GetOwnerControl():GetObjPos()
+		self:GetControlObject("message"):SetVisible(true)
 		self:SetObjPos(0, b-t, r-l, (b-t)*1.8)
 		local aniFactory = XLGetObject("Xunlei.UIEngine.AnimationFactory")
 		local posAni = aniFactory:CreateAnimation("PosChangeAnimation")
@@ -38,6 +39,7 @@ function CN_NotifyUpdate(self, status)
 		posAni:Resume()		
 	elseif status == "hide_ani" then
 		local l,t,r,b = self:GetOwnerControl():GetObjPos()
+		self:GetControlObject("message"):SetVisible(false)
 		local owner = self:GetOwner()
 	
 		local aniFactory = XLGetObject("Xunlei.UIEngine.AnimationFactory")

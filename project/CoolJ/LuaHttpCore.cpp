@@ -111,16 +111,17 @@ int LuaHttpCore::DeleteSelf(lua_State* luaState)
 	return 0;
 }
 
-void LuaHttpCore::LuaListener(DWORD dwUserData1, DWORD dwUserData2, const char* szResult)
+void LuaHttpCore::LuaListener(DWORD dwUserData1, DWORD dwUserData2, const char* szResult, const int nHttpCode)
 {
 	lua_State* luaState = reinterpret_cast<lua_State*>(dwUserData1);
 	int nNowTop = lua_gettop(luaState);
 	lua_rawgeti(luaState,LUA_REGISTRYINDEX,dwUserData2 );
 
 	lua_pushstring(luaState, szResult);
+	lua_pushinteger(luaState, nHttpCode);
 	//Bolt中要求使用XLLRT_LuaCall代替调用lua_pcall
 	//以获得更高稳定性和更多虚拟机状态信息
-	int nLuaResult = XLLRT_LuaCall(luaState,1,0,L"LuaHttpCore::LuaListener");
+	int nLuaResult = XLLRT_LuaCall(luaState,2,0,L"LuaHttpCore::LuaListener");
 
 	//调用完成之后回退luaState到调用之前的状态
 	//如果被调用的lua代码段有返回值，

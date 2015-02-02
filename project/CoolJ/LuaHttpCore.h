@@ -23,7 +23,7 @@ public:
 	static int AttachResultListener(lua_State* luaState);
 	static int DeleteSelf(lua_State* luaState);
 
-	static void LuaListener(DWORD dwUserData1,DWORD dwUserData2,const char* szResult);
+	static void LuaListener(DWORD dwUserData1,DWORD dwUserData2,const char* szResult, const int nHttpCode);
 };
 
 class LuaHttpCoreFactory

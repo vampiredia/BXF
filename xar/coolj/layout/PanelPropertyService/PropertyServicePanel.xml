@@ -33,22 +33,6 @@
 								<height>father.height</height>
 							</attr>
 							<children>
-								<!--
-								<obj id="panel.category.bkg.rectangle" class="RectangleObject">
-									<attr>
-										<width>father.width</width>
-										<height>father.height</height>
-										<srcpt>0,0</srcpt>
-										<destpt>width,height-2</destpt>
-										<pen>pen.solid</pen>
-										<brush>brush.solid</brush>
-										<pencolor>system.orange</pencolor>
-										<brushcolor>system.orange</brushcolor>
-										<visible>1</visible>
-										<alpha>1</alpha>
-									</attr>
-								</obj>
-								-->
 								<obj id="panel.category.bkg" class="TextureObject">
 									<attr>
 										<width>father.width</width>
@@ -73,28 +57,6 @@
 										<event name="OnInitControl" file="PropertyServicePanel.xml.lua" func="TabHeader_OnInitControl" />
 										<event name="OnActiveTabChanged" file="PropertyServicePanel.xml.lua" func="OnActiveTabChanged" />
 									</eventlist>
-								</obj>
-							</children>
-						</obj>
-						<obj id="panel.tips" class="LayoutObject">
-							<attr>
-								<left>148</left>
-								<width>father.width-160</width>
-								<height>32</height>
-							</attr>
-							<children>
-								<obj id="panel.tips.static.line" class="LineObject">
-									<attr>
-										<top>father.height - 2</top>
-										<left>1</left>
-										<width>father.width-2</width>
-										<height>3</height>
-										<pen>pen.solid</pen>
-										<srcpt>0,1</srcpt>
-										<destpt>width,1</destpt>
-										<color>system.gray</color>
-										<zorder>10000</zorder>
-									</attr>
 								</obj>
 							</children>
 						</obj>

@@ -1209,6 +1209,10 @@ function ListBox_OnInitControl(ListBoxObj)
 	if ListBoxAttr.onlySingleSelect == true then
 		TableViewObj:SetSelectMode(true)
 	end
+	
+	if ListBoxAttr.IsCanDrag == true then
+		TableViewObj:SetDragMode(true)
+	end
 end
 
 --控件绑定到对象树事件

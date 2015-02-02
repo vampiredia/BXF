@@ -67,6 +67,9 @@
 			<attr name="HShowTipInFirst" type="bool" ><!--是否显示水平滚动条Tip-->
 				<default>false</default>
 			</attr>
+			<attr name="IsCanDrag" type="bool" ><!--是否允许拖拽-->
+				<default>false</default>
+			</attr>
 		</attr_def>
 		<method_def>
 			<SetDataSourceAndDataConverter file="TableView.xml.lua" func="ViewCtrl_SetDataSourceAndDataConverter" />
@@ -75,6 +78,7 @@
 			
 			<SetDirectBoxSelectAttr file="TableView.xml.lua" func="ViewCtrl_SetDirectBoxSelectAttr" />
 			<SetSelectMode file="TableView.xml.lua" func="ViewCtrl_SetSelectMode" />
+			<SetDragMode file="TableView.xml.lua" func="ViewCtrl_SetDragMode" />
 			<GetShiftStartItemIndex file="TableView.xml.lua" func="ViewCtrl_GetShiftStartItemIndex" />
 			<SetShiftStartItemIndex file="TableView.xml.lua" func="ViewCtrl_SetShiftStartItemIndex" />
 			
@@ -99,6 +103,7 @@
 			<SetItemMaxWidth file="TableView.xml.lua" func="ViewCtrl_SetItemMaxWidth" />
 			
 			<UpdateScrollInfo file="TableView.xml.lua" func="ViewCtrl_UpdateScrollInfo" />
+			<UpdateItemInfo file="TableView.xml.lua" func="ViewCtrl_UpdateItemInfo" />
 			<SetItemVisibleCompletely file="TableView.xml.lua" func="ViewCtrl_SetItemVisibleCompletely" />
 			<GetVScrollPos file="TableView.xml.lua" func="ViewCtrl_GetVScrollPos" />
 			<SetVScrollPos file="TableView.xml.lua" func="ViewCtrl_SetVScrollPos" />

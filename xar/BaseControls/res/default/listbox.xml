@@ -1,5 +1,10 @@
 <XLUE>
 	<resource>		
+		<imagelist id="imagelist.listbox.item.bkg" vertical="1" splitter="1" varyblock="0" blocksize="10" image="listbox\imagelist.item.bkg.png"/>
+		<texture id="listbox.item.bkg.normal" type="NineInOne" imagelist="imagelist.listbox.item.bkg" index="1" />
+		<texture id="listbox.item.bkg.hover" type="NineInOne" imagelist="imagelist.listbox.item.bkg" index="3" />
+		<texture id="listbox.item.bkg.down" type="NineInOne" imagelist="imagelist.listbox.item.bkg" index="2" />
+		<texture id="listbox.item.btn.details" type="Stretch" image="listbox\lyou.png" />
 		<!--滚动条：垂直滚动条按件背景-->
 		<imagelist id="imagelist.vscroll.thumb.bkg" vertical="0" splitter="1" varyblock="0" blocksize="10" image="listbox\imagelist.vscroll.thumb.bkg.png"/>
 		<texture id="texture.vscroll.thumb.bkg.normal" type="ThreeInOneV" imagelist="imagelist.vscroll.thumb.bkg" index="1"/>

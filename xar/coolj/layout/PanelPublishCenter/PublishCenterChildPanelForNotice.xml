@@ -319,6 +319,7 @@
 								<event name="OnClick" file="PublishCenterChildPanelForNotice.xml.lua" func="BTN_PublishNotice" />
 							</eventlist>
 						</obj>
+						<!--
 						<obj id="btn.new.notice.edit.change" class="WHome.Button">
 							<attr>
 								<top>father.height - 45</top>
@@ -334,6 +335,7 @@
 								<TextColor>system.white</TextColor>
 							</attr>
 						</obj>
+						-->
 					</children>
 				</obj>
 				<obj id="history.notice.page" class="LayoutObject">
@@ -511,6 +513,7 @@
 										<visible>0</visible>
 									</attr>
 								</obj>
+								<!--
 								<obj id="tableview.result.list" class="WHome.ListCtrl">
 									<attr>
 										<width>father.width</width>
@@ -522,6 +525,28 @@
 									<eventlist>
 										<event name="OnInitControl" file="PublishCenterChildPanelForNotice.xml.lua" func="LB_OnInitControl" />
 										<event name="OnListItemDbClick" file="PublishCenterChildPanelForNotice.xml.lua" func="LB_OnListItemDbClick" />
+									</eventlist>
+								</obj>
+								-->
+								<obj id="lb.result" class="WHome.ListBox">
+									<attr>
+										
+										<width>father.width</width>
+										<height>father.height</height>
+										<HeaderItemChangeBkg>texture.listctrl.item.bkg.normal</HeaderItemChangeBkg>
+										<useDirectBoxSelect>false</useDirectBoxSelect>
+										<onlySingleSelect>true</onlySingleSelect>
+										<iToLeftDis>0</iToLeftDis>
+										<HScrollVisible>false</HScrollVisible>
+										<iItemSpacing>0</iItemSpacing>
+									</attr>
+									<children>
+
+									</children>
+									<eventlist>
+										<event name="OnInitControl" file="PublishCenterChildPanelForNotice.xml.lua" func="LB_OnInitControl" />
+										<event name="OnHeaderItemPosChanged" file="PublishCenterChildPanelForNotice.xml.lua" func="LB_OnHeaderItemPosChanged" />
+										<event name="OnItemEvent" file="PublishCenterChildPanelForNotice.xml.lua" func="LB_OnItemEvent" />
 									</eventlist>
 								</obj>
 							</children>

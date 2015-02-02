@@ -11,5 +11,19 @@
 	<bitmap id="image.btn.left.normal" image="imagebutton\image.btn.left.normal.png" />  
 	<bitmap id="image.btn.right.hover" image="imagebutton\image.btn.right.hover.png" />  
 	<bitmap id="image.btn.right.normal" image="imagebutton\image.btn.right.normal.png" />  
+	
+	<imagelist id="imagelist.btn.icon" vertical="0" splitter="1" varyblock="1" image="imagebutton\imagelist.btn.icon.png"/>
+	<bitmap id="texture.imagebutton.del.normal" imagelist="imagelist.btn.icon" index="1" />
+	<bitmap id="texture.imagebutton.del.hover" imagelist="imagelist.btn.icon" index="2" />
+	<bitmap id="texture.imagebutton.del.down" imagelist="imagelist.btn.icon" index="3" />
+	<bitmap id="texture.imagebutton.del.disable" imagelist="imagelist.btn.icon" index="4" />
+	<bitmap id="texture.imagebutton.edit.normal" imagelist="imagelist.btn.icon" index="5" />
+	<bitmap id="texture.imagebutton.edit.hover" imagelist="imagelist.btn.icon" index="6" />
+	<bitmap id="texture.imagebutton.edit.down" imagelist="imagelist.btn.icon" index="7" />
+	<bitmap id="texture.imagebutton.edit.disable" imagelist="imagelist.btn.icon" index="8" />
+	<bitmap id="texture.imagebutton.drag.normal" imagelist="imagelist.btn.icon" index="9" />
+	<bitmap id="texture.imagebutton.drag.hover" imagelist="imagelist.btn.icon" index="10" />
+	<bitmap id="texture.imagebutton.drag.down" imagelist="imagelist.btn.icon" index="11" />
+	<bitmap id="texture.imagebutton.drag.disable" imagelist="imagelist.btn.icon" index="12" />
 </resource>
 </xlue>

@@ -1,15 +1,27 @@
--- LoginWnd µ¯´°º¯Êı
--- Param£º
---	url	ÍøÂçÇëÇóµØÖ·
---	method	ÇëÇó·½·¨¡¢°üÀ¨GETºÍPOST
---	param	ÇëÇó²ÎÊı£¬¶ÔÓÚget·½·¨£¬´Ë´¦Îª''
---	callback	ÇëÇó»Øµ÷½Ó¿Ú£¬ÆäÖĞ
+-- LoginWnd å¼¹çª—å‡½æ•°
+-- Paramï¼š
+--	url	ç½‘ç»œè¯·æ±‚åœ°å€
+--	method	è¯·æ±‚æ–¹æ³•ã€åŒ…æ‹¬GETå’ŒPOST
+--	param	è¯·æ±‚å‚æ•°ï¼Œå¯¹äºgetæ–¹æ³•ï¼Œæ­¤å¤„ä¸º''
+--	callback	è¯·æ±‚å›è°ƒæ¥å£ï¼Œå…¶ä¸­
 --		function callback(ret, msg, result)
 function HttpRequest(url, method, param, callback)
 	local httpclient = XLGetObject("Whome.HttpCore.Factory"):CreateInstance()
 	httpclient:AttachResultListener(
-		function(result, http_code)
-			callback(0, "success", {})
+		function(result, status_code)
+			if callback == nil then return end
+		
+			if status_code > 399 and status_code < 500 then
+				callback(-1, "ç½‘ç»œå¼‚å¸¸ï¼Œè¯·é‡æ–°å†è¯•")
+			elseif status_code == 500 then
+				local response = json.decode(result)
+				callback(500, result['error_msg'], response['result'])
+			elseif status_code > 500 then
+				callback(-1, "æœåŠ¡å™¨å¼‚å¸¸é”™è¯¯")
+			else
+				local response = json.decode(result)
+				callback(0, result['error_msg'], response['result'])
+			end
 		end
 	)
 	httpclient:Perform(url, method, param)

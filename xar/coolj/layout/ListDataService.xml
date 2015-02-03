@@ -8,6 +8,7 @@
 		<method_def>
 			<SetText file="ListDataService.xml.lua" func="SetText" />
 			<SetPosition file="ListDataService.xml.lua" func="SetPosition" />
+			<GetName file="ListDataService.xml.lua" func="GetName" />
 		</method_def>
 		<event_def>
 			<OnItemMouseEvent> <!-- Item各种鼠标事件 -->
@@ -51,35 +52,60 @@
 						</obj>
 						<obj id="btn.details" class="LayoutObject">
 							<attr>
-								<left>120</left>
-								<top>0</top>
-								<width>60</width>
-								<height>father.height</height>
+								<left>father.width-76</left>
+								<top>15</top>
+								<width>64</width>
+								<height>19</height>
 							</attr>
 							<children>
-								<obj id="textlink.details" class="WHome.TextLink">
+								<obj id="imagebutton.del" class="CoolJ.ImageButton">
 									<attr>
-										<left>10</left>
+										<left>0</left>
 										<top>0</top>
-										<width>father.height</width>
-										<height>father.height</height>
-										<HAlign>center</HAlign>
-										<Text>查看</Text>
-										<TextColor>system.blue</TextColor>
+										<width>19</width>
+										<height>19</height>
+										<NormalBkgID>texture.imagebutton.del.normal</NormalBkgID>
+										<HoverBkgID>texture.imagebutton.del.hover</HoverBkgID>
+										<DownBkgID>texture.imagebutton.del.down</DownBkgID>
+										<DisableBkgID>texture.imagebutton.del.disable</DisableBkgID>
 									</attr>
 									<eventlist>
-										<event name="OnClick" file="ListDataService.xml.lua" func="Btn_OnDetails" />
+										<event name="OnClick" file="ListDataService.xml.lua" func="Btn_OnDel" />
 									</eventlist>
 								</obj>
-								<obj id="texture.details" class="TextureObject">
+								<obj id="imagebutton.edit" class="CoolJ.ImageButton">
 									<attr>
-										<left>50</left>
-										<top>(father.height-20)/2</top>
-										<width>20</width>
-										<height>20</height>
-										<texture>listbox.item.btn.details</texture>
+										<left>22</left>
+										<top>0</top>
+										<width>19</width>
+										<height>19</height>
+										<NormalBkgID>texture.imagebutton.edit.normal</NormalBkgID>
+										<HoverBkgID>texture.imagebutton.edit.hover</HoverBkgID>
+										<DownBkgID>texture.imagebutton.edit.down</DownBkgID>
+										<DisableBkgID>texture.imagebutton.edit.disable</DisableBkgID>
 									</attr>
+									<eventlist>
+										<event name="OnClick" file="ListDataService.xml.lua" func="Btn_OnEdit" />
+									</eventlist>
 								</obj>
+								<obj id="imagebutton.drag" class="CoolJ.ImageButton">
+									<attr>
+										<left>44</left>
+										<top>0</top>
+										<width>19</width>
+										<height>19</height>
+										<NormalBkgID>texture.imagebutton.drag.normal</NormalBkgID>
+										<HoverBkgID>texture.imagebutton.drag.hover</HoverBkgID>
+										<DownBkgID>texture.imagebutton.drag.down</DownBkgID>
+										<DisableBkgID>texture.imagebutton.drag.disable</DisableBkgID>
+									</attr>
+									<eventlist>
+										<event name="OnClick" file="ListDataService.xml.lua" func="Btn_OnDrag" />
+										<event name="OnLbuttonDown" file="ListDataService.xml.lua" func="Btn_OnDragBegin" />
+										<event name="OnLbuttonUp" file="ListDataService.xml.lua" func="Btn_OnDragEnd" />
+									</eventlist>
+								</obj>
+								
 							</children>
 						</obj>
 					</children>
@@ -106,6 +132,7 @@
 			<attr name="SelectedItemCount" type="int" ><default>0</default></attr> <!-- 获取选中节点总数 -->
 		</attr_def>
 		<method_def>
+			<SetData file="ListDataService.xml.lua" func="DS_SetData" />
 			<InitControl file="ListDataService.xml.lua" func="DS_InitControl" />
 			<GetItemCount file="ListDataService.xml.lua" func="DS_GetItemCount" />
 			<GetItemDataByIndex file="ListDataService.xml.lua" func="DS_GetItemDataByIndex" />

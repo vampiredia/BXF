@@ -153,6 +153,19 @@
 								<textcolor>system.gray</textcolor>
 							</attr>
 						</obj>
+						<obj id="tip.msg" class="TextObject">
+							<attr>
+								<left>0</left>
+								<top>father.height - 40</top>
+								<width>father.width</width>
+								<height>34</height>
+								<valign>center</valign>
+								<halign>center</halign>
+								<text></text>
+								<font>text.tip.normal.font</font>
+								<textcolor>system.red</textcolor>
+							</attr>
+						</obj>
 					</children>
 				</obj>
 

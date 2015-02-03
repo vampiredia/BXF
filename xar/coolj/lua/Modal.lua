@@ -222,7 +222,16 @@ function NewServiceBox(hWnd, title, method, userdata)
 						end
 						if userdata['text'] ~= nil then
 							root:GetControlObject("text"):SetText(userdata['text'])
-						end					
+						end
+						root:GetAttribute().Method = userdata['method']				
+						root:GetAttribute().UserData = userdata['userdata']
+						if userdata['method'] == 'edit_property_service_root' then
+							root:GetControlObject("edit.title"):SetText(userdata['userdata']['name'])
+							root:GetControlObject("edit.content"):SetText(userdata['userdata']['content'])
+						elseif userdata['method'] == 'edit_community_service_root' then
+							root:GetControlObject("edit.title"):SetText(userdata['userdata']['name'])
+							root:GetControlObject("edit.content"):SetText(userdata['userdata']['content'])
+						end
 					end
 				local cookie = objectTreeTemplate:AttachListener("OnPostCreateInstance", true, OnPostCreateInstance)
 				local uiObjectTree = objectTreeTemplate:CreateInstance("CoolJ.NewServiceBox.Instance", nil ,{method=method, caption=title, userdata=userdata})

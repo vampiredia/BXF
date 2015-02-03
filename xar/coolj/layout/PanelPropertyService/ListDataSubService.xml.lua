@@ -17,18 +17,6 @@
 -- }
 -- ///////////////////////////////////////////////////
 
-function TEMP_FillData(self)
-	table_date = {
-		{id=1, title='物业服务', content='Lydia', area='010', phone='82282266'},
-		{id=2, title='社区医院', content='Lydia', area='2014-10-08', phone='已答复'},
-		{id=3, title='社区服务', content='Lydia', area='2014-10-08', phone='已答复'},
-		{id=4, title='乱七八糟', content='Lydia', area='2014-10-08', phone='已答复'}
-		
-	}
-	local attr = self:GetAttribute()
-	attr.ItemDataList = table_date
-end
-
 function DS_InitControl(self)
 	local attr = self:GetAttribute()
 	if attr.ItemDataList == nil then attr.ItemDataList = {} end

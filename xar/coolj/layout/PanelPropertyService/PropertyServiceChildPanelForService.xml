@@ -29,6 +29,24 @@
 								<height>father.height</height>
 							</attr>
 							<children>
+								<obj id="btn.update" class="WHome.Button">
+									<attr>
+										<left>father.width-110</left>
+										<top>11</top>
+										<width>103</width>
+										<height>32</height>
+										<valign>center</valign>
+										<NormalBkgID>texture.button.green.normal</NormalBkgID>
+										<DownBkgID>texture.button.green.down</DownBkgID>
+										<DisableBkgID>texture.button.green.disable</DisableBkgID>
+										<HoverBkgID>texture.button.green.hover</HoverBkgID>
+										<Text>更新列表</Text>
+										<TextColor>system.white</TextColor>
+									</attr>
+									<eventlist>
+										<event name="OnClick" file="PropertyServiceChildPanelForService.xml.lua" func="OnClick_UpdateData" />
+									</eventlist>
+								</obj>
 								<obj id="Main.Services" class="LayoutObject">
 									<attr>
 										<left>10</left>
@@ -93,24 +111,6 @@
 										<height>father.height-20</height>
 									</attr>
 									<children>
-										<obj id="btn.update" class="WHome.Button">
-											<attr>
-												<left>father.width-110</left>
-												<top>1</top>
-												<width>103</width>
-												<height>32</height>
-												<valign>center</valign>
-												<NormalBkgID>texture.button.green.normal</NormalBkgID>
-												<DownBkgID>texture.button.green.down</DownBkgID>
-												<DisableBkgID>texture.button.green.disable</DisableBkgID>
-												<HoverBkgID>texture.button.green.hover</HoverBkgID>
-												<Text>更新列表</Text>
-												<TextColor>system.white</TextColor>
-											</attr>
-											<eventlist>
-
-											</eventlist>
-										</obj>
 										<obj id="listbox.subservices" class="WHome.ListBox">
 											<attr>
 												<left>0</left>

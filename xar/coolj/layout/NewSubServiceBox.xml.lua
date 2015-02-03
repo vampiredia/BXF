@@ -28,6 +28,7 @@ function OnClick(self)
 	local hostwnd = owner:GetBindHostWnd()
 	local root = self:GetOwnerControl()
 	local attr = root:GetAttribute()
+	root:GetControlObject("tip.msg"):SetText("")
 	
 	ret = 0
 	if self:GetID() == "ok" then
@@ -47,25 +48,24 @@ function OnClick(self)
 				param = "action=add_info&pid="..pid.."&name="..name.."&content="..content.."&area="..area.."&phone="..phone
 				url = "/api/community/services"
 			elseif attr.Method == 'edit_community_service_info' then
-				local param = "action=update_info&id="..id.."&name="..name.."&content="..content.."&area="..area.."&phone="..phone.."&i_order="..attr.UserData['i_order']
-				local url = "/api/community/services"
+				param = "action=update_info&id="..id.."&name="..name.."&content="..content.."&area="..area.."&phone="..phone.."&i_order="..attr.UserData['i_order']
+				url = "/api/community/services"
 			end
 			
-			local httpclient = XLGetObject("Whome.HttpCore.Factory"):CreateInstance()
-			httpclient:AttachResultListener(
-				function(result) 
-					local response = json.decode(result)
-					if response['ret'] == 0 then
-						hostwnd:EndDialog(1)
-					else
-						
-					end
+			local request = function(ret, msg, result)
+				if ret == 0 then
+					hostwnd:EndDialog(1)	
+				else
+					--AddNotify(self, msg, 5000)
+					root:GetControlObject("tip.msg"):SetText(msg)
+					return
 				end
-			)
-			XLMessageBox(url.."|"..param)
-			httpclient:Perform(url, "POST", param)
+			end
+			HttpRequest(url, "POST", param, request)
 		else
-		
+			--AddNotify(self, msg, 5000)
+			root:GetControlObject("tip.msg"):SetText(msg)
+			return
 		end
 	end
 	hostwnd:EndDialog(ret)

@@ -16,6 +16,10 @@ local modalDir = folderDir.."Modal.lua"
 local mdModal = XLLoadModule(modalDir)
 mdModal.RegisterGlobal()
 
+local commonDir = folderDir.."Common.lua"
+local mdCommon = XLLoadModule(commonDir)
+mdCommon.RegisterGlobal()
+
 function CreateMainWnd()
 	local templateMananger = XLGetObject("Xunlei.UIEngine.TemplateManager")
 	local frameHostWndTemplate = templateMananger:GetTemplate("CoolJ.MainWnd","HostWndTemplate")

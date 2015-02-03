@@ -25,6 +25,11 @@ function DS_InitControl(self)
 	attr.ItemDataList = {}
 end
 
+function DS_SetData(self, data)
+	local attr = self:GetAttribute()
+	attr.ItemDataList = data
+end
+
 --
 function DS_GetItemCount(self)
 	local attr = self:GetAttribute()
@@ -57,11 +62,6 @@ end
 function DS_GetSelectedItemIndexList(self)
 	local attr = self:GetAttribute()
 	return attr.ItemSelectIndexList
-end
-
-function DS_SetData(self, data)
-	local attr = self:GetAttribute()
-	attr.ItemDataList = data
 end
 
 --
@@ -148,7 +148,7 @@ end
 -- ///////////////////////////////////////////////////////
 function DC_InitControl(self)
 	local attr = self:GetAttribute()
-	attr.ItemTotalWidth = 200
+	attr.ItemTotalWidth = 468
 	attr.ItemTotalHeight = 48
 end
 
@@ -167,7 +167,7 @@ end
 function DC_CreateUIObjectFromData(self, strItemObjId, nItemIndex, tItemData, nOperationType)
 	local attr = self:GetAttribute()
 	local objFactory = XLGetObject("Xunlei.UIEngine.ObjectFactory")
-	local itemObj = objFactory:CreateUIObject(strItemObjId, "Service.List")
+	local itemObj = objFactory:CreateUIObject(strItemObjId, "SubService.Community.List")
 	return itemObj
 end
 
@@ -182,7 +182,6 @@ function DC_UpdateUIObjectFromData(self, nItemIndex, objItem, tItemData, nOperat
 		objItem:GetControlObject("bkg"):SetTextureID("listbox.item.bkg.down")
 		objItem:GetControlObject("btn.details"):SetVisible(true)
 		objItem:GetControlObject("btn.details"):SetChildrenVisible(true)
-		objItem:FireExtEvent("OnItemEvent", "OnSelect", tItemData)
 	elseif tItemData['strOperationType'] == 'mousemove' then 
 		objItem:GetControlObject("bkg"):SetTextureID("listbox.item.bkg.hover")
 		objItem:GetControlObject("btn.details"):SetVisible(false)
@@ -248,12 +247,23 @@ end
 
 function SetText(self, item)
 	self:GetControlObject("text.title"):SetText(item['name'])
+	self:GetControlObject("text.content_msg"):SetText(item['content_msg'])
+	local contact = item['phone']
+	if item['area'] ~= "" then 
+		contact = item['area']..contact
+	end
+	self:GetControlObject("text.contact"):SetText(contact)
 end
 
 
 function SetPosition(self, gridInfoList, height)
+	local attr = self:GetAttribute()
 	local offset_x = 0
-	self:GetControlObject("text.title"):SetObjPos(offset_x, 0, offset_x+gridInfoList[1]['ItemWidth'], height)
+	self:GetControlObject("text.title"):SetObjPos(offset_x+attr.Margin, 0, offset_x+gridInfoList[1]['ItemWidth']-2*attr.Margin, height)
+	offset_x = offset_x + gridInfoList[1]['ItemWidth']
+	self:GetControlObject("text.content"):SetObjPos(offset_x+attr.Margin, 0, offset_x+gridInfoList[2]['ItemWidth']-2*attr.Margin, height)
+	offset_x = offset_x + gridInfoList[2]['ItemWidth']
+	self:GetControlObject("text.contact"):SetObjPos(offset_x+attr.Margin, 0, offset_x+gridInfoList[3]['ItemWidth']-2*attr.Margin, height)
 end
 
 function Item_OnInitControl(self)

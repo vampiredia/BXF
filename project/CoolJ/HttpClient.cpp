@@ -70,6 +70,11 @@ unsigned __stdcall curlPerformThreadProc(void *pArguments)
 		//pHttpCore->FireResultEvent(response.c_str());
 		::PostThreadMessage(a->idthread, WM_HTTP_NOTIFIER, (WPARAM)pArguments, 0);
 	}
+	else
+	{
+		a->http_code = 400; // http request Error
+		::PostThreadMessage(a->idthread, WM_HTTP_NOTIFIER, (WPARAM)pArguments, 0);
+	}
 	curl_easy_cleanup(curl);
 	CHttpClient::GetInstance()->m_threadcount--;
 

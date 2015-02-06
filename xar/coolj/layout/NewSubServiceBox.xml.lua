@@ -33,25 +33,51 @@ function OnClick(self)
 	ret = 0
 	if self:GetID() == "ok" then
 		ret = 1
-		local name = root:GetControlObject("edit.title"):GetText()
-		local content = root:GetControlObject("edit.content"):GetText()
-		local area = root:GetControlObject("edit.area"):GetText()
-		local phone = root:GetControlObject("edit.phone"):GetText()
+		local name = ""
+		local content = ""
+		local area = ""
+		local phone = ""
 		local id = attr.UserData['id']
 		local pid = attr.UserData['pid']
 		local param = ''
 		local url = ''
 		
+		if attr.Method == 'add_property_service_info' then
+			name = root:GetObject("content.property.bkg:edit.title"):GetText()
+			content = root:GetObject("content.property.bkg:edit.content"):GetText()
+			area = root:GetObject("content.property.bkg:edit.area"):GetText()
+			phone = root:GetObject("content.property.bkg:edit.phone"):GetText()
+			param = "action=add_info&pid="..pid.."&name="..name.."&content="..content.."&area="..area.."&phone="..phone
+			url = "/api/community/services"
+		elseif attr.Method == 'edit_property_service_info' then
+			name = root:GetObject("content.property.bkg:edit.title"):GetText()
+			content = root:GetObject("content.property.bkg:edit.content"):GetText()
+			area = root:GetObject("content.property.bkg:edit.area"):GetText()
+			phone = root:GetObject("content.property.bkg:edit.phone"):GetText()
+			param = "action=update_info&id="..id.."&name="..name.."&content="..content.."&area="..area.."&phone="..phone.."&i_order="..attr.UserData['i_order']
+			url = "/api/community/services"
+		elseif attr.Method == 'add_community_service_info' then
+			name = root:GetObject("content.community.bkg:edit.title"):GetText()
+			content = root:GetObject("content.community.bkg:richedit.content_msg"):GetText()
+			content_msg = root:GetObject("content.community.bkg:richedit.content_msg"):GetText()
+			content_des = root:GetObject("content.community.bkg:richedit.content_des"):GetText()
+			area = root:GetObject("content.community.bkg:edit.area"):GetText()
+			phone = root:GetObject("content.community.bkg:edit.phone"):GetText()
+			param = "action=add_info&pid="..pid.."&name="..name.."&content="..content.."&content_msg="..content_msg.."&content_des="..content_des.."&area="..area.."&phone="..phone.."&address="..""
+			url = "/api/life/business"
+		elseif attr.Method == 'edit_community_service_info' then
+			name = root:GetObject("content.community.bkg:edit.title"):GetText()
+			content = root:GetObject("content.community.bkg:richedit.content_msg"):GetText()
+			content_msg = root:GetObject("content.community.bkg:richedit.content_msg"):GetText()
+			content_des = root:GetObject("content.community.bkg:richedit.content_des"):GetText()
+			area = root:GetObject("content.community.bkg:edit.area"):GetText()
+			phone = root:GetObject("content.community.bkg:edit.phone"):GetText()
+			param = "action=update_info&id="..id.."&name="..name.."&content="..content.."&content_msg="..content_msg.."&content_des="..content_des.."&area="..area.."&phone="..phone.."&address="..attr.UserData['address'].."&i_order="..attr.UserData['i_order']
+			url = "/api/life/business"
+		end
+		
 		local ret, msg = Post_Adjust({name=name, content=content, area=area, phone=phone})
 		if ret == 0 then
-			if attr.Method == 'add_community_service_info' then
-				param = "action=add_info&pid="..pid.."&name="..name.."&content="..content.."&area="..area.."&phone="..phone
-				url = "/api/community/services"
-			elseif attr.Method == 'edit_community_service_info' then
-				param = "action=update_info&id="..id.."&name="..name.."&content="..content.."&area="..area.."&phone="..phone.."&i_order="..attr.UserData['i_order']
-				url = "/api/community/services"
-			end
-			
 			local request = function(ret, msg, result)
 				if ret == 0 then
 					hostwnd:EndDialog(1)	
@@ -96,4 +122,28 @@ end
 
 function OnChange(self)
 	
+end
+
+function OnInitControl(self)
+	self:GetControlObject("content.property.bkg"):SetVisible(false)
+	self:GetControlObject("content.property.bkg"):SetChildrenVisible(false)
+	self:GetControlObject("content.community.bkg"):SetVisible(false)
+	self:GetControlObject("content.community.bkg"):SetChildrenVisible(false)
+end
+
+function OnEditChange(self)
+	local textLength = self:GetLength()
+	if textLength == nil then return end
+	local textMaxLength = self:GetMaxLength()
+	if textMaxLength == nil then return end
+	--XLMessageBox(textMaxLength)
+	
+	local id = self:GetID()
+	if id == "richedit.content_des" then
+		local wordTips = self:GetOwnerControl():GetControlObject("tip.content_des")
+		if wordTips ~= nil then wordTips:SetText("还能输入"..textMaxLength-textLength.."个汉字") end
+	elseif id == "richedit.content_msg" then
+		local wordTips = self:GetOwnerControl():GetControlObject("tip.content_msg")
+		if wordTips ~= nil then wordTips:SetText("还能输入"..textMaxLength-textLength.."个汉字") end
+	end
 end

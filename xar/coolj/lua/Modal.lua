@@ -279,11 +279,27 @@ function NewSubServiceBox(hWnd, title, method, userdata)
 						end
 						root:GetAttribute().Method = userdata['method']				
 						root:GetAttribute().UserData = userdata['userdata']
-						if userdata['method'] == 'edit_community_service_info' then
-							root:GetControlObject("edit.title"):SetText(userdata['userdata']['name'])
-							root:GetControlObject("edit.content"):SetText(userdata['userdata']['content'])
-							root:GetControlObject("edit.area"):SetText(userdata['userdata']['area'])
-							root:GetControlObject("edit.phone"):SetText(userdata['userdata']['phone'])
+						if userdata['method'] == 'edit_property_service_info' then
+							root:GetObject("content.property.bkg:edit.title"):SetText(userdata['userdata']['name'])
+							root:GetObject("content.property.bkg:edit.content"):SetText(userdata['userdata']['content'])
+							root:GetObject("content.property.bkg:edit.area"):SetText(userdata['userdata']['area'])
+							root:GetObject("content.property.bkg:edit.phone"):SetText(userdata['userdata']['phone'])
+							root:GetControlObject("content.property.bkg"):SetVisible(true)
+							root:GetControlObject("content.property.bkg"):SetChildrenVisible(true)
+						elseif userdata['method'] == 'add_property_service_info' then
+							root:GetControlObject("content.property.bkg"):SetVisible(true)
+							root:GetControlObject("content.property.bkg"):SetChildrenVisible(true)
+						elseif userdata['method'] == 'edit_community_service_info' then
+							root:GetObject("content.community.bkg:edit.title"):SetText(userdata['userdata']['name'])
+							root:GetObject("content.community.bkg:richedit.content_msg"):SetText(userdata['userdata']['content_msg'])	
+							root:GetObject("content.community.bkg:richedit.content_des"):SetText(userdata['userdata']['content_des'])	
+							root:GetObject("content.community.bkg:edit.area"):SetText(userdata['userdata']['area'])	
+							root:GetObject("content.community.bkg:edit.phone"):SetText(userdata['userdata']['phone'])	
+							root:GetControlObject("content.community.bkg"):SetVisible(true)
+							root:GetControlObject("content.community.bkg"):SetChildrenVisible(true)
+						elseif userdata['method'] == 'add_community_service_info' then
+							root:GetControlObject("content.community.bkg"):SetVisible(true)
+							root:GetControlObject("content.community.bkg"):SetChildrenVisible(true)
 						end
 					end
 				local cookie = objectTreeTemplate:AttachListener("OnPostCreateInstance", true, OnPostCreateInstance)

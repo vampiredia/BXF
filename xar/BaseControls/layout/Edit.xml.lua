@@ -50,6 +50,7 @@ function SetText(self, text)
 			if text ~= "" then
 				attr.Text = text
 				edit:SetText(text)
+				edit:SetTextColorID(attr.NormalTextColor)
 			elseif attr.TipText ~= nil then
 				edit:SetTextColorID(attr.NormalTipTextColor)
 				edit:SetIsPassword(false)

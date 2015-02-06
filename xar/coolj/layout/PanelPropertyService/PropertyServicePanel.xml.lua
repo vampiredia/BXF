@@ -19,7 +19,8 @@ function TabHeader_OnInitControl(self)
 	attr.TextValign = "center"
 	
 	self:AddTabItem("TabItem_PropertyService", "物业服务", "")
-	self:AddTabItem("TabItem_PropertyInfo", "物业信息", "")
+	self:AddTabItem("TabItem_PropertyPay", "缴费管理", "")
+	self:AddTabItem("TabItem_PropertyInfo", "增值服务", "")
 	
 end
 
@@ -28,9 +29,13 @@ function OnActiveTabChanged(self, eventName, newid, oldid)
 
 	local propertyServiceChildPanelForService = ownerTree:GetUIObject("app.bkg:PropertyServicePanel:PropertyServiceChildPanelForService")
 	local propertyServiceChildPanelForInfo = ownerTree:GetUIObject("app.bkg:PropertyServicePanel:PropertyServiceChildPanelForInfo")
+	local propertyServiceChildPanelForPay = ownerTree:GetUIObject("app.bkg:PropertyServicePanel:PropertyServiceChildPanelForPay")
 	
 	propertyServiceChildPanelForService:SetVisible(false)
     propertyServiceChildPanelForService:SetChildrenVisible(false)
+		
+	propertyServiceChildPanelForPay:SetVisible(false)
+	propertyServiceChildPanelForPay:SetChildrenVisible(false)
 	
 	propertyServiceChildPanelForInfo:SetVisible(false)
     propertyServiceChildPanelForInfo:SetChildrenVisible(false)
@@ -39,6 +44,9 @@ function OnActiveTabChanged(self, eventName, newid, oldid)
 		propertyServiceChildPanelForService:SetVisible(true)
 		propertyServiceChildPanelForService:SetChildrenVisible(true)
 		--propertyServiceChildPanelForService:Get_PropertyServiceInfo()
+	elseif newid == "TabItem_PropertyPay" then
+		propertyServiceChildPanelForPay:SetVisible(true)
+		propertyServiceChildPanelForPay:SetChildrenVisible(true)
 	elseif newid == "TabItem_PropertyInfo" then
 		propertyServiceChildPanelForInfo:SetVisible(true)
 		propertyServiceChildPanelForInfo:SetChildrenVisible(true)

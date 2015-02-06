@@ -457,16 +457,18 @@ end
 
 function CLB_SelectItem( self, name, id )
     local class = self:GetClass()
+	local focus = true
     local parent, listbox
 	parent = self:GetOwnerControl()
 	listbox = self
     local attr = parent:GetAttribute()
+	if attr.select == id then focus = false end
     attr.select = id
     local edit = parent:GetControlObject("combo.edit")
     local item = attr.data[id]
     if not item.Custom then
         edit:SetText(attr.data[id].Text)
-        parent:FireExtEvent("OnSelectItemChanged", id)
+        parent:FireExtEvent("OnSelectItemChanged", id, focus)
 		parent:FireExtEvent("OnEnterContent",attr.data[id].Text)
 		edit:SetFocus(true)
     end
@@ -484,15 +486,17 @@ end
 function CB__SelectItem(self, name, id)
     local class = self:GetClass()
     local parent, listbox
+	local focus = true
 	parent = self
 	listbox = parent:GetControlObject("listbox")
     local attr = parent:GetAttribute()
+	if attr.select == id then focus = false end
     attr.select = id
     local edit = parent:GetControlObject("combo.edit")
     local item = attr.data[id]
     if not item.Custom then
         edit:SetText(attr.data[id].Text)
-        parent:FireExtEvent("OnSelectItemChanged", id)
+        parent:FireExtEvent("OnSelectItemChanged", id, focus)
 		parent:FireExtEvent("OnEnterContent",attr.data[id].Text)
 		edit:SetFocus(true)
     end
@@ -1269,7 +1273,7 @@ function CI__Icon__OnBtnDown(self)
 	
     if not attr.data[Index].Custom then
         edit:SetText(boxText)
-        owner2:FireExtEvent("OnSelectItemChanged", Index)
+        owner2:FireExtEvent("OnSelectItemChanged", Index, true)
 		owner2:FireExtEvent("OnEnterContent",attr.data[Index].Text)
 		edit:SetFocus(true)
     end

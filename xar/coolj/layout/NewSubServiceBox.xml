@@ -68,7 +68,7 @@
 					</children>
 				</obj>
 
-				<obj id="content.bkg" class="FillObject">
+				<obj id="content.property.bkg" class="FillObject">
 					<attr>
 						<left>7</left>
 						<top>40</top>
@@ -155,7 +155,7 @@
 								<textcolor>system.gray</textcolor>
 							</attr>
 						</obj>
-						
+
 						<obj id="text.contact" class="TextObject">
 							<attr>
 								<left>20</left>
@@ -218,7 +218,196 @@
 								<height>34</height>
 								<valign>center</valign>
 								<halign>center</halign>
-								<text></text>
+								<text/>
+								<font>text.tip.normal.font</font>
+								<textcolor>system.red</textcolor>
+							</attr>
+						</obj>
+					</children>
+				</obj>
+
+				<obj id="content.community.bkg" class="FillObject">
+					<attr>
+						<left>7</left>
+						<top>40</top>
+						<filltype>Monochrome</filltype>
+						<blendtype>Source</blendtype>
+						<width>father.width - 14</width>
+						<height>father.height - 80</height>
+						<srcpt>0,0</srcpt>
+						<destpt>width,height</destpt>
+						<maskleft>0</maskleft>
+						<masktop>0</masktop>
+						<maskwidth>width</maskwidth>
+						<maskheight>height</maskheight>
+						<maskblendtype>attenunate</maskblendtype>
+						<srccolor>system.white</srccolor>
+						<destcolor>system.white</destcolor>
+						<alpha>255</alpha>
+						<zorder>9999</zorder>
+					</attr>
+					<children>
+						<obj id="text.title" class="TextObject">
+							<attr>
+								<left>20</left>
+								<top>15</top>
+								<width>85</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>商户名称：</text>
+							</attr>
+						</obj>
+						<obj id="edit.title" class="WHome.Edit">
+							<attr>
+								<left>90</left>
+								<top>15</top>
+								<width>180</width>
+								<height>34</height>
+								<TipText>输入上限8个汉字</TipText>
+								<NormalTipTextColor>system.gray</NormalTipTextColor>
+								<taborder>5</taborder>
+							</attr>
+						</obj>
+						<obj id="text.content_msg" class="TextObject">
+							<attr>
+								<left>20</left>
+								<top>40</top>
+								<width>85</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>老板消息：</text>
+							</attr>
+						</obj>
+						<obj id="tip.content_msg" class="TextObject">
+							<attr>
+								<left>father.width-140</left>
+								<top>40</top>
+								<width>120</width>
+								<height>34</height>
+								<valign>center</valign>
+								<halign>right</halign>
+								<text>输入上限40个汉字</text>
+								<font>text.tip.normal.font</font>
+								<textcolor>system.red</textcolor>
+							</attr>
+						</obj>
+						<obj id="richedit.content_msg" class="WHome.RichEdit">
+							<attr>
+								<left>20</left>
+								<top>70</top>
+								<width>father.width-40</width>
+								<height>64</height>
+								<WordWrap>true</WordWrap>
+								<AllowVSB>true</AllowVSB>
+								<MaxLength>40</MaxLength>
+								<taborder>6</taborder>
+							</attr>
+							<eventlist>
+								<event name="OnEditChange" file="NewSubServiceBox.xml.lua" func="OnEditChange" />
+							</eventlist>
+						</obj>
+						<obj id="text.content_des" class="TextObject">
+							<attr>
+								<left>20</left>
+								<top>140</top>
+								<width>85</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>服务说明：</text>
+							</attr>
+						</obj>
+						<obj id="richedit.content_des" class="WHome.RichEdit">
+							<attr>
+								<left>20</left>
+								<top>170</top>
+								<width>father.width-40</width>
+								<height>64</height>
+								<WordWrap>true</WordWrap>
+								<AllowVSB>true</AllowVSB>
+								<MaxLength>200</MaxLength>
+								<taborder>7</taborder>
+							</attr>
+							<eventlist>
+								<event name="OnEditChange" file="NewSubServiceBox.xml.lua" func="OnEditChange" />
+							</eventlist>
+						</obj>
+						<obj id="tip.content_des" class="TextObject">
+							<attr>
+								<left>father.width-140</left>
+								<top>140</top>
+								<width>120</width>
+								<height>34</height>
+								<valign>center</valign>
+								<halign>right</halign>
+								<text>输入上限200个汉字</text>
+								<font>text.tip.normal.font</font>
+								<textcolor>system.red</textcolor>
+							</attr>
+						</obj>
+
+						<obj id="text.contact" class="TextObject">
+							<attr>
+								<left>20</left>
+								<top>240</top>
+								<width>85</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>联系电话：</text>
+							</attr>
+						</obj>
+						<obj id="edit.area" class="WHome.Edit">
+							<attr>
+								<left>90</left>
+								<top>240</top>
+								<width>60</width>
+								<height>34</height>
+								<TipText>区号</TipText>
+								<NormalTipTextColor>system.gray</NormalTipTextColor>
+								<taborder>8</taborder>
+							</attr>
+						</obj>
+						<obj id="text.-" class="TextObject">
+							<attr>
+								<left>152</left>
+								<top>240</top>
+								<width>10</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>-</text>
+							</attr>
+						</obj>
+						<obj id="edit.phone" class="WHome.Edit">
+							<attr>
+								<left>160</left>
+								<top>240</top>
+								<width>150</width>
+								<height>34</height>
+								<TipText>电话号码</TipText>
+								<NormalTipTextColor>system.gray</NormalTipTextColor>
+								<taborder>9</taborder>
+							</attr>
+						</obj>
+						<obj id="tip.contact" class="TextObject">
+							<attr>
+								<left>20</left>
+								<top>270</top>
+								<width>220</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>座机请填写区号，不支持分机。手机可不填写区号</text>
+								<font>text.tip.normal.font</font>
+								<textcolor>system.gray</textcolor>
+							</attr>
+						</obj>
+						<obj id="tip.msg" class="TextObject">
+							<attr>
+								<left>0</left>
+								<top>father.height - 40</top>
+								<width>father.width</width>
+								<height>34</height>
+								<valign>center</valign>
+								<halign>center</halign>
+								<text/>
 								<font>text.tip.normal.font</font>
 								<textcolor>system.red</textcolor>
 							</attr>
@@ -240,7 +429,7 @@
 						<HoverBkgID>blue.big.button.hover</HoverBkgID>
 						<ShowFocusRect>false</ShowFocusRect>
 						<visible>1</visible>
-						<taborder>5</taborder>
+						<taborder>11</taborder>
 					</attr>
 					<eventlist>
 						<event name="OnClick" file="NewSubServiceBox.xml.lua" func="OnClick" />
@@ -260,13 +449,16 @@
 						<HoverBkgID>green.button.hover</HoverBkgID>
 						<ShowFocusRect>false</ShowFocusRect>
 						<visible>1</visible>
-						<taborder>6</taborder>
+						<taborder>12</taborder>
 					</attr>
 					<eventlist>
 						<event name="OnClick" file="NewSubServiceBox.xml.lua" func="OnClick" />
 					</eventlist>
 				</obj>
 			</children>
+			<eventlist>
+				<event name="OnInitControl" file="NewSubServiceBox.xml.lua" func="OnInitControl" />
+			</eventlist>
 		</obj>
 
 	</objtreetemplate>

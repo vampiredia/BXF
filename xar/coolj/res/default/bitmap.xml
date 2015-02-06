@@ -138,5 +138,16 @@
 		<texture id="texture.btn.warn.normal.bkg" type="Stretch" image="bitmap\btn_warn_normal.png" />
 		<texture id="texture.btn.warn.hover.bkg" type="Stretch" image="bitmap\btn_warn_hover.png" />
 		<texture id="texture.btn.warn.down.bkg" type="Stretch" image="bitmap\btn_warn_down.png" />
+		
+		<!-- icon resource -->
+		<texture id="texture.icon.card" type="Stretch" image="bitmap\icon\card.png" />
+		<texture id="texture.icon.elemoney" type="Stretch" image="bitmap\icon\ele_money.png" />
+		<texture id="texture.icon.firemoney" type="Stretch" image="bitmap\icon\fire_money.png" />
+		<texture id="texture.icon.onlinemoney" type="Stretch" image="bitmap\icon\online_money.png" />
+		<texture id="texture.icon.phonemoney" type="Stretch" image="bitmap\icon\phone_money.png" />
+		<texture id="texture.icon.rawmoney" type="Stretch" image="bitmap\icon\raw_money.png" />
+		<texture id="texture.icon.stopcar" type="Stretch" image="bitmap\icon\stop_car.png" />
+		<texture id="texture.icon.watermoney" type="Stretch" image="bitmap\icon\water_money.png" />
+		<texture id="texture.icon.view" type="Stretch" image="bitmap\icon\you.png" />
 	</resource>
 </XLUE>	

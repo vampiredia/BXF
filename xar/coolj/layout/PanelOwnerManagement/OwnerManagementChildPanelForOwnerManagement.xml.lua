@@ -4,41 +4,6 @@ function OnInitControl(self)
 	--bkg:SetTextureID(attr.BorderTexture)
 	
 	--Page_Change(self, "ctrl_list", "ctrl_info")
-	Page_Change(self, "ctrl_info", "ctrl_list")
-end
-
-function LC_OnPublicInitControl(self)
-	self:InsertColumn("name", 70, "姓名", "left", "center", 5, true, 20)
-	self:InsertColumn("phone", 90, "电话", "left", "center", 5, true, 20)
-	self:InsertColumn("xz", 60, "性质", "left", "center", 5, true, 20)
-	self:InsertColumn("sfz", 150, "身份证", "left", "center", 5, true, 20)
-	self:InsertColumn("lyxx", 145, "楼宇信息", "left", "center", 5, true, 20)
-	self:InsertColumn("operate", 90, "操作", "left", "center", 5, true, 20)
-	self:InsertColumn("status", 70, "缴费状态", "left", "center", 5, true, 20)
-	
-	local list_item_data = {}
-	table.insert(list_item_data, {name="黄蓉", phone="13920001989", xz="业主", sfz="110122198702051110", lyxx="1号楼 2单元 301", operate="编辑 详情", status="已缴费"})
-	table.insert(list_item_data, {name="黄蓉", phone="13920001989", xz="业主", sfz="110122198702051110", lyxx="1号楼 2单元 301", operate="编辑 详情", status="已缴费"})
-	table.insert(list_item_data, {name="黄蓉", phone="13920001989", xz="业主", sfz="110122198702051110", lyxx="1号楼 2单元 301", operate="编辑 详情", status="已缴费"})
-	table.insert(list_item_data, {name="黄蓉", phone="13920001989", xz="业主", sfz="110122198702051110", lyxx="1号楼 2单元 301", operate="编辑 详情", status="已缴费"})
-	table.insert(list_item_data, {name="黄蓉", phone="13920001989", xz="业主", sfz="110122198702051110", lyxx="1号楼 2单元 301", operate="编辑 详情", status="已缴费"})
-	table.insert(list_item_data, {name="黄蓉", phone="13920001989", xz="业主", sfz="110122198702051110", lyxx="1号楼 2单元 301", operate="编辑 详情", status="已缴费"})
-	table.insert(list_item_data, {name="黄蓉", phone="13920001989", xz="业主", sfz="110122198702051110", lyxx="1号楼 2单元 301", operate="编辑 详情", status="已缴费"})
-	table.insert(list_item_data, {name="黄蓉", phone="13920001989", xz="业主", sfz="110122198702051110", lyxx="1号楼 2单元 301", operate="编辑 详情", status="已缴费"})
-	table.insert(list_item_data, {name="黄蓉", phone="13920001989", xz="业主", sfz="110122198702051110", lyxx="1号楼 2单元 301", operate="编辑 详情", status="已缴费"})
-	table.insert(list_item_data, {name="黄蓉", phone="13920001989", xz="业主", sfz="110122198702051110", lyxx="1号楼 2单元 301", operate="编辑 详情", status="已缴费"})
-	table.insert(list_item_data, {name="黄蓉", phone="13920001989", xz="业主", sfz="110122198702051110", lyxx="1号楼 2单元 301", operate="编辑 详情", status="已缴费"})
-	table.insert(list_item_data, {name="黄蓉", phone="13920001989", xz="业主", sfz="110122198702051110", lyxx="1号楼 2单元 301", operate="编辑 详情", status="已缴费"})
-	table.insert(list_item_data, {name="黄蓉", phone="13920001989", xz="业主", sfz="110122198702051110", lyxx="1号楼 2单元 301", operate="编辑 详情", status="已缴费"})
-	table.insert(list_item_data, {name="黄蓉", phone="13920001989", xz="业主", sfz="110122198702051110", lyxx="1号楼 2单元 301", operate="编辑 详情", status="已缴费"})
-	table.insert(list_item_data, {name="黄蓉", phone="13920001989", xz="业主", sfz="110122198702051110", lyxx="1号楼 2单元 301", operate="编辑 详情", status="已缴费"})
-	
-	self:InsertItemList(list_item_data, true)
-	
-end
-
-function LC_OnListItemClick(self)
-
 end
 
 function RG_OnInitControl(self)
@@ -55,59 +20,34 @@ end
 function CBB_OnInitControl(self)
 	local attr = self:GetAttribute()
 	attr.data = {}
-	local temp_data = {"全部", "1", "2", "3", "4", "5"}
-	for i,valid_time in ipairs(temp_data) do
-		table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = valid_time, Custom = nil, Func = nil })
-	end
+	table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = "全部", Custom = nil, Func = nil, ID = 0 })
 	self:SetText("全部")
-end
-
-function CBPY_OnInitControl(self)
-	local attr = self:GetAttribute()
-	attr.data = {}
-	local temp_data = {"业主"}
-	for i,valid_time in ipairs(temp_data) do
-		table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = valid_time, Custom = nil, Func = nil })
-	end
-	self:SetText("业主")
 end
 
 function CBU_OnInitControl(self)
 	local attr = self:GetAttribute()
 	attr.data = {}
-	local temp_data = {"全部", "1", "2", "3"}
-	for i,valid_time in ipairs(temp_data) do
-		table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = valid_time, Custom = nil, Func = nil })
-	end
-	self:SetText("全部")
-end
-
-function CBF_OnInitControl(self)
-	local attr = self:GetAttribute()
-	attr.data = {}
-	local temp_data = {"全部", "1", "2", "3"}
-	for i,valid_time in ipairs(temp_data) do
-		table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = valid_time, Custom = nil, Func = nil })
-	end
+	table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = "全部", Custom = nil, Func = nil, ID = 0 })
 	self:SetText("全部")
 end
 
 function CBR_OnInitControl(self)
 	local attr = self:GetAttribute()
 	attr.data = {}
-	local temp_data = {"全部", "1", "2", "3"}
-	for i,valid_time in ipairs(temp_data) do
-		table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = valid_time, Custom = nil, Func = nil })
-	end
+	table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = "全部", Custom = nil, Func = nil, ID = 0 })
 	self:SetText("全部")
 end
 
 function CBP_OnInitControl(self)
 	local attr = self:GetAttribute()
 	attr.data = {}
-	local temp_data = {"全部", "已缴费", "未缴费"}
-	for i,valid_time in ipairs(temp_data) do
-		table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = valid_time, Custom = nil, Func = nil })
+	local temp_data = {
+		{id="0", text="全部"}, 
+		{id="1", text="已缴费"},
+		{id="2", text="未缴费"}
+	}
+	for i,v in ipairs(temp_data) do
+		table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = v["text"], Custom = nil, Func = nil, ID = v["ID"] })
 	end
 	self:SetText("全部")
 end
@@ -142,15 +82,13 @@ end
 function CBN_OnInitControl(self)
 	local attr = self:GetAttribute()
 	attr.data = {}
-	local temp_data = {"全部", "李天一", "李天二", "李天三"}
-	for i,valid_time in ipairs(temp_data) do
-		table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = valid_time, Custom = nil, Func = nil })
-	end
-	self:SetText("全部")	
+	local init_data = {id = "0", text = "全部"}
+	table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = init_data["text"], Custom = nil, Func = nil, ID=init_data["id"] })
+	self:SetText("全部")
 end
 
 function BTN_OnSearch(self)
-	
+	self:GetOwnerControl():GetBuildingInfo()
 end
 
 function Page_Change(self, newPage, oldPage)
@@ -167,12 +105,8 @@ function Page_Change(self, newPage, oldPage)
 	end
 end
 
-function LC_OnListItemDbClick(self)
-	Page_Change(self:GetOwnerControl(), "ctrl_info", "ctrl_list")
-end
-
 function OnClickInfoPageToListPage(self)
-	Page_Change(self:GetOwnerControl(), "ctrl_list", "ctrl_info")
+	--Page_Change(self:GetOwnerControl(), "ctrl_list", "ctrl_info")
 end
 
 function BTN_OnSave(self)
@@ -191,5 +125,191 @@ function CCP_OnCheck(self, event, state, bClick)
 		self:SetText("身份已验证")
 	else
 		self:SetText("身份未验证")
+	end
+end
+
+function LBS_OnInitControl(self)
+	local objFactory = XLGetObject("Xunlei.UIEngine.ObjectFactory")
+	local headerTable = {
+		{HeaderItemId='text', ItemWidth=160, Text="楼宇号", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=160, MiniSize=160, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='status', ItemWidth=60, Text="状态", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=60, MiniSize=60, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='pay', ItemWidth=70, Text="缴费状态", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=70, MiniSize=70, ShowSplitter=false, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='other', ItemWidth=60, Text="", TextLeftOffset=2, TextHalign="left", SubItem=false, MaxSize=300, MiniSize=40, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=1}
+	}
+	table.foreach(headerTable, function(i, v) self:InsertColumn(v) end);
+	self:ReloadHeader()
+	--[[
+	local objFactory = XLGetObject("Xunlei.UIEngine.ObjectFactory")
+	local datasource = objFactory:CreateUIObject(1, "OwnerManager.DataSource")
+	datasource:InitControl()
+	local dataconverter = objFactory:CreateUIObject(2, "OwnerManager.DataConverter")
+	dataconverter:InitControl()
+	self:SetDataSourceAndDataConverter(datasource, dataconverter)
+	self:ReloadData()
+	]]
+end
+
+function LBS_OnHeaderItemPosChanged(self)
+	if isDrag == true then
+		self:GetTableViewObj():UpdateItemInfo(isDrag, GridInfoList)
+	end
+end
+
+function LBS_OnItemEvent(self)
+
+end
+
+function LBU_OnInitControl(self)
+	local objFactory = XLGetObject("Xunlei.UIEngine.ObjectFactory")
+	local headerTable = {
+		{HeaderItemId='name', ItemWidth=70, Text="姓名", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=70, MiniSize=70, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='relation', ItemWidth=60, Text="关系", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=60, MiniSize=60, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='telphone', ItemWidth=110, Text="电话", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=110, MiniSize=110, ShowSplitter=false, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='status', ItemWidth=60, Text="状态", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=60, MiniSize=60, ShowSplitter=false, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='other', ItemWidth=60, Text="", TextLeftOffset=2, TextHalign="left", SubItem=false, MaxSize=300, MiniSize=40, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=1}
+	}
+	table.foreach(headerTable, function(i, v) self:InsertColumn(v) end);
+	self:ReloadHeader()
+	--[[
+	local objFactory = XLGetObject("Xunlei.UIEngine.ObjectFactory")
+	local datasource = objFactory:CreateUIObject(1, "OwnerManager.DataSource")
+	datasource:InitControl()
+	local dataconverter = objFactory:CreateUIObject(2, "OwnerManager.DataConverter")
+	dataconverter:InitControl()
+	self:SetDataSourceAndDataConverter(datasource, dataconverter)
+	self:ReloadData()
+	]]
+end
+
+function LBU_OnHeaderItemPosChanged(self)
+	if isDrag == true then
+		self:GetTableViewObj():UpdateItemInfo(isDrag, GridInfoList)
+	end
+end
+
+function LBU_OnItemEvent(self)
+
+end
+
+function SearchOwnerInfo(self)
+	
+end
+
+function GetUserInfo(self)
+
+end
+
+function GetBuildingInfo(self)
+	local request = function(ret, msg, result)
+		if ret == 0 then
+			local obj = self:GetControlObject("cb.building")
+			local attr = obj:GetAttribute()
+			attr.data = {}
+			table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = "全部", Custom = nil, Func = nil, ID = 0 })
+			for i,v in ipairs(result['building_list']) do
+				table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = v["text"], Custom = nil, Func = nil, ID = v["id"] })
+			end
+			obj:SetText("全部")
+			self:UnitInit()
+			self:RoomInit()
+		else
+			AddNotify(self, msg, 5000)
+		end
+	end
+	local param = ""
+	HttpRequest("/api/user?action=building", "GET", param, request)
+end
+
+function GetUnitInfo(self, bid)
+	local request = function(ret, msg, result)
+		if ret == 0 then
+			local obj = self:GetControlObject("cb.unit")
+			local attr = obj:GetAttribute()
+			attr.data = {}
+			table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = "全部", Custom = nil, Func = nil, ID = 0 })
+			for i,v in ipairs(result['unit_list']) do
+				table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = v["text"], Custom = nil, Func = nil, ID = v["id"] })
+			end
+			obj:SetText("全部")
+			self:RoomInit()
+		else
+			AddNotify(self, msg, 5000)
+		end
+	end
+	local param = ""
+	HttpRequest("/api/user?action=unit&building="..bid, "GET", param, request)
+end
+
+function GetRoomInfo(self, bid, uid)
+	local request = function(ret, msg, result)
+		if ret == 0 then
+			local obj = self:GetControlObject("cb.room")
+			local attr = obj:GetAttribute()
+			attr.data = {}
+			table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = "全部", Custom = nil, Func = nil, ID = 0 })
+			for i,v in ipairs(result['room_list']) do
+				table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = v["text"], Custom = nil, Func = nil, ID = v["id"] })
+			end
+			obj:SetText("全部")
+		else
+			AddNotify(self, msg, 5000)
+		end
+	end
+	local param = ""
+	HttpRequest("/api/user?action=room&building="..bid.."&unit="..uid, "GET", param, request)
+end
+
+function UnitInit(self)
+	local obj = self:GetControlObject("cb.unit")
+	local attr = obj:GetAttribute()
+	attr.data = {}
+	table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = "全部", Custom = nil, Func = nil, ID = 0 })
+	obj:SetText("全部")
+end
+
+function BuildingInit(self)
+	local obj = self:GetControlObject("cb.building")
+	local attr = obj:GetAttribute()
+	attr.data = {}
+	table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = "全部", Custom = nil, Func = nil, ID = 0 })
+	obj:SetText("全部")
+end
+
+function RoomInit(self)
+	local obj = self:GetControlObject("cb.room")
+	local attr = obj:GetAttribute()
+	attr.data = {}
+	table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = "全部", Custom = nil, Func = nil, ID = 0 })
+	obj:SetText("全部")
+end
+
+function CBB_OnSelectItemChanged(self, eventname, id, focus)
+	local attr = self:GetAttribute()
+	selectID = self:GetOwnerControl():GetSelectID(self) + 0
+	if focus == false then return end
+	if selectID > 0 then
+		self:GetOwnerControl():GetUnitInfo(selectID)
+		self:GetOwnerControl():RoomInit()
+	else
+		self:GetOwnerControl():UnitInit()
+		self:GetOwnerControl():RoomInit()
+	end
+end
+
+function GetSelectID(self, obj)
+	local attr = obj:GetAttribute()
+	local selectData = attr.data[attr.select]
+	return selectData["ID"]
+end
+
+function CBU_OnSelectItemChanged(self, eventname, id, focus)
+	local attr = self:GetAttribute()
+	selectID = self:GetOwnerControl():GetSelectID(self) + 0
+	bid = self:GetOwnerControl():GetSelectID(self:GetOwnerControl():GetControlObject("cb.building")) + 0
+	if focus == false then return end
+	if selectID > 0 then
+		self:GetOwnerControl():GetRoomInfo(bid, selectID)
+	else
+		self:GetOwnerControl():RoomInit()
 	end
 end

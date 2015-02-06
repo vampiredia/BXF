@@ -1,0 +1,214 @@
+<xlue>
+	<control class="Pay.List">
+		<attr_def>
+			<attr name="Margin" type="int">
+				<default>3</default>
+			</attr>
+		</attr_def>
+		<method_def>
+			<SetText file="ListDataPay.xml.lua" func="SetText" />
+			<SetPosition file="ListDataPay.xml.lua" func="SetPosition" />
+			<GetName file="ListDataPay.xml.lua" func="GetName" />
+		</method_def>
+		<event_def>
+			<OnItemMouseEvent> <!-- Item各种鼠标事件 -->
+				<param>
+					<string /> <!-- 事件类型 -->
+					<int /> <!-- x -->
+					<int /> <!-- y -->
+					<int /> <!-- flags -->
+					</param>
+			</OnItemMouseEvent>	
+			<OnItemEvent> <!-- Item自定义事件 -->
+				<param>
+					<string/>		<!-- 事件的类型	-->
+					<table /> 		<!-- 数据table-->
+					<layoutobj/>    <!-- 对象 -->
+				</param>
+			</OnItemEvent>
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<texture>listbox.item.bkg.normal</texture>
+					</attr>
+					<children>
+						<obj id="texture.icon" class="TextureObject">
+							<attr>
+								<left>8</left>
+								<top>0</top>
+								<width>father.height</width>
+								<height>father.height</height>
+								<text>title</text>
+								<valign>center</valign>
+								<halign>center</halign>
+								<halign>left</halign>
+							</attr>
+						</obj>
+						<obj id="text.title" class="TextObject">
+							<attr>
+								<left>father.height+16</left>
+								<top>0</top>
+								<width>80</width>
+								<height>father.height</height>
+								<text>title</text>
+								<valign>center</valign>
+								<halign>left</halign>
+							</attr>
+						</obj>
+						<obj id="btn.details" class="LayoutObject">
+							<attr>
+								<left>father.width-76</left>
+								<top>15</top>
+								<width>64</width>
+								<height>19</height>
+							</attr>
+							<children>
+							<!--
+								<obj id="imagebutton.del" class="CoolJ.ImageButton">
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>19</width>
+										<height>19</height>
+										<NormalBkgID>texture.imagebutton.del.normal</NormalBkgID>
+										<HoverBkgID>texture.imagebutton.del.hover</HoverBkgID>
+										<DownBkgID>texture.imagebutton.del.down</DownBkgID>
+										<DisableBkgID>texture.imagebutton.del.disable</DisableBkgID>
+									</attr>
+									<eventlist>
+										<event name="OnClick" file="ListDataPay.xml.lua" func="Btn_OnDel" />
+									</eventlist>
+								</obj>
+							-->
+								<obj id="imagebutton.edit" class="CoolJ.ImageButton">
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>19</width>
+										<height>19</height>
+										<NormalBkgID>texture.imagebutton.edit.normal</NormalBkgID>
+										<HoverBkgID>texture.imagebutton.edit.hover</HoverBkgID>
+										<DownBkgID>texture.imagebutton.edit.down</DownBkgID>
+										<DisableBkgID>texture.imagebutton.edit.disable</DisableBkgID>
+									</attr>
+									<eventlist>
+										<event name="OnClick" file="ListDataPay.xml.lua" func="Btn_OnEdit" />
+									</eventlist>
+								</obj>
+								<obj id="imagebutton.drag" class="CoolJ.ImageButton">
+									<attr>
+										<left>22</left>
+										<top>0</top>
+										<width>19</width>
+										<height>19</height>
+										<NormalBkgID>texture.imagebutton.drag.normal</NormalBkgID>
+										<HoverBkgID>texture.imagebutton.drag.hover</HoverBkgID>
+										<DownBkgID>texture.imagebutton.drag.down</DownBkgID>
+										<DisableBkgID>texture.imagebutton.drag.disable</DisableBkgID>
+									</attr>
+									<eventlist>
+										<event name="OnClick" file="ListDataPay.xml.lua" func="Btn_OnDrag" />
+										<event name="OnLbuttonDown" file="ListDataPay.xml.lua" func="Btn_OnDragBegin" />
+										<event name="OnLbuttonUp" file="ListDataPay.xml.lua" func="Btn_OnDragEnd" />
+									</eventlist>
+								</obj>
+								<obj id="texture.view" class="TextureObject">
+									<attr>
+										<left>44</left>
+										<top>0</top>
+										<width>19</width>
+										<height>19</height>
+										<texture>texture.icon.view</texture>
+									</attr>
+								</obj>
+								
+							</children>
+						</obj>
+					</children>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="ListDataPay.xml.lua" func="Item_OnInitControl" />
+				<event name="OnLButtonDown" file="ListDataPay.xml.lua" func="Item_OnLButtonDown" />
+				<event name="OnLButtonUp" file="ListDataPay.xml.lua" func="Item_OnLButtonUp" />
+				<event name="OnLButtonDbClick" file="ListDataPay.xml.lua" func="Item_OnLButtonDbClick" />
+				<event name="OnRButtonDown" file="ListDataPay.xml.lua" func="Item_OnRButtonDown" />
+				<event name="OnRButtonUp" file="ListDataPay.xml.lua" func="Item_OnRButtonUp" />
+				<event name="OnMouseWheel" file="ListDataPay.xml.lua" func="Item_OnMouseWheel" />
+				<event name="OnMouseMove" file="ListDataPay.xml.lua" func="Item_OnMouseMove" />
+				<event name="OnMouseHover" file="ListDataPay.xml.lua" func="Item_OnMouseHover" />
+				<event name="OnMouseLeave" file="ListDataPay.xml.lua" func="Item_OnMouseLeave" />
+			</eventlist>
+		</objtemplate>
+	</control>
+	
+	<control class="Pay.DataSource">
+		<attr_def>
+			<attr name="ItemCount" type="int" ><default>0</default></attr> <!-- 节点总数 -->
+			<attr name="SelectedItemCount" type="int" ><default>0</default></attr> <!-- 获取选中节点总数 -->
+		</attr_def>
+		<method_def>
+			<SetData file="ListDataPay.xml.lua" func="DS_SetData" />
+			<InitControl file="ListDataPay.xml.lua" func="DS_InitControl" />
+			<GetItemCount file="ListDataPay.xml.lua" func="DS_GetItemCount" />
+			<GetItemDataByIndex file="ListDataPay.xml.lua" func="DS_GetItemDataByIndex" />
+			<GetSelectedItemCount file="ListDataPay.xml.lua" func="DS_GetSelectedItemCount" />
+			<GetSelectedItemIndexList file="ListDataPay.xml.lua" func="DS_GetSelectedItemIndexList" />
+			<SelectAllItems file="ListDataPay.xml.lua" func="DS_SelectAllItems" />
+			<UnSelectAllItems file="ListDataPay.xml.lua" func="DS_UnSelectAllItems" />
+			<IsItemSelected file="ListDataPay.xml.lua" func="DS_IsItemSelected" />
+			<SelectItem file="ListDataPay.xml.lua" func="DS_SelectItem" />
+			<UnSelectItem file="ListDataPay.xml.lua" func="DS_UnSelectItem" />
+			<ExclusiveSelectItem file="ListDataPay.xml.lua" func="DS_ExclusiveSelectItem" />
+			<MoveItem file="ListDataPay.xml.lua" func="DS_MoveItem" />
+		</method_def>
+		<event_def>
+			
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="layout.datasource" class="LayoutObject">
+					<attr>
+						<width>father.width</width>
+						<height>father.height</height>
+					</attr>
+				</obj>
+			</children>
+		</objtemplate>
+	</control>
+	
+	<control class="Pay.DataConverter">
+		<attr_def>
+			<attr name="ItemHeight" type="int" />
+			<attr name="ItemWidth" type="int" />
+		</attr_def>
+		<method_def>
+			<InitControl file="ListDataPay.xml.lua" func="DC_InitControl" />
+			<GetItemSize file="ListDataPay.xml.lua" func="DC_GetItemSize" />
+			<CreateUIObjectFromData file="ListDataPay.xml.lua" func="DC_CreateUIObjectFromData" />
+			<UpdateUIObjectFromData file="ListDataPay.xml.lua" func="DC_UpdateUIObjectFromData" />
+			<SaveUIObjectState file="ListDataPay.xml.lua" func="DC_SaveUIObjectState" />
+			<SetItemBkgType file="ListDataPay.xml.lua" func="DC_SetItemBkgType" />
+			<GetItemObjPos file="ListDataPay.xml.lua" func="DC_GetItemObjPos" />
+			<UpdateItemInfo file="ListDataPay.xml.lua" func="DC_UpdateItemInfo" />
+		</method_def>
+		<event_def>
+			
+		</event_def>
+		<objtemplate>
+			<children>
+				
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="ListDataPay.xml.lua" func="DC_OnInitControl" />
+			</eventlist>
+		</objtemplate>
+
+	</control>
+</xlue>

@@ -1,13 +1,15 @@
 <xlue>
 	<control class="CoolJ.OwnerManagementPanel">
 		<attr_def>
-			<attr name="BorderTexture" type="string"><default>texture.tabbody.border</default></attr>
+			<attr name="BorderTexture" type="string">
+				<default>texture.tabbody.border</default>
+			</attr>
 		</attr_def>
 		<method_def>
-			
+
 		</method_def>
 		<event_def>
-			
+
 		</event_def>
 		<objtemplate>
 			<children>
@@ -20,7 +22,7 @@
 						<alpha>168</alpha>
 					</attr>
 				</obj>
-				
+
 				<obj id="ctrl" class="LayoutObject">
 					<attr>
 						<width>father.width</width>
@@ -33,22 +35,6 @@
 								<height>father.height</height>
 							</attr>
 							<children>
-								<!--
-								<obj id="panel.category.bkg.rectangle" class="RectangleObject">
-									<attr>
-										<width>father.width</width>
-										<height>father.height</height>
-										<srcpt>0,0</srcpt>
-										<destpt>width,height-2</destpt>
-										<pen>pen.solid</pen>
-										<brush>brush.solid</brush>
-										<pencolor>system.orange</pencolor>
-										<brushcolor>system.orange</brushcolor>
-										<visible>1</visible>
-										<alpha>1</alpha>
-									</attr>
-								</obj>
-								-->
 								<obj id="panel.category.bkg" class="TextureObject">
 									<attr>
 										<width>father.width</width>
@@ -56,7 +42,7 @@
 										<texture>texture.left.bkg</texture>
 									</attr>
 								</obj>
-								
+
 								<obj id="panel.category.tabheader" class="TabHeaderCtrl">
 									<attr>
 										<left>0</left>
@@ -83,22 +69,9 @@
 								<height>32</height>
 							</attr>
 							<children>
-								<obj id="panel.tips.static.line" class="LineObject">
-									<attr>
-										<top>father.height - 2</top>
-										<left>1</left>
-										<width>father.width-2</width>
-										<height>3</height>
-										<pen>pen.solid</pen>
-										<srcpt>0,1</srcpt>
-										<destpt>width,1</destpt>
-										<color>system.gray</color>
-										<zorder>10000</zorder>
-									</attr>
-								</obj>
 							</children>
 						</obj>
-						
+
 						<!-- tab panel -->
 						<obj id="OwnerManagementChildPanelForOwnerManagement" class="CoolJ.OwnerManagementChildPanelForOwnerManagement">
 							<attr>
@@ -109,7 +82,7 @@
 						</obj>
 					</children>
 				</obj>
-						
+
 			</children>
 			<eventlist>
 				<event name="OnInitControl" file="OwnerManagementPanel.xml.lua" func="OnInitControl" />

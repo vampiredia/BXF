@@ -40,5 +40,4 @@ function OnActiveTabChanged(self, eventName, newid, oldid)
 		communityServiceChildPanelForComplain:SetVisible(true)
 		communityServiceChildPanelForComplain:SetChildrenVisible(true)
 	end
-
 end

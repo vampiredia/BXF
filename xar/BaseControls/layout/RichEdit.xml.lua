@@ -178,6 +178,10 @@ function OnInitControl(self)
 	edit:SetMaxLength(attr.MaxLength)
 	edit:SetDisableIME(attr.DisableIME)
 	edit:SetText(attr.Text)
+	
+	if attr.taborder ~= nil then
+		edit:SetTabOrder(attr.taborder)
+	end
 end
 
 function OnVisibleChange(self, visible)

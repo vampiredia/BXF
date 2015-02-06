@@ -1,0 +1,179 @@
+<xlue>
+	<control class="CoolJ.PropertyServiceChildPanelForPay">
+		<attr_def>
+			<attr name="BorderTexture" type="string">
+				<default>texture.tabbody.border</default>
+			</attr>
+		</attr_def>
+		<method_def>
+
+		</method_def>
+		<event_def>
+
+		</event_def>
+		<objtemplate>
+			<children>
+				<obj id="bkg" class="TextureObject">
+					<attr>
+						<left>0</left>
+						<top>0</top>
+						<width>father.width</width>
+						<height>father.height</height>
+						<alpha>168</alpha>
+					</attr>
+					<children>
+						<obj id="text.service.title" class="TextObject">
+							<attr>
+								<left>10</left>
+								<top>10</top>
+								<width>father.width</width>
+								<valign>center</valign>
+								<height>34</height>
+								<text>服务信息列表</text>
+							</attr>
+						</obj>
+						<obj id="btn.view.pay.project" class="WHome.Button">
+							<attr>
+								<left>father.width-113</left>
+								<top>10</top>
+								<width>103</width>
+								<height>32</height>
+								<valign>center</valign>
+								<NormalBkgID>texture.button.green.normal</NormalBkgID>
+								<DownBkgID>texture.button.green.down</DownBkgID>
+								<DisableBkgID>texture.button.green.disable</DisableBkgID>
+								<HoverBkgID>texture.button.green.hover</HoverBkgID>
+								<Text>查看缴费项目</Text>
+								<TextColor>system.white</TextColor>
+							</attr>
+							<eventlist>
+								<event name="OnClick" file="PropertyServiceChildPanelForPay.xml.lua" func="Btn_ViewPayProject" />
+							</eventlist>
+						</obj>
+						<obj id="listbox.pay" class="WHome.ListBox">
+							<attr>
+								<left>10</left>
+								<top>50</top>
+								<width>200</width>
+								<height>father.height-60</height>
+								<HeaderItemChangeBkg>texture.listctrl.item.bkg.normal</HeaderItemChangeBkg>
+								<useDirectBoxSelect>false</useDirectBoxSelect>
+								<onlySingleSelect>true</onlySingleSelect>
+								<iToLeftDis>0</iToLeftDis>
+								<HScrollVisible>false</HScrollVisible>
+								<iItemSpacing>0</iItemSpacing>
+							</attr>
+							<eventlist>
+								<event name="OnInitControl" file="PropertyServiceChildPanelForPay.xml.lua" func="LBP_OnInitControl" />
+								<event name="OnHeaderItemPosChanged" file="PropertyServiceChildPanelForPay.xml.lua" func="LBP_OnHeaderItemPosChanged" />
+								<event name="OnItemEvent" file="PropertyServiceChildPanelForPay.xml.lua" func="LBP_OnItemEvent" />
+							</eventlist>
+						</obj>
+						<obj id="layout.pay.account" class="LayoutObject">
+							<attr>
+								<left>230</left>
+								<top>50</top>
+								<width>340</width>
+								<height>father.height-60</height>
+							</attr>
+							<children>
+								<obj id="texture.pay.account" class="TextureObject">
+									<attr>
+										<width>father.width</width>
+										<height>25</height>
+										<texture>texture.listctrl.item.bkg.hover</texture>
+									</attr>
+								</obj>
+								<obj id="text.pay.account" class="TextObject">
+									<attr>
+										<left>4</left>
+										<width>father.width</width>
+										<height>25</height>
+										<valign>center</valign>
+										<text>缴费帐号</text>
+										<zorder>999</zorder>
+									</attr>
+								</obj>
+								<obj id="label.bank" class="TextObject">
+									<attr>
+										<top>36</top>
+										<width>72</width>
+										<valign>center</valign>
+										<halign>right</halign>
+										<height>34</height>
+										<text>开户行：</text>
+									</attr>
+								</obj>
+								<obj id="edit.bank" class="WHome.Edit">
+									<attr>
+										<left>82</left>
+										<top>36</top>
+										<width>father.width-84</width>
+										<height>34</height>
+										<ReadOnly>true</ReadOnly>
+										<Text></Text>
+									</attr>
+								</obj>
+								<obj id="label.account" class="TextObject">
+									<attr>
+										<top>80</top>
+										<width>72</width>
+										<valign>center</valign>
+										<halign>right</halign>
+										<height>34</height>
+										<text>账号：</text>
+									</attr>
+								</obj>
+								<obj id="edit.account" class="WHome.Edit">
+									<attr>
+										<left>82</left>
+										<top>80</top>
+										<width>father.width-84</width>
+										<height>34</height>
+										<ReadOnly>true</ReadOnly>
+										<Text></Text>
+									</attr>
+								</obj>
+								<obj id="label.user" class="TextObject">
+									<attr>
+										<top>124</top>
+										<width>72</width>
+										<valign>center</valign>
+										<halign>right</halign>
+										<height>34</height>
+										<text>户名：</text>
+									</attr>
+								</obj>
+								<obj id="edit.user" class="WHome.Edit">
+									<attr>
+										<left>82</left>
+										<top>124</top>
+										<width>father.width-84</width>
+										<height>34</height>
+										<ReadOnly>true</ReadOnly>
+										<Text></Text>
+									</attr>
+								</obj>
+								<obj id="label.tip" class="TextObject">
+									<attr>
+										<top>168</top>
+										<width>father.width</width>
+										<valign>center</valign>
+										<halign>left</halign>
+										<height>34</height>
+										<text>如需要修改缴费账户，请联系平台开发商。</text>
+										<textcolor>system.gray</textcolor>
+									</attr>
+								</obj>
+							</children>
+						</obj>
+					</children>
+				</obj>
+
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="PropertyServiceChildPanelForPay.xml.lua" func="OnInitControl" />
+			</eventlist>
+		</objtemplate>
+	</control>
+</xlue>

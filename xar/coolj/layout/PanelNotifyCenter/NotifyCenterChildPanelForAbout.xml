@@ -80,19 +80,20 @@
 								<left>360</left>
 								<top>40</top>
 								<width>340</width>
-								<height>200</height>
+								<height>40</height>
 							</attr>
 							<eventlist>
 								<event name="OnInitControl" file="NotifyCenterChildPanelForAbout.xml.lua" func="LC_OnSuggestInitControl" />
 							</eventlist>
 						</obj>
-						<obj id="edit.suggest" class="WHome.Edit">
+						<obj id="edit.suggest" class="WHome.RichEdit">
 							<attr>
 								<left>360</left>
 								<top>72</top>
 								<width>330</width>
 								<height>350</height>
-								<Multiline>true</Multiline>
+								<WordWrap>true</WordWrap>
+								<AllowVSB>true</AllowVSB>
 							</attr>
 						</obj>
 						<obj id="btn.suggest" class="WHome.Button">

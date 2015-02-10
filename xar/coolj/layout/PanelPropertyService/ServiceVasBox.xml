@@ -1,0 +1,422 @@
+<xlue>
+	<objtreetemplate  id="CoolJ.ServiceVasBox" >
+		<attr>
+			<left>-200</left>
+			<top>-200</top>
+			<width>2000</width>
+			<height>2000</height>
+		</attr>
+
+		<obj id="app.bkg" class="CoolJ.BkgCtrl">
+			<attr>
+				<BkgTemplate>MainWnd.Bkg.Shading</BkgTemplate>
+				<left>0</left>
+				<top>0</top>
+				<width>336</width>
+				<height>385</height>
+				<alpha>255</alpha>
+				<UseLight>false</UseLight>	
+			</attr>
+			<children>
+				<obj id="caption" class="CaptionObject">
+					<attr>
+						<left>7</left>
+						<top>7</top>
+						<width>father.width-14</width>
+						<height>100</height>
+					</attr>
+					<children>
+						<obj id="texture.caption.mainwnd.bkg" class="TextureObject">
+							<attr>
+								<width>father.width</width>
+								<height>father.height</height>
+								<texture>caption.mainwnd.bkg</texture>
+								<zorder>320</zorder>
+								<alpha>255</alpha>
+							</attr>
+
+						</obj>
+						<obj id="caption.text" class="TextObject">
+							<attr>
+								<!-- 使用表达式局中-->
+								<left>10</left> 
+								<top>8</top>
+								<width>80</width>
+								<height>22</height>			
+								<text>物管中心</text>
+								<textcolor>system.white</textcolor>
+								<font>caption.font</font>
+								<zorder>330</zorder>
+							</attr>
+						</obj>
+
+						<obj id="mainwnd.sysbtn" class="Thunder.System.ButtonEx.Ctrl" >
+							<attr>
+								<left>father.width - 35</left>
+								<top>0</top>								
+								<width>60</width>
+								<height>20</height>
+								<zorder>330</zorder>		
+								<ItemWidthIsSame>false</ItemWidthIsSame>
+								<MaxShow>false</MaxShow>
+								<MiniShow>false</MiniShow>
+							</attr>
+							<eventlist>
+								<event name="OnClose" file="ServiceVasBox.xml.lua" func="OnClose" />
+							</eventlist>
+						</obj>	
+					</children>
+				</obj>
+
+				<obj id="content.vas.bkg" class="FillObject">
+					<attr>
+						<left>7</left>
+						<top>40</top>
+						<filltype>Monochrome</filltype>
+						<blendtype>Source</blendtype>
+						<width>father.width - 14</width>
+						<height>father.height - 80</height>
+						<srcpt>0,0</srcpt>
+						<destpt>width,height</destpt>
+						<maskleft>0</maskleft>
+						<masktop>0</masktop>
+						<maskwidth>width</maskwidth>
+						<maskheight>height</maskheight>
+						<maskblendtype>attenunate</maskblendtype>
+						<srccolor>system.white</srccolor>
+						<destcolor>system.white</destcolor>
+						<alpha>255</alpha>
+						<zorder>9999</zorder>
+					</attr>
+					<children>
+						<obj id="text.title" class="TextObject">
+							<attr>
+								<left>20</left>
+								<top>15</top>
+								<width>100</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>服务分类名称：</text>
+							</attr>
+						</obj>
+						<obj id="edit.title" class="WHome.Edit">
+							<attr>
+								<left>110</left>
+								<top>15</top>
+								<width>200</width>
+								<height>34</height>
+								<TipText>点击输入</TipText>
+								<NormalTipTextColor>system.gray</NormalTipTextColor>
+								<taborder>1</taborder>
+							</attr>
+						</obj>
+						<obj id="tip.title" class="TextObject">
+							<attr>
+								<left>110</left>
+								<top>45</top>
+								<width>120</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>输入上限6个汉字</text>
+								<font>text.tip.normal.font</font>
+								<textcolor>system.gray</textcolor>
+							</attr>
+						</obj>
+						<obj id="text.content" class="TextObject">
+							<attr>
+								<left>20</left>
+								<top>90</top>
+								<width>100</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>服务分类描述：</text>
+							</attr>
+						</obj>
+						<obj id="edit.content" class="WHome.Edit">
+							<attr>
+								<left>105</left>
+								<top>90</top>
+								<width>210</width>
+								<height>34</height>
+								<TipText>点击输入</TipText>
+								<NormalTipTextColor>system.gray</NormalTipTextColor>
+								<taborder>2</taborder>
+							</attr>
+						</obj>
+						<obj id="tip.content" class="TextObject">
+							<attr>
+								<left>110</left>
+								<top>120</top>
+								<width>120</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>输入上限20个汉字</text>
+								<font>text.tip.normal.font</font>
+								<textcolor>system.gray</textcolor>
+							</attr>
+						</obj>
+
+						<obj id="text.contact" class="TextObject">
+							<attr>
+								<left>20</left>
+								<top>165</top>
+								<width>85</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>服务电话：</text>
+							</attr>
+						</obj>
+						<obj id="edit.area" class="WHome.Edit">
+							<attr>
+								<left>90</left>
+								<top>165</top>
+								<width>60</width>
+								<height>34</height>
+								<TipText>区号</TipText>
+								<NormalTipTextColor>system.gray</NormalTipTextColor>
+								<taborder>3</taborder>
+							</attr>
+						</obj>
+						<obj id="text.-" class="TextObject">
+							<attr>
+								<left>152</left>
+								<top>165</top>
+								<width>10</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>-</text>
+							</attr>
+						</obj>
+						<obj id="edit.phone" class="WHome.Edit">
+							<attr>
+								<left>160</left>
+								<top>165</top>
+								<width>150</width>
+								<height>34</height>
+								<TipText>电话号码</TipText>
+								<NormalTipTextColor>system.gray</NormalTipTextColor>
+								<taborder>4</taborder>
+							</attr>
+						</obj>
+						<obj id="tip.contact" class="TextObject">
+							<attr>
+								<left>40</left>
+								<top>195</top>
+								<width>220</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>座机请填写区号，不支持分机。手机可不填写区号</text>
+								<font>text.tip.normal.font</font>
+								<textcolor>system.gray</textcolor>
+							</attr>
+						</obj>
+						<obj id="tip.msg" class="TextObject">
+							<attr>
+								<left>0</left>
+								<top>father.height - 40</top>
+								<width>father.width</width>
+								<height>34</height>
+								<valign>center</valign>
+								<halign>center</halign>
+								<text/>
+								<font>text.tip.normal.font</font>
+								<textcolor>system.red</textcolor>
+							</attr>
+						</obj>
+
+					</children>
+				</obj>
+
+				<obj id="content.vas.info.bkg" class="FillObject">
+					<attr>
+						<left>7</left>
+						<top>40</top>
+						<filltype>Monochrome</filltype>
+						<blendtype>Source</blendtype>
+						<width>father.width - 14</width>
+						<height>father.height - 80</height>
+						<srcpt>0,0</srcpt>
+						<destpt>width,height</destpt>
+						<maskleft>0</maskleft>
+						<masktop>0</masktop>
+						<maskwidth>width</maskwidth>
+						<maskheight>height</maskheight>
+						<maskblendtype>attenunate</maskblendtype>
+						<srccolor>system.white</srccolor>
+						<destcolor>system.white</destcolor>
+						<alpha>255</alpha>
+						<zorder>9999</zorder>
+					</attr>
+					<children>
+						<obj id="text.title" class="TextObject">
+							<attr>
+								<left>20</left>
+								<top>15</top>
+								<width>100</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>服务内容名称：</text>
+							</attr>
+						</obj>
+						<obj id="edit.title" class="WHome.Edit">
+							<attr>
+								<left>110</left>
+								<top>15</top>
+								<width>180</width>
+								<height>34</height>
+								<TipText>点击输入</TipText>
+								<NormalTipTextColor>system.gray</NormalTipTextColor>
+								<taborder>1</taborder>
+							</attr>
+						</obj>
+						<obj id="tip.title" class="TextObject">
+							<attr>
+								<left>20</left>
+								<top>45</top>
+								<width>120</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>输入上限6个汉字</text>
+								<font>text.tip.normal.font</font>
+								<textcolor>system.gray</textcolor>
+							</attr>
+						</obj>
+						<obj id="text.content" class="TextObject">
+							<attr>
+								<left>20</left>
+								<top>90</top>
+								<width>100</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>标准描述：</text>
+							</attr>
+						</obj>
+						<obj id="edit.content" class="WHome.Edit">
+							<attr>
+								<left>90</left>
+								<top>90</top>
+								<width>210</width>
+								<height>34</height>
+								<TipText>点击输入</TipText>
+								<NormalTipTextColor>system.gray</NormalTipTextColor>
+								<taborder>2</taborder>
+							</attr>
+						</obj>
+						<obj id="tip.content" class="TextObject">
+							<attr>
+								<left>20</left>
+								<top>120</top>
+								<width>father.width-40</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>输入上限20个汉字（如按市场价定位、30-100W灯管）</text>
+								<font>text.tip.normal.font</font>
+								<textcolor>system.gray</textcolor>
+							</attr>
+						</obj>
+
+						<obj id="text.contact" class="TextObject">
+							<attr>
+								<left>20</left>
+								<top>165</top>
+								<width>85</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>服务定价：</text>
+							</attr>
+						</obj>
+						<obj id="edit.price" class="WHome.Edit">
+							<attr>
+								<left>90</left>
+								<top>165</top>
+								<width>210</width>
+								<height>34</height>
+								<TipText>点击输入</TipText>
+								<NormalTipTextColor>system.gray</NormalTipTextColor>
+								<taborder>3</taborder>
+							</attr>
+						</obj>
+						<obj id="tip.price" class="TextObject">
+							<attr>
+								<left>20</left>
+								<top>195</top>
+								<width>father.width-40</width>
+								<height>34</height>
+								<valign>center</valign>
+								<text>输入上限8个汉字（如10元/米、参考市价、按米收费）</text>
+								<font>text.tip.normal.font</font>
+								<textcolor>system.gray</textcolor>
+							</attr>
+						</obj>
+					</children>
+				</obj>
+
+				<obj id="ok" class="WHome.Button">
+					<attr>
+						<left>father.width - 143</left>
+						<top>father.height - 35</top>
+						<width>64</width>
+						<height>26</height>
+						<Text>确定</Text>
+						<zorder>400</zorder>
+						<NormalBkgID>blue.big.button.normal</NormalBkgID>
+						<DownBkgID>blue.big.button.down</DownBkgID>
+						<DisableBkgID>blue.big.button.disable</DisableBkgID>
+						<HoverBkgID>blue.big.button.hover</HoverBkgID>
+						<ShowFocusRect>false</ShowFocusRect>
+						<visible>1</visible>
+						<taborder>11</taborder>
+					</attr>
+					<eventlist>
+						<event name="OnClick" file="ServiceVasBox.xml.lua" func="OnClick" />
+					</eventlist>
+				</obj>
+				<obj id="change" class="WHome.Button">
+					<attr>
+						<left>father.width - 74</left>
+						<top>father.height - 35</top>
+						<width>64</width>
+						<height>26</height>
+						<Text>取消</Text>
+						<zorder>400</zorder>
+						<NormalBkgID>green.button.normal</NormalBkgID>
+						<DownBkgID>green.button.down</DownBkgID>
+						<DisableBkgID>green.button.disable</DisableBkgID>
+						<HoverBkgID>green.button.hover</HoverBkgID>
+						<ShowFocusRect>false</ShowFocusRect>
+						<visible>1</visible>
+						<taborder>12</taborder>
+					</attr>
+					<eventlist>
+						<event name="OnClick" file="ServiceVasBox.xml.lua" func="OnClick" />
+					</eventlist>
+				</obj>
+			</children>
+			<eventlist>
+				<event name="OnInitControl" file="ServiceVasBox.xml.lua" func="OnInitControl" />
+			</eventlist>
+		</obj>
+
+	</objtreetemplate>
+
+	<hostwndtemplate id="CoolJ.ServiceVasBox" class="ModalHostWnd" >
+		<attr> 
+			<title/>
+			<layered>1</layered>
+			<left>200</left> 
+			<top>100</top>
+			<width>336</width>
+			<height>385</height>
+			<visible>1</visible>
+			<enable>1</enable>
+			<minwidth>300</minwidth>
+			<minheight>200</minheight>
+			<appwindow>0</appwindow>
+		</attr>
+
+		<eventlist>
+			<event name="OnCreate" file="ServiceVasBox.xml.lua" func="OnCreate" />
+			<event name="OnSize" file="ServiceVasBox.xml.lua" func="OnSize"/>
+		</eventlist>		
+	</hostwndtemplate>	
+</xlue>

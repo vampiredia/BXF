@@ -4,38 +4,6 @@ function OnInitControl(self)
 	--bkg:SetTextureID(attr.BorderTexture)
 end
 
-function LC_OnInitControl(self)
-	self:InsertColumn("name", 75, "管理员", "left", "center", 5, true, 20)
-	self:InsertColumn("login_time", 150, "登录时间", "left", "center", 5, true, 20)
-	self:InsertColumn("login_state", 90, "状态", "left", "center", 5, true, 20)
-	self:InsertColumn("login_ip", 145, "登录IP", "left", "center", 5, true, 20)
-	self:InsertColumn("login_op", 90, "操作", "left", "center", 5, true, 20)
-	
-	local list_item_data = {}
-	table.insert(list_item_data, {name="黄蓉", login_time="2014-02-02 12:31", login_state="登录成功", login_ip="127.0.0.1", login_op="查看操作日志"})
-	table.insert(list_item_data, {name="黄蓉", login_time="2014-02-02 12:31", login_state="登录成功", login_ip="127.0.0.1", login_op="查看操作日志"})
-	table.insert(list_item_data, {name="黄蓉", login_time="2014-02-02 12:31", login_state="登录成功", login_ip="127.0.0.1", login_op="查看操作日志"})
-	table.insert(list_item_data, {name="黄蓉", login_time="2014-02-02 12:31", login_state="登录成功", login_ip="127.0.0.1", login_op="查看操作日志"})
-	table.insert(list_item_data, {name="黄蓉", login_time="2014-02-02 12:31", login_state="登录成功", login_ip="127.0.0.1", login_op="查看操作日志"})
-	table.insert(list_item_data, {name="黄蓉", login_time="2014-02-02 12:31", login_state="登录成功", login_ip="127.0.0.1", login_op="查看操作日志"})
-	table.insert(list_item_data, {name="黄蓉", login_time="2014-02-02 12:31", login_state="登录成功", login_ip="127.0.0.1", login_op="查看操作日志"})
-	table.insert(list_item_data, {name="黄蓉", login_time="2014-02-02 12:31", login_state="登录成功", login_ip="127.0.0.1", login_op="查看操作日志"})
-	table.insert(list_item_data, {name="黄蓉", login_time="2014-02-02 12:31", login_state="登录成功", login_ip="127.0.0.1", login_op="查看操作日志"})
-	table.insert(list_item_data, {name="黄蓉", login_time="2014-02-02 12:31", login_state="登录成功", login_ip="127.0.0.1", login_op="查看操作日志"})
-	table.insert(list_item_data, {name="黄蓉", login_time="2014-02-02 12:31", login_state="登录成功", login_ip="127.0.0.1", login_op="查看操作日志"})
-	table.insert(list_item_data, {name="黄蓉", login_time="2014-02-02 12:31", login_state="登录成功", login_ip="127.0.0.1", login_op="查看操作日志"})
-	table.insert(list_item_data, {name="黄蓉", login_time="2014-02-02 12:31", login_state="登录成功", login_ip="127.0.0.1", login_op="查看操作日志"})
-	table.insert(list_item_data, {name="黄蓉", login_time="2014-02-02 12:31", login_state="登录成功", login_ip="127.0.0.1", login_op="查看操作日志"})
-	table.insert(list_item_data, {name="黄蓉", login_time="2014-02-02 12:31", login_state="登录成功", login_ip="127.0.0.1", login_op="查看操作日志"})
-	
-	self:InsertItemList(list_item_data, true)
-	
-end
-
-function LC_OnListItemClick(self)
-
-end
-
 function CBA_OnInitControl(self)
 	local attr = self:GetAttribute()
 	attr.data = {}
@@ -47,5 +15,34 @@ function CBA_OnInitControl(self)
 end
 
 function BTN_OnSelect(self)
+
+end
+
+function LB_OnInitControl(self)
+	local objFactory = XLGetObject("Xunlei.UIEngine.ObjectFactory")
+	local headerTable = {
+		{HeaderItemId='user', ItemWidth=80, Text="管理员", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=80, MiniSize=80, ShowSplitter=false, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='user', ItemWidth=120, Text="登录时间", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=120, MiniSize=120, ShowSplitter=false, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='user', ItemWidth=292, Text="操作内容", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=292, MiniSize=292, ShowSplitter=false, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='user', ItemWidth=120, Text="登录IP", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=120, MiniSize=120, ShowSplitter=false, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='user', ItemWidth=60, Text="操作", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=60, MiniSize=60, ShowSplitter=false, ShowSortIcon=false, IncludeNext=false, SortProperty=0}
+	}
+	table.foreach(headerTable, function(i, v) self:InsertColumn(v) end);
+	self:ReloadHeader()
+	
+	local objFactory = XLGetObject("Xunlei.UIEngine.ObjectFactory")
+	local datasource = objFactory:CreateUIObject(1, "Service.DataSource")
+	datasource:InitControl()
+	local dataconverter = objFactory:CreateUIObject(2, "Service.DataConverter")
+	dataconverter:InitControl()
+	self:SetDataSourceAndDataConverter(datasource, dataconverter)
+	self:ReloadData()
+end
+
+function LB_OnHeaderItemPosChanged(self)
+
+end
+
+function LB_OnItemEvent(self)
 
 end

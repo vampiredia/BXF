@@ -1,7 +1,7 @@
 <xlue>
 	<control class="CoolJ.PanelOperateList">
 		<attr_def>
-			
+
 		</attr_def>
 		<method_def>
 
@@ -18,20 +18,22 @@
 						<alpha>168</alpha>
 					</attr>
 					<children>
+
 						<obj id="layout.select" class="LayoutObject">
 							<attr>
 								<left>10</left>
-								<top>40</top>
-								<width>father.width-10</width>
-								<height>26</height>
+								<top>10</top>
+								<width>father.width-10</width>=
+								<height>34</height>
 							</attr>
 							<children>
 								<obj id="text.admin" class="TextObject">
 									<attr>
 										<left>0</left>
-										<top>3</top>
+										<top>0</top>
 										<width>48</width>
-										<height>18</height>
+										<height>34</height>
+										<valign>center</valign>
 										<text>管理员：</text>
 									</attr>
 								</obj>
@@ -39,8 +41,9 @@
 									<attr>
 										<left>50</left>
 										<top>0</top>
-										<width>80</width>
-										<height>24</height>
+										<width>100</width>
+										<height>34</height>
+										<zorder>999</zorder>
 									</attr>
 									<eventlist>
 										<event name="OnInitControl" file="PanelOperateList.xml.lua" func="CBA_OnInitControl" />
@@ -48,25 +51,27 @@
 								</obj>
 								<obj id="text.time" class="TextObject">
 									<attr>
-										<left>140</left>
-										<top>3</top>
+										<left>170</left>
+										<top>0</top>
 										<width>64</width>
-										<height>18</height>
+										<height>34</height>
+										<valign>center</valign>
 										<text>选择时段：</text>
 									</attr>
 								</obj>
 								<obj id="btn.select" class="WHome.Button">
 									<attr>
 										<top>0</top>
-										<left>father.width-10-44</left>
-										<width>44</width>
-										<height>24</height>
+										<left>father.width-87</left>
+										<width>77</width>
+										<height>32</height>
 										<valign>center</valign>
-										<NormalBkgID>green.button.normal</NormalBkgID>
-										<DownBkgID>green.button.down</DownBkgID>
-										<DisableBkgID>green.button.disable</DisableBkgID>
-										<HoverBkgID>green.button.hover</HoverBkgID>
-										<Text>筛选</Text>	
+										<NormalBkgID>texture.button.small.blue.normal</NormalBkgID>
+										<DownBkgID>texture.button.small.blue.down</DownBkgID>
+										<DisableBkgID>texture.button.small.blue.disable</DisableBkgID>
+										<HoverBkgID>texture.button.small.blue.hover</HoverBkgID>
+										<TextColor>system.white</TextColor>
+										<Text>筛 选</Text>	
 									</attr>
 									<eventlist>
 										<event name="OnClick" file="PanelOperateList.xml.lua" func="BTN_OnSelect" />
@@ -77,42 +82,51 @@
 						<obj id="layout.info" class="LayoutObject">
 							<attr>
 								<left>10</left>
-								<top>70</top>
+								<top>50</top>
 								<width>father.width-20</width>
-								<height>father.height-110</height>
+								<height>father.height-85</height>
 								<limitchild>1</limitchild>
 							</attr>
 							<children>
-								<obj id="tableview.owner.list" class="WHome.ListCtrl">
+								<obj id="lb.login" class="WHome.ListBox">
 									<attr>
 										<top>2</top>
 										<width>father.width</width>
 										<height>father.height</height>
+										<HeaderItemChangeBkg>texture.listctrl.item.bkg.normal</HeaderItemChangeBkg>
+										<useDirectBoxSelect>false</useDirectBoxSelect>
+										<onlySingleSelect>true</onlySingleSelect>
+										<iToLeftDis>0</iToLeftDis>
+										<HScrollVisible>false</HScrollVisible>
+										<iItemSpacing>0</iItemSpacing>
 									</attr>
 									<eventlist>
-										<event name="OnInitControl" file="PanelOperateList.xml.lua" func="LC_OnInitControl" />
-										<event name="OnListItemClick" file="PanelOperateList.xml.lua" func="LC_OnListItemClick" />
+										<event name="OnInitControl" file="PanelOperateList.xml.lua" func="LB_OnInitControl" />
+										<event name="OnHeaderItemPosChanged" file="PanelOperateList.xml.lua" func="LB_OnHeaderItemPosChanged" />
+										<event name="OnItemEvent" file="PanelOperateList.xml.lua" func="LB_OnItemEvent" />
 									</eventlist>
 								</obj>	
 							</children>
 						</obj>
 						<obj id="btn.export" class="WHome.Button">
 							<attr>
-								<top>father.height-10-24</top>
-								<left>father.width-81-15</left>
-								<width>81</width>
-								<height>28</height>
+								<top>father.height-36</top>
+								<left>24</left>
+								<width>103</width>
+								<height>32</height>
 								<valign>center</valign>
-								<NormalBkgID>green.button.normal</NormalBkgID>
-								<DownBkgID>green.button.down</DownBkgID>
-								<DisableBkgID>green.button.disable</DisableBkgID>
-								<HoverBkgID>green.button.hover</HoverBkgID>
+								<NormalBkgID>texture.button.green.normal</NormalBkgID>
+								<DownBkgID>texture.button.green.down</DownBkgID>
+								<DisableBkgID>texture.button.green.disable</DisableBkgID>
+								<HoverBkgID>texture.button.green.hover</HoverBkgID>
+								<TextColor>system.white</TextColor>
 								<Text>导出表格</Text>
 							</attr>
 							<eventlist>
-								
+
 							</eventlist>
 						</obj>
+
 					</children>
 				</obj>
 

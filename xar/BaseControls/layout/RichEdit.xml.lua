@@ -566,3 +566,9 @@ function GetMaxLength(self)
 	if richEdit == nil then return end
 	return richEdit:GetMaxLength()
 end
+
+function Copy(self)
+	local objEdit = self:GetControlObject("edit")
+	objEdit:SetSelAll()
+	return objEdit:Copy()
+end

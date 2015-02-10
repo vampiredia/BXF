@@ -320,6 +320,66 @@ function NewSubServiceBox(hWnd, title, method, userdata)
 	return ret
 end
 
+function ServiceVasBox(hWnd, title, method, userdata)
+	local ret = 0
+	local mainWnd = hWnd
+	local templateMananger = XLGetObject("Xunlei.UIEngine.TemplateManager")
+	local hostWndManager = XLGetObject("Xunlei.UIEngine.HostWndManager")
+	
+	if mainWnd == nil then mainWnd = hostWndManager:GetHostWnd("CoolJ.MainWnd.Instance") end
+	if mainWnd == nil then return ret end
+	
+	local modalHostWndTemplate = templateMananger:GetTemplate("CoolJ.ServiceVasBox","HostWndTemplate")
+	if modalHostWndTemplate then
+		local modalHostWnd = modalHostWndTemplate:CreateInstance("CoolJ.ServiceVasBox.Instance")
+		if modalHostWnd then
+			local objectTreeTemplate = templateMananger:GetTemplate("CoolJ.ServiceVasBox","ObjectTreeTemplate")
+			if objectTreeTemplate then
+				local function OnPostCreateInstance(self, obj, userdata)
+						local root = obj:GetRootObject()
+						if userdata['caption'] ~= nil then
+							root:GetControlObject("caption.text"):SetText(userdata['caption'])
+						end
+						root:GetAttribute().Method = userdata['method']				
+						root:GetAttribute().UserData = userdata['userdata']
+						if userdata['method'] == 'add_vas_root' then
+							root:GetControlObject("content.vas.bkg"):SetVisible(true)
+							root:GetControlObject("content.vas.bkg"):SetChildrenVisible(true)
+						elseif userdata['method'] == 'edit_vas_root' then
+							root:GetObject("content.vas.bkg:edit.title"):SetText(userdata['userdata']['name'])
+							root:GetObject("content.vas.bkg:edit.content"):SetText(userdata['userdata']['content'])
+							root:GetObject("content.vas.bkg:edit.area"):SetText(userdata['userdata']['area'])
+							root:GetObject("content.vas.bkg:edit.phone"):SetText(userdata['userdata']['phone'])
+							root:GetControlObject("content.vas.bkg"):SetVisible(true)
+							root:GetControlObject("content.vas.bkg"):SetChildrenVisible(true)
+						elseif userdata['method'] == 'add_vas_info' then
+							root:GetControlObject("content.vas.info.bkg"):SetVisible(true)
+							root:GetControlObject("content.vas.info.bkg"):SetChildrenVisible(true)
+						elseif userdata['method'] == 'edit_vas_info' then
+							root:GetObject("content.vas.info.bkg:edit.title"):SetText(userdata['userdata']['name'])
+							root:GetObject("content.vas.info.bkg:edit.content"):SetText(userdata['userdata']['content'])
+							root:GetObject("content.vas.info.bkg:edit.price"):SetText(userdata['userdata']['price'])
+							root:GetControlObject("content.vas.info.bkg"):SetVisible(true)
+							root:GetControlObject("content.vas.info.bkg"):SetChildrenVisible(true)
+						end
+					end
+				local cookie = objectTreeTemplate:AttachListener("OnPostCreateInstance", true, OnPostCreateInstance)
+				local uiObjectTree = objectTreeTemplate:CreateInstance("CoolJ.ServiceVasBox.Instance", nil ,{method=method, caption=title, userdata=userdata})
+				if uiObjectTree then
+					modalHostWnd:BindUIObjectTree(uiObjectTree)
+
+					ret = modalHostWnd:DoModal(mainWnd:GetWndHandle())
+					-- XLMessageBox(ret)
+				end
+				local objtreeManager = XLGetObject("Xunlei.UIEngine.TreeManager")	
+				objtreeManager:DestroyTree("CoolJ.ServiceVasBox.Instance")
+			end
+			hostWndManager:RemoveHostWnd("CoolJ.ServiceVasBox.Instance")
+		end
+	end
+	return ret
+end
+
 function RegisterGlobal()
 	XLSetGlobal("LoginWnd", LoginWnd)
 	--XLSetGlobal("CreateNotifyBox", CreateNotifyBox)
@@ -329,4 +389,5 @@ function RegisterGlobal()
 	XLSetGlobal("MessageBox", MessageBox)
 	XLSetGlobal("NewServiceBox", NewServiceBox)
 	XLSetGlobal("NewSubServiceBox", NewSubServiceBox)
+	XLSetGlobal("ServiceVasBox", ServiceVasBox)
 end

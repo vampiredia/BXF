@@ -102,6 +102,7 @@
             <SetSelBkgColor file="RichEdit.xml.lua" func="SetSelBkgColor" />
             <SetScrollPos file="RichEdit.xml.lua" func="SetScrollPos" />
             <SetLinkColor file="RichEdit.xml.lua" func="SetLinkColor" />
+			<Copy file="RichEdit.xml.lua" func="Copy" />
 		</method_def>
 		<event_def>
 			<OnEditChange>

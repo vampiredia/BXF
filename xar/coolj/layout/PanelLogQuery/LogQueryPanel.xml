@@ -83,19 +83,7 @@
 								<height>32</height>
 							</attr>
 							<children>
-								<obj id="panel.tips.static.line" class="LineObject">
-									<attr>
-										<top>father.height - 2</top>
-										<left>1</left>
-										<width>father.width-2</width>
-										<height>3</height>
-										<pen>pen.solid</pen>
-										<srcpt>0,1</srcpt>
-										<destpt>width,1</destpt>
-										<color>system.gray</color>
-										<zorder>10000</zorder>
-									</attr>
-								</obj>
+				
 							</children>
 						</obj>
 						

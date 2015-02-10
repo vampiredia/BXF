@@ -1,13 +1,15 @@
 <xlue>
 	<control class="CoolJ.NotifyCenterChildPanelForPublic">
 		<attr_def>
-			<attr name="BorderTexture" type="string"><default>texture.tabbody.border</default></attr>
+			<attr name="BorderTexture" type="string">
+				<default>texture.tabbody.border</default>
+			</attr>
 		</attr_def>
 		<method_def>
-			
+			<Get_NoticePublicInfo file="NotifyCenterChildPanelForPublic.xml.lua" func="Get_NoticePublicInfo" />
 		</method_def>
 		<event_def>
-			
+
 		</event_def>
 		<objtemplate>
 			<children>
@@ -20,54 +22,74 @@
 						<alpha>168</alpha>
 					</attr>
 				</obj>
-				
+
 				<obj id="ctrl" class="LayoutObject">
 					<attr>
 						<width>father.width</width>
 						<height>father.height</height>
 					</attr>
 					<children>
-						<obj id="tableview.public.list" class="WHome.ListCtrl">
+						<obj id="lb.notice" class="WHome.ListBox">
 							<attr>
 								<left>10</left>
-								<top>40</top>
+								<top>10</top>
 								<width>340</width>
 								<height>father.width-50</height>
+								<useDirectBoxSelect>false</useDirectBoxSelect>
+								<onlySingleSelect>true</onlySingleSelect>
+								<iToLeftDis>0</iToLeftDis>
+								<HScrollVisible>false</HScrollVisible>
+								<iItemSpacing>0</iItemSpacing>
 							</attr>
 							<eventlist>
-								<event name="OnInitControl" file="NotifyCenterChildPanelForPublic.xml.lua" func="LC_OnPublicInitControl" />
-								<event name="OnListItemClick" file="NotifyCenterChildPanelForPublic.xml.lua" func="LC_OnListItemClick" />
-							</eventlist>
-						</obj>	
-						<obj id="tableview.info.list" class="WHome.ListCtrl">
-							<attr>
-								<left>360</left>
-								<top>40</top>
-								<width>340</width>
-								<height>200</height>
-							</attr>
-							<eventlist>
-								<event name="OnInitControl" file="NotifyCenterChildPanelForPublic.xml.lua" func="LC_OnInfoInitControl" />
+								<event name="OnInitControl" file="NotifyCenterChildPanelForPublic.xml.lua" func="LBN_OnInitControl" />
+								<event name="OnHeaderItemPosChanged" file="NotifyCenterChildPanelForPublic.xml.lua" func="LBN_OnHeaderItemPosChanged" />
+								<event name="OnItemEvent" file="NotifyCenterChildPanelForPublic.xml.lua" func="LBN_OnItemEvent" />
 							</eventlist>
 						</obj>
-						<obj id="edit.info" class="WHome.Edit">
+						<obj id="texture.details" class="TextureObject">
 							<attr>
 								<left>360</left>
-								<top>72</top>
+								<top>10</top>
+								<width>father.width-370</width>
+								<height>25</height>
+								<texture>texture.listctrl.item.bkg.hover</texture>
+							</attr>
+						</obj>
+						<obj id="text.details" class="TextObject">
+							<attr>
+								<left>364</left>
+								<top>10</top>
+								<width>father.width-370</width>
+								<height>24</height>
+								<valign>center</valign>
+								<text>详情</text>
+								<zorder>999</zorder>
+							</attr>
+						</obj>
+						<obj id="edit.info" class="WHome.RichEdit">
+							<attr>
+								<left>360</left>
+								<top>48</top>
 								<width>330</width>
-								<height>350</height>
+								<height>378</height>
 								<Multiline>true</Multiline>
 								<ReadOnly>true</ReadOnly>
 							</attr>
 						</obj>
 						<obj id="btn.copy" class="WHome.Button">
 							<attr>
-								<left>510</left>
-								<top>435</top>
-								<width>40</width>
-								<height>20</height>
-								
-								<Text>复制</Text>
+								<left>480</left>
+								<top>431</top>
+								<width>103</width>
+								<height>32</height>
+								<valign>center</valign>
+								<NormalBkgID>texture.button.blue.normal</NormalBkgID>
+								<DownBkgID>texture.button.blue.down</DownBkgID>
+								<DisableBkgID>texture.button.blue.disable</DisableBkgID>
+								<HoverBkgID>texture.button.blue.hover</HoverBkgID>
+								<TextColor>system.white</TextColor>
+								<Text>复 制</Text>
 							</attr>
 							<eventlist>
 								<event name="OnClick" file="NotifyCenterChildPanelForPublic.xml.lua" func="OnClick_Copy" />
@@ -75,7 +97,7 @@
 						</obj>						
 					</children>
 				</obj>
-						
+
 			</children>
 			<eventlist>
 				<event name="OnInitControl" file="NotifyCenterChildPanelForPublic.xml.lua" func="OnInitControl" />

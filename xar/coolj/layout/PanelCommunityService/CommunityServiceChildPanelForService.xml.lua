@@ -9,8 +9,8 @@ function OnInitControl(self)
 	local attr = self:GetAttribute()
 	local bkg = self:GetControlObject("bkg")
 	
-	self:GetControlObject("Sub.Services"):SetVisible(false)
-	self:GetControlObject("Sub.Services"):SetChildrenVisible(false)
+	--self:GetControlObject("Sub.Services"):SetVisible(false)
+	--self:GetControlObject("Sub.Services"):SetChildrenVisible(false)
 end
 
 function Get_CommunityServiceInfo(self)
@@ -53,8 +53,8 @@ end
 function LBS_OnItemEvent(self, eventName, eventType, UserData, ItemObj)
 	if eventType == "OnSelect" then
 		local owner = self:GetOwnerControl()
-		owner:GetControlObject("Sub.Services"):SetVisible(true)
-		owner:GetControlObject("Sub.Services"):SetChildrenVisible(true)
+		--owner:GetControlObject("Sub.Services"):SetVisible(true)
+		--owner:GetControlObject("Sub.Services"):SetChildrenVisible(true)
 		
 		local request = function(ret, msg, result)
 			if ret == 0 then

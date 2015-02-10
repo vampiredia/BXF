@@ -44,6 +44,7 @@ function OnActiveTabChanged(self, eventName, newid, oldid)
 	elseif newid == "TabItem_Public" then
 		notifyCenterChildPanelForPublic:SetVisible(true)
 		notifyCenterChildPanelForPublic:SetChildrenVisible(true)
+		notifyCenterChildPanelForPublic:Get_NoticePublicInfo()
 	elseif newid == "TabItem_About" then
 		notifyCenterChildPanelForAbout:SetVisible(true)
 		notifyCenterChildPanelForAbout:SetChildrenVisible(true)

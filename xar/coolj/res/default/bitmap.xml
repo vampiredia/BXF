@@ -2,6 +2,7 @@
 	<resource>
 		<texture id="bkg.mask" type="NineInOne" image="bitmap\bkg.mask.png"/>
 		<texture id="texture.back.bkg" type="Stretch" image="bitmap\zuo.png" />
+		<texture id="texture.next.bkg" type="Stretch" image="bitmap\you.png" />
 		<texture id="texture.xiahuaxian.bkg" type="Stretch" image="bitmap\xiahuaxian.png" />
 		
 		<imagelist id="imagelist.sysbtn.close" vertical="0" splitter="1" varyblock="1" image="bitmap\imagelist.sysbtn.close.png"/>

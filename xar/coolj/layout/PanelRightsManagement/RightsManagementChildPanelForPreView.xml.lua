@@ -29,11 +29,3 @@ function OnClick(self)
 	local html = osshell:DoScript(iwebbrowser2, "html")
 	--XLMessageBox(11)
 end
-
-function LRS_OnInitControl(self)
-	self:InsertColumn("info", 330, "权限结构", "left", "center", 5, true, 330)
-end
-
-function LRI_OnInitControl(self)
-	self:InsertColumn("info", 330, "权限说明", "left", "center", 5, true, 330)
-end

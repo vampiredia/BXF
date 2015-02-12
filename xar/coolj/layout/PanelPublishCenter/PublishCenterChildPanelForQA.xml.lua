@@ -1,7 +1,7 @@
 local json = require('json')
 local table_data = nil
 
-function pagechange(self, old, new)
+function PageChange(self, old, new)
 	local objOld = self:GetControlObject(old)
 	if objOld ~= nil then
 		objOld:SetVisible(false)
@@ -18,20 +18,19 @@ end
 function OnInitControl(self)
 	local attr = self:GetAttribute()
 	local bkg = self:GetControlObject("bkg")
-	--bkg:SetTextureID(attr.BorderTexture)
 	
-	pagechange(self, "topic.info.page", "main.page")
+	self:GetControlObject("main.page"):SetVisible(false)
+	self:GetControlObject("main.page"):SetChildrenVisible(false)
+	self:GetControlObject("history.list.page"):SetVisible(false)
+	self:GetControlObject("history.list.page"):SetChildrenVisible(false)
+	self:GetControlObject("new.list.page"):SetVisible(false)
+	self:GetControlObject("new.list.page"):SetChildrenVisible(false)
+	self:GetControlObject("topic.info.page"):SetVisible(false)
+	self:GetControlObject("topic.info.page"):SetChildrenVisible(false)
+	
+	self:PageChange("topic.info.page", "main.page")
 	
 	self:GetControlObject("BtnFAQ"):SetEnable(false)
-end
-
-function LB_OnInitControl(self)
-	self:InsertColumn("id", 40, "编号", "center", "center", 5, true, 40)
-	self:InsertColumn("title", 240, "话题标题", "center", "left", 15, true, 140)
-	self:InsertColumn("author", 90, "提交人", "center", "center", 15, true, 40)
-	self:InsertColumn("modify_time", 140, "提交时间", "center", "center", 15, true, 40)
-	self:InsertColumn("worker", 90, "操作人", "center", "center", 15, true, 40)
-	self:InsertColumn("topic_status", 60, "状态", "center", "center", 5, true, 40)	
 end
 
 function OnVisibleChange(self, visible)
@@ -39,45 +38,14 @@ function OnVisibleChange(self, visible)
 end
 
 function Get_QAData(self)
-	local objControl = self:GetControlObject("tableview.result.list")
 	
-	httpclient = XLGetObject("Whome.HttpCore.Factory"):CreateInstance()
-	url = "/community/topic?action=get_list&status=all"
-	param = ""
-	httpclient:AttachResultListener(
-		function(result)
-			local table_result = json.decode(result)
-			if table_result['ret'] == 0 then
-				table_data = table_result['result']['topic_list']
-				for i=1, #table_data do
-					--table_data[i]['author'] = '管理员'
-					--table_data[i]['status'] = '正常'
-					table_data[i]['modify_time'] = os.date("%c", table_data[i]['modify_time'])
-					if table_data[i]['status'] == 'noreply' then
-						table_data[i]['topic_status'] = '未答复'
-					elseif table_data[i]['status'] == 'reply' then
-						table_data[i]['topic_status'] = '已答复'
-					elseif table_data[i]['status'] == 'close' then
-						table_data[i]['topic_status'] = '关闭'
-					end
-					table_data[i]['author'] = '小白'
-					table_data[i]['worker'] = '管理员'
-				end
-				objControl:ClearItems()
-				objControl:InsertItemList(table_data, true)
-			end
-		end
-	)
-	httpclient:Perform(url, "GET", param)
 end
 
 function LB_OnListItemDbClick(self, event, itemObj, x, y, flags)
 	if table_data == nil then
 		return
 	end
-	local objControl = self:GetOwnerControl()
-	pagechange(objControl, "main.page", "topic.info.page")
-	
+	self:GetOwnerControl():PageChange("main.page", "topic.info.page")
 	if objControl == nil then
 		return
 	end
@@ -97,10 +65,6 @@ function LB_OnListItemDbClick(self, event, itemObj, x, y, flags)
 	end
 	
 	statuschange(self:GetOwnerControl())
-end
-
-function BTN_GotoMainPage(self)
-	pagechange(self:GetOwnerControl(), "topic.info.page", "main.page")
 end
 
 function statuschange(self)
@@ -141,66 +105,50 @@ end
 
 function BTN_Next(self)
 	-- 下一条
-	local id = tonumber(self:GetOwnerControl():GetControlObject("id"):GetText())
-	for i=1, #table_data do
-		if id == table_data[i]['id'] then
-			showinfo(self:GetOwnerControl(), table_data[i+1]['id'])
+	local UserData = self:GetOwnerControl():GetAttribute().UserData
+	local request = function(ret, msg, result)
+		if ret == 0 then
+			self:GetOwnerControl():PageChange("history.list.page", "topic.info.page")
+			self:GetOwnerControl():GetAttribute().UserData = result['info']
+			self:GetOwnerControl():RefreshDetails()
+		else
+			AddNotify(self, msg, 3000)
 		end
 	end
+	local param = ""
+	HttpRequest("/api/message/estate?action=get_info_next&id="..UserData['id'].."&status="..UserData['status'], "GET", param, request)
 end
 
 function BTN_Prev(self)
 	-- 上一条
-	local id = tonumber(self:GetOwnerControl():GetControlObject("id"):GetText())
-	for i=1, #table_data do
-		if id == table_data[i]['id'] then
-			showinfo(self:GetOwnerControl(), table_data[i-1]['id'])
+	local UserData = self:GetOwnerControl():GetAttribute().UserData
+	local request = function(ret, msg, result)
+		if ret == 0 then
+			self:GetOwnerControl():PageChange("history.list.page", "topic.info.page")
+			self:GetOwnerControl():GetAttribute().UserData = result['info']
+			self:GetOwnerControl():RefreshDetails()
+		else
+			AddNotify(self, msg, 3000)
 		end
 	end
-end
-
-function showinfo(self, id)
-	if table_data == nil then
-		return
-	end
-	
-	for i=1, #table_data  do
-		if id == table_data[i]['id'] then
-			self:GetControlObject("title"):SetText(table_data[i]['title'])
-			self:GetControlObject("id"):SetText(table_data[i]['id'])
-			self:GetControlObject("author"):SetText(table_data[i]['author'])
-			self:GetControlObject("content"):SetText(table_data[i]['content'])
-			self:GetControlObject("answer"):SetText(table_data[i]['answer'])
-			self:GetControlObject("topic_status"):SetText(table_data[i]['topic_status'])
-		if table_data[i]['status'] == 'noreply' then
-			self:GetControlObject("topic_status"):SetTextColorResID("system.black")
-		elseif table_data[i]['status'] == 'reply' then
-			self:GetControlObject("topic_status"):SetTextColorResID("system.black")
-		elseif table_data[i]['status'] == 'close' then
-			self:GetControlObject("topic_status"):SetTextColorResID("system.red")
-		end
-			statuschange(self)				
-		end
-	end
+	local param = ""
+	HttpRequest("/api/message/estate?action=get_info_prev&id="..UserData['id'].."&status="..UserData['status'], "GET", param, request)
 end
 
 function BTN_Reply(self)
 	-- 答复话题
-	local id = tonumber(self:GetOwnerControl():GetControlObject("id"):GetText())
-	local answer = self:GetOwnerControl():GetControlObject("answer"):GetText()
-	
-	httpclient = XLGetObject("Whome.HttpCore.Factory"):CreateInstance()
-	local url = "/community/topic"
-	local param = "action=answer&id="..id.."&answer="..httpclient:EscapeParam(answer)
-	httpclient:AttachResultListener(
-		function(result)
-			local table_result = json.decode(result)
-			if table_result['ret'] == 0 then
-				Get_QAInfo(self:GetOwnerControl(), id)
-			end
+	local UserData = self:GetOwnerControl():GetAttribute().UserData
+	local request = function(ret, msg, result)
+		if ret == 0 then
+			--
+			AddNotify(self, "答复成功", 3000)
+		else
+			AddNotify(self, msg, 3000)
 		end
-	)
-	httpclient:Perform(url, "POST", param)	
+	end
+	local answer = self:GetOwnerControl():GetControlObject("answer"):GetText()
+	local param = "action=answer&id="..UserData['id'].."&answer="..answer
+	HttpRequest("/api/message/estate", "POST", param, request)	
 end
 
 function Get_QAInfo(self, id)
@@ -241,18 +189,241 @@ end
 
 function BTN_Close(self)
 	-- 关闭答复
-	local id = tonumber(self:GetOwnerControl():GetControlObject("id"):GetText())
-	
-	httpclient = XLGetObject("Whome.HttpCore.Factory"):CreateInstance()
-	url = "/community/topic"
-	param = "action=close&id="..id
-	httpclient:AttachResultListener(
-		function(result)
-			local table_result = json.decode(result)
-			if table_result['ret'] == 0 then
-				Get_QAInfo(self:GetOwnerControl(), id)
+	local UserData = self:GetOwnerControl():GetAttribute().UserData
+	if UserData['status'] == 'open' then
+		local request = function(ret, msg, result)
+			if ret == 0 then
+				--
+				AddNotify(self, "关闭成功", 3000)
+			else
+				AddNotify(self, msg, 3000)
 			end
 		end
-	)
-	httpclient:Perform(url, "POST", param)	
+		local param = "action=close&id="..UserData['id']
+		HttpRequest("/api/message/estate", "POST", param, request)	
+	else
+		self:GetOwnerControl():PageChange("topic.info.page", "history.list.page")
+		self:GetOwnerControl():Get_QAHistoryData()
+	end
+		
+end
+
+function OnNewList(self)
+	self:GetOwnerControl():PageChange("main.page", "new.list.page")
+	self:GetOwnerControl():Get_QANewData()
+end
+
+function OnHistoryList(self)
+	self:GetOwnerControl():PageChange("main.page", "history.list.page")
+	self:GetOwnerControl():Get_QAHistoryData()
+end
+
+function OnMainPage(self)
+	local id = self:GetID()
+	if id == 'btn.new' then
+		self:GetOwnerControl():PageChange("new.list.page", "main.page")
+	elseif id == 'btn.history' then
+		self:GetOwnerControl():PageChange("history.list.page", "main.page")
+	end
+end
+
+function OnClickNoticePublishWarningInitControl(self)
+	local l,t,r,b = self:GetTextPos()
+	self:SetTextPos(l+10, t, r-l, b-t)	
+end
+
+function OnClickNoticePublishWarning(self)
+
+end
+
+function LBN_OnInitControl(self)
+	local objFactory = XLGetObject("Xunlei.UIEngine.ObjectFactory")
+	local headerTable = {
+		{HeaderItemId='id', ItemWidth=60, Text="编号", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=60, MiniSize=60, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='title', ItemWidth=300, Text="问题描述", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=300, MiniSize=300, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='author', ItemWidth=80, Text="提交人", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=80, MiniSize=80, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='s_time', ItemWidth=100, Text="提交日期", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=100, MiniSize=100, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='other', ItemWidth=80, Text="", TextLeftOffset=2, TextHalign="left", SubItem=false, MaxSize=80, MiniSize=80, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=1}
+	}
+	table.foreach(headerTable, function(i, v) self:InsertColumn(v) end);
+	self:ReloadHeader()
+	
+	local datasource = objFactory:CreateUIObject(1, "New.DataSource")
+	datasource:InitControl()
+	local dataconverter = objFactory:CreateUIObject(2, "New.DataConverter")
+	dataconverter:InitControl()
+	self:SetDataSourceAndDataConverter(datasource, dataconverter)
+	self:ReloadData()
+end
+
+function LBN_OnHeaderItemPosChanged(self, event, isDrag, GridInfoList)
+	if isDrag == true then
+		self:GetTableViewObj():UpdateItemInfo(isDrag, GridInfoList)
+	end
+end
+
+function LBN_OnItemEvent(self, eventName, eventType, UserData, ItemObj)
+	--XLMessageBox(eventType)
+	if eventType == "OnShowDetails" then
+		local request = function(ret, msg, result)
+			if ret == 0 then
+				self:GetOwnerControl():PageChange("new.list.page", "topic.info.page")
+				self:GetOwnerControl():GetAttribute().UserData = result['info']
+				self:GetOwnerControl():RefreshDetails()
+			else
+				AddNotify(self, msg, 3000)
+			end
+		end
+		local param = ""
+		HttpRequest("/api/message/estate?action=get_info&id="..UserData, "GET", param, request)
+	end
+end
+
+function LBH_OnInitControl(self)
+	local objFactory = XLGetObject("Xunlei.UIEngine.ObjectFactory")
+	local headerTable = {
+		{HeaderItemId='id', ItemWidth=60, Text="编号", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=60, MiniSize=60, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='title', ItemWidth=250, Text="问题描述", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=250, MiniSize=250, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='author', ItemWidth=80, Text="提交人", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=80, MiniSize=80, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='s_time', ItemWidth=100, Text="提交日期", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=100, MiniSize=100, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='nick', ItemWidth=80, Text="操作人", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=80, MiniSize=80, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='status', ItemWidth=60, Text="状态", TextLeftOffset=7, TextHalign="left", SubItem=false, MaxSize=60, MiniSize=60, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=0},
+		{HeaderItemId='other', ItemWidth=80, Text="", TextLeftOffset=2, TextHalign="left", SubItem=false, MaxSize=80, MiniSize=80, ShowSplitter=true, ShowSortIcon=false, IncludeNext=false, SortProperty=1}
+	}
+	table.foreach(headerTable, function(i, v) self:InsertColumn(v) end);
+	self:ReloadHeader()
+	
+	local datasource = objFactory:CreateUIObject(1, "History.DataSource")
+	datasource:InitControl()
+	local dataconverter = objFactory:CreateUIObject(2, "History.DataConverter")
+	dataconverter:InitControl()
+	self:SetDataSourceAndDataConverter(datasource, dataconverter)
+	self:ReloadData()
+end
+
+function LBH_OnHeaderItemPosChanged(self, event, isDrag, GridInfoList)
+	if isDrag == true then
+		self:GetTableViewObj():UpdateItemInfo(isDrag, GridInfoList)
+	end
+end
+
+function LBH_OnItemEvent(self, eventName, eventType, UserData, ItemObj)	
+	--XLMessageBox(eventType)
+	if eventType == "OnShowDetails" then
+		local request = function(ret, msg, result)
+			if ret == 0 then
+				self:GetOwnerControl():PageChange("history.list.page", "topic.info.page")
+				self:GetOwnerControl():GetAttribute().UserData = result['info']
+				self:GetOwnerControl():RefreshDetails()
+			else
+				AddNotify(self, msg, 3000)
+			end
+		end
+		local param = ""
+		HttpRequest("/api/message/estate?action=get_info&id="..UserData, "GET", param, request)
+	end
+end
+
+function RG_OnInitControl(self)
+	local attr = self:GetAttribute()
+	attr.SelectedButtonID = "status"
+
+	self:AddRadioButton("status","状态筛选：",5,5,100,34)
+	self:AddRadioButton("author","操作人：",5,44,100,34)
+	self:AddRadioButton("search_name","姓名查找：",200,5,100,34)
+	self:AddRadioButton("search_id","ID查找：",395,5,100,34)
+end
+
+function RG_OnButtonSelectedChanged(self)
+ 
+end
+
+function CBS_OnInitControl(self)
+	local attr = self:GetAttribute()
+	attr.data = {}
+	local init_data = {
+		{id = "0", text = "全部"},
+		{id = "1", text = "已删除"},
+		{id = "2", text = "已答复"}
+	}
+	for i,v in pairs(init_data) do
+		table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = v["text"], Custom = nil, Func = nil, ID=v["id"] })
+	end
+	self:SetText("全部")
+end
+
+function CBA_OnInitControl(self)
+	local attr = self:GetAttribute()
+	attr.data = {}
+	local init_data = {
+		{id = "0", text = "全部"},
+		{id = "1", text = "管理员"},
+		{id = "2", text = "张三"}
+	}
+	for i,v in pairs(init_data) do
+		table.insert(attr.data, { IconResID = "", IconWidth = 0, LeftMargin = 10, TopMargin = 0, Text = v["text"], Custom = nil, Func = nil, ID=v["id"] })
+	end
+	self:SetText("全部")
+end
+
+function Get_QANewData(self)
+	-- load data for root service
+	local request = function(ret, msg, result)
+		if ret == 0 then
+			local obj = self:GetControlObject("listbox.new")
+			obj:GetDataSource():SetData(result['list'])
+			obj:ReloadData()
+		else
+			AddNotify(self, msg, 3000)
+		end
+	end
+	HttpRequest("/api/message/estate?action=get_new_list", "GET", "", request)
+end
+
+function Get_QAHistoryData(self)
+	-- load data for root service
+	local request = function(ret, msg, result)
+		if ret == 0 then
+			local obj = self:GetControlObject("listbox.history")
+			obj:GetDataSource():SetData(result['list'])
+			obj:ReloadData()
+		else
+			AddNotify(self, msg, 3000)
+		end
+	end
+	HttpRequest("/api/message/estate?action=get_history_list", "GET", "", request)
+end
+
+function RefreshDetails(self)
+	local attr = self:GetAttribute()
+	if attr.UserData == nil then return end
+	if attr.UserData['status'] == 'open' then
+		self:GetControlObject("btn.details"):SetText("返回业主最新问题列表")
+		self:GetControlObject("title"):SetText(attr.UserData['title'])
+		self:GetControlObject("id"):SetText(attr.UserData['id'])
+		self:GetControlObject("author"):SetText(attr.UserData['author'])
+		self:GetControlObject("content"):SetText(attr.UserData['question'])
+		self:GetControlObject("answer"):SetText(attr.UserData['answer'])
+		self:GetControlObject("BtnClose"):SetText("删除")
+	else
+		self:GetControlObject("btn.details"):SetText("返回业主历史问题列表")
+		self:GetControlObject("title"):SetText(attr.UserData['title'])
+		self:GetControlObject("id"):SetText(attr.UserData['id'])
+		self:GetControlObject("author"):SetText(attr.UserData['author'])
+		self:GetControlObject("content"):SetText(attr.UserData['question'])
+		self:GetControlObject("answer"):SetText(attr.UserData['answer'])
+		self:GetControlObject("BtnClose"):SetText("放弃修改")
+	end
+end
+
+function OnPrePage(self)
+	local attr = self:GetOwnerControl():GetAttribute()
+	if attr.UserData == nil then return end
+	if attr.UserData['status'] == 'open' then
+		self:GetOwnerControl():PageChange("topic.info.page", "new.list.page")
+		self:GetOwnerControl():Get_QANewData()
+	else
+		self:GetOwnerControl():PageChange("topic.info.page", "history.list.page")
+		self:GetOwnerControl():Get_QAHistoryData()
+	end
 end

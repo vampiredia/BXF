@@ -1,10 +1,10 @@
-function login_success()
+function login_success(result)
 	local app = XLGetObject("CoolJ.App")
-	app:SetString("Community", "Community_Caption" ,"远洋山水吧")
-	app:SetString("Community", "Community_Ak" ,"@#￥%……&×（")
-	app:SetString("Community", "Community_Cid" ,"2")
-	app:SetString("Community", "Community_Nick" ,"Lydia")
-	app:SetString("Community", "Community_State" ,"ok")
+	app:SetString("Community", "Community_Caption", result["user_info"]["community"])
+	app:SetString("Community", "Community_Ak", result["user_info"]["ak"])
+	app:SetString("Community", "Community_Cid", result["user_info"]["cid"])
+	app:SetString("Community", "Community_Nick", result["user_info"]["nick"])
+	app:SetString("Community", "Community_State", "ok")
 end
 
 function login_failed()
@@ -15,7 +15,7 @@ end
 
 function OnLogin(self)
 	local owner = self:GetOwnerControl()
-	owner:GetControlObject("text.tips"):SetText("帐号或密码错误")
+	--owner:GetControlObject("text.tips"):SetText("帐号或密码错误")
 	
 	local name = owner:GetControlObject("edit.name"):GetText()
 	local passwd = owner:GetControlObject("edit.password"):GetText()
@@ -26,18 +26,31 @@ function OnLogin(self)
 		owner:GetControlObject("text.tips"):SetText("密码不能为空")
 		return
 	else
-		login_success()
-		local owner = self:GetOwner()
-		local hostwnd = owner:GetBindHostWnd()
-		hostwnd:EndDialog(1)
+		local request = function(ret, msg, result)
+			if ret == 0 then
+				login_success(result)	
+				local attr = owner:GetAttribute()
+				if attr.CallBack ~= nil then 
+					attr.CallBack()
+				end				
+				local hostwndManager = XLGetObject("Xunlei.UIEngine.HostWndManager")
+				hostwndManager:RemoveHostWnd("CoolJ.LoginWnd.Instance")
+				local objtreeManager = XLGetObject("Xunlei.UIEngine.TreeManager")	
+				objtreeManager:DestroyTree("CoolJ.LoginWnd.Instance")
+			else
+				owner:GetControlObject("text.tips"):SetText(msg)
+			end
+		end
+		local param = "action=login&name="..name.."&passwd="..passwd
+		HttpRequest("/api/user", "POST", param, request)
 	end
 end
 
 function OnClose(self)
-	local owner = self:GetOwner()
-	local hostwnd = owner:GetBindHostWnd()
-	
-	hostwnd:EndDialog(0)
+	local hostwndManager = XLGetObject("Xunlei.UIEngine.HostWndManager")
+	hostwndManager:RemoveHostWnd("CoolJ.LoginWnd.Instance")
+	local objtreeManager = XLGetObject("Xunlei.UIEngine.TreeManager")	
+	objtreeManager:DestroyTree("CoolJ.LoginWnd.Instance")
 end
 
 function OnMinisize(self)

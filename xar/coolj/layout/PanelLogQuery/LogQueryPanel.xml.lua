@@ -36,8 +36,10 @@ function OnActiveTabChanged(self, eventName, newid, oldid)
 	if newid =="TabItem_Login" then
 		logQueryChildPanelForLogin:SetVisible(true)
 		logQueryChildPanelForLogin:SetChildrenVisible(true)
+		logQueryChildPanelForLogin:GetLogInfo()
 	elseif newid == "TabItem_Operate" then
 		logQueryChildPanelForOperate:SetVisible(true)
 		logQueryChildPanelForOperate:SetChildrenVisible(true)
+		logQueryChildPanelForOperate:GetLogInfo()
 	end
 end

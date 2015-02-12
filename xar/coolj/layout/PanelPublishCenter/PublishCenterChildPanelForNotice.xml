@@ -319,23 +319,6 @@
 								<event name="OnClick" file="PublishCenterChildPanelForNotice.xml.lua" func="BTN_PublishNotice" />
 							</eventlist>
 						</obj>
-						<!--
-						<obj id="btn.new.notice.edit.change" class="WHome.Button">
-							<attr>
-								<top>father.height - 45</top>
-								<left>500</left>
-								<width>103</width>
-								<height>32</height>
-								<valign>center</valign>
-								<NormalBkgID>texture.button.blue.normal</NormalBkgID>
-								<DownBkgID>texture.button.blue.down</DownBkgID>
-								<DisableBkgID>texture.button.blue.disable</DisableBkgID>
-								<HoverBkgID>texture.button.blue.hover</HoverBkgID>
-								<Text>放弃修改</Text>
-								<TextColor>system.white</TextColor>
-							</attr>
-						</obj>
-						-->
 					</children>
 				</obj>
 				<obj id="history.notice.page" class="LayoutObject">
@@ -513,21 +496,6 @@
 										<visible>0</visible>
 									</attr>
 								</obj>
-								<!--
-								<obj id="tableview.result.list" class="WHome.ListCtrl">
-									<attr>
-										<width>father.width</width>
-										<height>father.height</height>
-									</attr>
-									<children>
-
-									</children>
-									<eventlist>
-										<event name="OnInitControl" file="PublishCenterChildPanelForNotice.xml.lua" func="LB_OnInitControl" />
-										<event name="OnListItemDbClick" file="PublishCenterChildPanelForNotice.xml.lua" func="LB_OnListItemDbClick" />
-									</eventlist>
-								</obj>
-								-->
 								<obj id="lb.result" class="WHome.ListBox">
 									<attr>
 										

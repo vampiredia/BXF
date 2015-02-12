@@ -15,7 +15,7 @@ function HttpRequest(url, method, param, callback)
 				callback(-1, "网络异常，请重新再试")
 			elseif status_code == 500 then
 				local response = json.decode(result)
-				callback(500, result['error_msg'], response['result'])
+				callback(500, response['error_msg'], response['result'])
 			elseif status_code > 500 then
 				callback(-1, "服务器异常错误")
 			else

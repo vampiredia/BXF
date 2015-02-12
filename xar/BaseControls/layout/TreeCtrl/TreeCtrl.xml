@@ -33,7 +33,7 @@
                         <top>0</top>
                         <width>father.width</width>
                         <height>father.height</height>
-                        <texture>texture.edit.bkg.normal</texture>
+                        <texture>texture.edit.bkg.down</texture>
                     </attr>
                     <children>
                         <obj id="Tree.Content" class="LayoutObject">

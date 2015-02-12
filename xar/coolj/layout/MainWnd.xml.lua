@@ -349,11 +349,11 @@ end
 
 function OnLogin(self)
 	local app = XLGetObject("CoolJ.App")
-	ret = LoginWnd(nil)
-	if ret == 1 then Login(self:GetOwnerControl()) end
+	local cb = function()
+		Login(self:GetOwnerControl())
+	end
+	ret = LoginWnd(nil, cb)
 end
-
-
 
 function OnLogout(self)
 	Logout(self:GetOwnerControl())

@@ -158,7 +158,7 @@ end
 -- LoginWnd 弹窗函数
 -- Param：
 --	hWnd：绑定窗口句柄，nil时指定ID为"CoolJ.MainWnd.Instance"的窗口为父窗口
-function LoginWnd(hWnd)
+function LoginWnd(hWnd, cb)
 	local ret = 0
 	local mainWnd = hWnd
 	local templateMananger = XLGetObject("Xunlei.UIEngine.TemplateManager")
@@ -174,20 +174,24 @@ function LoginWnd(hWnd)
 			local objectTreeTemplate = templateMananger:GetTemplate("CoolJ.LoginObjTree","ObjectTreeTemplate")
 			if objectTreeTemplate then
 				local function OnPostCreateInstance(self, obj, userdata)
-									
+						local root = obj:GetRootObject()
+						local attr = root:GetAttribute()
+						attr.CallBack = cb
 					end
 				local cookie = objectTreeTemplate:AttachListener("OnPostCreateInstance", true, OnPostCreateInstance)
 				local uiObjectTree = objectTreeTemplate:CreateInstance("CoolJ.LoginWnd.Instance")
 				if uiObjectTree then
 					modalHostWnd:BindUIObjectTree(uiObjectTree)
 
-					ret = modalHostWnd:DoModal(mainWnd:GetWndHandle())
+					ret = modalHostWnd:Create(mainWnd:GetWndHandle())
+					modalHostWnd:Center()
+					modalHostWnd:SetVisible(true)
 					-- XLLoginWnd(ret)
 				end
-				local objtreeManager = XLGetObject("Xunlei.UIEngine.TreeManager")	
-				objtreeManager:DestroyTree("CoolJ.LoginWnd.Instance")
+				--local objtreeManager = XLGetObject("Xunlei.UIEngine.TreeManager")	
+				--objtreeManager:DestroyTree("CoolJ.LoginWnd.Instance")
 			end
-			hostWndManager:RemoveHostWnd("CoolJ.LoginWnd.Instance")
+			--hostWndManager:RemoveHostWnd("CoolJ.LoginWnd.Instance")
 		end
 	end
 	

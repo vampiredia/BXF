@@ -1,13 +1,15 @@
 <xlue>
 	<control class="CoolJ.LogQueryChildPanelForOperate">
 		<attr_def>
-			<attr name="BorderTexture" type="string"><default>texture.tabbody.border</default></attr>
+			<attr name="BorderTexture" type="string">
+				<default>texture.tabbody.border</default>
+			</attr>
 		</attr_def>
 		<method_def>
-			<PageChange file="LogQueryChildPanelForOperate.xml.lua" func="PageChange" />
+			<GetLogInfo file="LogQueryChildPanelForOperate.xml.lua" func="GetLogInfo" />
 		</method_def>
 		<event_def>
-			
+
 		</event_def>
 		<objtemplate>
 			<children>
@@ -19,6 +21,119 @@
 						<height>father.height</height>
 						<alpha>168</alpha>
 					</attr>
+
+					<children>
+
+						<obj id="layout.select" class="LayoutObject">
+							<attr>
+								<left>10</left>
+								<top>10</top>
+								<width>father.width-10</width>=
+								<height>34</height>
+							</attr>
+							<children>
+								<obj id="text.admin" class="TextObject">
+									<attr>
+										<left>0</left>
+										<top>0</top>
+										<width>48</width>
+										<height>34</height>
+										<valign>center</valign>
+										<text>管理员：</text>
+									</attr>
+								</obj>
+								<obj id="cb.admin" class="WHome.ComboBox">
+									<attr>
+										<left>50</left>
+										<top>0</top>
+										<width>100</width>
+										<height>34</height>
+										<zorder>999</zorder>
+									</attr>
+									<eventlist>
+										<event name="OnInitControl" file="LogQueryChildPanelForOperate.xml.lua" func="CBA_OnInitControl" />
+									</eventlist>
+								</obj>
+								<obj id="text.time" class="TextObject">
+									<attr>
+										<left>170</left>
+										<top>0</top>
+										<width>64</width>
+										<height>34</height>
+										<valign>center</valign>
+										<text>选择时段：</text>
+									</attr>
+								</obj>
+								<obj id="btn.select" class="WHome.Button">
+									<attr>
+										<top>0</top>
+										<left>father.width-87</left>
+										<width>77</width>
+										<height>32</height>
+										<valign>center</valign>
+										<NormalBkgID>texture.button.small.blue.normal</NormalBkgID>
+										<DownBkgID>texture.button.small.blue.down</DownBkgID>
+										<DisableBkgID>texture.button.small.blue.disable</DisableBkgID>
+										<HoverBkgID>texture.button.small.blue.hover</HoverBkgID>
+										<TextColor>system.white</TextColor>
+										<Text>筛 选</Text>	
+									</attr>
+									<eventlist>
+										<event name="OnClick" file="LogQueryChildPanelForOperate.xml.lua" func="BTN_OnSelect" />
+									</eventlist>
+								</obj>	
+							</children>
+						</obj>
+						<obj id="layout.info" class="LayoutObject">
+							<attr>
+								<left>10</left>
+								<top>50</top>
+								<width>father.width-20</width>
+								<height>father.height-85</height>
+								<limitchild>1</limitchild>
+							</attr>
+							<children>
+								<obj id="lb.log" class="WHome.ListBox">
+									<attr>
+										<top>2</top>
+										<width>father.width</width>
+										<height>father.height</height>
+										<HeaderItemChangeBkg>texture.listctrl.item.bkg.normal</HeaderItemChangeBkg>
+										<useDirectBoxSelect>false</useDirectBoxSelect>
+										<onlySingleSelect>true</onlySingleSelect>
+										<iToLeftDis>0</iToLeftDis>
+										<HScrollVisible>false</HScrollVisible>
+										<iItemSpacing>0</iItemSpacing>
+									</attr>
+									<eventlist>
+										<event name="OnInitControl" file="LogQueryChildPanelForOperate.xml.lua" func="LB_OnInitControl" />
+										<event name="OnHeaderItemPosChanged" file="LogQueryChildPanelForOperate.xml.lua" func="LB_OnHeaderItemPosChanged" />
+										<event name="OnItemEvent" file="LogQueryChildPanelForOperate.xml.lua" func="LB_OnItemEvent" />
+									</eventlist>
+								</obj>	
+							</children>
+						</obj>
+						<obj id="btn.export" class="WHome.Button">
+							<attr>
+								<top>father.height-36</top>
+								<left>24</left>
+								<width>103</width>
+								<height>32</height>
+								<valign>center</valign>
+								<NormalBkgID>texture.button.green.normal</NormalBkgID>
+								<DownBkgID>texture.button.green.down</DownBkgID>
+								<DisableBkgID>texture.button.green.disable</DisableBkgID>
+								<HoverBkgID>texture.button.green.hover</HoverBkgID>
+								<TextColor>system.white</TextColor>
+								<Text>导出表格</Text>
+							</attr>
+							<eventlist>
+
+							</eventlist>
+						</obj>
+
+					</children>
+
 				</obj>
 			</children>
 			<eventlist>

@@ -28,7 +28,6 @@
 		<font id="default.font.bold" height="12" weight="bold" facename="微软雅黑"/>
 		<font id="small.font.bold" height="10" weight="bold" facename="微软雅黑"/>
 
-		<font id="default.font.link" height="12" facename="微软雅黑"/>
 		<font id="font.tree.item" height="12" facename="宋体"/>
 	</resource>
 </XLUE>

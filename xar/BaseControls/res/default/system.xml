@@ -16,8 +16,8 @@
 
 	
 	<font id="default.font" height="12" facename="微软雅黑" />
-	<font id="default.font.link" height="12" facename="defaultfont" />
-	<font id="default.font.underline" height="12" facename="defaultfont" underline="1"/>
+	<font id="default.font.link" height="12" facename="微软雅黑" />
+	<font id="default.font.underline" height="12" facename="微软雅黑" underline="1"/>
 	<font id="default.font.edit" height="12" facename="微软雅黑" />
 	<font id="btTask.option.font" height="12" weight="bold" facename="微软雅黑"/>
 	<font id="btTask.title.font" height="14" weight="bold" facename="微软雅黑"/>

@@ -4,7 +4,7 @@
 		<texture id="texture.back.bkg" type="Stretch" image="bitmap\zuo.png" />
 		<texture id="texture.next.bkg" type="Stretch" image="bitmap\you.png" />
 		<texture id="texture.xiahuaxian.bkg" type="Stretch" image="bitmap\xiahuaxian.png" />
-		
+
 		<imagelist id="imagelist.sysbtn.close" vertical="0" splitter="1" varyblock="1" image="bitmap\imagelist.sysbtn.close.png"/>
 		<bitmap id="bitmap.sysbtn.close.normal" imagelist="imagelist.sysbtn.close" index="1"/>
 		<bitmap id="bitmap.sysbtn.close.hover" imagelist="imagelist.sysbtn.close" index="2"/>
@@ -14,77 +14,77 @@
 		<bitmap id="bitmap.sysbtn.max.normal" imagelist="imagelist.sysbtn.max" index="1"/>
 		<bitmap id="bitmap.sysbtn.max.hover" imagelist="imagelist.sysbtn.max" index="2"/>
 		<bitmap id="bitmap.sysbtn.max.down" imagelist="imagelist.sysbtn.max" index="3"/>
-		
+
 		<imagelist id="imagelist.sysbtn.mini" vertical="0" splitter="1" varyblock="1" image="bitmap\imagelist.sysbtn.mini.png"/>
 		<bitmap id="bitmap.sysbtn.mini.normal" imagelist="imagelist.sysbtn.mini" index="1"/>
 		<bitmap id="bitmap.sysbtn.mini.hover" imagelist="imagelist.sysbtn.mini" index="2"/>
 		<bitmap id="bitmap.sysbtn.mini.down" imagelist="imagelist.sysbtn.mini" index="3"/>		
-		
+
 		<!--
 		<bitmap id="bitmap.sysbtn.mini.normal" path="bitmap\zuixiaohua_1.png"/>
 		<bitmap id="bitmap.sysbtn.mini.hover" path="bitmap\zuixiaohua_2.png"/>
 		<bitmap id="bitmap.sysbtn.mini.down" path="bitmap\zuixiaohua_3.png"/>
 		-->
-			
+
 		<imagelist id="imagelist.platform.button.image" vertical="0" splitter="1" varyblock="1" image="bitmap\imagelist.platform.button.png"/>
-		
+
 		<bitmap id="bitmap.sysbtn.mini.disable" imagelist="imagelist.platform.button.image" index="18"/>
-		
+
 		<bitmap id="bitmap.sysbtn.max.disable" imagelist="imagelist.platform.button.image" index="22"/>
-		
+
 		<bitmap id="bitmap.sysbtn.restore.normal" imagelist="imagelist.platform.button.image" index="23"/>
 		<bitmap id="bitmap.sysbtn.restore.hover" imagelist="imagelist.platform.button.image" index="24"/>
 		<bitmap id="bitmap.sysbtn.restore.down" imagelist="imagelist.platform.button.image" index="25"/>
 		<bitmap id="bitmap.sysbtn.restore.disable" imagelist="imagelist.platform.button.image" index="26"/>
-		
+
 		<bitmap id="bitmap.sysbtn.close.disable" imagelist="imagelist.platform.button.image" index="30"/>
-		
+
 		<texture id="menu.bkn" type="NineInOne" image="bitmap\texture.mainmenu.popbkg.png"/>
-		
+
 		<bitmap id="bkg.light.top" path="bitmap\bkg.light.top.png"/>
 		<bitmap id="bkg.light.left" path="bitmap\bkg.light.left.png"/>
 		<bitmap id="bkg.light.bottomleft" path="bitmap\bkg.light.bottomleft.png"/>
-		
+
 		<texture id="caption.mainwnd.bkg" type="Stretch" image="bitmap\caption.mainwnd.bkg.png" />
-		
+
 		<imageseq id="web.loading" folder="bitmap\webloading"/>
-		
+
 		<bitmap id="tree"  path="bitmap\tree.png" />
 		<bitmap id="tree.bkg" path="bitmap\task_icon_big.png" />
-		
+
 		<texture id="bkg.flash" drop="100" type="NineInOne" image="bitmap\bkg.flash.png"/>
-		
+
 		<imagelist id="imagelist.blv.login.ok.btn" image="bitmap\blv.login.ok.btn.png" blocksize="77"/>
 		<bitmap id="bitmap.login.ok.normal" imagelist="imagelist.blv.login.ok.btn" index="1"/>
 		<bitmap id="bitmap.login.ok.hover" imagelist="imagelist.blv.login.ok.btn" index="2"/>
 		<bitmap id="bitmap.login.ok.down" imagelist="imagelist.blv.login.ok.btn" index="3"/>
 		<bitmap id="bitmap.login.ok.disable" imagelist="imagelist.blv.login.ok.btn" index="4"/> 
-		
+
 		<texture id="static.frame" drop="100" type="NineInOne" image="bitmap\static.frame.png" />
 		<texture id="static.frame.line"  type="Stretch" image="bitmap\static.frame.line.png" />	
-		
+
 		<bitmap id="skinpanel.colorscheme.mask" path="bitmap\skinpanel.colorscheme.mask.png"/>
-		
+
 		<texture id="texture.tasklist.item.bk" type="NineInOne" image="bitmap\task_item_bk.png" />
 		<texture id="texture.tasklist.select_item.bk" type="NineInOne" image="bitmap\task_select_item_bk.png"/>
-		
+
 		<bitmap id="animation.simple.image" path="bitmap\anisimple.png"/>
 		<texture id="animation.simple.texture" type="Stretch" image="bitmap\anisimple.png" />
 		<imageseq id="simpleseq"  imagelist="imagelist.platform.button.image"/>
-		
+
 		<gif id="gif.test" file="bitmap\test.gif"/>
-		
+
 		<curve id="test.curve1" type="bezier">
 			<controlpoint  tp="0.000000" sp="0.000000"/>
 			<controlpoint  tp="0.236264" sp="0.808989"/>
 			<controlpoint  tp="0.750000" sp="0.171348"/>
 			<controlpoint  tp="0.997253" sp="1.000000"/>
 		</curve>
-		
+
 		<bitmap id="texture.user.head.pic" image="bitmap\texture.user.head.pic.png" />
 		<bitmap id="texture.lp.head.image.bkg" image="bitmap\texture.lp.head.image.bkg.png" />
 		<bitmap id="texture.lp.head.image" image="bitmap\texture.lp.head.image.png" />
-		
+
 		<bitmap id="tab.icon.community.service" path="bitmap\tab.icon.community.service.png"/>
 		<bitmap id="tab.icon.community.service.select" path="bitmap\tab.icon.community.service.select.png"/>
 		<bitmap id="tab.icon.log.query" path="bitmap\tab.icon.log.query.png"/>
@@ -102,44 +102,44 @@
 		<texture id="bkg.border.shadow" type="NineInOne" image="bitmap\bkg.shadow.png"/>   
 		<texture id="texture.mainwnd.border" type="NineInOne" image="bitmap\mainwnd_border.png" />
 		<bitmap id="bkg.tab" image="bitmap\bkg.tab.png" />
-		
+
 		<texture id="texture.left.bkg" type="Stretch" image="bitmap\texture.left.bkg.png" />
 		<texture id="texture.main.bkg" type="Stretch" image="bitmap\texture.main.bkg.png" />
 		<texture id="text.tab.btn.normal" type="Stretch" image="bitmap\text.tab.btn.normal.png" />
 		<texture id="text.tab.btn.hover" type="Stretch" image="bitmap\text.tab.btn.hover.png" />
 		<texture id="text.tab.btn.down" type="Stretch" image="bitmap\text.tab.btn.down.png" />
 		<texture id="texture.upload.item.bkg" type="Stretch" image="bitmap\texture.upload.item.bkg.png" />
-		
+
 		<!-- footer -->
 		<texture id="texture.footer.bkg" type="Stretch" image="bitmap\texture.footer.bkg.png" />
-		
+
 		<!-- icon res -->
 		<icon id="wnd.big"  width="32" height="32" file="bitmap\thunder.ico" />
 		<icon id="wnd.small"  width="16" height="16" file="bitmap\thunder.ico" />
-	  
+
 		<!-- tray res -->
-		 <icon id="systray.big"  width="32" height="32" file="bitmap\thunder.ico" />
-		 <icon id="systray.small"  width="16" height="16" file="bitmap\thunder.ico" />
-		 
-		 <texture id="texture.notify.head" type="Stretch" image="bitmap\texture.notify.head.png" />
-		 <imagelist id="imagelist.notify.bkg" vertical="0" splitter="1" varyblock="1" image="bitmap\imagelist.notify.bkg.png"/>
+		<icon id="systray.big"  width="32" height="32" file="bitmap\thunder.ico" />
+		<icon id="systray.small"  width="16" height="16" file="bitmap\thunder.ico" />
+
+		<texture id="texture.notify.head" type="Stretch" image="bitmap\texture.notify.head.png" />
+		<imagelist id="imagelist.notify.bkg" vertical="0" splitter="1" varyblock="1" image="bitmap\imagelist.notify.bkg.png"/>
 		<texture id="texture.notify.head.bkg" type="Stretch" imagelist="imagelist.notify.bkg" index="1"/>
 		<texture id="texture.notify.left.bkg" type="Stretch" imagelist="imagelist.notify.bkg" index="2"/>
 		<texture id="texture.notify.right.bkg" type="Stretch" imagelist="imagelist.notify.bkg" index="3"/>
-		
+
 		<texture id="texture.listctrl.selected" type="NineInOne" image="bitmap\texture.listctrl.selected.png" />
-		
+
 		<texture id="texture.btn.notice.history.down.bkg" type="Stretch" image="bitmap\btn_notice_history_down.png" />
 		<texture id="texture.btn.notice.history.normal.bkg" type="Stretch" image="bitmap\btn_notice_history_normal.png" />
 		<texture id="texture.btn.notice.history.hover.bkg" type="Stretch" image="bitmap\btn_notice_history_hover.png" />
 		<texture id="texture.btn.notice.new.down.bkg" type="Stretch" image="bitmap\btn_notice_new_down.png" />
 		<texture id="texture.btn.notice.new.normal.bkg" type="Stretch" image="bitmap\btn_notice_new_normal.png" />
 		<texture id="texture.btn.notice.new.hover.bkg" type="Stretch" image="bitmap\btn_notice_new_hover.png" />
-		
+
 		<texture id="texture.btn.warn.normal.bkg" type="Stretch" image="bitmap\btn_warn_normal.png" />
 		<texture id="texture.btn.warn.hover.bkg" type="Stretch" image="bitmap\btn_warn_hover.png" />
 		<texture id="texture.btn.warn.down.bkg" type="Stretch" image="bitmap\btn_warn_down.png" />
-		
+
 		<!-- icon resource -->
 		<texture id="texture.icon.card" type="Stretch" image="bitmap\icon\card.png" />
 		<texture id="texture.icon.elemoney" type="Stretch" image="bitmap\icon\ele_money.png" />
@@ -150,5 +150,30 @@
 		<texture id="texture.icon.stopcar" type="Stretch" image="bitmap\icon\stop_car.png" />
 		<texture id="texture.icon.watermoney" type="Stretch" image="bitmap\icon\water_money.png" />
 		<texture id="texture.icon.view" type="Stretch" image="bitmap\icon\you.png" />
+
+		<imagelist id="ListCtrl.Header.Image" vertical="0" splitter="1" varyblock="1" image="bitmap\listheader.png"/>
+		<bitmap id="ListCtrl.Header.SortBmp.down" imagelist="ListCtrl.Header.Image" index="3"/>
+		<bitmap id="ListCtrl.Header.SortBmp.up" imagelist="ListCtrl.Header.Image" index="4"/>
+		<bitmap id="bitmap.listctrl.header.bkg"  path="bitmap\list_header_bkg.png"/>
+		<bitmap id="ListCtrl.HeaderItem.Normal" path="bitmap\list_header_item.png"/>  
+		<bitmap id="ListCtrl.HeaderItem.Down" path="bitmap\list_header_item.png"/>
+		<bitmap id="ListCtrl.HeaderItem.Hover" path="bitmap\list_header_item.png"/>
+
+
+		<texture id="texture.listctrl.header.bkg" type="ThreeInOneH" image="bitmap\listctrl_header.png" /> 
+
+		<texture id="texture.listctrl.item.bkg.select" type="Normal" image="bitmap\list_item_bkg_select.png">
+			<part id="texture">
+				<src left="0" top="0" width="1" height="23"/>
+				<dest left="0" top="0" width="width" height="height"/>					
+			</part>
+		</texture>
+
+		<texture id="texture.listctrl.item.bkg.even" type="Normal" image="bitmap\list_item_bkg_event.png">
+			<part id="texture">
+				<src left="0" top="0" width="1" height="23"/>
+				<dest left="0" top="0" width="width" height="height"/>					
+			</part>
+		</texture>
 	</resource>
 </XLUE>	

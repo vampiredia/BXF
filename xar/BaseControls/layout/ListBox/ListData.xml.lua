@@ -17,29 +17,12 @@
 -- }
 -- ///////////////////////////////////////////////////
 
-function TEMP_FillData(self)
-	table_date = {
-		{id=1, title='关于新年放假200天的重大喜讯', author='Lydia', s_time='2014-10-08', status='已答复'},
-		{id=2, title='关于新年放假200天的重大喜讯', author='Lydia', s_time='2014-10-08', status='已答复'},
-		{id=3, title='关于新年放假200天的重大喜讯', author='Lydia', s_time='2014-10-08', status='已答复'},
-		{id=4, title='关于新年放假200天的重大喜讯', author='Lydia', s_time='2014-10-08', status='已答复'},
-		{id=5, title='关于新年放假200天的重大喜讯', author='Lydia', s_time='2014-10-08', status='已答复'},
-		{id=6, title='关于新年放假200天的重大喜讯', author='Lydia', s_time='2014-10-08', status='已答复'},
-		{id=7, title='关于新年放假200天的重大喜讯', author='Lydia', s_time='2014-10-08', status='已答复'},
-		{id=8, title='关于新年放假200天的重大喜讯', author='Lydia', s_time='2014-10-08', status='已答复'},
-		{id=9, title='关于新年放假200天的重大喜讯', author='Lydia', s_time='2014-10-08', status='已答复'},
-		{id=10, title='关于新年放假200天的重大喜讯', author='Lydia', s_time='2014-10-08', status='已答复'}
-	}
-	local attr = self:GetAttribute()
-	attr.ItemDataList = table_date
-end
-
 function DS_InitControl(self)
 	local attr = self:GetAttribute()
 	if attr.ItemDataList == nil then attr.ItemDataList = {} end
 	if attr.ItemSelectDataList == nil then attr.ItemSelectDataList = {} end
 	if attr.ItemSelectIndexList == nil then attr.ItemSelectIndexList = {} end
-	TEMP_FillData(self)
+	attr.ItemDataList = {}
 end
 
 --
@@ -74,6 +57,11 @@ end
 function DS_GetSelectedItemIndexList(self)
 	local attr = self:GetAttribute()
 	return attr.ItemSelectIndexList
+end
+
+function DS_SetData(self, data)
+	local attr = self:GetAttribute()
+	attr.ItemDataList = data
 end
 
 --
@@ -186,6 +174,7 @@ end
 function DC_UpdateUIObjectFromData(self, nItemIndex, objItem, tItemData, nOperationType)
 	local attr = self:GetAttribute()
 	objItem:SetText(tItemData)
+	objItem:GetAttribute().UserData = tItemData
 	if attr.GridInfoList ~= nil then 
 		objItem:SetPosition(attr.GridInfoList, attr.ItemTotalHeight)
 	end
@@ -193,6 +182,7 @@ function DC_UpdateUIObjectFromData(self, nItemIndex, objItem, tItemData, nOperat
 		objItem:GetControlObject("bkg"):SetTextureID("listbox.item.bkg.down")
 		objItem:GetControlObject("btn.details"):SetVisible(true)
 		objItem:GetControlObject("btn.details"):SetChildrenVisible(true)
+		objItem:FireExtEvent("OnItemEvent", "OnSelect", tItemData)
 	elseif tItemData['strOperationType'] == 'mousemove' then 
 		objItem:GetControlObject("bkg"):SetTextureID("listbox.item.bkg.hover")
 		objItem:GetControlObject("btn.details"):SetVisible(false)
@@ -259,9 +249,9 @@ end
 function SetText(self, item)
 	self:GetControlObject("text.id"):SetText(item['id'])
 	self:GetControlObject("text.title"):SetText(item['title'])
-	self:GetControlObject("text.author"):SetText(item['author'])
-	self:GetControlObject("text.s_time"):SetText(item['s_time'])
-	self:GetControlObject("text.status"):SetText(item['status'])
+	self:GetControlObject("text.author"):SetText(item['nick'])
+	self:GetControlObject("text.s_time"):SetText(os.date("%x", item['s_time']))
+	self:GetControlObject("text.status"):SetText("正常")
 end
 
 
@@ -285,5 +275,5 @@ end
 
 function Btn_OnDetails(self)
 	local owner = self:GetOwnerControl()
-	owner:FireExtEvent("OnItemEvent", "OnShowDetails")
+	owner:FireExtEvent("OnItemEvent", "OnShowDetails", owner:GetAttribute().UserData)
 end

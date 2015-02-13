@@ -99,6 +99,7 @@
 								<height>34</height>
 								<TipText>请输入用户名</TipText>
 								<NormalTipTextColor>system.gray</NormalTipTextColor>
+								<taborder>1</taborder>
 							</attr>
 						</obj>
 						<obj id="text.password" class="TextObject">
@@ -122,6 +123,7 @@
 								<TipText>6-14位英文数字组合</TipText>
 								<Password>true</Password>
 								<NormalTipTextColor>system.gray</NormalTipTextColor>
+								<taborder>2</taborder>
 							</attr>
 						</obj>
 						<obj id="button.search" class="WHome.Button">
@@ -137,6 +139,7 @@
 								<HoverBkgID>texture.button.small.blue.hover</HoverBkgID>
 								<Text>登录</Text>
 								<TextColor>system.white</TextColor>
+								<taborder>3</taborder>
 							</attr>
 							<eventlist>
 								<event name="OnClick" file="LoginWnd.xml.lua" func="OnLogin" />

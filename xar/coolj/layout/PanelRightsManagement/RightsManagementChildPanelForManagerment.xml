@@ -37,16 +37,26 @@
 						<height>father.height</height>
 					</attr>
 					<children>
-						<obj id="tableview.rights.struct.list" class="WHome.ListCtrl">
+						<obj id="texture.admin" class="TextureObject">
 							<attr>
 								<left>10</left>
 								<top>40</top>
-								<width>400</width>
-								<height>48</height>
+								<width>330</width>
+								<height>25</height>
+								<texture>texture.listctrl.item.bkg.hover</texture>
 							</attr>
-							<eventlist>
-								<event name="OnInitControl" file="RightsManagementChildPanelForManagerment.xml.lua" func="LRS_OnInitControl" />
-							</eventlist>
+						</obj>
+						<obj id="text.admin" class="TextObject">
+							<attr>
+								<left>10</left>
+								<top>40</top>
+								<width>330</width>
+								<height>25</height>
+								<valign>center</valign>
+								<halign>center</halign>
+								<text>权限组管理员</text>
+								<zorder>999</zorder>
+							</attr>
 						</obj>
 						<obj id="tree" class="TreeCtrl">
 							<attr>
@@ -60,17 +70,28 @@
 								<event name="OnInitControl" file="RightsManagementChildPanelForManagerment.xml.lua" func="TC_OnInitControl" />
 							</eventlist>
 						</obj>
-						<obj id="tableview.rights.instruction.list" class="WHome.ListCtrl">
+						<obj id="texture.content" class="TextureObject">
 							<attr>
-								<left>father.width - 340</left>
+								<left>father.width - 350</left>
+								<top>40</top>
+								<width>340</width>
+								<height>25</height>
+								<texture>texture.listctrl.item.bkg.hover</texture>
+							</attr>
+						</obj>
+						<obj id="text.content" class="TextObject">
+							<attr>
+								<left>father.width - 350</left>
 								<top>40</top>
 								<width>350</width>
-								<height>48</height>
+								<height>25</height>
+								<valign>center</valign>
+								<halign>center</halign>
+								<text>管理员当前权限</text>
+								<zorder>999</zorder>
 							</attr>
-							<eventlist>
-								<event name="OnInitControl" file="RightsManagementChildPanelForManagerment.xml.lua" func="LRI_OnInitControl" />
-							</eventlist>
 						</obj>
+						
 						<obj id="btn.export" class="WHome.Button">
 							<attr>
 								<top>father.height-10-24</top>

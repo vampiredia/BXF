@@ -24,6 +24,15 @@ function HttpRequest(url, method, param, callback)
 			end
 		end
 	)
+	local app = XLGetObject("CoolJ.App")
+	local ret, ak = app:GetString("Community", "Community_Ak", "")
+	if ak ~= "" then
+		if method == "GET" then
+			url = url.."&ak="..ak
+		elseif method == "POST" then
+			param = param.."&ak="..ak
+		end
+	end
 	httpclient:Perform(url, method, param)
 end
 

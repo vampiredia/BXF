@@ -9,7 +9,7 @@
 			</attr>
 		</attr_def>
 		<method_def>
-
+			<GetData file="PublishCenterChildPanelForAnnouncement.xml.lua" func="GetData" />
 		</method_def>
 		<event_def>
 

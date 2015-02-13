@@ -6,6 +6,7 @@
 		<method_def>
 			<SetText file="ListData.xml.lua" func="SetText" />
 			<SetPosition file="ListData.xml.lua" func="SetPosition" />
+			<GetName file="ListDataPay.xml.lua" func="GetName" />
 		</method_def>
 		<event_def>
 			<OnItemMouseEvent> <!-- Item各种鼠标事件 -->
@@ -65,7 +66,7 @@
 								<height>father.height</height>
 								<text>title</text>
 								<valign>center</valign>
-								<halign>left</halign>
+								<halign>center</halign>
 							</attr>
 						</obj>
 						<obj id="text.s_time" class="TextObject">
@@ -76,7 +77,7 @@
 								<height>father.height</height>
 								<text>title</text>
 								<valign>center</valign>
-								<halign>left</halign>
+								<halign>center</halign>
 							</attr>
 						</obj>
 						<obj id="text.status" class="TextObject">
@@ -87,12 +88,12 @@
 								<height>father.height</height>
 								<text>status</text>
 								<valign>center</valign>
-								<halign>left</halign>
+								<halign>center</halign>
 							</attr>
 						</obj>
 						<obj id="btn.details" class="LayoutObject">
 							<attr>
-								<left>560</left>
+								<left>620</left>
 								<top>0</top>
 								<width>60</width>
 								<height>father.height</height>
@@ -147,6 +148,7 @@
 			<attr name="SelectedItemCount" type="int" ><default>0</default></attr> <!-- 获取选中节点总数 -->
 		</attr_def>
 		<method_def>
+			<SetData file="ListData.xml.lua" func="DS_SetData" />
 			<InitControl file="ListData.xml.lua" func="DS_InitControl" />
 			<GetItemCount file="ListData.xml.lua" func="DS_GetItemCount" />
 			<GetItemDataByIndex file="ListData.xml.lua" func="DS_GetItemDataByIndex" />

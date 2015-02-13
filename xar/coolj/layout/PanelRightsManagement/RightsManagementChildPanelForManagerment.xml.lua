@@ -27,13 +27,4 @@ function OnClick(self)
 	local osshell = XLGetObject("CoolJ.OSShell")
 	
 	local html = osshell:DoScript(iwebbrowser2, "html")
-	XLMessageBox(11)
-end
-
-function LRS_OnInitControl(self)
-	self:InsertColumn("info", 330, "权限组管理员", "left", "center", 5, true, 330)
-end
-
-function LRI_OnInitControl(self)
-	self:InsertColumn("info", 330, "管理员当前权限", "left", "center", 5, true, 330)
 end

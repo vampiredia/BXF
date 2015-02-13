@@ -12,6 +12,7 @@ local headerTable = {
 
 function OnInitControl(self)
 	local attr = self:GetAttribute()
+	attr.Classify = 27
 	local bkg = self:GetControlObject("bkg")
 	--bkg:SetTextureID(attr.BorderTexture)
 	
@@ -23,10 +24,15 @@ function OnInitControl(self)
 	oldObj = self:GetObject("history.notice.page")
 	oldObj:SetVisible(false)
 	oldObj:SetChildrenVisible(false)
+	
+	oldObj = self:GetObject("info.notice.page")
+	oldObj:SetVisible(false)
+	oldObj:SetChildrenVisible(false)
 end
 
 function OnClickNewNotice(self)
 	PageChange(self, "main.page", "new.notice.page")
+	self:GetOwnerControl():PublishInit()
 end
 
 function OnClickNewNoticePageToMainPage(self)
@@ -41,29 +47,7 @@ function OnClickNoticeHistory(self)
 	
 	
 	PageChange(self, "main.page", "history.notice.page")
-	
-	local controlObj = self:GetOwnerControl()
-	local httpclient = XLGetObject("Whome.HttpCore.Factory"):CreateInstance()
-	
-	url = "/community/notice"
-	param = ""
-	httpclient:AttachResultListener(
-		function(result)
-			table_result = json.decode(result)
-			if table_result['ret'] == 0 then
-				--local objList = controlObj:GetObject("tableview.result.list")
-				table_data = table_result['result']['notice_list']
-				for i=1, #table_data do
-					table_data[i]['author'] = '管理员'
-					table_data[i]['status'] = '正常'
-					table_data[i]['modify_time'] = os.date("%c", table_data[i]['modify_time'])
-				end
-				--objList:ClearItems()
-				--objList:InsertItemList(table_data, true)
-			end
-		end
-	)
-	httpclient:Perform(url, "GET", param)
+	self:GetOwnerControl():GetData()
 	
 end
 
@@ -109,65 +93,27 @@ function LB_OnInitControl(self)
 	self:ReloadData()
 end
 
-function TV_OnInitControl(self)
-	
-end
-
 function OnClickNoticePublishWarning(self)
-	local httpclient = XLGetObject("Whome.HttpCore.Factory"):CreateInstance()
-	httpclient:AttachResultListener(
-		function(result) 
-			XLMessageBox("result is "..result) 
-		end
-	)
-	url = "/community/topic?action=get_list&target="..httpclient:EscapeParam("投诉")
-	httpclient:Perform(url, "GET", "")
+	
 end
 
 function BTN_PublishNotice(self)
-	local ret = MessageBox(nil, "社区公告", "是否确定提交公告信息？")
-	--XLMessageBox(ret)
-	if ret == 1 then
-		AddNotify(self, "公告提交成功！")
-	end
-	--[[
-	local controlObj = self:GetOwnerControl()
-	local titleObj = controlObj:GetObject("edit.notice.title")
-	local contentObj = controlObj:GetObject("richedit.notice.content")
+	local owner = self:GetOwnerControl()
+	local html = owner:GetHtml()
+	local content = owner:GetContent()
+	local classify = owner:GetAttribute().Classify
+	local title = owner:GetControlObject("edit.notice.title"):GetText()
 	local httpclient = XLGetObject("Whome.HttpCore.Factory"):CreateInstance()
 	
-	local title = httpclient:EscapeParam(titleObj:GetText())
-	local content = httpclient:EscapeParam(contentObj:GetText())
-	
-	url = "/community/notice"
-	param = "action=add_notice&title="..title.."&content="..content
-	httpclient:AttachResultListener(
-		function(result)
-			table_result = json.decode(result)
-			if table_result['ret'] == 0 then
-				
-			end
+	local request = function(ret, msg, result)
+		if ret == 0 then
+			AddNotify(self, "发布成功", 3000)
+		else
+			AddNotify(self, msg, 3000)
 		end
-	)
-	httpclient:Perform(url, "POST", param)
-	]]
-end
-
-function LB_OnListItemDbClick(self, event, itemObj, x, y, flags)
-end
-
-function OnClickNoticeHistory1(self)
-	--AddNotify(self, math.random(1,1000))
-	local shell = XLGetObject("CoolJ.OSShell")
-	local a, b = shell:FileOpenDialog("image")
-	XLMessageBox(a)
-	XLMessageBox(b)
-end
-
-function TB_OnInitControl(self)
-	local objFactory = XLGetObject("Xunlei.UIEngine.ObjectFactory")
-	local obj = objFactory:CreateUIObject(nil, "CoolJ.Upload.ItemForImage")
-	self:AddDefaultItem(obj)
+	end
+	local param = "action=add_info&title="..title.."&html="..httpclient:EscapeParam(html).."&content="..httpclient:EscapeParam(content).."&classify="..classify
+	HttpRequest("/api/message/notice", "POST", param, request)
 end
 
 function OnClickNoticePublishWarningInitControl(self)
@@ -182,8 +128,86 @@ function LB_OnHeaderItemPosChanged(self, event, isDrag, GridInfoList)
 end
 
 function LB_OnItemEvent(self, eventName, eventType, UserData, ItemObj)
-	if table_data == nil then 
-		return
+	if eventType == "OnShowDetails" then
+		PageChange(self, "history.notice.page", "info.notice.page")
+		local web = self:GetOwnerControl():GetControlObject("web.info")
+		web:Navigate("http://www.coolj.com/api/message/notice?action=info&id="..UserData["id"])
+		local attr = self:GetOwnerControl():GetAttribute()
+		attr.SelectID = UserData["id"]
 	end
-	PageChange(self, "history.notice.page", "new.notice.page")
+end
+
+function GetData(self)
+	local request = function(ret, msg, result)
+		if ret == 0 then
+			local obj = self:GetControlObject("lb.result")
+			obj:GetDataSource():SetData(result['msg_list'])
+			obj:ReloadData()
+		else
+			AddNotify(self, msg, 3000)
+		end
+	end
+	local param = ""
+	HttpRequest("/api/message/notice?action=msg_list", "GET", param, request)
+end
+
+function Web_OnInitControl(self)
+
+end
+
+function Prev_OnClick(self)
+	AddNotify(self, "开发中", 3000)
+end
+
+function GetContent(self)
+	local web = self:GetControlObject("web")
+	local iwebbrowser2 = web:GetRawWebBrowser()
+	local osshell = XLGetObject("CoolJ.OSShell")
+	
+	local html = osshell:DoScript(iwebbrowser2, "Text")
+	return html
+end
+
+function ClearContent(self)
+	local web = self:GetControlObject("web")
+	local iwebbrowser2 = web:GetRawWebBrowser()
+	local osshell = XLGetObject("CoolJ.OSShell")
+	osshell:DoScript(iwebbrowser2, "ClearAll")
+end
+
+function GetHtml(self)
+	local web = self:GetControlObject("web")
+	local iwebbrowser2 = web:GetRawWebBrowser()
+	local osshell = XLGetObject("CoolJ.OSShell")
+	
+	local html = osshell:DoScript(iwebbrowser2, "Html")
+	return html
+end
+
+function PublishInit(self)
+	self:GetControlObject("edit.notice.title"):SetText("")
+	self:ClearContent()
+end
+
+function OnClickInfoNoticePageToHistoryPage(self)
+	PageChange(self, "info.notice.page", "history.notice.page")
+	self:GetOwnerControl():GetData()
+end
+
+function OnDelDetails(self)
+	ret = MessageBox(nil, "删除须知", "删除该通知后，移动客户端用户手动或自动刷新后，该通知则会从列表中消息。\n点击确认后删除该条内容")
+	if ret == 1 then
+		local request = function(ret, msg, result)
+			if ret == 0 then
+				AddNotify(self, "删除成功", 3000)
+				PageChange(self, "info.notice.page", "history.notice.page")
+				self:GetOwnerControl():GetData()
+			else
+				AddNotify(self, msg, 5000)
+			end
+		end
+		local attr = self:GetOwnerControl():GetAttribute()
+		local param = "action=del_info&id="..attr.SelectID
+		HttpRequest("/api/message/notice", "POST", param, request)		
+	end
 end

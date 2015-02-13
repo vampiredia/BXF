@@ -37,29 +37,8 @@ end
 
 function OnClickNoticeHistory(self)
 	PageChange(self, "main.page", "history.notice.page")
+	self:GetOwnerControl():GetData()
 	
-	local controlObj = self:GetOwnerControl()
-	local httpclient = XLGetObject("Whome.HttpCore.Factory"):CreateInstance()
-	
-	url = "/community/notice"
-	param = ""
-	httpclient:AttachResultListener(
-		function(result)
-			table_result = json.decode(result)
-			if table_result['ret'] == 0 then
-				--local objList = controlObj:GetObject("tableview.result.list")
-				table_data = table_result['result']['notice_list']
-				for i=1, #table_data do
-					table_data[i]['author'] = '管理员'
-					table_data[i]['status'] = '正常'
-					table_data[i]['modify_time'] = os.date("%c", table_data[i]['modify_time'])
-				end
-				--objList:ClearItems()
-				--objList:InsertItemList(table_data, true)
-			end
-		end
-	)
-	httpclient:Perform(url, "GET", param)	
 end
 
 function OnClickHistoryNoticePageToMainPage(self)
@@ -129,27 +108,6 @@ function BTN_PublishNotice(self)
 	if ret == 1 then
 		AddNotify(self, "公告提交成功！")
 	end
---[[
-	local controlObj = self:GetOwnerControl()
-	local titleObj = controlObj:GetObject("edit.notice.title")
-	local contentObj = controlObj:GetObject("richedit.notice.content")
-	local httpclient = XLGetObject("Whome.HttpCore.Factory"):CreateInstance()
-	
-	local title = httpclient:EscapeParam(titleObj:GetText())
-	local content = httpclient:EscapeParam(contentObj:GetText())
-	
-	url = "/community/notice"
-	param = "action=add_notice&title="..title.."&content="..content
-	httpclient:AttachResultListener(
-		function(result)
-			table_result = json.decode(result)
-			if table_result['ret'] == 0 then
-				
-			end
-		end
-	)
-	httpclient:Perform(url, "POST", param)
-]]
 end
 
 function LB_OnListItemDbClick(self, event, itemObj, x, y, flags)	
@@ -331,9 +289,25 @@ function LB_OnHeaderItemPosChanged(self, event, isDrag, GridInfoList)
 	end
 end
 
-function LB_OnItemEvent(self)
-	if table_data == nil then 
-		return
+function LB_OnItemEvent(self, eventName, eventType, UserData, ItemObj)
+	if eventType == "OnShowDetails" then
+		if table_data == nil then 
+			return
+		end
+		PageChange(self, "history.notice.page", "new.notice.page")
 	end
-	PageChange(self, "history.notice.page", "new.notice.page")
+end
+
+function GetData(self)
+	local request = function(ret, msg, result)
+		if ret == 0 then
+			local obj = self:GetControlObject("lb.result")
+			obj:GetDataSource():SetData(result['msg_list'])
+			obj:ReloadData()
+		else
+			AddNotify(self, msg, 5000)
+		end
+	end
+	local param = ""
+	HttpRequest("/api/message/notice?action=notice_list", "GET", param, request)
 end

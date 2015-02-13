@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "LuaOSShellCore.h"
 #include "./HttpClient.h"
+#include "./Transcode.h"
 
 #include "shellapi.h" 
 #include <comdef.h>
@@ -216,7 +217,7 @@ int LuaOSShellCore::FileOpenDialog( lua_State* luaState )
 	return 1;
 }
 
-int LuaOSShellCore::Html( lua_State* luaState )
+int LuaOSShellCore::DoScript( lua_State* luaState )
 {
 	OSShellCore** ppOSShellCore = reinterpret_cast<OSShellCore**>(luaL_checkudata(luaState, 1, COOLJ_OSSHELL_LUA_CLASS));
 	if (ppOSShellCore && *ppOSShellCore)
@@ -253,7 +254,11 @@ int LuaOSShellCore::Html( lua_State* luaState )
 								vaResult.ChangeType(VT_BSTR);
 								_bstr_t tmp = vaResult.bstrVal;
 								const char *op = tmp;
-								lua_pushstring(luaState,op);
+								std::wstring wstrOP;
+								std::string strOP;	
+								Transcode::ANSI_to_Unicode(op, strlen(op), wstrOP);
+								Transcode::Unicode_to_UTF8(wstrOP.c_str(), wcslen(wstrOP.c_str()), strOP);
+								lua_pushstring(luaState,strOP.c_str());
 								
 								return 1;
 							}
@@ -271,7 +276,7 @@ int LuaOSShellCore::Html( lua_State* luaState )
 }
 
 
-int LuaOSShellCore::DoScript( lua_State* luaState )
+int LuaOSShellCore::Html( lua_State* luaState )
 {
 	OSShellCore** ppOSShellCore = reinterpret_cast<OSShellCore**>(luaL_checkudata(luaState, 1, COOLJ_OSSHELL_LUA_CLASS));
 	if (ppOSShellCore && *ppOSShellCore)

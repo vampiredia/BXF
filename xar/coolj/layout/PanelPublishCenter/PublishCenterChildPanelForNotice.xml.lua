@@ -115,7 +115,6 @@ function BTN_PublishNotice(self)
 	local param = "action=add_info&title="..title.."&html="..httpclient:EscapeParam(html).."&content="..httpclient:EscapeParam(content).."&classify="..classify
 	HttpRequest("/api/message/notice", "POST", param, request)
 end
-
 function OnClickNoticePublishWarningInitControl(self)
 	local l,t,r,b = self:GetTextPos()
 	self:SetTextPos(l+10, t, r-l, b-t)
